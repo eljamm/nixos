@@ -32,7 +32,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.nixvm = import ./hosts/default/home.nix;
+              home-manager.users.kuroko = import ./hosts/default/home.nix;
               home-manager.extraSpecialArgs = { inherit inputs; };
             }
           ];
