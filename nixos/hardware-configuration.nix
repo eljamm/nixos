@@ -15,26 +15,30 @@ in
 
 {
   imports =
-    [
-      (modulesPath + "/profiles/qemu-guest.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  # fileSystems."/" =
-  #   {
-  #     device = "/dev/disk/by-uuid/683269aa-d805-41bb-9807-96cd273e00f9";
-  #     fsType = "ext4";
-  #   };
-  #
-  # fileSystems."/home/nixvm/Pop" =
-  #   {
-  #     device = "qemu_nixos";
-  #     fsType = "virtiofs";
-  #   };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/ef268b3c-6be0-4a36-9404-7c07b2ae31df";
+      fsType = "btrfs";
+      options = [ "subvol=@" "compress-force=zstd:2" "noatime" ];
+    };
+
+  fileSystems."/home/kuroko/Pop" =
+    { device = "/dev/disk/by-uuid/56d64ff5-c5d0-426b-95e0-d93fa29d6d8e";
+      fsType = "btrfs";
+      options = [ "compress-force=zstd:2" "noatime" ];
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/DF23-DAE8";
+      fsType = "vfat";
+    };
 
   swapDevices = [ ];
 
@@ -47,6 +51,8 @@ in
     interval = "weekly";
     fileSystems = [ "/" ];
   };
+
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

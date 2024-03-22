@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "nixvm";
-  home.homeDirectory = "/home/nixvm";
+  home.username = "kuroko";
+  home.homeDirectory = "/home/kuroko";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -77,12 +77,24 @@
       # `gnome-extensions list` for a list
       enabled-extensions = [
         "user-theme@gnome-shell-extensions.gcampax.github.com"
-        "trayIconsReloaded@selfmade.pl"
+        # "trayIconsReloaded@selfmade.pl"
+        "appindicatorsupport@rgcjonas.gmail.com"
         "Vitals@CoreCoding.com"
         "dash-to-panel@jderose9.github.com"
-        "sound-output-device-chooser@kgshank.net"
+        # "sound-output-device-chooser@kgshank.net"
         "space-bar@luchrioh"
       ];
+    };
+
+    "org/gnome/desktop/wm/keybindings" = {
+      switch-applications = [ "<Alt>Tab" ];
+      switch-applications-backward = [ "<Shift><Alt>Tab" ];
+      switch-to-workspace-1 = [ "<Super>Home" "<Super>1" ];
+      switch-to-workspace-2 = [ "<Super>2" ];
+      switch-to-workspace-3 = [ "<Super>3" ];
+      switch-to-workspace-4 = [ "<Super>4" ];
+      switch-windows = [ "<Super>Tab" ];
+      switch-windows-backward = [ "<Shift><Super>Tab" ];
     };
   };
 
@@ -123,6 +135,10 @@
   home.sessionVariables = {
     MANPAGER = "moar";
     # MANPAGER = "sh -c 'col -x | bat -l man -p'";
+  };
+
+  systemd.user.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
   # Let Home Manager install and manage itself.
