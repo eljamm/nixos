@@ -4,16 +4,18 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    # home-manager = {
-    #   url = "github:nix-community/home-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nix-index-database, ... } @inputs:
+  outputs = { self, nixpkgs, nix-index-database, home-manager, ... } @inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -25,50 +27,26 @@
           modules = [
             ./configuration.nix
             self.nixosModules.gnome
-            self.nixosModules.test
-            nix-index-database.nixosModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
-            # inputs.home-manager.nixosModules.default
-            # ./modules/nixos/test.nix
+            self.nixosModules.nixIndex
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.nixvm = import ./hosts/default/home.nix;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+            }
           ];
         };
       };
 
       nixosModules = {
-        test = ./modules/nixos/test.nix;
-        gnome = { pkgs, ... }: {
-          config = {
-            services.xserver.enable = true;
-            services.xserver.displayManager.gdm.enable = true;
-            services.xserver.desktopManager.gnome.enable = true;
-            environment.gnome.excludePackages = (with pkgs; [
-              # gnome-photos
-              gnome-tour
-              # gnome-console
-              gedit # text editor
-            ]) ++ (with pkgs.gnome; [
-              cheese # webcam tool
-              gnome-music
-              epiphany # web browser
-              geary # email reader
-              evince # document viewer
-              # gnome-characters
-              totem # video player
-              tali # poker game
-              iagno # go game
-              hitori # sudoku game
-              atomix # puzzle game
-              yelp # Help view
-              gnome-initial-setup
-            ]);
-            programs.dconf.enable = true;
-            environment.systemPackages = with pkgs; [
-              nautilus-open-any-terminal
-              gnome.gnome-tweaks
-              gnome.dconf-editor
-            ];
-          };
+        nixIndex = {
+          imports = [
+            nix-index-database.nixosModules.nix-index
+            ./modules/nixos/nixIndex.nix
+          ];
         };
+        gnome = ./modules/nixos/gnome.nix;
       };
 
     };

@@ -10,12 +10,11 @@
   ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = true;
-  # boot.supportedFilesystems = [ "ntfs" ];
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.device = "/dev/vda";
+  # boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -76,7 +75,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -87,23 +86,29 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.nixvm = {
+  users.users.kuroko = {
     isNormalUser = true;
-    description = "nixvm";
+    description = "kuroko";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       # Internet
       librewolf
+      firefox
+      thunderbird
+      libreddit
+
+      # Communications
+      cinny-desktop
 
       # System
       kitty
+      albert
 
       # Development
       rustup
       neovide
     ];
   };
-
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
@@ -124,6 +129,16 @@
     ];
   };
 
+  # Register AppImage files as a binary type
+  boot.binfmt.registrations.appimage = {
+    wrapInterpreterInShell = false;
+    interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+    recognitionType = "magic";
+    offset = 0;
+    mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+    magicOrExtension = ''\x7fELF....AI\x02'';
+  };
+
   # Enable flakes
   nix = {
     package = pkgs.nixFlakes;
@@ -140,57 +155,53 @@
     firefox
 
     # Networking
-    wget
     tmux
-    git
+    wget
+    iperf3
 
     # Development
-    gcc
+    python3
     alejandra
+    gcc
+    gnumake
+    git
+    lazygit
+    micromamba
+    python311Packages.virtualenvwrapper
+    tig
+    tree-sitter
 
     # Tools
+    dua
     eza
     fd
-    tree
+    fzf
     ripgrep
+    tree
 
     # Utils
+    htop-vim
     mesa-demos
+    pciutils
     wl-clipboard
     xclip
 
-    # Gnome
-    # nautilus-open-any-terminal
+    # System
+    libavif
+    libheif
+    libjxl
+    keepassxc
   ])
-  # ++
-  # (with pkgs.gnome; [
-  #   dconf-editor
-  # ])
   ++
   (with pkgs.lxqt; [
     pcmanfm-qt
     qps
-  ]);
-
-  # environment.gnome.excludePackages = (with pkgs; [
-  #   #gnome-photos
-  #   gnome-tour
-  #   gnome-console
-  #   gedit # text editor
-  # ]) ++ (with pkgs.gnome; [
-  #   cheese # webcam tool
-  #   gnome-music
-  #   #gnome-terminal
-  #   epiphany # web browser
-  #   geary # email reader
-  #   evince # document viewer
-  #   # gnome-characters
-  #   totem # video player
-  #   tali # poker game
-  #   iagno # go game
-  #   hitori # sudoku game
-  #   atomix # puzzle game
-  # ]);
+  ])
+  ++
+  (with pkgs.libsForQt5; [
+    filelight
+  ])
+  ;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -205,6 +216,12 @@
     defaultEditor = true;
   };
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = false; # Open ports in the firewall for Source Dedicated Server
+  };
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
@@ -214,6 +231,10 @@
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
     #settings.PermitRootLogin = "yes";
+  };
+
+  services.libreddit = {
+    enable = true;
   };
 
   # Open ports in the firewall.
