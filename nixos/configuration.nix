@@ -152,6 +152,9 @@
       # Graphics
       pixelorama
 
+      # Games
+      osu-lazer-bin
+
       # Education
       anki
       anki-sync-server
