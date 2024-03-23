@@ -147,11 +147,14 @@
 
   home.sessionVariables = {
     MANPAGER = "moar";
-    # MANPAGER = "sh -c 'col -x | bat -l man -p'";
   };
 
   systemd.user.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt5ct";
+  };
+
+  programs.bash = {
+    enable = true;
   };
 
   # Let Home Manager install and manage itself.
