@@ -45,7 +45,7 @@
   programs.zoxide = {
     enable = true;
     options = [
-      "--cmd j"
+      "--cmd cd"
     ];
   };
 
@@ -66,7 +66,6 @@
       package = pkgs.catppuccin-gtk.override {
         accents = [ "blue" ];
         size = "standard";
-        # tweaks = [ "rimless" "normal" ];
         variant = "macchiato";
       };
     };
