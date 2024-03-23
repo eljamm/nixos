@@ -29,11 +29,14 @@
     gnomeExtensions.vitals
     gnomeExtensions.dash-to-panel
     gnomeExtensions.space-bar
-    catppuccin-gtk
 
     # Customization
     papirus-folders
-    # papirus-icon-theme
+    catppuccin-gtk
+    (catppuccin-kvantum.override {
+      accent = "Blue";
+      variant = "Macchiato";
+    })
 
     ## QT
     libsForQt5.qtstyleplugin-kvantum
@@ -83,7 +86,7 @@
     "org/gnome/shell" = {
       disable-user-extensions = false;
 
-      # `gnome-extensions list` for a list
+      # from `gnome-extensions list`
       enabled-extensions = [
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "appindicatorsupport@rgcjonas.gmail.com"
@@ -118,13 +121,7 @@
   nixpkgs.config.qt = {
     enable = true;
     platformTheme = "qtct";
-    style = {
-      package = pkgs.catppuccin-kvantum {
-        flavor = "macchiato";
-        accent = "blue";
-      };
-      name = "Catppuccin-Macchiato-Blue";
-    };
+    style.name = "kvantum";
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
