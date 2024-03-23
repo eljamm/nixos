@@ -9,13 +9,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    envfs = {
+      url = "github:Mic92/envfs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nix-index-database, home-manager, ... } @inputs:
+  outputs = { self, nixpkgs, nix-index-database, envfs, home-manager, ... } @inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -27,6 +32,7 @@
           modules = [
             ./configuration.nix
             self.nixosModules.gnome
+            envfs.nixosModules.envfs
             self.nixosModules.nixIndex
             home-manager.nixosModules.home-manager
             {
