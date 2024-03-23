@@ -32,7 +32,6 @@
 
     # Customization
     papirus-folders
-    catppuccin-gtk
     (catppuccin-kvantum.override {
       accent = "Blue";
       variant = "Macchiato";
@@ -62,8 +61,8 @@
     theme = {
       name = "Catppuccin-Macchiato-Standard-Blue-Dark";
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "pink" ];
-        size = "compact";
+        accents = [ "blue" ];
+        size = "standard";
         tweaks = [ "rimless" "black" ];
         variant = "macchiato";
       };
