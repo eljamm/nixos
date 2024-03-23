@@ -136,6 +136,10 @@
       # Communications
       cinny-desktop
 
+      # Education
+      anki
+      anki-sync-server
+
       # System
       kitty
       albert
@@ -149,6 +153,21 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
+
+  systemd.packages = [ pkgs.anki-sync-server ];
+
+  services.anki-sync-server = {
+    enable = true;
+    users = [
+      {
+        username = "kuroko";
+        passwordFile = /etc/anki-sync-server/kuroko;
+      }
+    ];
+    address = "0.0.0.0";
+    port = 27701;
+    openFirewall = true;
+  };
 
   # This is using a rec (recursive) expression to set and access XDG_BIN_HOME within the expression
   # For more on rec expressions see https://nix.dev/tutorials/first-steps/nix-language#recursive-attribute-set-rec
