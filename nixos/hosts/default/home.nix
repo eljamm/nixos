@@ -75,6 +75,10 @@
         accent = "blue";
       };
     };
+    cursorTheme = {
+      name = "Catppuccin-Macchiato-Dark-Cursors";
+      package = pkgs.catppuccin-cursors.macchiatoDark;
+    };
   };
 
   dconf.settings = {
