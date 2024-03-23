@@ -134,13 +134,12 @@
     General.theme = "Catppuccin-Macchiato-Blue";
   };
 
-  nixpkgs.config.qt5 = {
+  nixpkgs.config.qt = {
     enable = true;
-    platformTheme = "qt5ct";
+    platformTheme = "qtct";
     style = {
       package = pkgs.catppuccin-kvantum;
-      name = "Kvantum";
-      # name = "Catppuccin-Macchiato-Blue";
+      name = "kvantum";
     };
   };
 
