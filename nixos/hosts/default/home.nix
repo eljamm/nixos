@@ -139,7 +139,8 @@
     platformTheme = "qt5ct";
     style = {
       package = pkgs.catppuccin-kvantum;
-      name = "Catppuccin-Macchiato-Blue";
+      name = "Kvantum";
+      # name = "Catppuccin-Macchiato-Blue";
     };
   };
 
