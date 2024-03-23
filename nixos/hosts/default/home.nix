@@ -96,6 +96,10 @@
       ];
     };
 
+    "org/gnome/shell/extensions/user-theme" = {
+      name = "Catppuccin-Macchiato-Standard-Blue-Dark";
+    };
+
     "org/gnome/desktop/wm/keybindings" = {
       switch-applications = [ "<Alt>Tab" ];
       switch-applications-backward = [ "<Shift><Alt>Tab" ];
