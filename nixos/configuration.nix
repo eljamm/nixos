@@ -205,6 +205,11 @@
     ripgrep
     tree
 
+    # Note Taking
+    qownnotes
+    logseq
+    obsidian
+
     # Utils
     htop-vim
     mesa-demos
