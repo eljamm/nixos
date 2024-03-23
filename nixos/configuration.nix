@@ -168,6 +168,9 @@
       # Development
       rustup
       neovide
+      clang
+      mold-wrapped
+      pkg-config
 
       # Tools
       yt-dlp
