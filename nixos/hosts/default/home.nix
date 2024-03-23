@@ -15,32 +15,6 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # nixpkgs.overlays = [ (
-  #   _: final: prev: {
-  #     pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
-  #       (
-  #         python-final: python-prev: {
-  #           catppuccin = python-prev.catppuccin.overridePythonAttrs (oldAttrs: rec {
-  #             version = "1.3.2";
-  #
-  #             src = prev.fetchFromGitHub {
-  #               owner = "catppuccin";
-  #               repo = "python";
-  #               rev = "refs/tags/v${version}";
-  #               hash = "sha256-spPZdQ+x3isyeBXZ/J2QE6zNhyHRfyRQGiHreuXzzik=";
-  #             };
-  #
-  #             # can be removed next version
-  #             disabledTestPaths = [
-  #               "tests/test_flavour.py" # would download a json to check correctness of flavours
-  #             ];
-  #           });
-  #         }
-  #       )
-  #     ];
-  #   }
-  # ) ];
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -52,12 +26,14 @@
     ## Gnome
     gnomeExtensions.appindicator
     gnomeExtensions.user-themes
-    gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.vitals
     gnomeExtensions.dash-to-panel
-    gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.space-bar
     catppuccin-gtk
+
+    # Customization
+    papirus-folders
+    # papirus-icon-theme
 
     ## QT
     libsForQt5.qtstyleplugin-kvantum
@@ -110,11 +86,9 @@
       # `gnome-extensions list` for a list
       enabled-extensions = [
         "user-theme@gnome-shell-extensions.gcampax.github.com"
-        # "trayIconsReloaded@selfmade.pl"
         "appindicatorsupport@rgcjonas.gmail.com"
         "Vitals@CoreCoding.com"
         "dash-to-panel@jderose9.github.com"
-        # "sound-output-device-chooser@kgshank.net"
         "space-bar@luchrioh"
       ];
     };
@@ -145,8 +119,11 @@
     enable = true;
     platformTheme = "qtct";
     style = {
-      package = pkgs.catppuccin-kvantum;
-      name = "kvantum";
+      package = pkgs.catppuccin-kvantum {
+        flavor = "macchiato";
+        accent = "blue";
+      };
+      name = "Catppuccin-Macchiato-Blue";
     };
   };
 

@@ -143,10 +143,6 @@
       # Development
       rustup
       neovide
-
-      # Customization
-      papirus-folders
-      papirus-icon-theme
     ];
   };
 
