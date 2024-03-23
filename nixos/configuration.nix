@@ -144,8 +144,9 @@
       cinny-desktop
 
       # Video & Audio
-      mpv
       freetube
+      mpv
+      opusTools
 
       # Game Development
       godot_4
