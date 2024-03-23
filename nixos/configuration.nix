@@ -194,6 +194,9 @@
     # Internet
     firefox
 
+    # Video & Audio
+    ffmpegthumbnailer
+
     # Networking
     tmux
     wget
