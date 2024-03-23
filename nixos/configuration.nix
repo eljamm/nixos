@@ -133,10 +133,11 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       # Internet
-      librewolf
+      brave
       firefox
-      thunderbird
       libreddit
+      librewolf
+      thunderbird
 
       # Communications
       cinny-desktop
