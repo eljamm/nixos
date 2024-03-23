@@ -144,6 +144,7 @@
 
       # Video & Audio
       mpv
+      freetube
 
       # Game Development
       godot_4
@@ -154,6 +155,7 @@
 
       # Games
       osu-lazer-bin
+      ryujinx
 
       # Education
       anki
@@ -166,6 +168,10 @@
       # Development
       rustup
       neovide
+
+      # Tools
+      yt-dlp
+      pdfid
     ];
   };
 
