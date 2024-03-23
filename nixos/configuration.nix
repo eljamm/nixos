@@ -43,6 +43,11 @@
         });
       });
     })
+    (self: super: {
+      mpv = super.mpv.override {
+        scripts = [ self.mpvScripts.mpris ];
+      };
+    })
   ];
 
   # Bootloader.
@@ -135,6 +140,9 @@
 
       # Communications
       cinny-desktop
+
+      # Video & Audio
+      mpv
 
       # Education
       anki

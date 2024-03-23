@@ -21,7 +21,6 @@
     bat
     moar
     zoxide
-    mpv
 
     ## Gnome
     gnomeExtensions.appindicator
