@@ -144,6 +144,13 @@
       # Video & Audio
       mpv
 
+      # Game Development
+      godot_4
+      godot3
+
+      # Graphics
+      pixelorama
+
       # Education
       anki
       anki-sync-server
