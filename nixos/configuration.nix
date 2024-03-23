@@ -138,6 +138,7 @@
       libreddit
       librewolf
       thunderbird
+      ungoogled-chromium
 
       # Communications
       cinny-desktop
@@ -152,6 +153,7 @@
 
       # Graphics
       pixelorama
+      waifu2x-converter-cpp
 
       # Games
       osu-lazer-bin
