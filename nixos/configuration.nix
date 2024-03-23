@@ -159,6 +159,8 @@
   };
 
   fonts.packages = with pkgs; [
+    fira-code
+    fira-code-symbols
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
 
@@ -307,6 +309,9 @@
   services.libreddit = {
     enable = true;
   };
+
+  services.gnome.tracker-miners.enable = false;
+  services.gnome.tracker.enable = false;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
