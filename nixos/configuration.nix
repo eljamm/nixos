@@ -142,6 +142,7 @@
 
       # Communications
       cinny-desktop
+      ferdium
 
       # Video & Audio
       freetube
@@ -153,6 +154,7 @@
       godot3
 
       # Graphics
+      krita
       pixelorama
       waifu2x-converter-cpp
 
@@ -241,6 +243,7 @@
   environment.systemPackages = (with pkgs; [
     # Internet
     firefox
+    qbittorrent
 
     # Video & Audio
     ffmpegthumbnailer
@@ -271,6 +274,8 @@
     fd
     fzf
     ghostscript
+    jpegoptim
+    optipng
     ripgrep
     tree
 
@@ -280,6 +285,7 @@
     obsidian
 
     # Utils
+    hplip # scanner
     htop-vim
     mesa-demos
     pciutils
@@ -287,10 +293,11 @@
     xclip
 
     # System
+    keepassxc
     libavif
     libheif
     libjxl
-    keepassxc
+    otpclient
   ])
   ++
   (with pkgs.lxqt; [
@@ -300,6 +307,9 @@
   ++
   (with pkgs.libsForQt5; [
     filelight
+    kdenlive
+    ktouch
+    okular
   ])
   ;
 
