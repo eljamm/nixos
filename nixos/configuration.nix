@@ -301,6 +301,7 @@
   ])
   ++
   (with pkgs.lxqt; [
+    lximage-qt
     pcmanfm-qt
     qps
   ])
@@ -310,6 +311,12 @@
     kdenlive
     ktouch
     okular
+    kimageformats
+    qt5.qtimageformats
+  ])
+  ++
+  (with pkgs.qt6; [
+    qtimageformats
   ])
   ;
 
