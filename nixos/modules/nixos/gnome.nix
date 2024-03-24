@@ -34,7 +34,7 @@
       gnome.gnome-tweaks
       gnome.dconf-editor
       ## Extensions
-      # gnomeExtensions.appindicator
+      gnome-extension-manager
     ];
     # For enabling systray icons
     services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
