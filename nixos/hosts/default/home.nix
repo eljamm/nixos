@@ -154,15 +154,95 @@
   };
 
   home.sessionVariables = {
+    # History
+    HISTCONTROL = "ignoredups:erasedups";
+
+    # Manpage
     MANPAGER = "moar";
+    # MANPAGER="nvim -c 'set ft=man' -";
+    # MANPAGER="nvimpager";
+    # MANPAGER="sh -c 'col -bx | bat -l man -p'";
+
+    # fzf: use the CLI fd to respect ignore files (like '.gitignore'),
+    # display hidden files, and exclude the '.git' directory.
+    FZF_DEFAULT_COMMAND = "fd . --hidden --exclude \".git\"";
+
+    # Development
+    DEVDIR = "$HOME/Development";
+    VIRTUALENVWRAPPER_PYTHON = "python3";
   };
 
-  systemd.user.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
+  home.shellAliases = {
+    # Essentials
+    clr = "clear && history -c";
+
+    # Files
+    l = "ls -CF";
+    la = "ls -A";
+    ls = "eza -a --icons";
+    lt = "eza -a --tree --level=2 --icons";
+    ll = "eza -a -l --icons";
+    llt = "eza -a -l --tree --level=2 --icons";
+
+    # Utils
+    mklist = "ls -I list.txt > list.txt";
+    mklistt = "lt -I listt.txt > listt.txt";
+
+    # Media
+    mplv = "mpv --profile=480p";
+    yts = "ytm -s";
+    ytv = "ytm -v";
+    yti = "yt-dlp -F";
+    ytps = "ytm -ps";
+    ytpv = "ytm -p";
+    ytvl = "ytm -v -f '\''bv[height<=480][vcodec~=vp9]+ba[acodec~=opus][abr<=96]/bv[height<=480][vcodec~=vp9]+ba[acodec~=opus]'\''";
+
+    # Tools
+    duperm = "duperemove -dr -h --hashfile=dupe.hash";
+
+    # Git
+    vcs-submodule = "git submodule update --init --recursive";
   };
 
   programs.bash = {
     enable = true;
+    sessionVariables = {
+      VIRTUALENVWRAPPER_PYTHON = "python3"; # Temporary until next reboot
+    };
+
+    initExtra = ''
+      # include .profile if it exists
+      [[ -f ~/.profile ]] && . ~/.profile
+
+      bind "set completion-ignore-case on"
+
+      set show-all-if-ambiguous on
+      set visible-stats on
+      set page-completions off
+      set -o vi # Vim mode on
+
+      if [[ -x "$(command virtualenvwrapper.sh)" ]]; then
+        source $(which virtualenvwrapper.sh)
+      fi
+
+      pdcompress() {
+      	directory="compressed"
+      	if [[ "$1" =~ "-d" ]]; then
+      		if [[ ! -d "$PWD"/"$directory" ]]; then
+      			mkdir "$PWD"/"$directory"
+      		fi
+      		shift
+      		gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$PWD"/"$directory"/"$1" "$1"
+      	else
+      		filename=$(echo "$1" | cut -f 1 -d '.')
+      		gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$filename"-out.pdf "$1"
+      	fi
+      }
+    '';
+  };
+
+  systemd.user.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
   # Let Home Manager install and manage itself.
