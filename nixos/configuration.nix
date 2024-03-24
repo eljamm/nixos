@@ -251,13 +251,16 @@
     iperf3
 
     # Development
-    python3
     alejandra
     gcc
-    gnumake
     git
+    gnumake
     lazygit
     micromamba
+    python3
+    python311Packages.pip
+    # python311Packages.pipx
+    python311Packages.virtualenv
     python311Packages.virtualenvwrapper
     tig
     tree-sitter
@@ -267,6 +270,7 @@
     eza
     fd
     fzf
+    ghostscript
     ripgrep
     tree
 
