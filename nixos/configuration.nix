@@ -156,6 +156,7 @@
       # Graphics
       krita
       pixelorama
+      rnote
       waifu2x-converter-cpp
 
       # Games
@@ -267,6 +268,9 @@
     python311Packages.virtualenvwrapper
     tig
     tree-sitter
+
+    # Productivity
+    planify
 
     # Tools
     dua
