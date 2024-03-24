@@ -206,6 +206,10 @@
     ];
   };
 
+  environment.variables = {
+    GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
+  };
+
   # Register AppImage files as a binary type
   boot.binfmt.registrations.appimage = {
     wrapInterpreterInShell = false;
@@ -286,6 +290,7 @@
     # System
     keepassxc
     libavif
+    libgtop
     libheif
     libjxl
     otpclient
