@@ -125,6 +125,7 @@
 
       # Video & Audio
       freetube
+      handbrake
       kid3
       mediainfo
       mediainfo-gui
@@ -259,7 +260,11 @@
     tig
     tree-sitter
 
+    # Office
+    libreoffice-fresh
+
     # Productivity
+    gnome.pomodoro
     planify
 
     # Tools
@@ -268,6 +273,7 @@
     fd
     fzf
     ghostscript
+    goldendict-ng
     jpegoptim
     optipng
     ripgrep
