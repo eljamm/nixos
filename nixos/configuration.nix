@@ -145,6 +145,7 @@
       # Education
       anki
       anki-sync-server
+      stellarium
 
       # System
       kitty
