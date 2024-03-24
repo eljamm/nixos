@@ -125,6 +125,11 @@
 
       # Video & Audio
       freetube
+      kid3
+      mediainfo
+      mediainfo-gui
+      mkvtoolnix
+      mkvtoolnix-cli
       mpv
       opusTools
 
@@ -133,6 +138,7 @@
       godot3
 
       # Graphics
+      aseprite
       krita
       pixelorama
       rnote
@@ -269,6 +275,7 @@
     obsidian
 
     # Utils
+    bleachbit
     hplip # scanner
     htop-vim
     mesa-demos
