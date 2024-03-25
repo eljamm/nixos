@@ -159,11 +159,12 @@
       albert
 
       # Development
-      rustup
-      neovide
+      aoc-cli
       clang
       mold-wrapped
+      neovide
       pkg-config
+      rustup
 
       # Tools
       nvitop
