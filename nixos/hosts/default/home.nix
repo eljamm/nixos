@@ -241,6 +241,38 @@
     '';
   };
 
+  # Check out:
+  # https://github.com/calops/nix/blob/main/modules/home/config/programs/neovim/default.nix
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-nightly;
+    defaultEditor = true;
+    extraPackages = with pkgs; [
+      # Formatters
+      alejandra # Nix
+      black # Python
+      prettierd # Multi-language
+      shfmt
+      isort
+      stylua
+
+      # LSP
+      lua-language-server
+      nixd
+      rust-analyzer
+
+      # Tools
+      git
+      cmake
+      fzf
+      gcc
+      gnumake
+      nodejs
+      fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0
+      sqlite
+    ];
+  };
+
   systemd.user.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt5ct";
   };
