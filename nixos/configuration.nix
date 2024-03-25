@@ -166,8 +166,9 @@
       pkg-config
 
       # Tools
-      yt-dlp
+      nvitop
       pdfid
+      yt-dlp
     ];
   };
 
