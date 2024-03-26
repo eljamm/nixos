@@ -263,6 +263,9 @@ in
       # Formatters
       alejandra # Nix
       black # Python
+      gofumpt
+      goimports-reviser
+      golines
       isort
       prettierd # Multi-language
       shfmt
@@ -273,9 +276,12 @@ in
       lua-language-server
       nixd
       rustToolchain
+      typst-lsp
 
       # Tools
       cmake
+      clang
+      deno
       fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0
       fzf
       gcc
