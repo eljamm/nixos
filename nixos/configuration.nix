@@ -129,8 +129,9 @@ in
       ferdium
 
       # Video & Audio
+      # handbrake #(currently broken)
+      flacon
       freetube
-      #handbrake #(TODO)
       kid3
       mediainfo
       mediainfo-gui
