@@ -1,4 +1,14 @@
 { config, pkgs, ... }:
+let
+  rustToolchain = pkgs.fenix.stable.withComponents [
+    "cargo"
+    "clippy"
+    "rust-src"
+    "rustc"
+    "rustfmt"
+    "rust-analyzer"
+  ];
+in
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -40,6 +50,9 @@
     ## QT
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
+
+    # Development
+    rustToolchain
   ];
 
   programs.zoxide = {

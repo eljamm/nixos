@@ -1,7 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
+
+let
+  fenix = inputs.fenix;
+in
 
 {
   imports = [
@@ -27,6 +31,7 @@
         scripts = [ self.mpvScripts.mpris ];
       };
     })
+    (_: super: let pkgs = fenix.inputs.nixpkgs.legacyPackages.${super.system}; in fenix.overlays.default pkgs pkgs)
   ];
 
   # Bootloader.
@@ -164,7 +169,6 @@
       mold-wrapped
       neovide
       pkg-config
-      rustup
 
       # Tools
       nvitop
