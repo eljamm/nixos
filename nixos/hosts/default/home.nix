@@ -258,30 +258,31 @@ in
   # https://github.com/calops/nix/blob/main/modules/home/config/programs/neovim/default.nix
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
     defaultEditor = true;
     extraPackages = with pkgs; [
       # Formatters
       alejandra # Nix
       black # Python
+      isort
       prettierd # Multi-language
       shfmt
-      isort
       stylua
 
       # LSP
+      gopls
       lua-language-server
       nixd
-      rust-analyzer
+      rustToolchain
 
       # Tools
-      git
       cmake
+      fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0
       fzf
       gcc
+      git
       gnumake
+      go
       nodejs
-      fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0
       sqlite
     ];
   };
