@@ -28,9 +28,16 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    # System
     bat
     moar
     zoxide
+
+    # Gaming
+    gamemode
+    gamescope
+    goverlay
+    mangohud
 
     ## Gnome
     gnomeExtensions.appindicator
