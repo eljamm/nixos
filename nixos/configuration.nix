@@ -146,6 +146,7 @@ in
 
       # Graphics
       aseprite
+      inkscape
       krita
       pixelorama
       rnote
@@ -293,12 +294,14 @@ in
 
     # Utils
     bleachbit
+    gpick #X11
     hplip # scanner
     htop-vim
     mesa-demos
     pciutils
     wl-clipboard
-    xclip
+    wl-color-picker
+    xclip #X11
 
     # System
     keepassxc
