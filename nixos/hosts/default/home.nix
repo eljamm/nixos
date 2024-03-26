@@ -306,6 +306,14 @@ in
     agents = [ "ssh" "gpg" ];
   };
 
+  programs = {
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      nix-direnv.enable = true;
+    };
+  };
+
   systemd.user.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt5ct";
   };
