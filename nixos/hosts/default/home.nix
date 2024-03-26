@@ -287,6 +287,12 @@ in
     ];
   };
 
+  programs.keychain = {
+    enable = true;
+    extraFlags = [ "--eval" "--noask" "--quiet" ];
+    agents = [ "ssh" "gpg" ];
+  };
+
   systemd.user.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt5ct";
   };
