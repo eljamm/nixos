@@ -312,6 +312,7 @@ in
       nodePackages.typescript-language-server
       rustToolchain
       typst-lsp
+      vscode-langservers-extracted # HTML/CSS/JSON/ESLint
 
       # Tools
       cmake
