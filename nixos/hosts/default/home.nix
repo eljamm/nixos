@@ -302,6 +302,7 @@ in
       golines
       isort
       prettierd # Multi-language
+      ruff
       shfmt
       stylua
 
@@ -311,6 +312,7 @@ in
       nixd
       nodePackages.typescript-language-server
       python311Packages.jedi-language-server # Python
+      ruff-lsp
       rustToolchain
       typst-lsp
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint
