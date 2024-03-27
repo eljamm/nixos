@@ -146,6 +146,7 @@ in
 
       # Graphics
       aseprite
+      gimp
       inkscape
       krita
       pixelorama
