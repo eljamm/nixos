@@ -316,12 +316,13 @@ in
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint
 
       # Tools
-      cmake
       clang
+      cmake
       deno
       fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0
       fzf
       gcc
+      gdtoolkit # parser, linter and formatter for Godot (GDScript)
       git
       gnumake
       go
