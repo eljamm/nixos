@@ -318,6 +318,7 @@ in
       # Tools
       clang
       cmake
+      codespell
       deno
       fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0
       fzf
