@@ -106,6 +106,13 @@ in
     };
   };
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    name = "Catppuccin-Macchiato-Dark-Cursors";
+    package = pkgs.catppuccin-cursors.macchiatoDark;
+    size = 16;
+  };
+
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
