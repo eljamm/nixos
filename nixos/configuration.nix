@@ -298,6 +298,7 @@ in
     gpick #X11
     hplip # scanner
     htop-vim
+    meld
     mesa-demos
     pciutils
     wl-clipboard
