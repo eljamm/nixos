@@ -309,6 +309,7 @@ in
       gopls
       lua-language-server
       nixd
+      nodePackages.typescript-language-server
       rustToolchain
       typst-lsp
 
