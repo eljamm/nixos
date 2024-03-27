@@ -310,6 +310,7 @@ in
       lua-language-server
       nixd
       nodePackages.typescript-language-server
+      python311Packages.jedi-language-server # Python
       rustToolchain
       typst-lsp
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint
