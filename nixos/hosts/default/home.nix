@@ -361,6 +361,7 @@ in
       ci = "commit";
       co = "checkout";
       s = "status";
+      d = "diff";
     };
     extraConfig = {
       credential.helper = "${
