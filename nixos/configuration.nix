@@ -28,7 +28,7 @@ in
     })
     (self: super: {
       mpv = super.mpv.override {
-        scripts = [ self.mpvScripts.mpris ];
+        scripts = with self.mpvScripts; [ mpris thumbfast ];
       };
     })
     (_: super: let pkgs = fenix.inputs.nixpkgs.legacyPackages.${super.system}; in fenix.overlays.default pkgs pkgs)
