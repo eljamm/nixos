@@ -311,6 +311,7 @@ in
     libgtop
     libheif
     libjxl
+    libsecret
     otpclient
   ])
   ++

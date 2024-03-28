@@ -355,6 +355,22 @@ in
     };
   };
 
+  programs.git = {
+    enable = true;
+    userName = "eljamm";
+    userEmail = "***REMOVED***";
+    aliases = {
+      ci = "commit";
+      co = "checkout";
+      s = "status";
+    };
+    extraConfig = {
+      credential.helper = "${
+          pkgs.git.override { withLibsecret = true; }
+        }/bin/git-credential-libsecret";
+    };
+  };
+
   systemd.user.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt5ct";
   };
