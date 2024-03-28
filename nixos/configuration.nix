@@ -118,7 +118,7 @@ in
   users.users.kuroko = {
     isNormalUser = true;
     description = "kuroko";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
     packages = with pkgs; [
       # Internet
       brave
@@ -357,6 +357,8 @@ in
     remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = false; # Open ports in the firewall for Source Dedicated Server
   };
+
+  programs.adb.enable = true;
 
   # List services that you want to enable:
 
