@@ -378,6 +378,9 @@ in
   services.gnome.tracker-miners.enable = false;
   services.gnome.tracker.enable = false;
 
+  # Storage Optimization
+  nix.optimise.automatic = true;
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
