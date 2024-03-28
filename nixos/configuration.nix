@@ -133,9 +133,9 @@ in
       ferdium
 
       # Video & Audio
-      handbrake
       flacon
       freetube
+      handbrake
       kid3
       mediainfo
       mediainfo-gui
@@ -143,6 +143,7 @@ in
       mkvtoolnix-cli
       mpv
       opusTools
+      spek
 
       # Game Development
       godot_4
