@@ -23,9 +23,14 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nix-index-database, envfs, home-manager, fenix, ... } @inputs:
+  outputs = { self, nixpkgs, nix-index-database, envfs, home-manager, fenix, nixos-cosmic, ... } @inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -35,10 +40,12 @@
         default = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
+            ## system
             ./configuration.nix
             self.nixosModules.gnome
             envfs.nixosModules.envfs
             self.nixosModules.nixIndex
+            ## Home Manager
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -46,6 +53,14 @@
               home-manager.users.kuroko = import ./hosts/default/home.nix;
               home-manager.extraSpecialArgs = { inherit inputs; };
             }
+            ## PopOS Cosmic DE
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              };
+            }
+            nixos-cosmic.nixosModules.default
           ];
         };
       };
