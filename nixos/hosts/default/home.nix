@@ -94,7 +94,7 @@ in
       };
     };
     iconTheme = {
-      name = "Papirus";
+      name = "Papirus-Dark";
       package = pkgs.catppuccin-papirus-folders.override {
         flavor = "macchiato";
         accent = "blue";
