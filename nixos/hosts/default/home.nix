@@ -157,7 +157,7 @@ in
     General.theme = "Catppuccin-Macchiato-Blue";
   };
 
-  nixpkgs.config.qt = {
+  qt = {
     enable = true;
     platformTheme = "qtct";
     style.name = "kvantum";
@@ -367,10 +367,6 @@ in
           pkgs.git.override { withLibsecret = true; }
         }/bin/git-credential-libsecret";
     };
-  };
-
-  systemd.user.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
   # Let Home Manager install and manage itself.
