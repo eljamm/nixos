@@ -367,6 +367,9 @@ in
           pkgs.git.override { withLibsecret = true; }
         }/bin/git-credential-libsecret";
     };
+    difftastic = {
+      enable = true;
+    };
   };
 
   # Let Home Manager install and manage itself.
