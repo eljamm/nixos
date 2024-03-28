@@ -129,7 +129,7 @@ in
       ferdium
 
       # Video & Audio
-      # handbrake #(currently broken)
+      handbrake
       flacon
       freetube
       kid3
@@ -261,9 +261,9 @@ in
     gnumake
     lazygit
     micromamba
+    pipx
     python3
     python311Packages.pip
-    # python311Packages.pipx
     python311Packages.virtualenv
     python311Packages.virtualenvwrapper
     tig
