@@ -104,6 +104,9 @@ in
       name = "Catppuccin-Macchiato-Dark-Cursors";
       package = pkgs.catppuccin-cursors.macchiatoDark;
     };
+    gtk3 = {
+      extraConfig.gtk-application-prefer-dark-theme = true;
+    };
   };
 
   home.pointerCursor = {
@@ -115,6 +118,7 @@ in
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
+      gtk-theme = "Catppuccin-Macchiato-Standard-Blue-Dark";
       color-scheme = "prefer-dark";
       enable-hot-corners = true;
     };
@@ -147,12 +151,6 @@ in
       switch-windows = [ "<Super>Tab" ];
       switch-windows-backward = [ "<Shift><Super>Tab" ];
     };
-  };
-
-  xdg.configFile = {
-    "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
-    "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
-    "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
   };
 
   xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini { }).generate "kvantum.kvconfig" {
