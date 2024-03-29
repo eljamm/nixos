@@ -373,6 +373,29 @@ in
     };
   };
 
+  xdg.mimeApps = {
+    enable = true;
+    associations.added = {
+      "inode/directory" = [ "pcmanfm-qt.desktop" ];
+      "x-scheme-handler/http" = [ "librewolf.desktop" ];
+      "text/html" = [ "librewolf.desktop" ];
+      "application/xhtml+xml" = [ "librewolf.desktop" ];
+      "x-scheme-handler/https" = [ "librewolf.desktop" ];
+      "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
+      "text/calendar" = [ "org.gnome.Calendar.desktop" ];
+    };
+    defaultApplications = {
+      "inode/directory" = [ "pcmanfm-qt.desktop" ];
+      "x-scheme-handler/http" = [ "librewolf.desktop" ];
+      "text/html" = [ "librewolf.desktop" ];
+      "application/xhtml+xml" = [ "librewolf.desktop" ];
+      "x-scheme-handler/https" = [ "librewolf.desktop" ];
+      "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
+      "text/calendar" = [ "org.gnome.Calendar.desktop" ];
+      "video/x-matroska" = [ "spek.desktop;" ];
+    };
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
