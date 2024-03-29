@@ -275,6 +275,7 @@ in
     tree-sitter
 
     # Office
+    calibre
     libreoffice-fresh
 
     # Productivity
