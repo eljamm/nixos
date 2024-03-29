@@ -288,6 +288,9 @@ in
     gnome.pomodoro
     planify
 
+    # Security
+    bubblewrap
+
     # Tools
     dua
     eza
@@ -356,6 +359,8 @@ in
     enable = true;
     enableSSHSupport = true;
   };
+
+  programs.firejail.enable = true;
 
   programs.neovim = {
     enable = true;
