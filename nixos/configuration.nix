@@ -118,7 +118,7 @@ in
   users.users.kuroko = {
     isNormalUser = true;
     description = "kuroko";
-    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" "gamemode" ];
     packages = with pkgs; [
       # Internet
       brave
@@ -159,11 +159,8 @@ in
       waifu2x-converter-cpp
 
       # Games
-      lutris 
       osu-lazer-bin
       ryujinx
-      wineWowPackages.staging 
-      winetricks
 
       # Education
       anki
@@ -180,6 +177,12 @@ in
       mold-wrapped
       neovide
       pkg-config
+
+      # Gaming Tools
+      goverlay
+      lutris
+      wineWowPackages.staging
+      winetricks
 
       # Tools
       nvitop
@@ -363,6 +366,23 @@ in
     enable = true;
     remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = false; # Open ports in the firewall for Source Dedicated Server
+  };
+
+  programs.gamemode = {
+    enable = true;
+    settings = {
+      general = {
+        renice = 10;
+      };
+      custom = {
+        start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
+        end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+      };
+    };
+  };
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
   };
 
   programs.adb.enable = true;

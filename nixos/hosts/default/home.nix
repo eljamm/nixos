@@ -33,12 +33,6 @@ in
     moar
     zoxide
 
-    # Gaming
-    gamemode
-    gamescope
-    goverlay
-    mangohud
-
     ## Gnome
     gnomeExtensions.appindicator
     gnomeExtensions.user-themes
@@ -371,6 +365,10 @@ in
     difftastic = {
       enable = true;
     };
+  };
+
+  programs.mangohud = {
+    enable = true;
   };
 
   xdg.mimeApps = {
