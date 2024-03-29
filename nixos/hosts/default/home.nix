@@ -196,7 +196,6 @@ in
     clr = "clear && history -c";
 
     # Files
-    l = "ls -CF";
     la = "ls -A";
     ls = "eza -a --icons";
     lt = "eza -a --tree --level=2 --icons";
@@ -221,6 +220,10 @@ in
 
     # Git
     vcs-submodule = "git submodule update --init --recursive";
+
+    # Programs
+    l = "lazygit";
+    n = "nvim";
   };
 
   programs.bash = {
