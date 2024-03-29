@@ -318,10 +318,12 @@ in
     libjxl
     libsecret
     otpclient
+    shared-mime-info
   ])
   ++
   (with pkgs.lxqt; [
     lximage-qt
+    lxqt-menu-data # For pcmanfm-qt
     pcmanfm-qt
     qps
   ])
