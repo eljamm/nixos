@@ -159,8 +159,11 @@ in
       waifu2x-converter-cpp
 
       # Games
+      lutris 
       osu-lazer-bin
       ryujinx
+      wineWowPackages.staging 
+      winetricks
 
       # Education
       anki
