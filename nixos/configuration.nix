@@ -143,6 +143,7 @@ in
       mkvtoolnix-cli
       mpv
       opusTools
+      playerctl
       spek
 
       # Game Development
