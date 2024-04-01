@@ -377,6 +377,7 @@ in
   xdg.mimeApps = {
     enable = true;
     associations.added = {
+      "application/x-trash" = [ "neovide.desktop" ];
       "application/x-zerosize" = [ "neovide.desktop;" ];
       "application/xhtml+xml" = [ "librewolf.desktop" ];
       "inode/directory" = [ "pcmanfm-qt.desktop" ];
