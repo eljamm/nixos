@@ -28,9 +28,14 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    spicetify-nix = {
+      url = "github:the-argus/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nix-index-database, envfs, home-manager, fenix, nixos-cosmic, ... } @inputs:
+  outputs = { self, nixpkgs, ... } @inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -42,15 +47,17 @@
           modules = [
             ## system
             ./configuration.nix
-            self.nixosModules.gnome
-            envfs.nixosModules.envfs
+            inputs.self.nixosModules.gnome
+            inputs.envfs.nixosModules.envfs
             self.nixosModules.nixIndex
             ## Home Manager
-            home-manager.nixosModules.home-manager
+            inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.kuroko = import ./hosts/default/home.nix;
+              home-manager.users.kuroko.imports = [
+                ./hosts/default/home.nix
+              ];
               home-manager.extraSpecialArgs = { inherit inputs; };
             }
             ## PopOS Cosmic DE
@@ -60,7 +67,26 @@
                 trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
               };
             }
-            nixos-cosmic.nixosModules.default
+            inputs.nixos-cosmic.nixosModules.default
+            inputs.spicetify-nix.nixosModule
+            {
+              programs.spicetify = {
+                enable = true;
+                theme = inputs.spicetify-nix.packages.${pkgs.system}.default.themes.catppuccin;
+                colorScheme = "macchiato";
+
+                enabledExtensions = with inputs.spicetify-nix.packages.${pkgs.system}.default.extensions; [
+                  adblock
+                  autoSkipVideo
+                  bookmark
+                  fullAppDisplay
+                  keyboardShortcut
+                  loopyLoop
+                  popupLyrics
+                  shuffle # shuffle+ (special characters are sanitized out of ext names)
+                ];
+              };
+            }
           ];
         };
       };
@@ -68,7 +94,7 @@
       nixosModules = {
         nixIndex = {
           imports = [
-            nix-index-database.nixosModules.nix-index
+            inputs.nix-index-database.nixosModules.nix-index
             ./modules/nixos/nixIndex.nix
           ];
         };
