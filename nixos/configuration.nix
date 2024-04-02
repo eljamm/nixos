@@ -133,6 +133,8 @@ in
       ferdium
 
       # Video & Audio
+      audacious
+      audacious-plugins
       bambootracker
       flacon
       freetube
