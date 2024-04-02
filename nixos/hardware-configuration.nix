@@ -24,6 +24,8 @@ in
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
   fileSystems."/" =
     {
       device = "/dev/disk/by-uuid/ef268b3c-6be0-4a36-9404-7c07b2ae31df";
