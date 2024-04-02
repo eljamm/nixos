@@ -170,6 +170,9 @@ in
       anki-sync-server
       stellarium
 
+      # Office
+      lifeograph
+
       # System
       kitty
       albert
