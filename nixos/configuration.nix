@@ -133,8 +133,10 @@ in
       ferdium
 
       # Video & Audio
+      bambootracker
       flacon
       freetube
+      furnace
       handbrake
       kid3
       mediainfo
