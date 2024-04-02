@@ -303,6 +303,7 @@ in
       goimports-reviser
       golines
       isort
+      nixpkgs-fmt
       prettierd # Multi-language
       ruff
       shfmt
@@ -311,7 +312,7 @@ in
       # LSP
       gopls
       lua-language-server
-      nixd
+      nil
       nodePackages.typescript-language-server
       python311Packages.jedi-language-server # Python
       ruff-lsp
@@ -333,6 +334,7 @@ in
       go
       nodejs
       sqlite
+      tree-sitter
     ];
   };
 
