@@ -180,6 +180,7 @@ in
 
       # Office
       lifeograph
+      zathura
 
       # System
       kitty
@@ -297,6 +298,7 @@ in
     # Office
     calibre
     libreoffice-fresh
+    yacreader
 
     # Productivity
     gnome.pomodoro
