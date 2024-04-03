@@ -14,6 +14,7 @@ in
   ];
 
   nixpkgs.overlays = [
+    # GNOME
     (final: prev: {
       gnome = prev.gnome.overrideScope (gnomeFinal: gnomePrev: {
         mutter = gnomePrev.mutter.overrideAttrs (old: {
@@ -26,11 +27,15 @@ in
         });
       });
     })
+
+    # mpv
     (self: super: {
       mpv = super.mpv.override {
         scripts = with self.mpvScripts; [ mpris thumbfast ];
       };
     })
+
+    # fenix
     (_: super: let pkgs = fenix.inputs.nixpkgs.legacyPackages.${super.system}; in fenix.overlays.default pkgs pkgs)
   ];
 
@@ -165,6 +170,7 @@ in
 
       # Games
       osu-lazer-bin
+      prismlauncher
       ryujinx
 
       # Education
@@ -339,6 +345,8 @@ in
     libsecret
     otpclient
     shared-mime-info
+    unzip
+    zip
   ])
   ++
   (with pkgs.lxqt; [
