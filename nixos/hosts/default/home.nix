@@ -30,6 +30,7 @@ in
   home.packages = with pkgs; [
     # System
     bat
+    difftastic
     moar
     zoxide
 
@@ -366,9 +367,6 @@ in
       credential.helper = "${
           pkgs.git.override { withLibsecret = true; }
         }/bin/git-credential-libsecret";
-    };
-    difftastic = {
-      enable = true;
     };
   };
 
