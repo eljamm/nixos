@@ -283,6 +283,7 @@ in
     # Development
     alejandra
     gcc
+    gh
     git
     gnumake
     lazygit
@@ -292,6 +293,7 @@ in
     python311Packages.pip
     python311Packages.virtualenv
     python311Packages.virtualenvwrapper
+    rs-git-fsmonitor
     tig
     tree-sitter
 
