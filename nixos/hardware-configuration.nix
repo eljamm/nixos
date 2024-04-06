@@ -27,23 +27,50 @@ in
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/ef268b3c-6be0-4a36-9404-7c07b2ae31df";
+    { device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
       fsType = "btrfs";
-      options = [ "subvol=@" "compress-force=zstd:2" "noatime" ];
+      options = [ "subvol=@nixos/root" "compress-force=zstd:2" "noatime" ];
     };
 
-  fileSystems."/home/kuroko/Pop" =
-    {
-      device = "/dev/disk/by-uuid/56d64ff5-c5d0-426b-95e0-d93fa29d6d8e";
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
       fsType = "btrfs";
-      options = [ "compress-force=zstd:2" "noatime" ];
+      options = [ "subvol=@nixos/nix" "compress-force=zstd:2" "noatime" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
+      fsType = "btrfs";
+      options = [ "subvol=@nixos/home" "compress-force=zstd:2" "noatime" ];
     };
 
   fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/DF23-DAE8";
+    { device = "/dev/disk/by-uuid/0429-2254";
       fsType = "vfat";
+    };
+
+  fileSystems."/var" =
+    { device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
+      fsType = "btrfs";
+      options = [ "subvol=@nixos/var" "compress-force=zstd:2" "noatime" ];
+    };
+
+  fileSystems."/.snapshots" =
+    { device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
+      fsType = "btrfs";
+      options = [ "subvol=@nixos/snapshots" "compress-force=zstd:2" "noatime" ];
+    };
+
+  fileSystems."/home/kuroko/Storage" =
+    { device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
+      fsType = "btrfs";
+      options = [ "subvol=@storage" "compress-force=zstd:2" "noatime" ];
+    };
+
+  fileSystems."/run/media/kuroko/ExternalHDD" =
+    { device = "/dev/disk/by-uuid/a1131a59-5e59-4845-bb9c-e0588a3b266e";
+      fsType = "btrfs";
+      options = [ "compress-force=zstd:2" "noatime" "nofail" ];
     };
 
   swapDevices = [ ];
