@@ -180,6 +180,10 @@ in
 
       # Office
       lifeograph
+      mdbook
+      mdbook-epub
+      mdbook-i18n-helpers
+      mdbook-pdf
       zathura
 
       # System
@@ -200,6 +204,7 @@ in
       winetricks
 
       # Tools
+      duperemove
       nvitop
       pdfid
       yt-dlp
