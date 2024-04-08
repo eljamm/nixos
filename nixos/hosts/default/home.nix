@@ -227,6 +227,10 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/keybindings" = {
       focus-active-notification = [ "<Shift><Super>n" ];
+      switch-to-application-1 = [ ];
+      switch-to-application-2 = [ ];
+      switch-to-application-3 = [ ];
+      switch-to-application-4 = [ ];
       toggle-message-tray = [ "<Super>n" ];
     };
 
@@ -261,7 +265,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
-      binding = "<Super>k";
+      binding = "<Shift><Super>k";
       command = "keepassxc";
       name = "KeepassXC";
     };
@@ -288,6 +292,10 @@ with lib.hm.gvariant;
       binding = "<Shift>AudioPrev";
       command = "playerctl position 5-";
       name = "Audio Seek Backwards";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/screensaver" = {
+      binding = [ "<Shift><Super>l" ];
     };
 
     "org/gnome/settings-daemon/plugins/power" = {
