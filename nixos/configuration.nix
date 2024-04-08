@@ -340,6 +340,7 @@ in
     htop-vim
     meld
     mesa-demos
+    nixpkgs-review
     pciutils
     wl-clipboard
     wl-color-picker
