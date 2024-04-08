@@ -33,6 +33,7 @@ with lib.hm.gvariant;
     bat
     difftastic
     moar
+    taskwarrior-tui
     zoxide
 
     ## Gnome
@@ -572,6 +573,10 @@ with lib.hm.gvariant;
   };
 
   programs.mangohud = {
+    enable = true;
+  };
+
+  programs.taskwarrior = {
     enable = true;
   };
 

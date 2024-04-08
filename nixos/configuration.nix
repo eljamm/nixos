@@ -206,6 +206,7 @@ in
       # Tools
       dconf2nix
       duperemove
+      grc
       nvitop
       pdfid
       yt-dlp
@@ -309,6 +310,7 @@ in
     yacreader
 
     # Productivity
+    dstask
     gnome.pomodoro
     planify
     tellico
