@@ -37,11 +37,12 @@ with lib.hm.gvariant;
 
     ## Gnome
     gnomeExtensions.appindicator
+    gnomeExtensions.dash-to-panel
+    gnomeExtensions.pop-shell
+    gnomeExtensions.space-bar
+    gnomeExtensions.tophat
     gnomeExtensions.user-themes
     gnomeExtensions.vitals
-    gnomeExtensions.tophat
-    gnomeExtensions.dash-to-panel
-    gnomeExtensions.space-bar
 
     # Customization
     papirus-folders
@@ -130,7 +131,6 @@ with lib.hm.gvariant;
       enabled-extensions = [
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "appindicatorsupport@rgcjonas.gmail.com"
-        # "Vitals@CoreCoding.com"
         "tophat@fflewddur.github.io"
         "dash-to-panel@jderose9.github.com"
         "space-bar@luchrioh"
