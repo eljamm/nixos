@@ -204,6 +204,7 @@ in
       winetricks
 
       # Tools
+      dconf2nix
       duperemove
       nvitop
       pdfid

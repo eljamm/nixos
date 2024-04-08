@@ -310,6 +310,7 @@ with lib.hm.gvariant;
 
     "org/gnome/mutter" = {
       edge-tiling = true;
+      center-new-windows = true;
     };
 
     "org/gnome/desktop/session" = {
