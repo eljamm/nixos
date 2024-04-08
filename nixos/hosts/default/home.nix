@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 let
   rustToolchain = pkgs.fenix.stable.withComponents [
     "cargo"
@@ -492,6 +492,7 @@ with lib.hm.gvariant;
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    package = pkgs.neovim-nightly;
     extraPackages = with pkgs; [
       # Formatters
       alejandra # Nix
