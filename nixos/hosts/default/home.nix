@@ -530,6 +530,7 @@ with lib.hm.gvariant;
       git
       gnumake
       go
+      gotools
       nodejs
       sqlite
       tree-sitter
