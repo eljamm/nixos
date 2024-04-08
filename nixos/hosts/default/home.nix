@@ -576,6 +576,7 @@ with lib.hm.gvariant;
       "application/x-trash" = [ "neovide.desktop" ];
       "application/x-zerosize" = [ "neovide.desktop;" ];
       "application/xhtml+xml" = [ "librewolf.desktop" ];
+      "image/jxl" = [ "lximage-qt.desktop" ];
       "inode/directory" = [ "pcmanfm-qt.desktop" ];
       "text/calendar" = [ "org.gnome.Calendar.desktop" ];
       "text/html" = [ "librewolf.desktop" ];
