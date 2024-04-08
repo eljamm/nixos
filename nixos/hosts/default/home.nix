@@ -337,6 +337,8 @@ with lib.hm.gvariant;
     "org/gnome/desktop/input-sources" = {
       mru-sources = [ (mkTuple [ "xkb" "de+nodeadkeys" ]) ];
       sources = [ (mkTuple [ "xkb" "de+nodeadkeys" ]) (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "fr+azerty" ]) (mkTuple [ "xkb" "ara+azerty" ]) ];
+      # Make Caps Lock an additional Esc ('Shift+Caps Lock' for regular Caps Lock)
+      xkb-options = [ "terminate:ctrl_alt_bksp" "caps:escape_shifted_capslock" ];
     };
 
     "org/gnome/desktop/calendar" = {
