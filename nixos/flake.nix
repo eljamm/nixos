@@ -38,6 +38,11 @@
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    musnix = {
+      url = "github:musnix/musnix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... } @inputs:
@@ -57,6 +62,7 @@
               nixpkgs.overlays = overlays;
             }
             ## system
+            inputs.musnix.nixosModules.musnix
             ./configuration.nix
             inputs.self.nixosModules.gnome
             inputs.envfs.nixosModules.envfs

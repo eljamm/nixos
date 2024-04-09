@@ -216,6 +216,26 @@
         "type": "github"
       }
     },
+    "musnix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1712254133,
+        "narHash": "sha256-fwuWrAprqoA4fUrkZGVb6PjRpebm5xjNsyoaw+JVSyY=",
+        "owner": "musnix",
+        "repo": "musnix",
+        "rev": "b5bcdce137b00185dce5fa578739cd52770b8794",
+        "type": "github"
+      },
+      "original": {
+        "owner": "musnix",
+        "repo": "musnix",
+        "type": "github"
+      }
+    },
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -326,6 +346,7 @@
         "envfs": "envfs",
         "fenix": "fenix",
         "home-manager": "home-manager",
+        "musnix": "musnix",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-index-database": "nix-index-database",
         "nixos-cosmic": "nixos-cosmic",

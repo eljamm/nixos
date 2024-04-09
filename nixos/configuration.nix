@@ -123,7 +123,13 @@ in
   users.users.kuroko = {
     isNormalUser = true;
     description = "kuroko";
-    extraGroups = [ "networkmanager" "wheel" "adbusers" "gamemode" ];
+    extraGroups = [
+      "adbusers"
+      "audio"
+      "gamemode"
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       # Internet
       brave
@@ -251,6 +257,10 @@ in
 
   environment.variables = {
     GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
+  };
+
+  musnix = {
+    enable = true;
   };
 
   # Register AppImage files as a binary type
