@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 let
   fenix = inputs.fenix;
@@ -285,13 +285,28 @@ in
     ];
   };
 
-  environment.variables = {
-    GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
-  };
+  environment.variables =
+    let
+      makePluginPath = format:
+        (lib.makeSearchPath format [
+          "$HOME/.nix-profile/lib"
+          "/run/current-system/sw/lib"
+          "/etc/profiles/per-user/$USER/lib"
+        ])
+        + ":$HOME/.${format}";
+    in
+    {
+      # For Gnome
+      GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
 
-  musnix = {
-    enable = true;
-  };
+      # Music plugin paths
+      DSSI_PATH = makePluginPath "dssi";
+      LADSPA_PATH = makePluginPath "ladspa";
+      LV2_PATH = makePluginPath "lv2";
+      LXVST_PATH = makePluginPath "lxvst";
+      VST_PATH = makePluginPath "vst";
+      VST3_PATH = makePluginPath "vst3";
+    };
 
   # Register AppImage files as a binary type
   boot.binfmt.registrations.appimage = {
