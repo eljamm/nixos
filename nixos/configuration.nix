@@ -37,6 +37,25 @@ in
 
     # fenix
     (_: super: let pkgs = fenix.inputs.nixpkgs.legacyPackages.${super.system}; in fenix.overlays.default pkgs pkgs)
+
+    # Roll back to compatible wine for yabridge
+    # https://github.com/NixOS/nixpkgs/issues/300755
+    (final: prev:
+      let
+        nixpkgs-wine94 = import
+          (prev.fetchFromGitHub {
+            owner = "NixOS";
+            repo = "nixpkgs";
+            rev = "f60836eb3a850de917985029feaea7338f6fcb8a"; #wineWow64Packages.stable: 9.3 -> 9.4
+            sha256 = "Ln3mD5t96hz5MoDwa8NxHFq76B+V2BOppYf1tnwFBIc=";
+          })
+          {
+            system = "x86_64-linux";
+          };
+      in
+      {
+        inherit (nixpkgs-wine94) yabridge yabridgectl;
+      })
   ];
 
   # Bootloader.
@@ -161,6 +180,17 @@ in
       playerctl
       spek
 
+      # Audio Production
+      ardour
+      helio-workstation
+      infamousPlugins
+      linvstmanager
+      lmms
+      lsp-plugins
+      vital
+      yabridge
+      yabridgectl
+
       # Game Development
       godot_4
       godot3
@@ -206,7 +236,7 @@ in
       # Gaming Tools
       goverlay
       lutris
-      wineWowPackages.staging
+      wineWowPackages.stable
       winetricks
 
       # Tools
