@@ -165,6 +165,7 @@ in
       # Video & Audio
       audacious
       audacious-plugins
+      audacity
       bambootracker
       flacon
       freetube
