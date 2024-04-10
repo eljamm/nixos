@@ -81,6 +81,14 @@ with lib.hm.gvariant;
     enable = true;
   };
 
+  programs.wezterm = {
+    enable = true;
+  };
+
+  programs.fish = {
+    enable = true;
+  };
+
   gtk = {
     enable = true;
     theme = {
