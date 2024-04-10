@@ -1,5 +1,8 @@
 { pkgs, lib, ... }:
+with builtins;
 let
+  weztermConfig = readFile (./wezterm/wezterm.lua);
+  fishInit = readFile (./fish/config.fish);
   rustToolchain = pkgs.fenix.stable.withComponents [
     "cargo"
     "clippy"
@@ -83,10 +86,12 @@ with lib.hm.gvariant;
 
   programs.wezterm = {
     enable = true;
+    extraConfig = weztermConfig;
   };
 
   programs.fish = {
     enable = true;
+    shellInit = fishInit;
   };
 
   gtk = {
