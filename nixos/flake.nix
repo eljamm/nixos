@@ -105,6 +105,7 @@
                   autoSkipVideo
                   bookmark
                   fullAppDisplay
+                  hidePodcasts
                   keyboardShortcut
                   loopyLoop
                   popupLyrics
