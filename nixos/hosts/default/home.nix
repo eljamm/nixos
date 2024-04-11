@@ -153,11 +153,11 @@ with lib.hm.gvariant;
       favorite-apps = [
         "org.gnome.Settings.desktop"
         "librewolf.desktop"
-        "firefox.desktop"
         "brave-browser.desktop"
         "pcmanfm-qt.desktop"
         "freetube.desktop"
         "kitty.desktop"
+        "org.wezfurlong.wezterm.desktop"
         "qps.desktop"
       ];
     };
@@ -274,7 +274,7 @@ with lib.hm.gvariant;
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       binding = "<Super>t";
-      command = "kitty";
+      command = "wezterm";
       name = "Terminal";
     };
 
