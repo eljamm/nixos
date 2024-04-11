@@ -271,6 +271,8 @@ in
     openFirewall = true;
   };
 
+  services.xserver.wacom.enable = true;
+
   # This is using a rec (recursive) expression to set and access XDG_BIN_HOME within the expression
   # For more on rec expressions see https://nix.dev/tutorials/first-steps/nix-language#recursive-attribute-set-rec
   environment.sessionVariables = rec {

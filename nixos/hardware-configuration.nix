@@ -27,48 +27,56 @@ in
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
+    {
+      device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
       fsType = "btrfs";
       options = [ "subvol=@nixos/root" "compress-force=zstd:2" "noatime" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
+    {
+      device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
       fsType = "btrfs";
       options = [ "subvol=@nixos/nix" "compress-force=zstd:2" "noatime" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
+    {
+      device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
       fsType = "btrfs";
       options = [ "subvol=@nixos/home" "compress-force=zstd:2" "noatime" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/0429-2254";
+    {
+      device = "/dev/disk/by-uuid/0429-2254";
       fsType = "vfat";
     };
 
   fileSystems."/var" =
-    { device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
+    {
+      device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
       fsType = "btrfs";
       options = [ "subvol=@nixos/var" "compress-force=zstd:2" "noatime" ];
     };
 
   fileSystems."/.snapshots" =
-    { device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
+    {
+      device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
       fsType = "btrfs";
       options = [ "subvol=@nixos/snapshots" "compress-force=zstd:2" "noatime" ];
     };
 
   fileSystems."/home/kuroko/Storage" =
-    { device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
+    {
+      device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
       fsType = "btrfs";
       options = [ "subvol=@storage" "compress-force=zstd:2" "noatime" ];
     };
 
   fileSystems."/run/media/kuroko/ExternalHDD" =
-    { device = "/dev/disk/by-uuid/a1131a59-5e59-4845-bb9c-e0588a3b266e";
+    {
+      device = "/dev/disk/by-uuid/a1131a59-5e59-4845-bb9c-e0588a3b266e";
       fsType = "btrfs";
       options = [ "compress-force=zstd:2" "noatime" "nofail" ];
     };
@@ -140,6 +148,9 @@ in
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+  # Enable OpenTabletDriver
+  hardware.opentabletdriver.enable = false;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
