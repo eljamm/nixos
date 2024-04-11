@@ -148,6 +148,7 @@ with lib.hm.gvariant;
         "tophat@fflewddur.github.io"
         "dash-to-panel@jderose9.github.com"
         "space-bar@luchrioh"
+        "pop-shell@system76.com"
       ];
 
       favorite-apps = [
