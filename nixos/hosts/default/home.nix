@@ -594,6 +594,10 @@ with lib.hm.gvariant;
     enable = true;
   };
 
+  programs.joshuto = {
+    enable = true;
+  };
+
   xdg.mimeApps = {
     enable = true;
     associations.added = {
