@@ -549,6 +549,7 @@ with lib.hm.gvariant;
       gnumake
       go
       gotools
+      markdownlint-cli
       nodejs
       sqlite
       tree-sitter
