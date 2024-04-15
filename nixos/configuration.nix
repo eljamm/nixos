@@ -380,7 +380,6 @@ in
     dua
     eza
     fd
-    fzf
     ghostscript
     goldendict-ng
     jpegoptim

@@ -43,6 +43,8 @@
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = { self, nixpkgs, ... } @inputs:
@@ -63,6 +65,7 @@
             }
             ## system
             inputs.musnix.nixosModules.musnix
+            inputs.catppuccin.nixosModules.catppuccin
             ./configuration.nix
             inputs.self.nixosModules.gnome
             inputs.envfs.nixosModules.envfs
@@ -74,6 +77,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.kuroko.imports = [
                 ./hosts/default/home.nix
+                inputs.catppuccin.homeManagerModules.catppuccin
               ];
               home-manager.extraSpecialArgs = { inherit inputs; };
             }

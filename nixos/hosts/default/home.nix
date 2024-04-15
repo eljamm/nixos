@@ -29,6 +29,8 @@ with lib.hm.gvariant;
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  catppuccin.flavour = "mocha";
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -597,6 +599,11 @@ with lib.hm.gvariant;
 
   programs.joshuto = {
     enable = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    catppuccin.enable = true;
   };
 
   xdg.mimeApps = {
