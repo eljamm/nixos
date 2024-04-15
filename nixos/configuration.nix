@@ -383,8 +383,10 @@ in
     fd
     ghostscript
     goldendict-ng
+    innoextract
     jpegoptim
     optipng
+    osslsigncode
     ripgrep
     tree
 
