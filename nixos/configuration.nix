@@ -235,6 +235,7 @@ in
       pkg-config
 
       # Gaming Tools
+      bottles
       goverlay
       lutris
       wineWowPackages.stable
@@ -475,7 +476,6 @@ in
   };
   programs.gamescope = {
     enable = true;
-    capSysNice = true;
   };
 
   programs.adb.enable = true;
