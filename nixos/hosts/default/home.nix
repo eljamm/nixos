@@ -42,13 +42,13 @@ with lib.hm.gvariant;
     zoxide
 
     ## Gnome
-    gnomeExtensions.appindicator
-    gnomeExtensions.dash-to-panel
-    gnomeExtensions.pop-shell
-    gnomeExtensions.space-bar
-    gnomeExtensions.tophat
-    gnomeExtensions.user-themes
-    gnomeExtensions.vitals
+    gnome45Extensions.appindicator
+    gnome45Extensions.dash-to-panel
+    gnome45Extensions.pop-shell
+    gnome45Extensions.space-bar
+    gnome45Extensions.tophat
+    gnome45Extensions.user-themes
+    gnome45Extensions.vitals
 
     # Customization
     papirus-folders
