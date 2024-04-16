@@ -199,6 +199,7 @@ in
       freetube
       furnace
       handbrake
+      helvum
       kid3
       mediainfo
       mediainfo-gui
@@ -206,7 +207,11 @@ in
       mkvtoolnix-cli
       mpv
       opusTools
+      pavucontrol
+      pipewire.jack
       playerctl
+      pwvucontrol
+      qjackctl
       spek
 
       # Audio Production
