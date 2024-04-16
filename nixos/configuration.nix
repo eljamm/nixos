@@ -134,35 +134,6 @@ in
     #media-session.enable = true;
   };
 
-  # Experiment with low-latency audio setup
-  services.pipewire.extraConfig.pipewire."92-low-latency" = {
-    "context.properties" = {
-      "default.clock.rate" = 48000;
-      "default.clock.quantum" = 256;
-      "default.clock.min-quantum" = 256;
-      "default.clock.max-quantum" = 256;
-    };
-  };
-
-  services.pipewire.extraConfig.pipewire-pulse."92-low-latency" = {
-    "context.modules" = [
-      {
-        name = "libpipewire-module-protocol-pulse";
-        args = {
-          "pulse.min.req" = "256/48000";
-          "pulse.default.req" = "256/48000";
-          "pulse.max.req" = "256/48000";
-          "pulse.min.quantum" = "256/48000";
-          "pulse.max.quantum" = "256/48000";
-        };
-      }
-    ];
-    "stream.properties" = {
-      "node.latency" = "256/48000";
-      "resample.quality" = 1;
-    };
-  };
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -271,7 +242,7 @@ in
       bottles
       goverlay
       lutris
-      wineWowPackages.stable
+      wineWowPackages.staging
       winetricks
 
       # Tools
