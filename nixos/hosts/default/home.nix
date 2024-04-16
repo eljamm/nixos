@@ -439,6 +439,7 @@ with lib.hm.gvariant;
     # Media
     mplv = "mpv --profile=480p";
     yts = "ytm -s";
+    ytso = "ytm -so";
     ytv = "ytm -v";
     yti = "yt-dlp -F";
     ytps = "ytm -ps";
