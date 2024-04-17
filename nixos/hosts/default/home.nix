@@ -552,6 +552,9 @@ with lib.hm.gvariant;
       typst-lsp
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint
 
+      # Debugging/DAP
+      delve # Go
+
       # Tools
       clang
       cmake
