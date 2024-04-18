@@ -43,6 +43,20 @@ in
       inherit (inputs.nixpkgs-yabridge.legacyPackages.${prev.system})
         yabridge;
     })
+
+    # Albert
+    (final: prev: {
+      albert = prev.albert.overrideAttrs (old: rec {
+        version = "0.22.17";
+        src = prev.fetchFromGitHub {
+          owner = "albertlauncher";
+          repo = "albert";
+          rev = "v${version}";
+          sha256 = "sha256-2wu4bOQDKoZ4DDzTttXXRNDluvuJth7M1pCvJmYQ+f4=";
+          fetchSubmodules = true;
+        };
+      });
+    })
   ];
 
   # Bootloader.
