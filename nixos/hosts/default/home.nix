@@ -387,6 +387,20 @@ with lib.hm.gvariant;
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ## Thumbnailers
+    ".local/share/thumbnailers/audio.thumbnailer".text = ''
+      [Thumbnailer Entry]
+      TryExec=ffmpegthumbnailer
+      Exec=${pkgs.ffmpegthumbnailer} -i %i -o %o -s %s
+      MimeType=audio/x-opus+ogg;audio/x-matroska
+    '';
+    ".local/share/thumbnailers/krita.thumbnailer".text = ''
+      [Thumbnailer Entry]
+      TryExec=unzip
+      Exec=sh -c "${pkgs.unzip}/bin/unzip -p %i preview.png > %o"
+      MimeType=application/x-krita;
+    '';
   };
 
   home.sessionVariables = {
