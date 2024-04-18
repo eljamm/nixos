@@ -149,6 +149,7 @@ in
       ferdium
 
       # Video & Audio
+      alsa-utils
       audacious
       audacious-plugins
       audacity
