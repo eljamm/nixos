@@ -217,7 +217,7 @@ in
       ryujinx
 
       # Education
-      anki
+      anki-bin
       anki-sync-server
       stellarium
 
