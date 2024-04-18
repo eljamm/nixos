@@ -220,6 +220,7 @@ in
       stellarium
 
       # Office
+      crow-translate
       lifeograph
       mdbook
       mdbook-epub
