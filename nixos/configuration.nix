@@ -254,6 +254,7 @@ in
       dconf2nix
       duperemove
       grc
+      mat2
       nvitop
       pdfid
       yt-dlp
