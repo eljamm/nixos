@@ -229,8 +229,10 @@ in
       zathura
 
       # System
-      kitty
       albert
+      kitty
+      piper-tts
+      speechd
 
       # Development
       aoc-cli
