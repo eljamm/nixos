@@ -346,7 +346,7 @@ in
   environment.systemPackages = (with pkgs; [
     # Internet
     firefox
-    qbittorrent
+    qbittorrent-qt5
 
     # Video & Audio
     ffmpegthumbnailer
