@@ -50,17 +50,6 @@ with lib.hm.gvariant;
     gnomeExtensions.user-themes
     gnomeExtensions.vitals
 
-    # Customization
-    papirus-folders
-    (catppuccin-kvantum.override {
-      accent = "Blue";
-      variant = "Macchiato";
-    })
-
-    ## QT
-    libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.qt5ct
-
     # Development
     rustToolchain
   ];
@@ -362,16 +351,6 @@ with lib.hm.gvariant;
     "org/gnome/desktop/calendar" = {
       show-weekdate = true;
     };
-  };
-
-  xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini { }).generate "kvantum.kvconfig" {
-    General.theme = "Catppuccin-Macchiato-Blue";
-  };
-
-  qt = {
-    enable = true;
-    platformTheme = "qtct";
-    style.name = "kvantum";
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

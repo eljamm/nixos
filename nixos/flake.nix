@@ -84,6 +84,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.kuroko.imports = [
                 ./hosts/default/home.nix
+                ./hosts/default/theme.nix
                 inputs.catppuccin.homeManagerModules.catppuccin
               ];
               home-manager.extraSpecialArgs = { inherit inputs; };
