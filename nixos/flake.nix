@@ -85,6 +85,7 @@
               home-manager.users.kuroko.imports = [
                 ./hosts/default/home.nix
                 ./hosts/default/theme.nix
+                ./hosts/default/Gnome
                 inputs.catppuccin.homeManagerModules.catppuccin
               ];
               home-manager.extraSpecialArgs = { inherit inputs; };
