@@ -84,8 +84,12 @@
               home-manager.useUserPackages = true;
               home-manager.users.kuroko.imports = [
                 ./hosts/default/home.nix
+                ./hosts/default/gnome
+                ./hosts/default/neovim
+                ./hosts/default/programs
+                ./hosts/default/shell
                 ./hosts/default/theme.nix
-                ./hosts/default/Gnome
+                ./hosts/default/wezterm
                 inputs.catppuccin.homeManagerModules.catppuccin
               ];
               home-manager.extraSpecialArgs = { inherit inputs; };

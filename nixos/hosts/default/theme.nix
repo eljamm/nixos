@@ -7,6 +7,8 @@ let
   };
 in
 {
+  catppuccin.flavour = "mocha";
+
   home.packages = with pkgs; [
     papirus-folders
     libsForQt5.qt5ct
