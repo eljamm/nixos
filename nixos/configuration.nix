@@ -183,7 +183,6 @@ in
       # Internet
       brave
       firefox
-      libreddit
       librewolf
       thunderbird
       ungoogled-chromium
@@ -539,6 +538,7 @@ in
 
   services.libreddit = {
     enable = true;
+    package = pkgs.redlib;
   };
 
   services.gnome.tracker-miners.enable = false;
