@@ -59,6 +59,7 @@
       "inode/directory" = [ "pcmanfm-qt.desktop" ];
       "text/calendar" = [ "org.gnome.Calendar.desktop" ];
       "text/html" = [ "librewolf.desktop" ];
+      "text/plain" = [ "org.gnome.Meld.desktop" ];
       "x-scheme-handler/http" = [ "librewolf.desktop" ];
       "x-scheme-handler/https" = [ "librewolf.desktop" ];
       "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
