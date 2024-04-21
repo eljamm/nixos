@@ -432,6 +432,7 @@ in
     osslsigncode
     ripgrep
     tree
+    xorg.xeyes
 
     # Note Taking
     qownnotes
