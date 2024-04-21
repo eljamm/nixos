@@ -245,6 +245,8 @@ in
       osu-lazer-bin
       prismlauncher
       ryujinx
+      mgba
+      vbam
 
       # Education
       anki-bin
@@ -284,6 +286,7 @@ in
       dconf2nix
       duperemove
       grc
+      igir
       mat2
       nvitop
       pdfid
