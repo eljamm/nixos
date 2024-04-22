@@ -58,4 +58,9 @@
     catppuccin.enable = true;
   };
 
+  programs.zellij = {
+    enable = true;
+    catppuccin.enable = true;
+  };
+
 }
