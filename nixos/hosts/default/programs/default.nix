@@ -9,16 +9,6 @@
     ];
   };
 
-  programs.bat = {
-    enable = false;
-
-    config = {
-      theme = "ansi";
-      pager = "less -FR --use-color -Dd+r -Du+b";
-      # map-syntax = ["*.jenkinsfile:Groovy" "*.props:Java Properties"];
-    };
-  };
-
   programs.keychain = {
     enable = true;
     extraFlags = [ "--eval" "--noask" "--quiet" ];

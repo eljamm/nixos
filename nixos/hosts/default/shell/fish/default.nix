@@ -14,4 +14,10 @@ in
     ];
   };
 
+  # For fzf.fish
+  programs.bat = {
+    enable = true;
+    catppuccin.enable = true;
+  };
+
 }
