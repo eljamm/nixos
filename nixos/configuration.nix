@@ -84,6 +84,20 @@ in
         };
       });
     })
+
+    # Gamescope
+    (final: prev: {
+      gamescope = prev.gamescope.overrideAttrs (old: rec {
+        version = "3.14.2";
+        src = prev.fetchFromGitHub {
+          owner = "ValveSoftware";
+          repo = "gamescope";
+          rev = "refs/tags/${version}";
+          fetchSubmodules = true;
+          hash = "sha256-Ym1kl9naAm1MGlxCk32ssvfiOlstHiZPy7Ga8EZegus=";
+        };
+      });
+    })
   ];
 
   # CCache
@@ -519,9 +533,7 @@ in
       };
     };
   };
-  programs.gamescope = {
-    enable = true;
-  };
+  programs.gamescope.enable = true;
 
   programs.adb.enable = true;
 
