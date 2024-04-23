@@ -291,6 +291,7 @@ in
       # Gaming Tools
       bottles
       goverlay
+      heroic
       lutris
       wineWowPackages.staging
       winetricks
