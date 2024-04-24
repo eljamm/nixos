@@ -46,7 +46,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin.url = "github:eljamm/catppuccin-nix";
+    catppuccin.url = "github:catppuccin/nix";
 
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
