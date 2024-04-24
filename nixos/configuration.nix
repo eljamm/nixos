@@ -557,6 +557,11 @@ in
   services.gnome.tracker-miners.enable = false;
   services.gnome.tracker.enable = false;
 
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+  };
+
   # Storage Optimization
   nix.optimise.automatic = true;
 
