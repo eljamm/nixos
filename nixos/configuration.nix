@@ -538,6 +538,8 @@ in
 
   programs.adb.enable = true;
 
+  programs.hyprland.enable = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
