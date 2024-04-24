@@ -399,9 +399,10 @@ in
     ffmpegthumbnailer
 
     # Networking
+    aria2
+    iperf3
     tmux
     wget
-    iperf3
 
     # Development
     alejandra
