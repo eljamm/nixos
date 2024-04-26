@@ -97,6 +97,12 @@ in
         };
       });
     })
+
+
+    # AI
+    (final: prev: {
+      llama-cpp = prev.llama-cpp.override { cudaSupport = true; };
+    })
   ];
 
   # CCache
@@ -300,6 +306,7 @@ in
       duperemove
       grc
       igir
+      llama-cpp
       mat2
       nvitop
       pdfid
@@ -558,11 +565,6 @@ in
 
   services.gnome.tracker-miners.enable = false;
   services.gnome.tracker.enable = false;
-
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";
-  };
 
   # Storage Optimization
   nix.optimise.automatic = true;
