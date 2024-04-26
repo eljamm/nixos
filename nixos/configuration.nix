@@ -98,10 +98,16 @@ in
       });
     })
 
-
     # AI
     (final: prev: {
       llama-cpp = prev.llama-cpp.override { cudaSupport = true; };
+    })
+
+    # pcmanfm-qt
+    (final: prev: {
+      pcmanfm-qt = prev.pcmanfm-qt.overrideAttrs (old: {
+        buildInputs = old.buildInputs ++ pkgs.qt6.qtsvg;
+      });
     })
   ];
 
