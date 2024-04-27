@@ -23,6 +23,7 @@
 
   programs.git = {
     enable = true;
+    lfs.enable = true;
     userName = "eljamm";
     userEmail = "***REMOVED***";
     aliases = {
