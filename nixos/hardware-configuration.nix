@@ -93,6 +93,13 @@ in
     fileSystems = [ "/" ];
   };
 
+  boot.extraModprobeConfig = ''
+    blacklist nouveau
+    options nouveau modeset=0
+  '';
+
+  boot.blacklistedKernelModules = [ "nouveau" ];
+
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
@@ -120,7 +127,7 @@ in
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
+    powerManagement.finegrained = true;
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
