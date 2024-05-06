@@ -306,6 +306,7 @@ in
       lutris
       wineWowPackages.staging
       winetricks
+      inputs.umu.packages.${pkgs.system}.umu
 
       # Tools
       dconf2nix
