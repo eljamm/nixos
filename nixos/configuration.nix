@@ -57,7 +57,11 @@ in
     # mpv
     (self: super: {
       mpv = super.mpv.override {
-        scripts = with self.mpvScripts; [ mpris thumbfast ];
+        scripts = with self.mpvScripts; [
+          mpris
+          mpvacious
+          thumbfast
+        ];
       };
     })
 
