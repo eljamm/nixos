@@ -20,6 +20,7 @@
     moar
     taskwarrior-tui
     zoxide
+    devenv
   ];
 
   home.file = {
