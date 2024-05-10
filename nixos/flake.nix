@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixpkgs-yabridge.url = "github:kira-bruneau/nixpkgs/yabridge";
+    nixpkgs-system.url = "github:eljamm/nixpkgs/system";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";

@@ -413,6 +413,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-system": {
+      "locked": {
+        "lastModified": 1715372697,
+        "narHash": "sha256-XMMGq+xbBRd1ZkhUyAcuFhPAjV60puJRFcuhfH4Rc/k=",
+        "owner": "eljamm",
+        "repo": "nixpkgs",
+        "rev": "f20a0d27a3831545144121ac18aa83d3ac2186ee",
+        "type": "github"
+      },
+      "original": {
+        "owner": "eljamm",
+        "ref": "system",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-yabridge": {
       "locked": {
         "lastModified": 1712877526,
@@ -441,6 +457,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-cosmic": "nixos-cosmic",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-system": "nixpkgs-system",
         "nixpkgs-yabridge": "nixpkgs-yabridge",
         "spicetify-nix": "spicetify-nix"
         "umu": "umu"

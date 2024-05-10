@@ -108,6 +108,16 @@ in
     })
 
     # pcmanfm-qt
+    # System overrides
+    (final: prev:
+      let
+        customSystem = inputs.nixpkgs-system.legacyPackages.${prev.system};
+      in
+      {
+        pgsrip = customSystem.pgsrip;
+        obs-studio-plugins.obs-backgroundremoval = customSystem.obs-studio-plugins.obs-backgroundremoval;
+      })
+
     (final: prev: {
       pcmanfm-qt = prev.pcmanfm-qt.overrideAttrs (old: {
         buildInputs = old.buildInputs ++ pkgs.qt6.qtsvg;
@@ -321,6 +331,7 @@ in
       mat2
       nvitop
       pdfid
+      pgsrip
       yt-dlp
     ];
   };
