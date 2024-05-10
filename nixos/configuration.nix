@@ -249,6 +249,7 @@ in
 
       # Communications
       cinny-desktop
+      element-desktop
       ferdium
 
       # Video & Audio
@@ -319,6 +320,7 @@ in
       mdbook-epub
       mdbook-i18n-helpers
       mdbook-pdf
+      ocrfeeder
       zathura
 
       # System
