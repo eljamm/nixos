@@ -21,8 +21,10 @@ in
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-amd" "v4l2loopback" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
 
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
@@ -96,7 +98,9 @@ in
   boot.extraModprobeConfig = ''
     blacklist nouveau
     options nouveau modeset=0
+    options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
   '';
+  security.polkit.enable = true;
 
   boot.blacklistedKernelModules = [ "nouveau" ];
 
