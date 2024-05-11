@@ -10,6 +10,7 @@ with lib.hm.gvariant;
     gnomeExtensions.space-bar
     gnomeExtensions.tophat
     gnomeExtensions.user-themes
+    gnomeExtensions.vertical-workspaces
     gnomeExtensions.vitals
   ];
 
@@ -36,6 +37,7 @@ with lib.hm.gvariant;
         "space-bar@luchrioh"
         "tophat@fflewddur.github.io"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "vertical-workspaces@G-dH.github.com"
       ];
 
       favorite-apps = [
