@@ -41,14 +41,14 @@ in
       };
     })
 
-    # GNOME
+    # GNOME dynamic triple buffering
     (final: prev: {
       gnome = prev.gnome.overrideScope (gnomeFinal: gnomePrev: {
-        mutter = gnomePrev.mutter.overrideAttrs (new: old: {
-          version = "45.6";
-          src = pkgs.fetchurl {
-            url = "mirror://gnome/sources/mutter/${lib.versions.major new.version}/mutter-${new.version}.tar.xz";
-            sha256 = "sha256-YBfv4FMbYPuzxcM0U0xZaVHwkDp1sSb+7btWd5s54Uk=";
+        mutter = gnomePrev.mutter.overrideAttrs (old: {
+          src = pkgs.fetchgit {
+            url = "https://gitlab.gnome.org/vanvugt/mutter.git";
+            rev = "663f19bc02c1b4e3d1a67b4ad72d644f9b9d6970";
+            sha256 = "sha256-I1s4yz5JEWJY65g+dgprchwZuPGP9djgYXrMMxDQGrs=";
           };
         });
       });
