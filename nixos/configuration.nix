@@ -68,12 +68,6 @@ in
     # fenix
     (_: super: let pkgs = fenix.inputs.nixpkgs.legacyPackages.${super.system}; in fenix.overlays.default pkgs pkgs)
 
-    # https://github.com/NixOS/nixpkgs/issues/300755
-    (final: prev: {
-      inherit (inputs.nixpkgs-yabridge.legacyPackages.${prev.system})
-        yabridge;
-    })
-
     # Albert
     (final: prev: {
       albert = prev.albert.overrideAttrs (old: rec {

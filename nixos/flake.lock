@@ -423,22 +423,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-yabridge": {
-      "locked": {
-        "lastModified": 1712877526,
-        "narHash": "sha256-ZEkQ/yjKcY2ZzvVL+ajlCkMeOt6LURt4w1cbz0xf2o0=",
-        "owner": "kira-bruneau",
-        "repo": "nixpkgs",
-        "rev": "aa263fc8a00458a08837f7c8753f9c485becaf85",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kira-bruneau",
-        "ref": "yabridge",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
@@ -452,7 +436,6 @@
         "nixos-cosmic": "nixos-cosmic",
         "nixpkgs": "nixpkgs",
         "nixpkgs-system": "nixpkgs-system",
-        "nixpkgs-yabridge": "nixpkgs-yabridge",
         "spicetify-nix": "spicetify-nix",
         "umu": "umu"
       }
