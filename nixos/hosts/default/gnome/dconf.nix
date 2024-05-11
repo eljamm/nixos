@@ -4,8 +4,9 @@ with lib.hm.gvariant;
 {
   home.packages = with pkgs; [
     gnomeExtensions.appindicator
-    gnomeExtensions.pop-shell
+    gnomeExtensions.bluetooth-battery-meter
     gnomeExtensions.dash-to-panel
+    gnomeExtensions.pop-shell
     gnomeExtensions.space-bar
     gnomeExtensions.tophat
     gnomeExtensions.user-themes
@@ -28,12 +29,13 @@ with lib.hm.gvariant;
 
       # from `gnome-extensions list`
       enabled-extensions = [
-        "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "Bluetooth-Battery-Meter@maniacx.github.com"
         "appindicatorsupport@rgcjonas.gmail.com"
-        "tophat@fflewddur.github.io"
         "dash-to-panel@jderose9.github.com"
-        "space-bar@luchrioh"
         "pop-shell@system76.com"
+        "space-bar@luchrioh"
+        "tophat@fflewddur.github.io"
+        "user-theme@gnome-shell-extensions.gcampax.github.com"
       ];
 
       favorite-apps = [
