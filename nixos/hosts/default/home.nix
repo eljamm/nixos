@@ -39,7 +39,7 @@
     ".local/share/thumbnailers/audio.thumbnailer".text = ''
       [Thumbnailer Entry]
       TryExec=ffmpegthumbnailer
-      Exec=${pkgs.ffmpegthumbnailer} -i %i -o %o -s %s
+      Exec=${pkgs.ffmpegthumbnailer}/bin/ffmpegthumbnailer -i %i -o %o -s %s
       MimeType=audio/x-opus+ogg;audio/x-matroska
     '';
     ".local/share/thumbnailers/krita.thumbnailer".text = ''
