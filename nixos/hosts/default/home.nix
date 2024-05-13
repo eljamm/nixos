@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -78,6 +78,18 @@
   };
 
   services.easyeffects.enable = true;
+
+  services.activitywatch = {
+    enable = false;
+    extraOptions = [
+      "--port"
+      "5600"
+    ];
+    watchers = {
+      aw-watcher-afk.package = pkgs.activitywatch;
+      aw-watcher-window.package = pkgs.activitywatch;
+    };
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
