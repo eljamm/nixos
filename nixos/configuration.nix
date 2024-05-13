@@ -503,13 +503,13 @@ in
     # Utils
     bleachbit
     gpick #X11
-    grip
     hplip # scanner
     htop-vim
     meld
     mesa-demos
     nixpkgs-review
     pciutils
+    python3Packages.grip
     wl-clipboard
     wl-color-picker
     xclip #X11
