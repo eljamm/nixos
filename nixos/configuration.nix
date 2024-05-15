@@ -587,6 +587,8 @@ in
 
   programs.hyprland.enable = true;
 
+  programs.nix-ld.enable = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
