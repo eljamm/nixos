@@ -503,6 +503,7 @@ in
     # Utils
     bleachbit
     gpick #X11
+    gpu-viewer
     hplip # scanner
     htop-vim
     meld
