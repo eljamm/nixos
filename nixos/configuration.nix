@@ -340,6 +340,7 @@ in
       inputs.umu.packages.${pkgs.system}.umu
 
       # Tools
+      copyq
       dconf2nix
       duperemove
       grc
