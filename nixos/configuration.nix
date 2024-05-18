@@ -509,6 +509,7 @@ in
     htop-vim
     meld
     mesa-demos
+    nix-tree
     nixpkgs-review
     pciutils
     python3Packages.grip
