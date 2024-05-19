@@ -503,6 +503,7 @@ in
 
     # Utils
     bleachbit
+    cheat
     gpick #X11
     gpu-viewer
     hplip # scanner
