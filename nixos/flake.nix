@@ -57,6 +57,8 @@
       url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
   outputs = { self, nixpkgs, ... } @inputs:
@@ -65,6 +67,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       overlays = [
         inputs.neovim-nightly-overlay.overlay
+        inputs.nix-alien.overlays.default
       ];
     in
     {

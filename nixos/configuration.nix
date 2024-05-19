@@ -509,6 +509,7 @@ in
     htop-vim
     meld
     mesa-demos
+    nix-alien
     nix-tree
     nixpkgs-review
     pciutils
