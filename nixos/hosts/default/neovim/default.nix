@@ -1,5 +1,69 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
+with pkgs;
 let
+
+  tools = [
+    fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0
+    fzf
+    git
+    sqlite
+    tree-sitter
+  ];
+
+  c = [
+    clang
+    cmake
+    gcc
+    gnumake
+  ];
+
+  gamedev = [
+    gdtoolkit # parser, linter and formatter for Godot (GDScript)
+  ];
+
+  golang = [
+    delve # debugger
+    go
+    gofumpt
+    goimports-reviser
+    golines
+    gopls
+    gotools
+  ];
+
+  haskell = [
+    haskell-language-server
+    ghc
+  ];
+
+  lua = [
+    lua-language-server
+    stylua
+  ];
+
+  markup = [
+    codespell
+    markdownlint-cli
+    typst-lsp
+  ];
+
+  nix = [
+    alejandra
+    nil
+    nixfmt-rfc-style
+    nixpkgs-fmt
+    statix
+  ];
+
+  python = [
+    black
+    isort
+    python311Packages.jedi-language-server
+    ruff
+    ruff-lsp
+  ];
+
+  rust = [ rustToolchain ];
   rustToolchain = pkgs.fenix.stable.withComponents [
     "cargo"
     "clippy"
@@ -8,71 +72,55 @@ let
     "rustfmt"
     "rust-analyzer"
   ];
+
+  shell = [
+    nodePackages.bash-language-server
+    shellcheck
+    shfmt
+  ];
+
+  web = [
+    deno
+    nodePackages.typescript-language-server
+    nodejs
+    vscode-langservers-extracted
+    yarn
+    prettierd # multi-language formatters
+  ];
+
+  extraPackages =
+    tools
+    ++ c
+    ++ gamedev
+    ++ golang
+    ++ haskell
+    ++ lua
+    ++ markup
+    ++ nix
+    ++ python
+    ++ rust
+    ++ shell
+    ++ web;
 in
 
 {
+  # for quick development
+  home.packages = [ rustToolchain ];
 
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     package = pkgs.neovim-nightly;
-    extraPackages = with pkgs; [
-      ## Formatters/linters ##
-      codespell
-      markdownlint-cli
-      # go
-      gofumpt
-      goimports-reviser
-      golines
-      # lua
-      stylua
-      # multi-language
-      prettierd
-      shfmt
-      # nix
-      alejandra
-      nixpkgs-fmt
-      # python
-      black
-      isort
-      ruff
-
-      ## LSPs ##
-      gopls
-      lua-language-server
-      nil # nix
-      typst-lsp
-      # web
-      deno
-      vscode-langservers-extracted
-      nodePackages.typescript-language-server
-      # python
-      python311Packages.jedi-language-server
-      ruff-lsp
-
-      ## Debuggers ##
-      delve # Go
-
-      ## Toolchains ##
-      rustToolchain
-      gdtoolkit # parser, linter and formatter for Godot (GDScript)
-
-      ## Tools ##
-      fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0
-      fzf
-      git
-      sqlite
-      tree-sitter
-      # c/c++
-      clang
-      cmake
-      gcc
-      gnumake
-      # go
-      go
-      gotools
-      # web
-      nodejs
+    plugins = with pkgs.vimPlugins; [
+      # TODO:
+      # markdown-preview-nvim
+      telescope-cheat-nvim
     ];
+    inherit extraPackages;
+  };
+
+  programs.helix = {
+    enable = true;
+    inherit extraPackages;
   };
 }
