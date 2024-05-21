@@ -11,11 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    envfs = {
-      url = "github:Mic92/envfs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -84,7 +79,6 @@
             inputs.catppuccin.nixosModules.catppuccin
             ./configuration.nix
             inputs.self.nixosModules.gnome
-            inputs.envfs.nixosModules.envfs
             self.nixosModules.nixIndex
             ## Home Manager
             inputs.home-manager.nixosModules.home-manager

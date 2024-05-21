@@ -610,6 +610,7 @@ in
   programs.hyprland.enable = true;
 
   programs.nix-ld.enable = true;
+  services.envfs.enable = true;
 
   # List services that you want to enable:
 
