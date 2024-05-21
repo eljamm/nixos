@@ -307,6 +307,7 @@ in
       # Graphics
       aseprite
       gimp
+      imgbrd-grabber
       inkscape
       krita
       pixelorama
