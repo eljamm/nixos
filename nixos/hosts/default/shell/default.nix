@@ -57,7 +57,7 @@
     vcs-submodule = "git submodule update --init --recursive";
 
     # Programs
-    l = "lazygit";
-    n = "nvim";
+    lg = "lazygit";
+    vim = "nvim";
   };
 }
