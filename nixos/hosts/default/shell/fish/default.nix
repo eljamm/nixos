@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 with builtins;
 let
   initFile = readFile (./init.fish);
@@ -10,7 +10,10 @@ in
     enable = true;
     shellInit = initFile;
     plugins = [
-      { name = "fzf"; src = pkgs.fishPlugins.fzf-fish.src; }
+      {
+        name = "fzf";
+        inherit (pkgs.fishPlugins.fzf-fish) src;
+      }
     ];
   };
 
@@ -19,5 +22,4 @@ in
     enable = true;
     catppuccin.enable = true;
   };
-
 }

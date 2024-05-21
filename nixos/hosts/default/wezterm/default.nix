@@ -10,5 +10,4 @@ in
     enable = true;
     extraConfig = weztermConfig;
   };
-
 }

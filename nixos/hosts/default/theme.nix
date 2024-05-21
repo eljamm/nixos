@@ -2,9 +2,7 @@
 let
   variant = "Macchiato";
   accent = "Blue";
-  kvantumThemePackage = pkgs.catppuccin-kvantum.override {
-    inherit variant accent;
-  };
+  kvantumThemePackage = pkgs.catppuccin-kvantum.override { inherit variant accent; };
 in
 {
   catppuccin.flavour = "mocha";
@@ -26,7 +24,6 @@ in
       theme=Catppuccin-${variant}-${accent}
     '';
 
-    "Kvantum/Catppuccin-${variant}-${accent}".source =
-      "${kvantumThemePackage}/share/Kvantum/Catppuccin-${variant}-${accent}";
+    "Kvantum/Catppuccin-${variant}-${accent}".source = "${kvantumThemePackage}/share/Kvantum/Catppuccin-${variant}-${accent}";
   };
 }

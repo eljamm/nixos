@@ -61,7 +61,8 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
-  outputs = { self, nixpkgs, ... } @inputs:
+  outputs =
+    { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -73,11 +74,11 @@
     {
       nixosConfigurations = {
         default = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+          };
           modules = [
-            {
-              nixpkgs.overlays = overlays;
-            }
+            { nixpkgs.overlays = overlays; }
             ## system
             inputs.musnix.nixosModules.musnix
             inputs.catppuccin.nixosModules.catppuccin
@@ -88,19 +89,23 @@
             ## Home Manager
             inputs.home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.kuroko.imports = [
-                ./hosts/default/home.nix
-                ./hosts/default/gnome
-                ./hosts/default/neovim
-                ./hosts/default/programs
-                ./hosts/default/shell
-                ./hosts/default/theme.nix
-                ./hosts/default/wezterm
-                inputs.catppuccin.homeManagerModules.catppuccin
-              ];
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.kuroko.imports = [
+                  ./hosts/default/home.nix
+                  ./hosts/default/gnome
+                  ./hosts/default/neovim
+                  ./hosts/default/programs
+                  ./hosts/default/shell
+                  ./hosts/default/theme.nix
+                  ./hosts/default/wezterm
+                  inputs.catppuccin.homeManagerModules.catppuccin
+                ];
+                extraSpecialArgs = {
+                  inherit inputs;
+                };
+              };
             }
             ## PopOS Cosmic DE
             {
@@ -157,6 +162,5 @@
         };
         gnome = ./modules/nixos/gnome.nix;
       };
-
     };
 }

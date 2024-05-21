@@ -1,10 +1,16 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, inputs, lib, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 
 let
-  fenix = inputs.fenix;
+  inherit (inputs) fenix;
 in
 
 {
@@ -43,15 +49,17 @@ in
 
     # GNOME dynamic triple buffering
     (final: prev: {
-      gnome = prev.gnome.overrideScope (gnomeFinal: gnomePrev: {
-        mutter = gnomePrev.mutter.overrideAttrs (old: {
-          src = pkgs.fetchgit {
-            url = "https://gitlab.gnome.org/vanvugt/mutter.git";
-            rev = "663f19bc02c1b4e3d1a67b4ad72d644f9b9d6970";
-            sha256 = "sha256-I1s4yz5JEWJY65g+dgprchwZuPGP9djgYXrMMxDQGrs=";
-          };
-        });
-      });
+      gnome = prev.gnome.overrideScope (
+        gnomeFinal: gnomePrev: {
+          mutter = gnomePrev.mutter.overrideAttrs (old: {
+            src = pkgs.fetchgit {
+              url = "https://gitlab.gnome.org/vanvugt/mutter.git";
+              rev = "663f19bc02c1b4e3d1a67b4ad72d644f9b9d6970";
+              sha256 = "sha256-I1s4yz5JEWJY65g+dgprchwZuPGP9djgYXrMMxDQGrs=";
+            };
+          });
+        }
+      );
     })
 
     # mpv
@@ -66,7 +74,13 @@ in
     })
 
     # fenix
-    (_: super: let pkgs = fenix.inputs.nixpkgs.legacyPackages.${super.system}; in fenix.overlays.default pkgs pkgs)
+    (
+      _: super:
+      let
+        pkgs = fenix.inputs.nixpkgs.legacyPackages.${super.system};
+      in
+      fenix.overlays.default pkgs pkgs
+    )
 
     # Albert
     (final: prev: {
@@ -112,14 +126,16 @@ in
     })
 
     # System overrides
-    (final: prev:
+    (
+      final: prev:
       let
         customSystem = inputs.nixpkgs-system.legacyPackages.${prev.system};
       in
       {
-        pgsrip = customSystem.pgsrip;
+        inherit (customSystem) pgsrip;
         obs-studio-plugins.obs-backgroundremoval = customSystem.obs-studio-plugins.obs-backgroundremoval;
-      })
+      }
+    )
 
     # Logseq
     (final: prev: {
@@ -136,7 +152,7 @@ in
             --set "LOCAL_GIT_DIRECTORY" ${prev.git} \
             --add-flags $out/share/${old.pname}/resources/app \
             --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}" \
-            --prefix LD_LIBRARY_PATH : "${prev.lib.makeLibraryPath [prev.stdenv.cc.cc.lib]}"
+            --prefix LD_LIBRARY_PATH : "${prev.lib.makeLibraryPath [ prev.stdenv.cc.cc.lib ]}"
         '';
       });
     })
@@ -359,7 +375,12 @@ in
   fonts.packages = with pkgs; [
     fira-code
     fira-code-symbols
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "DroidSansMono"
+      ];
+    })
   ];
 
   systemd.packages = [ pkgs.anki-sync-server ];
@@ -389,14 +410,13 @@ in
 
     # Not officially in the specification
     XDG_BIN_HOME = "$HOME/.local/bin";
-    PATH = [
-      "${XDG_BIN_HOME}"
-    ];
+    PATH = [ "${XDG_BIN_HOME}" ];
   };
 
   environment.variables =
     let
-      makePluginPath = format:
+      makePluginPath =
+        format:
         (lib.makeSearchPath format [
           "$HOME/.nix-profile/lib"
           "/run/current-system/sw/lib"
@@ -439,121 +459,116 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = (with pkgs; [
-    # Internet
-    firefox
-    qbittorrent-qt5
+  environment.systemPackages =
+    (with pkgs; [
+      # Internet
+      firefox
+      qbittorrent-qt5
 
-    # Video & Audio
-    ffmpegthumbnailer
+      # Video & Audio
+      ffmpegthumbnailer
 
-    # Networking
-    aria2
-    iperf3
-    tmux
-    wget
+      # Networking
+      aria2
+      iperf3
+      tmux
+      wget
 
-    # Development
-    alejandra
-    gcc
-    gh
-    git
-    gnumake
-    lazygit
-    micromamba
-    pipx
-    python3
-    python311Packages.pip
-    python311Packages.virtualenv
-    python311Packages.virtualenvwrapper
-    rs-git-fsmonitor
-    tig
-    tree-sitter
+      # Development
+      alejandra
+      gcc
+      gh
+      git
+      gnumake
+      lazygit
+      micromamba
+      pipx
+      python3
+      python311Packages.pip
+      python311Packages.virtualenv
+      python311Packages.virtualenvwrapper
+      rs-git-fsmonitor
+      tig
+      tree-sitter
 
-    # Office
-    calibre
-    libreoffice-fresh
-    yacreader
+      # Office
+      calibre
+      libreoffice-fresh
+      yacreader
 
-    # Productivity
-    dstask
-    gnome.pomodoro
-    planify
-    tellico
+      # Productivity
+      dstask
+      gnome.pomodoro
+      planify
+      tellico
 
-    # Security
-    bubblewrap
+      # Security
+      bubblewrap
 
-    # Tools
-    dua
-    eza
-    fd
-    ghostscript
-    goldendict-ng
-    innoextract
-    jpegoptim
-    optipng
-    osslsigncode
-    ripgrep
-    tree
-    xorg.xeyes
+      # Tools
+      dua
+      eza
+      fd
+      ghostscript
+      goldendict-ng
+      innoextract
+      jpegoptim
+      optipng
+      osslsigncode
+      ripgrep
+      tree
+      xorg.xeyes
 
-    # Note Taking
-    qownnotes
-    logseq
-    obsidian
+      # Note Taking
+      qownnotes
+      logseq
+      obsidian
 
-    # Utils
-    bleachbit
-    cheat
-    gpick #X11
-    gpu-viewer
-    hplip # scanner
-    htop-vim
-    meld
-    mesa-demos
-    nix-alien
-    nix-tree
-    nixpkgs-review
-    pciutils
-    python3Packages.grip
-    wl-clipboard
-    wl-color-picker
-    xclip #X11
+      # Utils
+      bleachbit
+      cheat
+      gpick # X11
+      gpu-viewer
+      hplip # scanner
+      htop-vim
+      meld
+      mesa-demos
+      nix-alien
+      nix-tree
+      nixpkgs-review
+      pciutils
+      python3Packages.grip
+      wl-clipboard
+      wl-color-picker
+      xclip # X11
 
-    # System
-    keepassxc
-    libavif
-    libgtop
-    libheif
-    libjxl
-    libsecret
-    otpclient
-    shared-mime-info
-    unzip
-    zip
-  ])
-  ++
-  (with pkgs.lxqt; [
-    lximage-qt
-    lxqt-menu-data # For pcmanfm-qt
-    pcmanfm-qt
-    qps
-  ])
-  ++
-  (with pkgs.libsForQt5; [
-    filelight
-    kdenlive
-    ktouch
-    okular
-    kimageformats
-    qt5.qtimageformats
-  ])
-  ++
-  (with pkgs.qt6; [
-    qtimageformats
-  ])
-  ;
+      # System
+      keepassxc
+      libavif
+      libgtop
+      libheif
+      libjxl
+      libsecret
+      otpclient
+      shared-mime-info
+      unzip
+      zip
+    ])
+    ++ (with pkgs.lxqt; [
+      lximage-qt
+      lxqt-menu-data # For pcmanfm-qt
+      pcmanfm-qt
+      qps
+    ])
+    ++ (with pkgs.libsForQt5; [
+      filelight
+      kdenlive
+      ktouch
+      okular
+      kimageformats
+      qt5.qtimageformats
+    ])
+    ++ (with pkgs.qt6; [ qtimageformats ]);
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

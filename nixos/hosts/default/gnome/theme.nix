@@ -1,8 +1,6 @@
 { pkgs, lib, ... }:
 {
-  home.packages = with pkgs; [
-    papirus-folders
-  ];
+  home.packages = with pkgs; [ papirus-folders ];
 
   gtk = {
     enable = true;

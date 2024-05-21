@@ -1,7 +1,6 @@
-{ pkgs, lib, ... }:
+{ ... }:
 
 {
-
   imports = [
     ./bash
     ./fish
@@ -61,5 +60,4 @@
     l = "lazygit";
     n = "nvim";
   };
-
 }

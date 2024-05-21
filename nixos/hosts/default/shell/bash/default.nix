@@ -5,7 +5,6 @@ let
 in
 
 {
-
   programs.bash = {
     enable = true;
     sessionVariables = {
@@ -14,5 +13,4 @@ in
 
     initExtra = initFile;
   };
-
 }

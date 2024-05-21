@@ -143,7 +143,10 @@ with lib.hm.gvariant;
       minimize = [ "<Super>c" ];
       switch-applications = [ "<Alt>Tab" ];
       switch-applications-backward = [ "<Shift><Alt>Tab" ];
-      switch-to-workspace-1 = [ "<Super>Home" "<Super>1" ];
+      switch-to-workspace-1 = [
+        "<Super>Home"
+        "<Super>1"
+      ];
       switch-to-workspace-2 = [ "<Super>2" ];
       switch-to-workspace-3 = [ "<Super>3" ];
       switch-to-workspace-4 = [ "<Super>4" ];
@@ -153,7 +156,15 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/" ];
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/"
+      ];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -240,15 +251,39 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/input-sources" = {
-      mru-sources = [ (mkTuple [ "xkb" "de+nodeadkeys" ]) ];
-      sources = [ (mkTuple [ "xkb" "de+nodeadkeys" ]) (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "fr+azerty" ]) (mkTuple [ "xkb" "ara+azerty" ]) ];
+      mru-sources = [
+        (mkTuple [
+          "xkb"
+          "de+nodeadkeys"
+        ])
+      ];
+      sources = [
+        (mkTuple [
+          "xkb"
+          "de+nodeadkeys"
+        ])
+        (mkTuple [
+          "xkb"
+          "us"
+        ])
+        (mkTuple [
+          "xkb"
+          "fr+azerty"
+        ])
+        (mkTuple [
+          "xkb"
+          "ara+azerty"
+        ])
+      ];
       # Make Caps Lock an additional Esc ('Shift+Caps Lock' for regular Caps Lock)
-      xkb-options = [ "terminate:ctrl_alt_bksp" "caps:escape_shifted_capslock" ];
+      xkb-options = [
+        "terminate:ctrl_alt_bksp"
+        "caps:escape_shifted_capslock"
+      ];
     };
 
     "org/gnome/desktop/calendar" = {
       show-weekdate = true;
     };
   };
-
 }
