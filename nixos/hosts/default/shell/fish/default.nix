@@ -9,6 +9,11 @@ in
   programs.fish = {
     enable = true;
     shellInit = initFile;
+    functions = {
+      nxs = "nix search nixpkgs $argv";
+      nxss = "nix search nixpkgs#$argv";
+      nxsu = "nix search github:NixOS/nixpkgs/nixos-unstable $argv";
+    };
     plugins = [
       {
         name = "fzf";
