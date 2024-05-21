@@ -98,15 +98,17 @@ in
 
     # AI
     (final: prev: {
-      llama-cpp = (prev.llama-cpp.overrideAttrs (old: rec {
-        version = "2780";
-        src = prev.fetchFromGitHub {
-          owner = "ggerganov";
-          repo = "llama-cpp";
-          rev = "refs/tags/b${version}";
-          hash = "sha256-V+QDymEzXpw78Ezd2DInRLE0F6mXpLRhCK8iI8prq8I=";
-        };
-      })).override { cudaSupport = true; };
+      llama-cpp =
+        (prev.llama-cpp.overrideAttrs (old: rec {
+          version = "2901";
+          src = prev.fetchFromGitHub {
+            owner = "ggerganov";
+            repo = "llama.cpp";
+            rev = "refs/tags/b${version}";
+            hash = "sha256-P0rE4wZduH6KedFZ+awyXTvlp+eR103aR4pEnfTTqlo=";
+          };
+        })).override
+          { cudaSupport = true; };
     })
 
     # System overrides
