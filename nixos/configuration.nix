@@ -353,10 +353,11 @@ in
       bottles
       goverlay
       heroic
+      inputs.umu.packages.${pkgs.system}.umu
       lutris
+      nsz
       wineWowPackages.staging
       winetricks
-      inputs.umu.packages.${pkgs.system}.umu
 
       # Tools
       copyq
