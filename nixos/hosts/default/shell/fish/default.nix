@@ -10,9 +10,16 @@ in
     enable = true;
     shellInit = initFile;
     functions = {
-      nxs = "nix search nixpkgs $argv";
-      nxss = "nix search nixpkgs#$argv";
-      nxsu = "nix search github:NixOS/nixpkgs/nixos-unstable $argv";
+      # List installed packages from specified system
+      lspkgs = "nix-store --query --requisites $argv | cut -d- -f2- | sort -u";
+      # List installed system packages
+      lssys = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort -u";
+      # Nix Search
+      ns = "nix search nixpkgs $argv";
+      # Nix Search Specific
+      nss = "nix search nixpkgs#$argv";
+      # Nix Search Unstable
+      nsu = "nix search github:NixOS/nixpkgs/nixos-unstable $argv";
     };
     plugins = [
       {
