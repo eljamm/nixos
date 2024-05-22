@@ -65,6 +65,7 @@
         inputs.neovim-nightly-overlay.overlay
         inputs.nix-alien.overlays.default
       ];
+      spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
     in
     {
       nixosConfigurations = {
@@ -127,10 +128,10 @@
             {
               programs.spicetify = {
                 enable = true;
-                theme = inputs.spicetify-nix.packages.${pkgs.system}.default.themes.catppuccin;
+                theme = spicePkgs.themes.catppuccin;
                 colorScheme = "macchiato";
 
-                enabledExtensions = with inputs.spicetify-nix.packages.${pkgs.system}.default.extensions; [
+                enabledExtensions = with spicePkgs.extensions; [
                   adblock
                   autoSkipVideo
                   bookmark
@@ -140,6 +141,11 @@
                   loopyLoop
                   popupLyrics
                   shuffle # shuffle+ (special characters are sanitized out of ext names)
+                ];
+
+                enabledCustomApps = with spicePkgs.apps; [
+                  new-releases
+                  lyrics-plus
                 ];
               };
             }
