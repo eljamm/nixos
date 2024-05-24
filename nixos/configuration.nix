@@ -158,6 +158,8 @@ in
     })
   ];
 
+  chaotic.mesa-git.enable = false;
+
   # CCache
   nix.settings.extra-sandbox-paths = [ config.programs.ccache.cacheDir ];
 
@@ -317,6 +319,38 @@ in
       # Games
       osu-lazer-bin
       prismlauncher
+      (atlauncher.overrideAttrs rec {
+        pname = "atlauncher";
+        version = "3.4.28.1";
+        src = fetchurl {
+          url = "https://github.com/ATLauncher/ATLauncher/releases/download/v${version}/ATLauncher-${version}.jar";
+          hash = "sha256-IIwDMazxUMQ7nGQk/4VEZicgCmCR4oR8UYtO36pCEq4=";
+        };
+        installPhase = ''
+          runHook preInstall
+
+          mkdir -p $out/bin $out/share/java
+          cp $src $out/share/java/ATLauncher.jar
+
+          makeWrapper ${jre}/bin/java $out/bin/${pname} \
+            --prefix LD_LIBRARY_PATH : "${
+              lib.makeLibraryPath [
+                xorg.libXxf86vm
+                udev
+                libglvnd
+                alsa-lib
+              ]
+            }" \
+            --add-flags "-jar $out/share/java/ATLauncher.jar" \
+            --add-flags "--working-dir \"\''${XDG_DATA_HOME:-\$HOME/.local/share}/ATLauncher\"" \
+            --add-flags "--no-launcher-update"
+
+          mkdir -p $out/share/icons/hicolor/scalable/apps
+          cp $ICON $out/share/icons/hicolor/scalable/apps/${pname}.svg
+
+          runHook postInstall
+        '';
+      })
       ryujinx
       mgba
       vbam
