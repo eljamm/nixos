@@ -36,6 +36,7 @@ in
       userName = "eljamm";
       userEmail = "***REMOVED***";
       aliases = {
+        c = "clone";
         ci = "commit";
         co = "checkout";
         s = "status";
