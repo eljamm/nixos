@@ -476,6 +476,7 @@ in
       wget
 
       # Development
+      addlicense
       alejandra
       gcc
       gh
@@ -536,6 +537,7 @@ in
       meld
       mesa-demos
       nix-alien
+      nix-output-monitor
       nix-tree
       nixpkgs-review
       pciutils
