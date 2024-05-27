@@ -7,6 +7,7 @@ with lib.hm.gvariant;
     gnomeExtensions.appindicator
     gnomeExtensions.bluetooth-battery-meter
     gnomeExtensions.dash-to-panel
+    gnomeExtensions.memento-mori
     gnomeExtensions.pop-shell
     gnomeExtensions.space-bar
     gnomeExtensions.tophat
@@ -34,6 +35,7 @@ with lib.hm.gvariant;
         "Bluetooth-Battery-Meter@maniacx.github.com"
         "appindicatorsupport@rgcjonas.gmail.com"
         "dash-to-panel@jderose9.github.com"
+        "memento-mori@paveloom"
         "pop-shell@system76.com"
         "space-bar@luchrioh"
         "tophat@fflewddur.github.io"
