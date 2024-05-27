@@ -73,76 +73,16 @@
             inherit inputs;
           };
           modules = [
-            { nixpkgs.overlays = overlays; }
-            ## system
-            inputs.musnix.nixosModules.musnix
-            inputs.catppuccin.nixosModules.catppuccin
             ./configuration.nix
-            inputs.self.nixosModules.gnome
-            self.nixosModules.nixIndex
-            ## Home Manager
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.kuroko.imports = [
-                  ./hosts/default/home.nix
-                  ./hosts/default/gnome
-                  ./hosts/default/neovim
-                  ./hosts/default/programs
-                  ./hosts/default/shell
-                  ./hosts/default/theme.nix
-                  ./hosts/default/wezterm
-                  inputs.catppuccin.homeManagerModules.catppuccin
-                ];
-                extraSpecialArgs = {
-                  inherit inputs;
-                };
-              };
-            }
-            ## PopOS Cosmic DE
-            {
-              nix.settings = {
-                substituters = [
-                  "https://cosmic.cachix.org/"
-                  "https://nix-community.cachix.org"
-                  "https://cuda-maintainers.cachix.org"
-                  "https://nix-gaming.cachix.org"
-                  "https://hyprland.cachix.org"
-                  "https://devenv.cachix.org"
-                ];
-                trusted-public-keys = [
-                  "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-                  "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-                  "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-                  "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-                  "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-                  "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-                ];
-              };
-            }
+            inputs.catppuccin.nixosModules.catppuccin
+            inputs.musnix.nixosModules.musnix
             inputs.nixos-cosmic.nixosModules.default
-            inputs.spicetify-nix.nixosModule
-            {
-              programs.spicetify = {
-                enable = true;
-                theme = inputs.spicetify-nix.packages.${pkgs.system}.default.themes.catppuccin;
-                colorScheme = "macchiato";
-
-                enabledExtensions = with inputs.spicetify-nix.packages.${pkgs.system}.default.extensions; [
-                  adblock
-                  autoSkipVideo
-                  bookmark
-                  fullAppDisplay
-                  hidePodcasts
-                  keyboardShortcut
-                  loopyLoop
-                  popupLyrics
-                  shuffle # shuffle+ (special characters are sanitized out of ext names)
-                ];
-              };
-            }
+            inputs.self.nixosModules.caches
+            inputs.self.nixosModules.gnome
+            inputs.self.nixosModules.home-manager
+            inputs.self.nixosModules.nixIndex
+            inputs.self.nixosModules.spicetify
+            { nixpkgs.overlays = overlays; }
           ];
         };
       };
@@ -154,7 +94,20 @@
             ./modules/nixos/nixIndex.nix
           ];
         };
+        home-manager = {
+          imports = [
+            inputs.home-manager.nixosModules.home-manager
+            ./modules/nixos/home-manager.nix
+          ];
+        };
+        spicetify = {
+          imports = [
+            inputs.spicetify-nix.nixosModule
+            ./modules/nixos/spicetify.nix
+          ];
+        };
         gnome = ./modules/nixos/gnome.nix;
+        caches = ./modules/nixos/caches.nix;
       };
     };
 }
