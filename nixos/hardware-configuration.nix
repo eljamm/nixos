@@ -9,18 +9,11 @@
   ...
 }:
 
-let
-  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
-    export __NV_PRIME_RENDER_OFFLOAD=1
-    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export __VK_LAYER_NV_optimus=NVIDIA_only
-    exec "$@"
-  '';
-in
-
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ./hardware/legion
+  ];
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -31,181 +24,12 @@ in
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [
-    "kvm-amd"
-    "v4l2loopback"
-    "lenovo-legion-module"
-  ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    v4l2loopback
-    lenovo-legion-module
-  ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ ];
 
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nixos/root"
-      "compress-force=zstd:2"
-      "noatime"
-    ];
-  };
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nixos/nix"
-      "compress-force=zstd:2"
-      "noatime"
-    ];
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nixos/home"
-      "compress-force=zstd:2"
-      "noatime"
-    ];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/0429-2254";
-    fsType = "vfat";
-  };
-
-  fileSystems."/var" = {
-    device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nixos/var"
-      "compress-force=zstd:2"
-      "noatime"
-    ];
-  };
-
-  fileSystems."/.snapshots" = {
-    device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nixos/snapshots"
-      "compress-force=zstd:2"
-      "noatime"
-    ];
-  };
-
-  fileSystems."/home/kuroko/Storage" = {
-    device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
-    fsType = "btrfs";
-    options = [
-      "subvol=@storage"
-      "compress-force=zstd:2"
-      "noatime"
-    ];
-  };
-
-  fileSystems."/run/media/kuroko/ExternalHDD" = {
-    device = "/dev/disk/by-uuid/a1131a59-5e59-4845-bb9c-e0588a3b266e";
-    fsType = "btrfs";
-    options = [
-      "compress-force=zstd:2"
-      "noatime"
-      "nofail"
-    ];
-  };
-
-  swapDevices = [ ];
-
-  zramSwap = {
-    enable = true;
-  };
-
-  services.btrfs.autoScrub = {
-    enable = true;
-    interval = "weekly";
-    fileSystems = [ "/" ];
-  };
-
-  boot.extraModprobeConfig = ''
-    blacklist nouveau
-    options nouveau modeset=0
-    options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
-  '';
-  security.polkit.enable = true;
-
-  boot.blacklistedKernelModules = [ "nouveau" ];
-
-  # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-    extraPackages = with pkgs; [
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-  };
-
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  hardware.nvidia = {
-
-    # Modesetting is required.
-    modesetting.enable = true;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
-    # of just the bare essentials.
-    powerManagement.enable = false;
-
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = true;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
-
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-
-      amdgpuBusId = "PCI:52:0:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    # package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-    # beta
-    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "555.42.02";
-      sha256_64bit = "sha256-k7cI3ZDlKp4mT46jMkLaIrc2YUx1lh1wj/J4SVSHWyk=";
-      sha256_aarch64 = "sha256-ekx0s0LRxxTBoqOzpcBhEKIj/JnuRCSSHjtwng9qAc0=";
-      openSha256 = "sha256-3/eI1VsBzuZ3Y6RZmt3Q5HrzI2saPTqUNs6zPh5zy6w=";
-      settingsSha256 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
-      persistencedSha256 = "sha256-3ae31/egyMKpqtGEqgtikWcwMwfcqMv2K4MVFa70Bqs=";
-    };
-  };
-
-  # Enable OpenTabletDriver
+  # OpenTabletDriver
   hardware.opentabletdriver.enable = false;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
