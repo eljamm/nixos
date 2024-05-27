@@ -34,8 +34,12 @@ in
   boot.kernelModules = [
     "kvm-amd"
     "v4l2loopback"
+    "lenovo-legion-module"
   ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+    lenovo-legion-module
+  ];
 
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 

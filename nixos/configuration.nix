@@ -531,6 +531,7 @@ in
       gpu-viewer
       hplip # scanner
       htop-vim
+      lenovo-legion
       meld
       mesa-demos
       nix-alien
