@@ -350,12 +350,13 @@ in
 
       # Gaming Tools
       bottles
+      cubiomes-viewer
       goverlay
       heroic
+      inputs.umu.packages.${pkgs.system}.umu
       lutris
       wineWowPackages.staging
       winetricks
-      inputs.umu.packages.${pkgs.system}.umu
 
       # Tools
       copyq
