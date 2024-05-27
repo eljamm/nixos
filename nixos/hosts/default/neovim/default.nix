@@ -111,11 +111,7 @@ in
     enable = true;
     defaultEditor = true;
     package = pkgs.neovim-nightly;
-    plugins = with pkgs.vimPlugins; [
-      # TODO:
-      # markdown-preview-nvim
-      telescope-cheat-nvim
-    ];
+    plugins = with pkgs.vimPlugins; [ telescope-cheat-nvim ];
     inherit extraPackages;
   };
 
