@@ -3,6 +3,7 @@ with builtins;
 with lib.hm.gvariant;
 {
   home.packages = with pkgs; [
+    clutter-gtk # for tophat
     gnomeExtensions.appindicator
     gnomeExtensions.bluetooth-battery-meter
     gnomeExtensions.dash-to-panel
