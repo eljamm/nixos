@@ -1,6 +1,16 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./gnome
+    ./mpv.nix
+    ./neovim
+    ./programs
+    ./shell
+    ./theme.nix
+    ./wezterm
+  ];
+
   home = {
     # Home Manager needs a bit of information about you and the paths it should
     # manage.

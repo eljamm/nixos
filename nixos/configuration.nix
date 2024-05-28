@@ -62,17 +62,6 @@ in
       );
     })
 
-    # mpv
-    (self: super: {
-      mpv = super.mpv.override {
-        scripts = with self.mpvScripts; [
-          mpris
-          mpvacious
-          thumbfast
-        ];
-      };
-    })
-
     # fenix
     (
       _: super:
@@ -280,7 +269,6 @@ in
       mediainfo-gui
       mkvtoolnix
       mkvtoolnix-cli
-      mpv
       opusTools
       pavucontrol
       pipewire.jack
