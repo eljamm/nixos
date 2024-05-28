@@ -36,10 +36,11 @@ in
       userName = "eljamm";
       userEmail = "***REMOVED***";
       aliases = {
+        c = "clone";
         ci = "commit";
         co = "checkout";
-        s = "status";
         d = "diff";
+        s = "status";
       };
       extraConfig = {
         credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
