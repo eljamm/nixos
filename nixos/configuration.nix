@@ -530,7 +530,9 @@ in
       nix-tree
       nixpkgs-review
       pciutils
+      powerstat
       python3Packages.grip
+      vulkan-tools
       wl-clipboard
       wl-color-picker
       xclip # X11
