@@ -121,7 +121,7 @@ in
         customSystem = inputs.nixpkgs-system.legacyPackages.${prev.system};
       in
       {
-        inherit (customSystem) pgsrip;
+        inherit (customSystem) pgsrip ki;
         obs-studio-plugins.obs-backgroundremoval = customSystem.obs-studio-plugins.obs-backgroundremoval;
       }
     )
@@ -352,6 +352,7 @@ in
       duperemove
       grc
       igir
+      ki
       llama-cpp
       mat2
       nvitop
