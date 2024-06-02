@@ -75,6 +75,9 @@ in
     go.enable = true;
     zsh.enable = true;
 
-    carapace.enable = true;
+    carapace = {
+      enable = true;
+      enableFishIntegration = false;
+    };
   };
 }
