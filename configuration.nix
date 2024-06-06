@@ -49,6 +49,32 @@ in
         '';
       };
     })
+    # HACK:
+    # https://github.com/NixOS/nixpkgs/issues/316520
+    (final: prev: {
+      ccache = prev.ccache.overrideAttrs (old: rec {
+        version = "4.10";
+        src = prev.fetchFromGitHub {
+          owner = "ccache";
+          repo = "ccache";
+          rev = "refs/tags/v${old.version}";
+          # `git archive` replaces `$Format:%H %D$` in cmake/CcacheVersion.cmake
+          # we need to replace it with something reproducible
+          # see https://github.com/NixOS/nixpkgs/pull/316524
+          postFetch = ''
+            sed -i -E \
+              's/version_info "([0-9a-f]{40}) .*(tag: v[^,]+).*"/version_info "\1 \2"/g w match' \
+              $out/cmake/CcacheVersion.cmake
+            if [ -s match ]; then
+              rm match
+            else # pattern didn't match
+              exit 1
+            fi
+          '';
+          hash = "sha256-YHSr2pnk17QEdrIHInXX2eBFN9OGjdleaB41VLaqlnA=";
+        };
+      });
+    })
 
     # GNOME dynamic triple buffering
     (final: prev: {
