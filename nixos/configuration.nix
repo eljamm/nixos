@@ -17,8 +17,9 @@ in
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./modules/nixos/virtualisation.nix
     ./modules/nixos/networking.nix
+    ./modules/nixos/services/taler.nix
+    ./modules/nixos/virtualisation.nix
   ];
 
   nixpkgs.overlays = [
