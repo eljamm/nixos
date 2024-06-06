@@ -525,6 +525,7 @@ in
       gpu-viewer
       hplip # scanner
       htop-vim
+      ksnip
       lenovo-legion
       meld
       mesa-demos
@@ -535,6 +536,7 @@ in
       pciutils
       powerstat
       python3Packages.grip
+      usbutils
       vulkan-tools
       wl-clipboard
       wl-color-picker
