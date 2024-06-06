@@ -78,6 +78,34 @@ config.keys = {
       end),
     },
   },
+  -- Disable Alt+Enter fullscreen
+  {
+    key = 'Enter',
+    mods = 'ALT',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+  -- Tab Movements
+  {
+    key = 'J',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.MoveTabRelative(-1),
+  },
+  {
+    key = 'K',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.MoveTabRelative(1),
+  },
+  -- Tab Navigation
+  {
+    key = 'j',
+    mods = 'CTRL|ALT',
+    action = wezterm.action.ActivateTabRelative(-1),
+  },
+  {
+    key = 'k',
+    mods = 'CTRL|ALT',
+    action = wezterm.action.ActivateTabRelative(1),
+  },
 }
 
 -- --- Remove padding
