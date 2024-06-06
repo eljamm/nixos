@@ -110,7 +110,7 @@ in
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    package = pkgs.neovim-nightly;
+    package = pkgs.neovim-unwrapped;
     plugins = with pkgs.vimPlugins; [ telescope-cheat-nvim ];
     inherit extraPackages;
   };

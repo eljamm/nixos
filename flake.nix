@@ -62,7 +62,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       overlays = [
-        inputs.neovim-nightly-overlay.overlay
+        # inputs.neovim-nightly-overlay.overlays.default
         inputs.nix-alien.overlays.default
       ];
     in
