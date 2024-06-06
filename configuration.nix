@@ -106,12 +106,17 @@ in
     (final: prev: {
       llama-cpp =
         (prev.llama-cpp.overrideAttrs (old: rec {
-          version = "2901";
+          version = "2953";
           src = prev.fetchFromGitHub {
             owner = "ggerganov";
             repo = "llama.cpp";
             rev = "refs/tags/b${version}";
-            hash = "sha256-P0rE4wZduH6KedFZ+awyXTvlp+eR103aR4pEnfTTqlo=";
+            hash = "sha256-IqR0tdTdrydrMCgOfNbRnVESN3pEzti3bAuTH9i3wQQ=";
+            leaveDotGit = true;
+            postFetch = ''
+              git -C "$out" rev-parse --short HEAD > $out/COMMIT
+              find "$out" -name .git -print0 | xargs -0 rm -rf
+            '';
           };
         })).override
           { cudaSupport = true; };
