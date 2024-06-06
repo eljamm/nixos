@@ -101,16 +101,15 @@ in
 
     # Albert
     (final: prev: {
-      albert = prev.albert.overrideAttrs (old: rec {
-        version = "0.22.17";
-        src = prev.fetchFromGitHub {
-          owner = "albertlauncher";
-          repo = "albert";
-          rev = "v${version}";
-          sha256 = "sha256-2wu4bOQDKoZ4DDzTttXXRNDluvuJth7M1pCvJmYQ+f4=";
-          fetchSubmodules = true;
-        };
-      });
+      albert = prev.albert.overrideAttrs {
+        version = "0.23.0";
+        postPatch = ''
+          find -type f -name CMakeLists.txt -exec sed -i {} -e '/INSTALL_RPATH/d' \;
+
+          sed -i src/qtpluginprovider.cpp \
+            -e "/QStringList default_paths = {/a    QFileInfo(\"$out/lib\").canonicalFilePath(),"
+        '';
+      };
     })
 
     # Gamescope
