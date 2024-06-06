@@ -76,7 +76,7 @@ in
     zsh.enable = true;
 
     carapace = {
-      enable = true;
+      enable = false;
       enableFishIntegration = false;
     };
   };
