@@ -18,6 +18,7 @@ in
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules/nixos/virtualisation.nix
+    ./modules/nixos/networking.nix
   ];
 
   nixpkgs.overlays = [
