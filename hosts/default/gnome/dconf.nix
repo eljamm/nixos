@@ -155,6 +155,7 @@ with lib.hm.gvariant;
       switch-to-workspace-4 = [ "<Super>4" ];
       switch-windows = [ "<Super>Tab" ];
       switch-windows-backward = [ "<Shift><Super>Tab" ];
+      toggle-fullscreen = [ "<Alt>F10" ];
       toggle-maximized = [ "<Super>m" ];
     };
 
