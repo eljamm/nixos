@@ -20,7 +20,7 @@
       };
     };
     cursorTheme = {
-      name = "Catppuccin-Macchiato-Dark-Cursors";
+      name = "catppuccin-macchiato-dark-cursors";
       package = pkgs.catppuccin-cursors.macchiatoDark;
     };
     gtk3 = {
@@ -30,7 +30,8 @@
 
   home.pointerCursor = {
     gtk.enable = true;
-    name = "Catppuccin-Macchiato-Dark-Cursors";
+    x11.enable = true;
+    name = "catppuccin-macchiato-dark-cursors";
     package = pkgs.catppuccin-cursors.macchiatoDark;
     size = 16;
   };

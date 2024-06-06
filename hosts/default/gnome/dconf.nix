@@ -21,7 +21,7 @@ with lib.hm.gvariant;
       clock-format = "12h";
       clock-show-weekday = true;
       color-scheme = "prefer-dark";
-      cursor-theme = "Catppuccin-Macchiato-Dark-Cursors";
+      cursor-theme = "catppuccin-macchiato-dark-cursors";
       enable-hot-corners = true;
       gtk-theme = "Catppuccin-Macchiato-Standard-Blue-Dark";
       icon-theme = "Papirus-Dark";
