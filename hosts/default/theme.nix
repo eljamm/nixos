@@ -5,7 +5,7 @@ let
   kvantumThemePackage = pkgs.catppuccin-kvantum.override { inherit variant accent; };
 in
 {
-  catppuccin.flavour = "mocha";
+  catppuccin.flavor = "mocha";
 
   home.packages = with pkgs; [
     papirus-folders
