@@ -311,6 +311,7 @@ in
 
       # Audio Production
       ardour
+      ffmpeg
       helio-workstation
       infamousPlugins
       linvstmanager
