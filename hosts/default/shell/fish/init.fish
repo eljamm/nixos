@@ -10,5 +10,12 @@ end
 # Enable vim-style keybinds
 fish_vi_key_bindings
 
-# Make <c-f> work for vi-mode
+# Custom keybinds
 bind -M insert \cf forward-char
+bind \cf forward-char
+
+bind -M insert \ef forward-word
+bind \ef forward-word
+
+bind -M insert \eb backward-word
+bind \eb backward-word
