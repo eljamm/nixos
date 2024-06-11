@@ -81,11 +81,12 @@ let
 
   web = [
     deno
+    nodePackages.sql-formatter
     nodePackages.typescript-language-server
     nodejs
+    prettierd # multi-language formatters
     vscode-langservers-extracted
     yarn
-    prettierd # multi-language formatters
   ];
 
   extraPackages =
