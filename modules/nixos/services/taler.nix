@@ -21,12 +21,19 @@
         ensureDBOwnership = true;
       }
     ];
-    initialScript = pkgs.writeText "backend-initScript" ''
-      CREATE ROLE kuroko WITH LOGIN PASSWORD 'secret' CREATEDB;
-      GRANT ALL PRIVILEGES ON DATABASE taler-mailbox  TO kuroko;
-      GRANT ALL PRIVILEGES ON DATABASE taler-mailbox  TO taler-mailbox;
-      GRANT ALL PRIVILEGES ON DATABASE taler-exchange TO kuroko;
-    '';
+    initialScript =
+      pkgs.writeText "backend-initScript" # sql
+        ''
+          CREATE ROLE kuroko
+          WITH
+            LOGIN PASSWORD 'secret' CREATEDB;
+
+          GRANT ALL PRIVILEGES ON DATABASE taler - mailbox TO kuroko;
+
+          GRANT ALL PRIVILEGES ON DATABASE taler - mailbox TO taler - mailbox;
+
+          GRANT ALL PRIVILEGES ON DATABASE taler - exchange TO kuroko;
+        '';
     authentication = ''
       #type database  DBuser  auth-method
       local      all       all       trust
