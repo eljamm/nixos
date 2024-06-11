@@ -12,6 +12,7 @@ let
 
   c = [
     clang
+    clang-tools
     cmake
     gcc
     gnumake
