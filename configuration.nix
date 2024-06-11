@@ -368,6 +368,7 @@ in
       mold-wrapped
       neovide
       pkg-config
+      tmuxifier
 
       # Gaming Tools
       bottles
