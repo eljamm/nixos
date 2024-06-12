@@ -45,10 +45,14 @@
   systemd.user.services =
     lib.genAttrs
       [
+        "taler-exchange-aggregator"
+        "taler-exchange-closer"
         "taler-exchange-httpd"
         "taler-exchange-secmod-cs"
         "taler-exchange-secmod-eddsa"
         "taler-exchange-secmod-rsa"
+        "taler-exchange-transfer"
+        "taler-exchange-wirewatch"
       ]
       (name: {
         enable = true;
