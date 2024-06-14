@@ -564,6 +564,7 @@ in
       nix-output-monitor
       nix-tree
       nixpkgs-review
+      ouch
       pciutils
       powerstat
       python3Packages.grip
