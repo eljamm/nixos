@@ -69,7 +69,8 @@ in
 
     zellij = {
       enable = true;
-      catppuccin.enable = true;
+      # TODO: writes to a config.kdl file?
+      # catppuccin.enable = true;
     };
 
     go.enable = true;
