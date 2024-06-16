@@ -42,8 +42,8 @@
     '';
   };
 
-  systemd.user.services =
-    lib.genAttrs
+  systemd.user.services = lib.mergeAttrsList [
+    (lib.genAttrs
       [
         "taler-exchange-aggregator"
         "taler-exchange-closer"
@@ -63,5 +63,7 @@
           Type = "simple";
           ExecStart = ''${lib.getBin pkgs.taler-exchange}/bin/${name} -L debug'';
         };
-      });
+      })
+    )
+  ];
 }
