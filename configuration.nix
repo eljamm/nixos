@@ -274,6 +274,7 @@ in
     ];
     packages = with pkgs; [
       # Internet
+      betterbird
       brave
       firefox
       librewolf
