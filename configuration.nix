@@ -662,6 +662,11 @@ in
       fi
     '';
 
+  programs.nh = {
+    enable = true;
+    flake = "/home/kuroko/nixos";
+  };
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
