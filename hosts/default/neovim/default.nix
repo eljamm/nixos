@@ -64,7 +64,10 @@ let
     ruff-lsp
   ];
 
-  rust = [ rustToolchain ];
+  rust = [
+    rustToolchain
+    bacon # background code check
+  ];
   rustToolchain = pkgs.fenix.stable.withComponents [
     "cargo"
     "clippy"
@@ -107,7 +110,7 @@ in
 
 {
   # for quick development
-  home.packages = [ rustToolchain ];
+  home.packages = rust;
 
   programs.neovim = {
     enable = true;
