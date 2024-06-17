@@ -59,7 +59,8 @@
 
     # Programs
     lg = "lazygit";
-    vim = "nvim";
     man = "batman";
+    vim = "nvim";
+    ze = "zellij";
   };
 }
