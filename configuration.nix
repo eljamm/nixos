@@ -153,7 +153,7 @@ in
         customSystem = inputs.nixpkgs-system.legacyPackages.${prev.system};
       in
       {
-        inherit (customSystem) pgsrip ki;
+        inherit (customSystem) pgsrip ki vocabsieve;
         obs-studio-plugins.obs-backgroundremoval = customSystem.obs-studio-plugins.obs-backgroundremoval;
       }
     )
@@ -403,6 +403,7 @@ in
       nvitop
       pdfid
       pgsrip
+      vocabsieve
       yt-dlp
     ];
   };
