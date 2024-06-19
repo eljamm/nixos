@@ -284,7 +284,7 @@ in
     ];
     packages = with pkgs; [
       # Internet
-      betterbird
+      birdtray
       brave
       firefox
       librewolf
