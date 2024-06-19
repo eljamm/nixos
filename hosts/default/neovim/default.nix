@@ -43,8 +43,10 @@ let
   ];
 
   markup = [
+    cbfmt # format codeblocks
     codespell
     markdownlint-cli
+    mdformat
     typst-lsp
   ];
 
