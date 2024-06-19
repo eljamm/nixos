@@ -59,7 +59,14 @@ in
 
     mangohud.enable = true;
     taskwarrior.enable = true;
+
+    # File managers
     joshuto.enable = true;
+    yazi = {
+      enable = true;
+      enableFishIntegration = true;
+      catppuccin.enable = true;
+    };
 
     starship.enable = true;
     fzf = {
