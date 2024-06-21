@@ -118,6 +118,7 @@ with lib.hm.gvariant;
       disk-monitor-mode = "activity";
       mem-display = "both";
       network-usage-unit = "bytes";
+      position-in-panel = "center";
       refresh-rate = "slow";
     };
 
@@ -129,6 +130,11 @@ with lib.hm.gvariant;
       hide-icons = false;
       hide-zeros = false;
       position-in-panel = 2;
+    };
+
+    "org/gnome/shell/extensions/memento-mori" = {
+      extension-position = "left";
+      extension-index = 2;
     };
 
     "org/gnome/shell/keybindings" = {
