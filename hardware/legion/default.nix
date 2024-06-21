@@ -4,7 +4,7 @@
     ./filesystems.nix
     ./nvidia.nix
     ./virtual-camera.nix
-    ./opengl.nix
+    ./graphics.nix
   ];
 
   boot.kernelModules = [ "lenovo-legion-module" ];
