@@ -151,16 +151,6 @@ in
         '';
       });
     })
-
-    (final: prev: {
-      qownnotes = prev.qownnotes.overrideAttrs rec {
-        version = "24.6.3";
-        src = prev.fetchurl {
-          url = "https://github.com/pbek/QOwnNotes/releases/download/v${version}/qownnotes-${version}.tar.xz";
-          hash = "sha256-UdWyS5DalnGDoNEOx8d9MglKpJeqOXY1mTgLl3r/9gY=";
-        };
-      };
-    })
   ];
 
   # CCache
