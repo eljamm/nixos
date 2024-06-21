@@ -19,7 +19,9 @@ let
   ];
 
   gamedev = [
-    gdtoolkit # parser, linter and formatter for Godot (GDScript)
+    # parser, linter and formatter for GDScript
+    gdtoolkit_3
+    gdtoolkit_4
   ];
 
   golang = [
