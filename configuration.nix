@@ -461,8 +461,6 @@ in
         + ":$HOME/.${format}";
     in
     {
-      # For Gnome
-      GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
       QT_QPA_PLATFORM = "xcb"; # Force X11 for QT apps
 
       # Music plugin paths
@@ -589,7 +587,6 @@ in
       # System
       keepassxc
       libavif
-      libgtop
       libheif
       libjxl
       libsecret
