@@ -1,6 +1,11 @@
 { pkgs, lib, ... }:
 with builtins;
 with lib.hm.gvariant;
+let
+  cursor-theme = "catppuccin-macchiato-dark-cursors";
+  gtk-theme = "catppuccin-macchiato-blue-standard+default";
+  icon-theme = "Papirus-Dark";
+in
 {
   home.packages = with pkgs; [
     gnomeExtensions.appindicator
@@ -20,10 +25,8 @@ with lib.hm.gvariant;
       clock-format = "12h";
       clock-show-weekday = true;
       color-scheme = "prefer-dark";
-      cursor-theme = "catppuccin-macchiato-dark-cursors";
       enable-hot-corners = true;
-      gtk-theme = "Catppuccin-Macchiato-Standard-Blue-Dark";
-      icon-theme = "Papirus-Dark";
+      inherit icon-theme cursor-theme gtk-theme;
     };
 
     "org/gnome/shell" = {
@@ -123,7 +126,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/user-theme" = {
-      name = "Catppuccin-Macchiato-Standard-Blue-Dark";
+      name = gtk-theme;
     };
 
     "org/gnome/shell/extensions/vitals" = {
