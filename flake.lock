@@ -486,6 +486,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-freetube": {
+      "locked": {
+        "lastModified": 1719095781,
+        "narHash": "sha256-fnotUHaU4ggdUOgI2QJ0c6I++Kw/7ggmFsEHvustXgA=",
+        "owner": "eljamm",
+        "repo": "nixpkgs",
+        "rev": "b37ed3f2a167515b33b4ea654c0137cdcb6f14e9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "eljamm",
+        "ref": "freetube",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1717284937,
@@ -558,6 +574,7 @@
         "nix-index-database": "nix-index-database_2",
         "nixos-cosmic": "nixos-cosmic",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-freetube": "nixpkgs-freetube",
         "nixpkgs-system": "nixpkgs-system",
         "spicetify-nix": "spicetify-nix",
         "umu": "umu"

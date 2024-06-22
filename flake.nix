@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixpkgs-system.url = "github:eljamm/nixpkgs/system";
+    nixpkgs-freetube.url = "github:eljamm/nixpkgs/freetube";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
