@@ -303,7 +303,7 @@ in
       godot3
 
       # Graphics
-      aseprite
+      aseprite # TODO: pin this
       gimp
       inkscape
       krita
