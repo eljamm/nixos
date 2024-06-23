@@ -551,6 +551,7 @@ in
       htop-vim
       ksnip
       lenovo-legion
+      lurk
       meld
       mesa-demos
       nix-alien
