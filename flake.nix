@@ -7,6 +7,11 @@
     nixpkgs-system.url = "github:eljamm/nixpkgs/system";
     nixpkgs-freetube.url = "github:eljamm/nixpkgs/freetube";
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -75,6 +80,7 @@
           };
           modules = [
             ./configuration.nix
+            inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
             inputs.musnix.nixosModules.musnix
             inputs.nixos-cosmic.nixosModules.default
