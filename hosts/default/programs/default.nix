@@ -87,5 +87,10 @@ in
       enable = false;
       enableFishIntegration = false;
     };
+
+    emacs = {
+      enable = true;
+      package = pkgs.emacs;
+    };
   };
 }
