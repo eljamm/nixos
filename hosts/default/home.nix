@@ -51,7 +51,7 @@
         [Thumbnailer Entry]
         TryExec=ffmpegthumbnailer
         Exec=${pkgs.ffmpegthumbnailer}/bin/ffmpegthumbnailer -i %i -o %o -s %s
-        MimeType=audio/x-opus+ogg;audio/x-matroska
+        MimeType=audio/x-opus+ogg;audio/x-matroska;audio/flac
       '';
       ".local/share/thumbnailers/krita.thumbnailer".text = ''
         [Thumbnailer Entry]
