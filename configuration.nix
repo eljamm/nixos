@@ -79,13 +79,20 @@ in
 
     # Albert
     (final: prev: {
-      albert = prev.albert.overrideAttrs {
-        version = "0.23.0";
+      albert = prev.albert.overrideAttrs rec {
+        version = "0.24.1";
+        src = prev.fetchFromGitHub {
+          owner = "albertlauncher";
+          repo = "albert";
+          rev = "v${version}";
+          sha256 = "sha256-vlap8gTZYoQS70Co99bZ16Fv9eq1N3rH7skjwrLDWiM=";
+          fetchSubmodules = true;
+        };
         postPatch = ''
           find -type f -name CMakeLists.txt -exec sed -i {} -e '/INSTALL_RPATH/d' \;
 
-          sed -i src/qtpluginprovider.cpp \
-            -e "/QStringList default_paths = {/a    QFileInfo(\"$out/lib\").canonicalFilePath(),"
+          sed -i src/app/qtpluginprovider.cpp \
+            -e "/QStringList install_paths;/a    install_paths << QFileInfo(\"$out/lib\").canonicalFilePath();"
         '';
       };
     })
