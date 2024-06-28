@@ -21,6 +21,8 @@ in
     ./modules/nixos/virtualisation.nix
   ];
 
+  documentation.nixos.enable = false;
+
   nixpkgs.overlays = [
     # CCache
     (self: super: {
