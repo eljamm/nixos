@@ -1,7 +1,6 @@
 { pkgs, ... }:
 with pkgs;
 let
-
   tools = [
     fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0
     fzf
@@ -54,7 +53,9 @@ let
 
   nix = [
     alejandra
+    manix
     nil
+    nixd
     nixfmt-rfc-style
     nixpkgs-fmt
     statix
@@ -113,6 +114,10 @@ let
 in
 
 {
+  # HACK: manix
+  # https://github.com/nix-community/manix/issues/18
+  manual.json.enable = true;
+
   # for quick development
   home.packages = rust;
 
