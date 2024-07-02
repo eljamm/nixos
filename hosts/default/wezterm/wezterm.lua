@@ -5,6 +5,7 @@ local act = wezterm.action
 
 -- --- Specify default font
 -- config.font = wezterm.font 'FiraCode Nerd Font'
+config.warn_about_missing_glyphs = false
 
 --- Theme
 local function scheme_for_appearance(appearance)
