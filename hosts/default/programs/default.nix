@@ -36,6 +36,7 @@ in
       userName = "eljamm";
       userEmail = "***REMOVED***";
       aliases = {
+        b = "branch";
         c = "clone";
         ci = "commit";
         co = "checkout";
@@ -44,6 +45,11 @@ in
       };
       extraConfig = {
         credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
+      };
+      difftastic = {
+        enable = true;
+        display = "inline";
+        background = "dark";
       };
     };
 
