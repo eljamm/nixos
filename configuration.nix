@@ -563,10 +563,6 @@ in
       lurk
       meld
       mesa-demos
-      nix-alien
-      nix-output-monitor
-      nix-tree
-      nixpkgs-review
       ouch
       pciutils
       powerstat
@@ -576,6 +572,14 @@ in
       wl-clipboard
       wl-color-picker
       xclip # X11
+
+      # Nix
+      manix # documentation search
+      nix-alien
+      nix-init
+      nix-output-monitor
+      nix-tree
+      nixpkgs-review
 
       # System
       keepassxc
