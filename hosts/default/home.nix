@@ -8,7 +8,7 @@
     ./programs
     ./shell
     ./theme.nix
-    ./wezterm
+    ./terminals
   ];
 
   home = {

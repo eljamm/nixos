@@ -346,7 +346,6 @@ in
 
       # System
       albert
-      kitty
       piper-tts
       speechd
 
@@ -392,6 +391,8 @@ in
       fonts = [
         "FiraCode"
         "DroidSansMono"
+        "JetBrainsMono"
+        "NerdFontsSymbolsOnly" # for kitty terminal
       ];
     })
   ];
