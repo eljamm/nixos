@@ -248,15 +248,29 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Remap caps to `escape` when tapped and `control` when held
   services.keyd = {
     enable = true;
     keyboards = {
       default = {
         ids = [ "*" ];
         settings = {
+          global = {
+            overload_tap_timeout = 200;
+            chord_timeout = 100;
+            layer_indicator = true;
+          };
           main = {
+            # Remap caps to `escape` when tapped and `control` when held
             capslock = "overload(control, esc)";
+
+            # Key combinations with these can be tapped instead of held
+            shift = "oneshot(shift)";
+            meta = "oneshot(meta)";
+            control = "oneshot(control)";
+            leftalt = "oneshot(alt)";
+            rightalt = "oneshot(altgr)";
+
+            insert = "S-insert";
           };
         };
       };
