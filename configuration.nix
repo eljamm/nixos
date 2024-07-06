@@ -280,6 +280,7 @@ in
       brave
       firefox
       librewolf
+      mailspring
       thunderbird
       ungoogled-chromium
 
@@ -330,6 +331,7 @@ in
 
       # Graphics
       aseprite # TODO: pin this
+      drawio
       gimp
       inkscape
       krita
@@ -378,6 +380,7 @@ in
       goverlay
       heroic
       inputs.umu.packages.${pkgs.system}.umu
+      libstrangle
       lutris
       wineWowPackages.staging
       winetricks

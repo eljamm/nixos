@@ -87,6 +87,22 @@
     };
   };
 
+  xdg.dataFile."mime/packages/drawio.xml".text = ''
+    <?xml version="1.0" encoding="utf-8"?>
+    <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/vnd.jgraph.mxfile">
+      <glob pattern="*.drawio"/>
+        <comment>draw.io Diagram</comment>
+      <icon name="x-office-document" />
+    </mime-type>
+    <mime-type type="application/vnd.visio">
+      <glob pattern="*.vsdx"/>
+        <comment>VSDX Document</comment>
+      <icon name="x-office-document" />
+    </mime-type>
+    </mime-info>
+  '';
+
   xdg.mimeApps = {
     enable = true;
     associations.added = {
@@ -101,6 +117,8 @@
       "x-scheme-handler/http" = [ "librewolf.desktop" ];
       "x-scheme-handler/https" = [ "librewolf.desktop" ];
       "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
+      "application/vnd.jgraph.mxfile" = [ "drawio.desktop" ];
+      "application/vnd.visio" = [ "drawio.desktop" ];
     };
     defaultApplications = {
       "application/xhtml+xml" = [ "librewolf.desktop" ];
