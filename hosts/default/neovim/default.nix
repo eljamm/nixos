@@ -38,8 +38,10 @@ let
     ghc
   ];
 
-  lua = [
+  luaTools = [
     lua-language-server
+    lua51Packages.lua
+    lua51Packages.luarocks-nix
     stylua
   ];
 
@@ -104,7 +106,7 @@ let
     ++ gamedev
     ++ golang
     ++ haskell
-    ++ lua
+    ++ luaTools
     ++ markup
     ++ nix
     ++ python
