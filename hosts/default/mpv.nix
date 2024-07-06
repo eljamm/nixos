@@ -4,6 +4,7 @@ let
     mpris
     mpvacious
     thumbfast
+    sponsorblock
   ];
 in
 {
