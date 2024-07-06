@@ -277,6 +277,7 @@ with lib.hm.gvariant;
           "ara+azerty"
         ])
       ];
+      # TODO: remove in favor of keyd?
       # Make Caps Lock an additional Esc ('Shift+Caps Lock' for regular Caps Lock)
       xkb-options = [
         "terminate:ctrl_alt_bksp"
