@@ -46,7 +46,6 @@ with lib.hm.gvariant;
         "pcmanfm-qt.desktop"
         "freetube.desktop"
         "kitty.desktop"
-        "org.wezfurlong.wezterm.desktop"
         "qps.desktop"
       ];
     };
