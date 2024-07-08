@@ -10,6 +10,7 @@ in
     enable = true;
     shellInit = initFile;
     functions = {
+      ns = "nh search $argv | $PAGER";
       nxs = "nix search nixpkgs $argv";
       nxss = "nix search nixpkgs#$argv";
       nxsu = "nix search github:NixOS/nixpkgs/nixos-unstable $argv";
