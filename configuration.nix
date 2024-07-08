@@ -254,23 +254,32 @@ in
       default = {
         ids = [ "*" ];
         settings = {
-          global = {
-            overload_tap_timeout = 200;
-            chord_timeout = 100;
-            layer_indicator = true;
-          };
           main = {
-            # Remap caps to `escape` when tapped and `control` when held
-            capslock = "overload(control, esc)";
+            # Remap caps to `escape`
+            capslock = "esc";
 
-            # Key combinations with these can be tapped instead of held
-            shift = "oneshot(shift)";
-            meta = "oneshot(meta)";
-            control = "oneshot(control)";
-            leftalt = "oneshot(alt)";
-            rightalt = "oneshot(altgr)";
-
+            # Newline on enter
             insert = "S-insert";
+          };
+          altgr = {
+            # Vim
+            k = "up";
+            l = "right";
+            j = "down";
+            h = "left";
+            x = "C-w"; # close
+
+            # Screenshot
+            i = "sysrq";
+
+            # Media keys
+            q = "volumedown";
+            e = "volumeup";
+            m = "mute";
+          };
+          "altgr+shift" = {
+            j = "pagedown";
+            k = "pageup";
           };
         };
       };
