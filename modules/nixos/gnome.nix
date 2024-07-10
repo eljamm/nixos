@@ -52,8 +52,16 @@
       cogl
     ];
 
-    # Needed for some extensions to function correctly
-    variables.GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
+    variables = {
+      # Needed for some extensions to function correctly
+      GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
+
+      # See https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
+      __EGL_VENDOR_LIBRARY_FILENAMES = "${pkgs.mesa_drivers.outPath}/share/glvnd/egl_vendor.d/50_mesa.json";
+      __GLX_VENDOR_LIBRARY_NAME = "mesa";
+      VK_DRIVER_FILES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
+    };
+
   };
 
   programs.dconf.enable = true;

@@ -1,11 +1,16 @@
 { config, pkgs, ... }:
 
 let
+  vulkanDriverFiles = [
+    "${config.hardware.nvidia.package}/share/vulkan/icd.d/nvidia_icd.x86_64.json"
+    "${config.hardware.nvidia.package.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json"
+  ];
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
     export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
     export __GLX_VENDOR_LIBRARY_NAME=nvidia
     export __VK_LAYER_NV_optimus=NVIDIA_only
+    export VK_DRIVER_FILES="${builtins.concatStringsSep ":" vulkanDriverFiles}"
     exec "$@"
   '';
 in
@@ -19,6 +24,8 @@ in
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
+
+  environment.systemPackages = [ nvidia-offload ];
 
   hardware.nvidia = {
 
@@ -54,6 +61,10 @@ in
         enableOffloadCmd = true;
       };
 
+      reverseSync.enable = true;
+      # Enable if using an external GPU
+      allowExternalGpu = false;
+
       amdgpuBusId = "PCI:52:0:0";
       nvidiaBusId = "PCI:1:0:0";
     };
@@ -63,12 +74,12 @@ in
 
     # stable
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "555.58";
-      sha256_64bit = "sha256-bXvcXkg2kQZuCNKRZM5QoTaTjF4l2TtrsKUvyicj5ew=";
-      sha256_aarch64 = "sha256-7XswQwW1iFP4ji5mbRQ6PVEhD4SGWpjUJe1o8zoXYRE=";
-      openSha256 = "sha256-hEAmFISMuXm8tbsrB+WiUcEFuSGRNZ37aKWvf0WJ2/c=";
-      settingsSha256 = "sha256-vWnrXlBCb3K5uVkDFmJDVq51wrCoqgPF03lSjZOuU8M=";
-      persistencedSha256 = "sha256-lyYxDuGDTMdGxX3CaiWUh1IQuQlkI2hPEs5LI20vEVw=";
+      version = "555.58.02";
+      sha256_64bit = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
+      sha256_aarch64 = "sha256-wb20isMrRg8PeQBU96lWJzBMkjfySAUaqt4EgZnhyF8=";
+      openSha256 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
+      settingsSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
+      persistencedSha256 = "sha256-a1D7ZZmcKFWfPjjH1REqPM5j/YLWKnbkP9qfRyIyxAw=";
     };
   };
 }
