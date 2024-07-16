@@ -49,7 +49,13 @@ let
     cbfmt # format codeblocks
     codespell
     markdownlint-cli
-    mdformat
+    # TODO: mdformat plugins don't work outside of dev shells
+    (mdformat.withPlugins (ps: [
+      ps.mdformat-footnote
+      ps.mdformat-frontmatter
+      ps.mdformat-tables
+      ps.mdformat-toc
+    ]))
     typst-lsp
   ];
 
@@ -121,7 +127,7 @@ in
   manual.json.enable = true;
 
   # for quick development
-  home.packages = rust;
+  home.packages = rust ++ markup;
 
   programs.neovim = {
     enable = true;
