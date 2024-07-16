@@ -9,10 +9,6 @@
   ...
 }:
 
-let
-  inherit (inputs) fenix;
-in
-
 {
   imports = [
     # Include the results of the hardware scan.
@@ -72,9 +68,9 @@ in
     (
       _: super:
       let
-        pkgs = fenix.inputs.nixpkgs.legacyPackages.${super.system};
+        pkgs = inputs.fenix.inputs.nixpkgs.legacyPackages.${super.system};
       in
-      fenix.overlays.default pkgs pkgs
+      inputs.fenix.overlays.default pkgs pkgs
     )
 
     # Albert
@@ -395,6 +391,7 @@ in
       mold-wrapped
       neovide
       pkg-config
+      sqlitebrowser
       tmuxifier
 
       # Gaming Tools
