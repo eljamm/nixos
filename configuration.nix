@@ -76,12 +76,12 @@
     # Albert
     (final: prev: {
       albert = prev.albert.overrideAttrs rec {
-        version = "0.24.2";
+        version = "0.24.3";
         src = prev.fetchFromGitHub {
           owner = "albertlauncher";
           repo = "albert";
           rev = "v${version}";
-          sha256 = "sha256-Z88amcPb2jCJduRu8CGQ20y2o5cXmL4rpRL0hGCEYgM=";
+          sha256 = "sha256-9vR6G/9FSy1mqZCo19Mf0RuvW63DbnhEzp/h0p6eXqs=";
           fetchSubmodules = true;
         };
         postPatch = ''
