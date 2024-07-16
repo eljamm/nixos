@@ -258,6 +258,8 @@
             insert = "S-insert";
           };
           altgr = {
+            capslock = "backspace";
+
             # Vim
             k = "up";
             l = "right";
@@ -267,15 +269,22 @@
 
             # Screenshot
             i = "sysrq";
-
-            # Media keys
-            q = "volumedown";
-            e = "volumeup";
-            m = "mute";
           };
           "altgr+shift" = {
             j = "pagedown";
             k = "pageup";
+
+            # Media keys
+            a = "previoussong";
+            d = "nextsong";
+
+            e = "volumeup";
+            q = "volumedown";
+
+            m = "mute";
+            s = "playpause";
+
+            f = "rfkill";
           };
         };
       };
