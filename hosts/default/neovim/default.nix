@@ -80,8 +80,9 @@ let
   rust = [
     rustToolchain
     bacon # background code check
+    taplo # TOML
   ];
-  rustToolchain = pkgs.fenix.stable.withComponents [
+  rustToolchain = fenix.stable.withComponents [
     "cargo"
     "clippy"
     "rust-src"
