@@ -104,19 +104,17 @@
     # AI
     (final: prev: {
       llama-cpp =
-        (prev.llama-cpp.overrideAttrs (old: rec {
-          version = "2953";
-          src = prev.fetchFromGitHub {
-            owner = "ggerganov";
-            repo = "llama.cpp";
-            rev = "refs/tags/b${version}";
-            hash = "sha256-IqR0tdTdrydrMCgOfNbRnVESN3pEzti3bAuTH9i3wQQ=";
-            leaveDotGit = true;
-            postFetch = ''
-              git -C "$out" rev-parse --short HEAD > $out/COMMIT
-              find "$out" -name .git -print0 | xargs -0 rm -rf
-            '';
-          };
+        (prev.llama-cpp.overrideAttrs (finalAttrs: {
+          version = "3260";
+          owner = "ggerganov";
+          repo = "llama.cpp";
+          rev = "refs/tags/b${finalAttrs.version}";
+          hash = "sha256-0KVwSzxfGinpv5KkDCgF2J+1ijDv87PlDrC+ldscP6s=";
+          leaveDotGit = true;
+          postFetch = ''
+            git -C "$out" rev-parse --short HEAD > $out/COMMIT
+            find "$out" -name .git -print0 | xargs -0 rm -rf
+          '';
         })).override
           { cudaSupport = true; };
     })
