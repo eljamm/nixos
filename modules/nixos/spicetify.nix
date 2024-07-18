@@ -1,21 +1,25 @@
 { pkgs, inputs, ... }:
 
 {
-  programs.spicetify = {
-    enable = true;
-    theme = inputs.spicetify-nix.packages.${pkgs.system}.default.themes.catppuccin;
-    colorScheme = "macchiato";
+  programs.spicetify =
+    let
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+    in
+    {
+      enable = true;
+      theme = spicePkgs.themes.catppuccin;
+      colorScheme = "macchiato";
 
-    enabledExtensions = with inputs.spicetify-nix.packages.${pkgs.system}.default.extensions; [
-      adblock
-      autoSkipVideo
-      bookmark
-      fullAppDisplay
-      hidePodcasts
-      keyboardShortcut
-      loopyLoop
-      popupLyrics
-      shuffle # shuffle+ (special characters are sanitized out of ext names)
-    ];
-  };
+      enabledExtensions = with spicePkgs.extensions; [
+        adblock
+        autoSkipVideo
+        bookmark
+        fullAppDisplay
+        hidePodcasts
+        keyboardShortcut
+        loopyLoop
+        popupLyrics
+        shuffle # shuffle+ (special characters are sanitized out of ext names)
+      ];
+    };
 }
