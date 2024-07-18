@@ -132,11 +132,9 @@
       final: prev:
       let
         customSystem = inputs.nixpkgs-system.legacyPackages.${prev.system};
-        freetubeSystem = inputs.nixpkgs-freetube.legacyPackages.${prev.system};
       in
       {
         inherit (customSystem) pgsrip ki vocabsieve;
-        inherit (freetubeSystem) freetube;
         obs-studio-plugins.obs-backgroundremoval = customSystem.obs-studio-plugins.obs-backgroundremoval;
       }
     )

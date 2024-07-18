@@ -5,7 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixpkgs-system.url = "github:eljamm/nixpkgs/system";
-    nixpkgs-freetube.url = "github:eljamm/nixpkgs/freetube";
 
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
