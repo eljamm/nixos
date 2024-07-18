@@ -150,6 +150,15 @@
         '';
       });
     })
+
+    # HACK: https://github.com/NixOS/nixpkgs/pull/327462
+    (final: prev: {
+      ntk = prev.ntk.overrideAttrs {
+        prePatch = ''
+          rm waf
+        '';
+      };
+    })
   ];
 
   # CCache
@@ -216,7 +225,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = false;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -348,7 +356,7 @@
       godot3
 
       # Graphics
-      aseprite # TODO: pin this
+      # aseprite # TODO: pin this (heavy build)
       drawio
       gimp
       inkscape
@@ -376,7 +384,7 @@
       mdbook-epub
       mdbook-i18n-helpers
       mdbook-pdf
-      ocrfeeder
+      # ocrfeeder # TODO: broken
       zathura
 
       # System
