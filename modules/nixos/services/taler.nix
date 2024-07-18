@@ -1,79 +1,46 @@
 { lib, pkgs, ... }:
 {
-  # services.postgresql = {
-  #   enable = true;
-  #   enableTCPIP = true;
-  #   ensureDatabases = [
-  #     "kuroko"
-  #     "taler-exchange"
-  #     "taler-mailbox"
-  #     "anastasis"
-  #     "anastasischeck"
-  #     "talercheck"
-  #   ];
-  #   ensureUsers = [
-  #     {
-  #       name = "kuroko";
-  #       ensureDBOwnership = true;
-  #     }
-  #     {
-  #       name = "taler-mailbox";
-  #       ensureDBOwnership = true;
-  #     }
-  #   ];
-  #   initialScript =
-  #     pkgs.writeText "backend-initScript" # sql
-  #       ''
-  #         CREATE ROLE kuroko
-  #         WITH
-  #           LOGIN PASSWORD 'secret' CREATEDB;
-  #
-  #         GRANT ALL PRIVILEGES ON DATABASE taler - mailbox TO kuroko;
-  #
-  #         GRANT ALL PRIVILEGES ON DATABASE taler - mailbox TO taler - mailbox;
-  #
-  #         GRANT ALL PRIVILEGES ON DATABASE taler - exchange TO kuroko;
-  #       '';
-  #   authentication = ''
-  #     #type database  DBuser  auth-method
-  #     local      all       all       trust
-  #     hostnossl  all       all   0.0.0.0/0     trust
-  #     host       all       all   0.0.0.0/0     trust
-  #   '';
-  # };
-
-  # systemd.user.services = lib.mergeAttrsList [
-  #   (lib.genAttrs
-  #     [
-  #       "taler-exchange-aggregator"
-  #       "taler-exchange-closer"
-  #       "taler-exchange-httpd"
-  #       "taler-exchange-secmod-cs"
-  #       "taler-exchange-secmod-eddsa"
-  #       "taler-exchange-secmod-rsa"
-  #       "taler-exchange-transfer"
-  #       "taler-exchange-wirewatch"
-  #     ]
-  #     (name: {
-  #       enable = true;
-  #       after = [ "network.target" ];
-  #       wantedBy = [ "default.target" ];
-  #       description = "";
-  #       serviceConfig = {
-  #         Type = "simple";
-  #         ExecStart = ''${lib.getBin pkgs.taler-exchange}/bin/${name} -L debug'';
-  #       };
-  #     })
-  #   )
-  # ];
-
-  services.taler = {
-    enable = false;
-    exchange = {
+  services.taler =
+    let
+      hostname = "192.168.1.120";
+      currency = "KUDOS";
+    in
+    {
       enable = true;
-      debug = true;
-      denominationConfig = lib.readFile ./taler-denominations.conf;
+      settings = {
+        taler = {
+          CURRENCY = currency;
+        };
+        exchange = {
+          BASE_URL = "http://${hostname}:8081/";
+          HOSTNAME = hostname;
+          PORT = 8081;
+          MASTER_PUBLIC_KEY = "6D304A6WMPMX1NYRJS32E0CXEMDJMXKQZP7KG8VMK31DB074BVX0";
+        };
+        libeufin-bank = {
+          BIND_TO = hostname;
+          PORT = 8082;
+          SUGGESTED_WITHDRAWAL_EXCHANGE = "http://${hostname}:8081";
+          WIRE_TYPE = "iban";
+          IBAN_PAYTO_BIC = "SANDBOXX";
+          DEFAULT_CUSTOMER_DEBT_LIMIT = "${currency}:200";
+          DEFAULT_ADMIN_DEBT_LIMIT = "${currency}:2000";
+          ALLOW_REGISTRATION = "yes";
+          REGISTRATION_BONUS_ENABLED = "yes";
+          REGISTRATION_BONUS = "${currency}:100";
+        };
+      };
+      includes = [ ./taler-accounts.conf ];
+      exchange = {
+        enable = true;
+        debug = true;
+        denominationConfig = lib.readFile ./taler-denominations.conf;
+        # publicKeys = ./keys.json;
+        # accounts = lib.readFile ./taler-accounts.conf;
+      };
+      libeufin.bank = {
+        enable = true;
+        debug = true;
+      };
     };
-  };
-
 }

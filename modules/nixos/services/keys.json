@@ -1,0 +1,11 @@
+{
+  "operation": "exchange-input-keys-0",
+  "arguments": {
+    "future_denoms": [],
+    "future_signkeys": [],
+    "master_pub": "6D304A6WMPMX1NYRJS32E0CXEMDJMXKQZP7KG8VMK31DB074BVX0",
+    "denom_secmod_public_key": "KYY1NJSX64HSY798NHX5NZFYV3QA9QK6AN5V8F85128JC9TPWH6G",
+    "denom_secmod_cs_public_key": "0000000000000000000000000000000000000000000000000000",
+    "signkey_secmod_public_key": "5PRZQKVCBS1YQY01RSE9MHN241XB8NH80C5GP1THHCB5VT5TCN2G"
+  }
+}
