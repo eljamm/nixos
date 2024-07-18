@@ -61,6 +61,7 @@ let
 
   nix = [
     alejandra
+    deadnix
     manix
     nil
     nixd
