@@ -90,13 +90,13 @@
     # Gamescope
     (final: prev: {
       gamescope = prev.gamescope.overrideAttrs (old: rec {
-        version = "3.14.2";
+        version = "3.14.24";
         src = prev.fetchFromGitHub {
           owner = "ValveSoftware";
           repo = "gamescope";
           rev = "refs/tags/${version}";
           fetchSubmodules = true;
-          hash = "sha256-Ym1kl9naAm1MGlxCk32ssvfiOlstHiZPy7Ga8EZegus=";
+          hash = "sha256-+8uojnfx8V8BiYAeUsOaXTXrlcST83z6Eld7qv1oboE=";
         };
       });
     })
