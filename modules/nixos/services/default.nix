@@ -1,7 +1,4 @@
 { ... }:
 {
-  imports = [
-    ./mumble.nix
-    ./taler.nix
-  ];
+  imports = [ ./mumble.nix ];
 }
