@@ -17,32 +17,34 @@
   environment = {
     gnome.excludePackages =
       (with pkgs; [
+        cheese # webcam tool
+        epiphany # web browser
+        geary # email reader
+        evince # document viewer
+        totem # video player
         # gnome-photos
         gnome-tour
         # gnome-console
         gedit # text editor
+        yelp # Help view
       ])
       ++ (with pkgs.gnome; [
-        cheese # webcam tool
         gnome-music
-        epiphany # web browser
-        geary # email reader
-        evince # document viewer
         # gnome-characters
-        totem # video player
         tali # poker game
         iagno # go game
         hitori # sudoku game
         atomix # puzzle game
-        yelp # Help view
         gnome-initial-setup
       ]);
 
     systemPackages = with pkgs; [
       nautilus-open-any-terminal
+      ## Apps
+      pomodoro
       ## System
-      gnome.gnome-tweaks
-      gnome.dconf-editor
+      gnome-tweaks
+      dconf-editor
       ## Extensions
       gnome-extension-manager
       ## Monitoring deps
@@ -57,7 +59,7 @@
       GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
 
       # See https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
-      __EGL_VENDOR_LIBRARY_FILENAMES = "${pkgs.mesa_drivers.outPath}/share/glvnd/egl_vendor.d/50_mesa.json";
+      __EGL_VENDOR_LIBRARY_FILENAMES = "${pkgs.mesa.drivers.outPath}/share/glvnd/egl_vendor.d/50_mesa.json";
       __GLX_VENDOR_LIBRARY_NAME = "mesa";
       VK_DRIVER_FILES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
     };

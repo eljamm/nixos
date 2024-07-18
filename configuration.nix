@@ -556,7 +556,6 @@
 
       # Productivity
       dstask
-      gnome.pomodoro
       planify
       tellico
 
