@@ -134,7 +134,10 @@ in
     enable = true;
     defaultEditor = true;
     package = pkgs.neovim-unwrapped;
-    plugins = with pkgs.vimPlugins; [ telescope-cheat-nvim ];
+    plugins = with pkgs.vimPlugins; [
+      neorg
+      telescope-cheat-nvim
+    ];
     inherit extraPackages;
   };
 
