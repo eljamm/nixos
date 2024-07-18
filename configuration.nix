@@ -81,15 +81,9 @@
           owner = "albertlauncher";
           repo = "albert";
           rev = "v${version}";
-          sha256 = "sha256-9vR6G/9FSy1mqZCo19Mf0RuvW63DbnhEzp/h0p6eXqs=";
+          hash = "sha256-9vR6G/9FSy1mqZCo19Mf0RuvW63DbnhEzp/h0p6eXqs=";
           fetchSubmodules = true;
         };
-        postPatch = ''
-          find -type f -name CMakeLists.txt -exec sed -i {} -e '/INSTALL_RPATH/d' \;
-
-          sed -i src/app/qtpluginprovider.cpp \
-            -e "/QStringList install_paths;/a    install_paths << QFileInfo(\"$out/lib\").canonicalFilePath();"
-        '';
       };
     })
 
