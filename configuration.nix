@@ -21,7 +21,7 @@
 
   nixpkgs.overlays = [
     # CCache
-    (self: super: {
+    (_: super: {
       ccacheWrapper = super.ccacheWrapper.override {
         extraConfig = ''
           export CCACHE_COMPRESS=1
@@ -48,10 +48,10 @@
     })
 
     # GNOME dynamic triple buffering
-    (final: prev: {
+    (_: prev: {
       gnome = prev.gnome.overrideScope (
-        gnomeFinal: gnomePrev: {
-          mutter = gnomePrev.mutter.overrideAttrs (old: {
+        _: gnomePrev: {
+          mutter = gnomePrev.mutter.overrideAttrs (_: {
             src = pkgs.fetchFromGitLab {
               domain = "gitlab.gnome.org";
               owner = "vanvugt";
@@ -74,7 +74,7 @@
     )
 
     # Albert
-    (final: prev: {
+    (_: prev: {
       albert = prev.albert.overrideAttrs rec {
         version = "0.24.3";
         src = prev.fetchFromGitHub {
@@ -88,8 +88,8 @@
     })
 
     # Gamescope
-    (final: prev: {
-      gamescope = prev.gamescope.overrideAttrs (old: rec {
+    (_: prev: {
+      gamescope = prev.gamescope.overrideAttrs (_: rec {
         version = "3.14.24";
         src = prev.fetchFromGitHub {
           owner = "ValveSoftware";
@@ -102,7 +102,7 @@
     })
 
     # AI
-    (final: prev: {
+    (_: prev: {
       llama-cpp =
         (prev.llama-cpp.overrideAttrs (finalAttrs: {
           version = "3260";
@@ -121,7 +121,7 @@
 
     # System overrides
     (
-      final: prev:
+      _: prev:
       let
         customSystem = inputs.nixpkgs-system.legacyPackages.${prev.system};
       in
@@ -132,7 +132,7 @@
     )
 
     # Logseq
-    (final: prev: {
+    (_: prev: {
       logseq = prev.logseq.overrideAttrs (old: rec {
         version = "0.10.9";
         src = pkgs.fetchurl {
@@ -152,7 +152,7 @@
     })
 
     # HACK: https://github.com/NixOS/nixpkgs/pull/327462
-    (final: prev: {
+    (_: prev: {
       ntk = prev.ntk.overrideAttrs {
         prePatch = ''
           rm waf
