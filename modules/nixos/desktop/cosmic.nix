@@ -1,10 +1,17 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 
 let
   cosmicEnabled = config.services.desktopManager.cosmic.enable;
 in
 
 {
+  imports = [ inputs.nixos-cosmic.nixosModules.default ];
+
   # COSMIC Desktop Environment
   services.desktopManager.cosmic.enable = lib.mkDefault false;
   services.displayManager.cosmic-greeter.enable = lib.mkDefault cosmicEnabled;

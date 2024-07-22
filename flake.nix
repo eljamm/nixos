@@ -82,7 +82,6 @@
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
             inputs.lix-module.nixosModules.default
-            inputs.nixos-cosmic.nixosModules.default
             inputs.self.nixosModules.default
             inputs.self.nixosModules.home-manager
             { nixpkgs.overlays = overlays; }
