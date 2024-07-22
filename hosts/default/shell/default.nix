@@ -31,6 +31,7 @@
     clr = "clear && history -c";
 
     # Files
+    l = "ls";
     la = "ls -A";
     ls = "eza -a --icons";
     lt = "eza -a --tree --level=2 --icons";
@@ -55,6 +56,7 @@
     duperm = "duperemove -dr -h --hashfile=dupe.hash";
 
     # Git
+    g = "git";
     vcs-submodule = "git submodule update --init --recursive";
 
     # Programs
@@ -62,5 +64,10 @@
     man = "batman";
     vim = "nvim";
     ze = "zellij";
+
+    # Nix
+    nb = "nh os build";
+    ns = "nh os switch";
+    nt = "nh os test";
   };
 }

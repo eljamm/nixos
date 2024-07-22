@@ -38,9 +38,14 @@ in
       aliases = {
         b = "branch";
         c = "clone";
-        ci = "commit";
+        cc = "commit";
         co = "checkout";
         d = "diff";
+        p = "push";
+        # Rebase from another branch
+        # - $1: first argument is the branch to rebase from (defaults to upstream)
+        # - $@: arbitrary number of arguments afterwards (e.g. `--force`)
+        rb = "!bash -c 'git pull --rebase \${1:-upstream} \"$(git rev-parse --abbrev-ref HEAD)\" \"$@\"'";
         s = "status";
       };
       extraConfig = {
