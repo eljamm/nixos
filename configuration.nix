@@ -314,21 +314,6 @@
     })
   ];
 
-  systemd.packages = [ pkgs.anki-sync-server ];
-
-  services.anki-sync-server = {
-    enable = true;
-    users = [
-      {
-        username = "kuroko";
-        passwordFile = /etc/anki-sync-server/kuroko;
-      }
-    ];
-    address = "0.0.0.0";
-    port = 27701;
-    openFirewall = true;
-  };
-
   services.xserver.wacom.enable = true;
 
   # This is using a rec (recursive) expression to set and access XDG_BIN_HOME within the expression
