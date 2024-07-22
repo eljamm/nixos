@@ -1,0 +1,4 @@
+{ ... }:
+{
+  imports = [ ./ccache.nix ];
+}
