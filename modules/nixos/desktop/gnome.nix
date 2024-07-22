@@ -68,4 +68,24 @@
   };
 
   programs.dconf.enable = true;
+
+  # GNOME dynamic triple buffering (huge performance improvement)
+  # See https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
+  nixpkgs.overlays = [
+    (_: prev: {
+      gnome = prev.gnome.overrideScope (
+        _: gnomePrev: {
+          mutter = gnomePrev.mutter.overrideAttrs (_: {
+            src = pkgs.fetchFromGitLab {
+              domain = "gitlab.gnome.org";
+              owner = "vanvugt";
+              repo = "mutter";
+              rev = "triple-buffering-v4-46";
+              hash = "sha256-fkPjB/5DPBX06t7yj0Rb3UEuu5b9mu3aS+jhH18+lpI=";
+            };
+          });
+        }
+      );
+    })
+  ];
 }

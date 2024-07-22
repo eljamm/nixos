@@ -1,17 +1,10 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  config,
-  pkgs,
-  inputs,
-  lib,
-  ...
-}:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules/nixos/services
   ];
@@ -19,23 +12,6 @@
   documentation.nixos.enable = false;
 
   nixpkgs.overlays = [
-    # GNOME dynamic triple buffering
-    (_: prev: {
-      gnome = prev.gnome.overrideScope (
-        _: gnomePrev: {
-          mutter = gnomePrev.mutter.overrideAttrs (_: {
-            src = pkgs.fetchFromGitLab {
-              domain = "gitlab.gnome.org";
-              owner = "vanvugt";
-              repo = "mutter";
-              rev = "triple-buffering-v4-46";
-              hash = "sha256-fkPjB/5DPBX06t7yj0Rb3UEuu5b9mu3aS+jhH18+lpI=";
-            };
-          });
-        }
-      );
-    })
-
     # fenix
     (
       _: super:
@@ -123,6 +99,7 @@
       });
     })
 
+    # TODO: update and remove
     # HACK: https://github.com/NixOS/nixpkgs/pull/327462
     (_: prev: {
       ntk = prev.ntk.overrideAttrs {
@@ -174,6 +151,10 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  # Disable gnome-tracker (high resource consumption)
+  services.gnome.tracker-miners.enable = false;
+  services.gnome.tracker.enable = false;
 
   # Configure keymap in X11
   services.xserver = {
@@ -609,9 +590,6 @@
     enable = true;
     package = pkgs.redlib;
   };
-
-  services.gnome.tracker-miners.enable = false;
-  services.gnome.tracker.enable = false;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
