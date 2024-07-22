@@ -1,4 +1,5 @@
 { lib, pkgs, ... }:
+
 let
   hostname = "192.168.1.120";
   currency = "KUDOS";
@@ -6,17 +7,21 @@ in
 
 {
   services.taler = {
-    enable = true;
     settings = {
       taler = {
         CURRENCY = currency;
       };
     };
-    includes = [ ./taler-accounts.conf ];
+    includes = [ ./conf/taler-accounts.conf ];
     exchange = {
-      enable = true;
+      enable = false;
       debug = true;
-      denominationConfig = lib.readFile ./taler-denominations.conf;
+      denominationConfig = lib.readFile ./conf/taler-denominations.conf;
+      enableAccounts = [
+        ./accounts/exchange.json
+        ./accounts/hello.json
+        ./accounts/user.json
+      ];
       settings = {
         exchange = {
           BASE_URL = "http://${hostname}:8081/";
@@ -29,7 +34,7 @@ in
   };
 
   services.libeufin.bank = {
-    enable = true;
+    enable = false;
     debug = true;
     settings = {
       libeufin-bank = {
