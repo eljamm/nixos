@@ -48,6 +48,7 @@ let
   markup = [
     cbfmt # format codeblocks
     codespell
+    nodePackages.cspell
     markdownlint-cli
     # TODO: mdformat plugins don't work outside of dev shells
     (mdformat.withPlugins (ps: [
@@ -134,8 +135,8 @@ in
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    package = pkgs.neovim-unwrapped;
-    plugins = with pkgs.vimPlugins; [
+    package = neovim-unwrapped;
+    plugins = with vimPlugins; [
       neorg
       telescope-cheat-nvim
     ];
