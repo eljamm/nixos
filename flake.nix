@@ -86,12 +86,7 @@
       };
 
       nixosModules = {
-        home-manager = {
-          imports = [
-            inputs.home-manager.nixosModules.home-manager
-            ./modules/nixos/home-manager.nix
-          ];
-        };
+        home-manager = ./modules/nixos/home-manager.nix;
         default = ./modules/nixos;
       };
     };

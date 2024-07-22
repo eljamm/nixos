@@ -1,6 +1,9 @@
 { inputs, ... }:
 
 {
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
+
+  # TODO: refactor
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
