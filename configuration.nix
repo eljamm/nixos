@@ -451,14 +451,6 @@
     magicOrExtension = ''\x7fELF....AI\x02'';
   };
 
-  # Enable flakes
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
