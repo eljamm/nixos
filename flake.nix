@@ -54,11 +54,6 @@
 
     catppuccin.url = "github:eljamm/catppuccin-nix/115118495b286313c4a94081eb8f179c3733add3";
 
-    nix-gaming = {
-      url = "github:fufexan/nix-gaming";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     umu = {
       url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";

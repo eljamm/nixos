@@ -203,24 +203,6 @@
         "type": "indirect"
       }
     },
-    "flake-parts_3": {
-      "inputs": {
-        "nixpkgs-lib": "nixpkgs-lib"
-      },
-      "locked": {
-        "lastModified": 1719994518,
-        "narHash": "sha256-pQMhCCHyQGRzdfAkdJ4cIWiw+JNuWsTX7f0ZYSyz0VY=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "9227223f6d922fee3c7b190b2cc238a99527bbb7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems_2"
@@ -521,27 +503,6 @@
         "type": "github"
       }
     },
-    "nix-gaming": {
-      "inputs": {
-        "flake-parts": "flake-parts_3",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1720920199,
-        "narHash": "sha256-0dNwRhtUVQha5S+NFeoeMXEt/6v0x56DCdyUk+vEFeY=",
-        "owner": "fufexan",
-        "repo": "nix-gaming",
-        "rev": "fce565402d5b1ed4e92c4a9dfcd094d0172d8f0b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fufexan",
-        "repo": "nix-gaming",
-        "type": "github"
-      }
-    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -618,18 +579,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-lib": {
-      "locked": {
-        "lastModified": 1719876945,
-        "narHash": "sha256-Fm2rDDs86sHy0/1jxTOKB1118Q0O3Uc7EC0iXvXKpbI=",
-        "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/5daf0514482af3f97abaefc78a6606365c9108e2.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/5daf0514482af3f97abaefc78a6606365c9108e2.tar.gz"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1720954236,
@@ -664,11 +613,10 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1721321512,
-        "narHash": "sha256-S48cX/98YX/vtM0Lm/N7NXUZsILjQAWZZVpQAWCqQgo=",
-        "ref": "refs/heads/current-system",
-        "rev": "5ee7575151bb3f8433d6cf2c49bba7dbc7a4073f",
-        "revCount": 654073,
+        "dirtyRev": "24adacf1cb87f189dae5e4830b8fcda50ed8f56e-dirty",
+        "dirtyShortRev": "24adacf1cb87-dirty",
+        "lastModified": 1721403785,
+        "narHash": "sha256-NjrpnlS4TP6DnZo4epyM3Cp3JXC7xcv6qhvFbXOekRk=",
         "type": "git",
         "url": "file:///home/kuroko/nixpkgs"
       },
@@ -687,7 +635,6 @@
         "musnix": "musnix",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-alien": "nix-alien",
-        "nix-gaming": "nix-gaming",
         "nix-index-database": "nix-index-database_2",
         "nixos-cosmic": "nixos-cosmic",
         "nixpkgs": "nixpkgs_2",
