@@ -12,7 +12,10 @@ let
 in
 
 {
-  imports = [ ./musnix.nix ];
+  imports = [
+    ./musnix.nix
+    ./pipewire.nix
+  ];
 
   # Music plugin paths
   # NOTE: musnix already enables these, so we don't set them if it's enabled
