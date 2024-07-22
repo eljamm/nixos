@@ -14,7 +14,6 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules/nixos/services
-    ./modules/nixos/virtualisation.nix
   ];
 
   documentation.nixos.enable = false;
