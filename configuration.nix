@@ -11,15 +11,24 @@
 
   documentation.nixos.enable = false;
 
+  # TODO: move this?
   nixpkgs.overlays = [
-    # fenix
+    # Things that are not in nixpkgs
+    # TODO: update
     (
-      _: super:
+      _: prev:
       let
-        pkgs = inputs.fenix.inputs.nixpkgs.legacyPackages.${super.system};
+        customSystem = inputs.nixpkgs-system.legacyPackages.${prev.system};
       in
-      inputs.fenix.overlays.default pkgs pkgs
+      {
+        inherit (customSystem) pgsrip vocabsieve;
+        obs-studio-plugins.obs-backgroundremoval = customSystem.obs-studio-plugins.obs-backgroundremoval;
+      }
     )
+
+    # ------
+    # Pinned
+    # ------
 
     # Albert
     (_: prev: {
@@ -53,17 +62,9 @@
           { cudaSupport = true; };
     })
 
-    # System overrides
-    (
-      _: prev:
-      let
-        customSystem = inputs.nixpkgs-system.legacyPackages.${prev.system};
-      in
-      {
-        inherit (customSystem) pgsrip ki vocabsieve;
-        obs-studio-plugins.obs-backgroundremoval = customSystem.obs-studio-plugins.obs-backgroundremoval;
-      }
-    )
+    # ------
+    # Fixups
+    # ------
 
     # Logseq
     (_: prev: {
@@ -85,8 +86,8 @@
       });
     })
 
-    # TODO: update and remove
     # HACK: https://github.com/NixOS/nixpkgs/pull/327462
+    # TODO: update and remove
     (_: prev: {
       ntk = prev.ntk.overrideAttrs {
         prePatch = ''
@@ -185,6 +186,7 @@
       "networkmanager"
       "wheel"
     ];
+    # TODO: categorize?
     packages = with pkgs; [
       # Internet
       birdtray
@@ -374,6 +376,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # TODO: categorize?
   environment.systemPackages =
     (with pkgs; [
       # Internet
@@ -505,11 +508,6 @@
   };
 
   programs.firejail.enable = true;
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
 
   programs.adb.enable = true;
 

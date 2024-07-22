@@ -61,7 +61,10 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      overlays = [ inputs.nix-alien.overlays.default ];
+      overlays = [
+        inputs.fenix.overlays.default
+        inputs.nix-alien.overlays.default
+      ];
     in
     {
       nixosConfigurations = {
