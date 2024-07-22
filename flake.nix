@@ -87,26 +87,16 @@
             inputs.nixos-cosmic.nixosModules.default
             inputs.self.nixosModules.default
             inputs.self.nixosModules.home-manager
-            inputs.self.nixosModules.spicetify
             { nixpkgs.overlays = overlays; }
           ];
         };
       };
 
       nixosModules = {
-        nixIndex = {
-          imports = [ ./modules/nixos/nixIndex.nix ];
-        };
         home-manager = {
           imports = [
             inputs.home-manager.nixosModules.home-manager
             ./modules/nixos/home-manager.nix
-          ];
-        };
-        spicetify = {
-          imports = [
-            inputs.spicetify-nix.nixosModules.default
-            ./modules/nixos/spicetify.nix
           ];
         };
         default = ./modules/nixos;
