@@ -5,11 +5,7 @@
 
   programs = {
     nix-index-database.comma.enable = true;
-    command-not-found.enable = true;
-    nix-index = {
-      enable = true;
-      enableBashIntegration = false;
-      enableZshIntegration = false;
-    };
+    command-not-found.enable = false;
+    nix-index.enable = true;
   };
 }
