@@ -20,33 +20,6 @@
   documentation.nixos.enable = false;
 
   nixpkgs.overlays = [
-    # CCache
-    (_: super: {
-      ccacheWrapper = super.ccacheWrapper.override {
-        extraConfig = ''
-          export CCACHE_COMPRESS=1
-          export CCACHE_DIR="${config.programs.ccache.cacheDir}"
-          export CCACHE_UMASK=007
-          if [ ! -d "$CCACHE_DIR" ]; then
-            echo "====="
-            echo "Directory '$CCACHE_DIR' does not exist"
-            echo "Please create it with:"
-            echo "  sudo mkdir -m0770 '$CCACHE_DIR'"
-            echo "  sudo chown root:nixbld '$CCACHE_DIR'"
-            echo "====="
-            exit 1
-          fi
-          if [ ! -w "$CCACHE_DIR" ]; then
-            echo "====="
-            echo "Directory '$CCACHE_DIR' is not accessible for user $(whoami)"
-            echo "Please verify its access permissions"
-            echo "====="
-            exit 1
-          fi
-        '';
-      };
-    })
-
     # GNOME dynamic triple buffering
     (_: prev: {
       gnome = prev.gnome.overrideScope (
@@ -161,9 +134,6 @@
     })
   ];
 
-  # CCache
-  nix.settings.extra-sandbox-paths = [ config.programs.ccache.cacheDir ];
-
   # Bootloader.
   # boot.loader.grub.enable = true;
   # boot.loader.grub.device = "/dev/vda";
@@ -205,10 +175,6 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-
-  # Enable the COSMIC Desktop Environment.
-  services.displayManager.cosmic-greeter.enable = false;
-  services.desktopManager.cosmic.enable = false;
 
   # Configure keymap in X11
   services.xserver = {
@@ -721,12 +687,6 @@
 
   services.gnome.tracker-miners.enable = false;
   services.gnome.tracker.enable = false;
-
-  # Storage Optimization
-  nix.optimise.automatic = true;
-
-  # Incremental Builds
-  programs.ccache.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

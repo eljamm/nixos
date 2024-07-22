@@ -58,6 +58,7 @@
       # Needed for some extensions to function correctly
       GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
 
+      # Use integrated GPU for gnome-shell
       # See https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
       __EGL_VENDOR_LIBRARY_FILENAMES = "${pkgs.mesa.drivers.outPath}/share/glvnd/egl_vendor.d/50_mesa.json";
       __GLX_VENDOR_LIBRARY_NAME = "mesa";

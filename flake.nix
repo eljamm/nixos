@@ -90,8 +90,7 @@
             inputs.lix-module.nixosModules.default
             inputs.musnix.nixosModules.musnix
             inputs.nixos-cosmic.nixosModules.default
-            inputs.self.nixosModules.caches
-            inputs.self.nixosModules.gnome
+            inputs.self.nixosModules.default
             inputs.self.nixosModules.home-manager
             inputs.self.nixosModules.nixIndex
             inputs.self.nixosModules.spicetify
@@ -119,8 +118,7 @@
             ./modules/nixos/spicetify.nix
           ];
         };
-        gnome = ./modules/nixos/gnome.nix;
-        caches = ./modules/nixos/caches.nix;
+        default = ./modules/nixos;
       };
     };
 }
