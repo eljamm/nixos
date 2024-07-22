@@ -1,4 +1,7 @@
 { ... }:
 {
-  imports = [ ./ccache.nix ];
+  imports = [
+    ./ccache.nix
+    ./nixIndex.nix
+  ];
 }
