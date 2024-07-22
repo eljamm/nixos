@@ -437,28 +437,9 @@
     PATH = [ "${XDG_BIN_HOME}" ];
   };
 
-  environment.variables =
-    let
-      makePluginPath =
-        format:
-        (lib.makeSearchPath format [
-          "$HOME/.nix-profile/lib"
-          "/run/current-system/sw/lib"
-          "/etc/profiles/per-user/$USER/lib"
-        ])
-        + ":$HOME/.${format}";
-    in
-    {
-      QT_QPA_PLATFORM = "xcb"; # Force X11 for QT apps
-
-      # Music plugin paths
-      DSSI_PATH = makePluginPath "dssi";
-      LADSPA_PATH = makePluginPath "ladspa";
-      LV2_PATH = makePluginPath "lv2";
-      LXVST_PATH = makePluginPath "lxvst";
-      VST_PATH = makePluginPath "vst";
-      VST3_PATH = makePluginPath "vst3";
-    };
+  environment.variables = {
+    QT_QPA_PLATFORM = "xcb"; # Force X11 for QT apps
+  };
 
   # Register AppImage files as a binary type
   boot.binfmt.registrations.appimage = {
