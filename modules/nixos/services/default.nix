@@ -1,4 +1,7 @@
 { ... }:
 {
-  imports = [ ./mumble.nix ];
+  imports = [
+    ./keyd.nix
+    ./mumble.nix
+  ];
 }

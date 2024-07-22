@@ -207,53 +207,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  services.keyd = {
-    enable = true;
-    keyboards = {
-      default = {
-        ids = [ "*" ];
-        settings = {
-          main = {
-            # Remap caps to `escape`
-            capslock = "esc";
-
-            # Newline on enter
-            insert = "S-insert";
-          };
-          altgr = {
-            capslock = "backspace";
-
-            # Vim
-            k = "up";
-            l = "right";
-            j = "down";
-            h = "left";
-            x = "C-w"; # close
-
-            # Screenshot
-            i = "sysrq";
-          };
-          "altgr+shift" = {
-            j = "pagedown";
-            k = "pageup";
-
-            # Media keys
-            a = "previoussong";
-            d = "nextsong";
-
-            e = "volumeup";
-            q = "volumedown";
-
-            m = "mute";
-            s = "playpause";
-
-            f = "rfkill";
-          };
-        };
-      };
-    };
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kuroko = {
     isNormalUser = true;
