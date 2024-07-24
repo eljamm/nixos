@@ -19,3 +19,6 @@ bind \ef forward-word
 
 bind -M insert \eb backward-word
 bind \eb backward-word
+
+# Starship integration with fish (necessary for async prompt)
+starship init fish | source
