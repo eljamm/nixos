@@ -7,95 +7,10 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/nixos/services
+    ./overlays
   ];
 
   documentation.nixos.enable = false;
-
-  # TODO: move this?
-  nixpkgs.overlays = [
-    # Things that are not in nixpkgs
-    # TODO: update
-    (
-      _: prev:
-      let
-        customSystem = inputs.nixpkgs-system.legacyPackages.${prev.system};
-      in
-      {
-        inherit (customSystem) pgsrip vocabsieve;
-        obs-studio-plugins.obs-backgroundremoval = customSystem.obs-studio-plugins.obs-backgroundremoval;
-      }
-    )
-
-    # ------
-    # Pinned
-    # ------
-
-    # Albert
-    (_: prev: {
-      albert = prev.albert.overrideAttrs rec {
-        version = "0.24.3";
-        src = prev.fetchFromGitHub {
-          owner = "albertlauncher";
-          repo = "albert";
-          rev = "v${version}";
-          hash = "sha256-9vR6G/9FSy1mqZCo19Mf0RuvW63DbnhEzp/h0p6eXqs=";
-          fetchSubmodules = true;
-        };
-      };
-    })
-
-    # AI
-    (_: prev: {
-      llama-cpp =
-        (prev.llama-cpp.overrideAttrs (finalAttrs: {
-          version = "3260";
-          owner = "ggerganov";
-          repo = "llama.cpp";
-          rev = "refs/tags/b${finalAttrs.version}";
-          hash = "sha256-0KVwSzxfGinpv5KkDCgF2J+1ijDv87PlDrC+ldscP6s=";
-          leaveDotGit = true;
-          postFetch = ''
-            git -C "$out" rev-parse --short HEAD > $out/COMMIT
-            find "$out" -name .git -print0 | xargs -0 rm -rf
-          '';
-        })).override
-          { cudaSupport = true; };
-    })
-
-    # ------
-    # Fixups
-    # ------
-
-    # Logseq
-    (_: prev: {
-      logseq = prev.logseq.overrideAttrs (old: rec {
-        version = "0.10.9";
-        src = pkgs.fetchurl {
-          url = "https://github.com/logseq/logseq/releases/download/${version}/logseq-linux-x64-${version}.AppImage";
-          hash = "sha256-XROuY2RlKnGvK1VNvzauHuLJiveXVKrIYPppoz8fCmc=";
-          name = "${old.pname}-${version}.AppImage";
-        };
-        postFixup = ''
-          # set the env "LOCAL_GIT_DIRECTORY" for dugite so that we can use the git in nixpkgs
-          makeWrapper ${prev.electron}/bin/electron $out/bin/${old.pname} \
-            --set "LOCAL_GIT_DIRECTORY" ${prev.git} \
-            --add-flags $out/share/${old.pname}/resources/app \
-            --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}" \
-            --prefix LD_LIBRARY_PATH : "${prev.lib.makeLibraryPath [ prev.stdenv.cc.cc.lib ]}"
-        '';
-      });
-    })
-
-    # HACK: https://github.com/NixOS/nixpkgs/pull/327462
-    # TODO: update and remove
-    (_: prev: {
-      ntk = prev.ntk.overrideAttrs {
-        prePatch = ''
-          rm waf
-        '';
-      };
-    })
-  ];
 
   # Bootloader.
   # boot.loader.grub.enable = true;
