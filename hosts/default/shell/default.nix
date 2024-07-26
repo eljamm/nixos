@@ -62,7 +62,9 @@
     # Programs
     lg = "lazygit";
     man = "batman";
-    vim = "nvim";
+    nv = "nvim";
+    tk = "task";
+    tt = "taskwarrior-tui";
     ze = "zellij";
 
     # Nix
