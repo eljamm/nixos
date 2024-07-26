@@ -74,6 +74,8 @@
       ];
     in
     {
+      formatter.x86_64-linux = pkgs.nixfmt-rfc-style;
+
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           specialArgs = {
