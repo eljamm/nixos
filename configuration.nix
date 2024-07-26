@@ -210,8 +210,8 @@
       mat2
       nvitop
       pdfid
-      pgsrip
-      vocabsieve
+      custom.pgsrip
+      custom.vocabsieve
       yt-dlp
     ];
   };

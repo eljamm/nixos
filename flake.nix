@@ -65,6 +65,13 @@
       overlays = [
         inputs.fenix.overlays.default
         inputs.nix-alien.overlays.default
+        (final: prev: {
+          # TODO: update
+          custom = import inputs.nixpkgs-system {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        })
       ];
     in
     {
