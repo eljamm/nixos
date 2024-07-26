@@ -21,8 +21,7 @@
       });
     })
 
-    # HACK: https://github.com/NixOS/nixpkgs/pull/327462
-    # TODO: update and remove
+    # TODO: update & remove (#327462)
     (_: prev: {
       ntk = prev.ntk.overrideAttrs {
         prePatch = ''
