@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   nix = {
@@ -26,5 +26,18 @@
 
       warn-dirty = false; # NOTE: I do not care.
     };
+
   };
+
+  # https://wiki.nixos.org/wiki/Flakes#Getting_Instant_System_Flakes_Repl
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  environment.systemPackages =
+    let
+      repl_path = toString ../../.;
+      flake-repl = pkgs.writeShellScriptBin "flake-repl" ''
+        source /etc/set-environment
+        nix repl "${repl_path}/repl.nix" "$@"
+      '';
+    in
+    [ flake-repl ];
 }
