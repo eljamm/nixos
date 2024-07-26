@@ -1,8 +1,4 @@
-{ pkgs, inputs, ... }:
-
-let
-  customSystem = inputs.nixpkgs-system.legacyPackages.${pkgs.system};
-in
+{ pkgs, ... }:
 
 {
   programs = {
@@ -60,7 +56,7 @@ in
 
     obs-studio = {
       enable = true;
-      plugins = with customSystem.obs-studio-plugins; [
+      plugins = with pkgs.custom.obs-studio-plugins; [
         obs-backgroundremoval
         obs-pipewire-audio-capture
         obs-vkcapture
