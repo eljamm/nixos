@@ -1,0 +1,36 @@
+{ pkgs, lib, ... }:
+
+{
+  nixpkgs.overlays = [
+    (_: prev: {
+      albert = prev.albert.overrideAttrs rec {
+        version = "0.24.3";
+        src = prev.fetchFromGitHub {
+          owner = "albertlauncher";
+          repo = "albert";
+          rev = "v${version}";
+          hash = "sha256-9vR6G/9FSy1mqZCo19Mf0RuvW63DbnhEzp/h0p6eXqs=";
+          fetchSubmodules = true;
+        };
+      };
+    })
+
+    # AI
+    (_: prev: {
+      llama-cpp =
+        (prev.llama-cpp.overrideAttrs (finalAttrs: {
+          version = "3260";
+          owner = "ggerganov";
+          repo = "llama.cpp";
+          rev = "refs/tags/b${finalAttrs.version}";
+          hash = "sha256-0KVwSzxfGinpv5KkDCgF2J+1ijDv87PlDrC+ldscP6s=";
+          leaveDotGit = true;
+          postFetch = ''
+            git -C "$out" rev-parse --short HEAD > $out/COMMIT
+            find "$out" -name .git -print0 | xargs -0 rm -rf
+          '';
+        })).override
+          { cudaSupport = true; };
+    })
+  ];
+}
