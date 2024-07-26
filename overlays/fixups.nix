@@ -3,18 +3,18 @@
 {
   nixpkgs.overlays = [
     (_: prev: {
-      logseq = prev.logseq.overrideAttrs (old: rec {
+      logseq = prev.logseq.overrideAttrs (finalAttrs: rec {
         version = "0.10.9";
         src = pkgs.fetchurl {
           url = "https://github.com/logseq/logseq/releases/download/${version}/logseq-linux-x64-${version}.AppImage";
           hash = "sha256-XROuY2RlKnGvK1VNvzauHuLJiveXVKrIYPppoz8fCmc=";
-          name = "${old.pname}-${version}.AppImage";
+          name = "${finalAttrs.pname}-${version}.AppImage";
         };
         postFixup = ''
               # set the env "LOCAL_GIT_DIRECTORY" for dugite so that we can use the git in nixpkgs
-          makeWrapper ${prev.electron}/bin/electron $out/bin/${old.pname} \
+          makeWrapper ${prev.electron}/bin/electron $out/bin/${finalAttrs.pname} \
               --set "LOCAL_GIT_DIRECTORY" ${prev.git} \
-              --add-flags $out/share/${old.pname}/resources/app \
+              --add-flags $out/share/${finalAttrs.pname}/resources/app \
                   --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}" \
                   --prefix LD_LIBRARY_PATH : "${prev.lib.makeLibraryPath [ prev.stdenv.cc.cc.lib ]}"
         '';
