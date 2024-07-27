@@ -1,8 +1,4 @@
-{ pkgs, lib, ... }:
-with builtins;
-let
-  initFile = readFile (./init.sh);
-in
+{ lib, ... }:
 
 {
   programs.bash = {
@@ -11,6 +7,10 @@ in
       VIRTUALENVWRAPPER_PYTHON = "python3";
     };
 
-    initExtra = initFile;
+    initExtra = lib.readFile ./init.sh;
+
+    shellAliases = {
+      clr = "clear && history -c";
+    };
   };
 }
