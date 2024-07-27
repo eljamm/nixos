@@ -1,19 +1,17 @@
-{ pkgs, ... }:
-with builtins;
-let
-  initFile = readFile (./init.fish);
-in
+{ pkgs, lib, ... }:
 
 {
-
   programs.fish = {
     enable = true;
-    shellInit = initFile;
+    shellInit = lib.readFile ./init.fish;
     functions = {
       ns = "nh search $argv | $PAGER";
       nxs = "nix search nixpkgs $argv";
       nxss = "nix search nixpkgs#$argv";
       nxsu = "nix search github:NixOS/nixpkgs/nixos-unstable $argv";
+    };
+    shellAliases = {
+      clr = "clear";
     };
     plugins = [
       {
@@ -32,15 +30,15 @@ in
     ];
   };
 
-  # For fzf.fish
+  # for `fzf.fish`
   programs.bat = {
     enable = true;
+    catppuccin.enable = true;
     extraPackages = with pkgs.bat-extras; [
       batdiff
       batman
       batgrep
       batwatch
     ];
-    catppuccin.enable = true;
   };
 }

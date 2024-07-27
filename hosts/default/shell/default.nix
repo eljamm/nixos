@@ -27,16 +27,13 @@
   };
 
   home.shellAliases = {
-    # Essentials
-    clr = "clear && history -c";
-
     # Files
-    l = "ls";
+    l = "ll";
     la = "ls -A";
-    ls = "eza -a --icons";
-    lt = "eza -a --tree --level=2 --icons";
     ll = "eza -a -l --icons";
     llt = "eza -a -l --tree --level=2 --icons";
+    ls = "eza -a --icons";
+    lt = "eza -a --tree --level=2 --icons";
 
     # Utils
     mklist = "ls -I list.txt > list.txt";
@@ -44,12 +41,12 @@
 
     # Media
     mplv = "mpv --profile=480p";
-    yts = "ytm -s";
-    ytso = "ytm -so";
-    ytv = "ytm -v";
     yti = "yt-dlp -F";
     ytps = "ytm -ps";
     ytpv = "ytm -p";
+    yts = "ytm -s";
+    ytso = "ytm -so";
+    ytv = "ytm -v";
     ytvl = "ytm -v -f '\''bv[height<=480][vcodec~=vp9]+ba[acodec~=opus][abr<=96]/bv[height<=480][vcodec~=vp9]+ba[acodec~=opus]'\''";
 
     # Tools
@@ -60,15 +57,17 @@
     vcs-submodule = "git submodule update --init --recursive";
 
     # Programs
+    k = "task";
     lg = "lazygit";
     man = "batman";
     nv = "nvim";
-    tk = "task";
-    tt = "taskwarrior-tui";
+    tk = "taskwarrior-tui";
+    y = "yazi";
     ze = "zellij";
 
     # Nix
     nb = "nh os build";
+    nbt = "nh os boot";
     ns = "nh os switch";
     nt = "nh os test";
   };
