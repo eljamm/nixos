@@ -1,16 +1,15 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
+
 let
   variant = "Macchiato";
   accent = "Blue";
   kvantumThemePackage = pkgs.catppuccin-kvantum.override { inherit variant accent; };
 in
+
 {
   catppuccin.flavor = "macchiato";
 
-  home.packages = with pkgs; [
-    papirus-folders
-    libsForQt5.qt5ct
-  ];
+  home.packages = with pkgs; [ libsForQt5.qt5ct ];
 
   qt = {
     enable = true;
