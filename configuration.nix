@@ -302,6 +302,7 @@
       dstask
       planify
       tellico
+      termdown
 
       # Security
       bubblewrap
@@ -327,6 +328,7 @@
 
       # Utils
       bleachbit
+      blueman
       cheat
       gpick # X11
       gpu-viewer
