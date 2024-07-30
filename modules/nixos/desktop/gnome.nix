@@ -52,6 +52,7 @@
       clutter
       libgtop
       cogl
+      wirelesstools # improves performance
     ];
 
     variables = {
