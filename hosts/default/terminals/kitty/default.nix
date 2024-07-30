@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.kitty = {
     enable = true;
-    extraConfig = builtins.readFile ./kitty.conf;
+    extraConfig = lib.readFile ./kitty.conf;
     catppuccin.enable = true;
   };
 }
