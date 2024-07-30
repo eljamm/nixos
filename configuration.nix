@@ -355,6 +355,7 @@
       nix-init
       nix-output-monitor
       nix-tree
+      nixd
       nixpkgs-review
 
       # System
