@@ -71,6 +71,7 @@
       # };
     };
 
+    # TODO: is this useful anymore?
     easyeffects.enable = true;
 
     activitywatch = {
