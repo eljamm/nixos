@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 with pkgs;
 let
   tools = [
@@ -58,6 +59,7 @@ let
       ps.mdformat-toc
     ]))
     typst-lsp
+    plantuml
   ];
 
   nix = [
@@ -67,7 +69,7 @@ let
     nil
     nixd
     nixfmt-rfc-style
-    nixpkgs-fmt
+    nixpkgs-lint-community
     statix
   ];
 
