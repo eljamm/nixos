@@ -5,6 +5,9 @@
     enable = true;
     shellInit = lib.readFile ./init.fish;
     functions = {
+      mc = "mkdir $argv[1] && cd $argv[1]";
+
+      # Nix
       ns = "nh search $argv | $PAGER";
       nxs = "nix search nixpkgs $argv";
       nxss = "nix search nixpkgs#$argv";
