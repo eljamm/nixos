@@ -34,10 +34,10 @@
   environment.systemPackages =
     let
       repl_path = toString ../../.;
-      flake-repl = pkgs.writeShellScriptBin "flake-repl" ''
+      fast-repl = pkgs.writeShellScriptBin "fast-repl" ''
         source /etc/set-environment
-        nix repl "${repl_path}/repl.nix" "$@"
+        nix repl --file "${repl_path}/repl.nix" "$@"
       '';
     in
-    [ flake-repl ];
+    [ fast-repl ];
 }
