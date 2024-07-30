@@ -83,18 +83,25 @@
           };
           modules = [
             ./configuration.nix
+            ./modules/nixos/home-manager.nix
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
             inputs.lix-module.nixosModules.default
             inputs.self.nixosModules.default
-            inputs.self.nixosModules.home-manager
             { nixpkgs.overlays = overlays; }
           ];
         };
       };
 
+      homeConfigurations.kuroko = inputs.home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ../../hosts/default/home.nix ];
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+      };
+
       nixosModules = {
-        home-manager = ./modules/nixos/home-manager.nix;
         default = ./modules/nixos;
       };
     };
