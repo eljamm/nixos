@@ -13,6 +13,20 @@ with lib.hm.gvariant;
     gnomeExtensions.user-themes
     gnomeExtensions.vertical-workspaces
     gnomeExtensions.vitals
+    #WIP: figure out how to install latest
+    # (
+    #   let
+    #     sha256 = "sha256-zzfQ33r/R5Z/82qt2il+Eqj9KPuap31aae1TI0LEcuI=";
+    #   in
+    #   (gnomeExtensions.astra-monitor.overrideAttrs {
+    #     src = fetchzip {
+    #       url = "https://github.com/AstraExt/astra-monitor/archive/4bd51b701fed01fdfdf21d892bc052e9bf1bcf23.zip";
+    #       inherit sha256;
+    #       stripRoot = false;
+    #     };
+    #   }).override
+    #     { inherit sha256; }
+    # )
   ];
 
   dconf.settings = {
@@ -34,9 +48,10 @@ with lib.hm.gvariant;
         "memento-mori@paveloom"
         "pop-shell@system76.com"
         "space-bar@luchrioh"
-        "tophat@fflewddur.github.io"
+        # "tophat@fflewddur.github.io"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "vertical-workspaces@G-dH.github.com"
+        "monitor@astraext.github.io"
       ];
 
       favorite-apps = [
