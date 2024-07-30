@@ -19,18 +19,18 @@
     # llama-cpp
     (_: prev: {
       llama-cpp =
-        (prev.llama-cpp.overrideAttrs (finalAttrs: {
-          version = "3260";
-          owner = "ggerganov";
-          repo = "llama.cpp";
-          rev = "refs/tags/b${finalAttrs.version}";
-          hash = "sha256-0KVwSzxfGinpv5KkDCgF2J+1ijDv87PlDrC+ldscP6s=";
-          leaveDotGit = true;
-          postFetch = ''
-            git -C "$out" rev-parse --short HEAD > $out/COMMIT
-            find "$out" -name .git -print0 | xargs -0 rm -rf
-          '';
-        })).override
+        (prev.llama-cpp.overrideAttrs (
+          finalAttrs: _: {
+            src = {
+              version = "3403";
+              owner = "ggerganov";
+              repo = "llama.cpp";
+              rev = "refs/tags/b${finalAttrs.version}";
+              hash = "sha256-0KVwSzxfGinpv5KkDCgF2J+1ijDv87PlDrC+ldscP6s=";
+              leaveDotGit = true;
+            };
+          }
+        )).override
           { cudaSupport = true; };
     })
   ];
