@@ -20,5 +20,6 @@ bind \ef forward-word
 bind -M insert \eb backward-word
 bind \eb backward-word
 
+# TODO: remove when `starship.enableInteractive` is merged
 # Starship integration with fish (necessary for async prompt)
 starship init fish | source

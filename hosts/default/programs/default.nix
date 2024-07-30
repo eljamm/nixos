@@ -75,7 +75,11 @@
       catppuccin.enable = true;
     };
 
-    starship.enable = true;
+    starship = {
+      enable = true;
+      # enableInteractive = false; # TODO:
+    };
+
     fzf = {
       enable = true;
       catppuccin.enable = true;
