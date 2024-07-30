@@ -17,11 +17,7 @@ in
       enable = false;
       debug = true;
       denominationConfig = lib.readFile ./conf/taler-denominations.conf;
-      enableAccounts = [
-        ./accounts/exchange.json
-        ./accounts/hello.json
-        ./accounts/user.json
-      ];
+      enableAccounts = [ ./accounts/exchange.json ];
       settings = {
         exchange = {
           BASE_URL = "http://${hostname}:8081/";
@@ -39,10 +35,11 @@ in
     settings = {
       libeufin-bank = {
         BIND_TO = hostname;
+        CURRENCY = currency;
         PORT = 8082;
-        SUGGESTED_WITHDRAWAL_EXCHANGE = "http://${hostname}:8081";
-        WIRE_TYPE = "iban";
-        IBAN_PAYTO_BIC = "SANDBOXX";
+        # SUGGESTED_WITHDRAWAL_EXCHANGE = "http://${hostname}:8081/";
+        WIRE_TYPE = "x-taler-bank";
+        X_TALER_BANK_PAYTO_HOSTNAME = "http://192.168.1.120:8082/";
         DEFAULT_CUSTOMER_DEBT_LIMIT = "${currency}:200";
         DEFAULT_ADMIN_DEBT_LIMIT = "${currency}:2000";
         ALLOW_REGISTRATION = "yes";
