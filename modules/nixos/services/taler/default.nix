@@ -2,19 +2,19 @@
 
 let
   hostname = "192.168.1.120";
-  currency = "KUDOS";
+  CURRENCY = "KUDOS";
 in
 
 {
   services.taler = {
     settings = {
       taler = {
-        CURRENCY = currency;
+        inherit CURRENCY;
       };
     };
     includes = [ ./conf/taler-accounts.conf ];
     exchange = {
-      enable = false;
+      enable = true;
       debug = true;
       denominationConfig = lib.readFile ./conf/taler-denominations.conf;
       enableAccounts = [ ./accounts/exchange.json ];
@@ -30,22 +30,48 @@ in
   };
 
   services.libeufin.bank = {
-    enable = false;
+    enable = true;
     debug = true;
     settings = {
       libeufin-bank = {
         BIND_TO = hostname;
-        CURRENCY = currency;
+        inherit CURRENCY;
         PORT = 8082;
         # SUGGESTED_WITHDRAWAL_EXCHANGE = "http://${hostname}:8081/";
         WIRE_TYPE = "x-taler-bank";
-        X_TALER_BANK_PAYTO_HOSTNAME = "http://192.168.1.120:8082/";
-        DEFAULT_CUSTOMER_DEBT_LIMIT = "${currency}:200";
-        DEFAULT_ADMIN_DEBT_LIMIT = "${currency}:2000";
+        X_TALER_BANK_PAYTO_HOSTNAME = "http://${hostname}:8082/";
+        DEFAULT_CUSTOMER_DEBT_LIMIT = "${CURRENCY}:200";
+        DEFAULT_ADMIN_DEBT_LIMIT = "${CURRENCY}:2000";
         ALLOW_REGISTRATION = "yes";
         REGISTRATION_BONUS_ENABLED = "yes";
-        REGISTRATION_BONUS = "${currency}:100";
+        REGISTRATION_BONUS = "${CURRENCY}:100";
       };
     };
   };
+
+  services.libeufin.nexus = {
+    enable = true;
+    debug = true;
+    settings = {
+      nexus-ebics = {
+        CURRENCY = "CHF";
+
+        # Bank
+        HOST_BASE_URL = "https://ebics.postfinance.ch/ebics/ebics.aspx";
+        BANK_DIALECT = "postfinance";
+
+        # EBICS IDs
+        HOST_ID = "PFEBICS";
+        USER_ID = "PFC00563";
+        PARTNER_ID = "PFC00563";
+
+        # Account information
+        IBAN = "CH7789144474425692816";
+        BIC = "POFICHBEXXX";
+        NAME = "John Smith S.A.";
+      };
+      libeufin-nexusdb-postgres.CONFIG = "postgresql:///libeufin-nexus";
+    };
+  };
+
 }
