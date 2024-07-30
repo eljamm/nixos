@@ -33,28 +33,5 @@
         })).override
           { cudaSupport = true; };
     })
-
-    # TODO: freetube (#330099)
-    (_: prev: {
-      freetube = prev.freetube.overrideAttrs rec {
-        pname = "freetube";
-        version = "0.21.2";
-        src = prev.fetchurl {
-          url = "https://github.com/FreeTubeApp/FreeTube/releases/download/v${version}-beta/freetube_${version}_amd64.AppImage";
-          hash = "sha256-Mk8qHDiUs2Nd8APMR8q1wZhTtxyzRhBAeXew9ogC3nk=";
-        };
-        appimageContents = prev.appimageTools.extractType2 { inherit pname version src; };
-        installPhase = ''
-          runHook preInstall
-          mkdir -p $out/bin $out/share/${pname} $out/share/applications $out/share/icons/hicolor/scalable/apps
-          cp -a ${appimageContents}/{locales,resources} $out/share/${pname}
-          cp -a ${appimageContents}/freetube.desktop $out/share/applications/${pname}.desktop
-          cp -a ${appimageContents}/usr/share/icons/hicolor/scalable/freetube.svg $out/share/icons/hicolor/scalable/apps
-          substituteInPlace $out/share/applications/${pname}.desktop \
-            --replace 'Exec=AppRun' 'Exec=${pname}'
-          runHook postInstall
-        '';
-      };
-    })
   ];
 }
