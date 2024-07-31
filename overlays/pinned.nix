@@ -21,13 +21,17 @@
       llama-cpp =
         (prev.llama-cpp.overrideAttrs (
           finalAttrs: _: {
-            src = {
-              version = "3403";
+            version = "3403";
+            src = prev.fetchFromGitHub {
               owner = "ggerganov";
               repo = "llama.cpp";
               rev = "refs/tags/b${finalAttrs.version}";
-              hash = "sha256-0KVwSzxfGinpv5KkDCgF2J+1ijDv87PlDrC+ldscP6s=";
+              hash = "sha256-+WWJyEt04ZUC/vh9ZReLek851iOZJYoGc49XJyRPkVE=";
               leaveDotGit = true;
+              postFetch = ''
+                git -C "$out" rev-parse --short HEAD > $out/COMMIT
+                find "$out" -name .git -print0 | xargs -0 rm -rf
+              '';
             };
           }
         )).override
