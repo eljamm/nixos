@@ -133,7 +133,7 @@
       infamousPlugins
       linvstmanager
       lmms
-      lsp-plugins
+      # lsp-plugins # TODO: currently breaks
       vital
       yabridge
       yabridgectl
@@ -436,7 +436,7 @@
     #settings.PermitRootLogin = "yes";
   };
 
-  services.libreddit = {
+  services.redlib = {
     enable = true;
     package = pkgs.redlib;
   };
