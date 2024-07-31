@@ -72,7 +72,7 @@
     };
 
     # TODO: is this useful anymore?
-    easyeffects.enable = true;
+    easyeffects.enable = false;
 
     activitywatch = {
       enable = false;
