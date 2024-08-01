@@ -1,11 +1,16 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
+
+let
+  inherit (inputs.umu.packages.${pkgs.system}) umu;
+in
 
 {
   programs = {
     steam = {
       enable = true;
-      remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
-      dedicatedServer.openFirewall = false; # Open ports in the firewall for Source Dedicated Server
+      # Open ports in the firewall
+      remotePlay.openFirewall = false; # Steam Remote Play
+      dedicatedServer.openFirewall = false; # Source Dedicated Server
     };
 
     gamemode = {
@@ -23,6 +28,29 @@
 
     gamescope.enable = true;
   };
+
+  users.users.kuroko.packages =
+    (with pkgs; [
+      # Utils
+      cubiomes-viewer
+      goverlay
+      libstrangle
+      wineWowPackages.staging
+      winetricks
+
+      # Launchers
+      bottles
+      heroic
+      lutris
+      prismlauncher
+      ryujinx
+
+      # Games
+      mgba
+      osu-lazer-bin
+      vbam
+    ])
+    ++ [ umu ];
 
   nixpkgs.overlays = [
     # Gamescope

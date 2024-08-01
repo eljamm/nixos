@@ -152,13 +152,6 @@
       rnote
       waifu2x-converter-cpp
 
-      # Games
-      osu-lazer-bin
-      prismlauncher
-      ryujinx
-      mgba
-      vbam
-
       # Education
       anki-bin
       anki-sync-server
@@ -187,17 +180,6 @@
       pkg-config
       sqlitebrowser
       tmuxifier
-
-      # Gaming Tools
-      bottles
-      cubiomes-viewer
-      goverlay
-      heroic
-      inputs.umu.packages.${pkgs.system}.umu
-      libstrangle
-      lutris
-      wineWowPackages.staging
-      winetricks
 
       # Tools
       copyq
