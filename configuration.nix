@@ -314,8 +314,10 @@
       cheat
       gpick # X11
       gpu-viewer
+      homebank
       hplip # scanner
       htop-vim
+      kmymoney
       ksnip
       lenovo-legion
       lurk
