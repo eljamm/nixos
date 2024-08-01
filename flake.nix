@@ -46,7 +46,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin.url = "github:eljamm/catppuccin-nix/115118495b286313c4a94081eb8f179c3733add3";
+    catppuccin.url = "github:eljamm/catppuccin-nix/gtk";
 
     umu = {
       url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
