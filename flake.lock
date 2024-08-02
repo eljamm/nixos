@@ -283,8 +283,6 @@
         "nix-filter": "nix-filter",
         "nix-index-database": "nix-index-database",
         "nixpkgs": [
-          "nix-alien",
-          "nix-index-database",
           "nixpkgs"
         ]
       },
@@ -427,14 +425,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "dirtyRev": "24adacf1cb87f189dae5e4830b8fcda50ed8f56e-dirty",
-        "dirtyShortRev": "24adacf1cb87-dirty",
-        "lastModified": 1721403785,
-        "narHash": "sha256-NjrpnlS4TP6DnZo4epyM3Cp3JXC7xcv6qhvFbXOekRk=",
+        "lastModified": 1722514500,
+        "narHash": "sha256-XYGBFnjfyt+h1qrUttrlr/GcM1wgPNF3xtkPrb1/rV4=",
+        "ref": "current-system",
+        "rev": "425ba40bf19674db3645be74a515b82391235c91",
+        "revCount": 660266,
         "type": "git",
         "url": "file:///home/kuroko/nixpkgs"
       },
       "original": {
+        "ref": "current-system",
         "type": "git",
         "url": "file:///home/kuroko/nixpkgs"
       }

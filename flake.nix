@@ -3,7 +3,7 @@
 
   inputs = {
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "git+file:///home/kuroko/nixpkgs";
+    nixpkgs.url = "git+file:///home/kuroko/nixpkgs?ref=current-system";
 
     nixpkgs-system.url = "github:eljamm/nixpkgs/system";
 
@@ -54,7 +54,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
