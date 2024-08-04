@@ -183,6 +183,8 @@
 
       # Tools
       copyq
+      custom.pgsrip
+      custom.vocabsieve
       dconf2nix
       duperemove
       grc
@@ -192,8 +194,6 @@
       mat2
       nvitop
       pdfid
-      custom.pgsrip
-      custom.vocabsieve
       yt-dlp
     ];
   };
@@ -310,14 +310,12 @@
 
       # Utils
       bleachbit
-      blueman
       cheat
       gpick # X11
       gpu-viewer
       homebank
       hplip # scanner
       htop-vim
-      kmymoney
       ksnip
       lenovo-legion
       lurk
