@@ -2,7 +2,7 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixpkgs-system.url = "github:eljamm/nixpkgs/system";
 
