@@ -49,7 +49,7 @@ in
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
     # Only available from driver 515.43.04+
     # NOTE: Enabled by default from driver 560.28.03+
-    open = true;
+    open = false;
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
@@ -69,6 +69,6 @@ in
       nvidiaBusId = "PCI:1:0:0";
     };
 
-    package = config.boot.kernelPackages.nvidiaPackages.beta; # 560.28.03
+    package = config.boot.kernelPackages.nvidiaPackages.stable; # 555.58.02
   };
 }
