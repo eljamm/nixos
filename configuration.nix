@@ -263,6 +263,7 @@
       gcc
       gh
       git
+      gitu
       gnumake
       lazygit
       micromamba
