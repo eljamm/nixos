@@ -23,6 +23,26 @@
         "type": "github"
       }
     },
+    "blender-bin": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "dir": "blender",
+        "lastModified": 1722510587,
+        "narHash": "sha256-l959ZuWS+RlKMVLZT+GXxdo0zpOXpk0G9O2KA8fk7r8=",
+        "owner": "edolstra",
+        "repo": "nix-warez",
+        "rev": "dd4673c825c439bffe306646a008c8de4b95f405",
+        "type": "github"
+      },
+      "original": {
+        "dir": "blender",
+        "owner": "edolstra",
+        "repo": "nix-warez",
+        "type": "github"
+      }
+    },
     "catppuccin": {
       "locked": {
         "lastModified": 1722419211,
@@ -385,10 +405,9 @@
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "id": "nixpkgs",
+        "ref": "nixos-24.05",
+        "type": "indirect"
       }
     },
     "nixpkgs-stable": {
@@ -442,6 +461,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "blender-bin": "blender-bin",
         "catppuccin": "catppuccin",
         "fenix": "fenix",
         "home-manager": "home-manager_2",

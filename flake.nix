@@ -58,6 +58,8 @@
       url = "github:thiagokokada/nix-alien";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    blender-bin.url = "github:edolstra/nix-warez?dir=blender";
   };
 
   outputs =
