@@ -65,7 +65,10 @@
     };
 
     mangohud.enable = true;
-    taskwarrior.enable = true;
+    taskwarrior = {
+      enable = true;
+      package = pkgs.taskwarrior3;
+    };
 
     # File managers
     joshuto.enable = true;
