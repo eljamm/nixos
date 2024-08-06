@@ -341,6 +341,7 @@
       nix-tree
       nixd
       nixpkgs-review
+      npins
 
       # System
       keepassxc
