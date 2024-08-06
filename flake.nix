@@ -54,6 +54,8 @@
     };
 
     nix-alien.url = "github:thiagokokada/nix-alien";
+
+    blender-bin.url = "github:edolstra/nix-warez?dir=blender";
   };
 
   outputs =

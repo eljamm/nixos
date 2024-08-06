@@ -23,6 +23,26 @@
         "type": "github"
       }
     },
+    "blender-bin": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "dir": "blender",
+        "lastModified": 1722510587,
+        "narHash": "sha256-l959ZuWS+RlKMVLZT+GXxdo0zpOXpk0G9O2KA8fk7r8=",
+        "owner": "edolstra",
+        "repo": "nix-warez",
+        "rev": "dd4673c825c439bffe306646a008c8de4b95f405",
+        "type": "github"
+      },
+      "original": {
+        "dir": "blender",
+        "owner": "edolstra",
+        "repo": "nix-warez",
+        "type": "github"
+      }
+    },
     "catppuccin": {
       "locked": {
         "lastModified": 1722419211,
@@ -282,7 +302,9 @@
         "flake-utils": "flake-utils_2",
         "nix-filter": "nix-filter",
         "nix-index-database": "nix-index-database",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1722576181,
@@ -378,18 +400,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1722421184,
-        "narHash": "sha256-/DJBI6trCeVnasdjUo9pbnodCLZcFqnVZiLUfqLH4jA=",
+        "lastModified": 1722221733,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9f918d616c5321ad374ae6cb5ea89c9e04bf3e58",
+        "rev": "12bf09802d77264e441f48e25459c10c93eada2e",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "id": "nixpkgs",
+        "ref": "nixos-24.05",
+        "type": "indirect"
       }
     },
     "nixpkgs-stable": {
@@ -443,6 +463,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "blender-bin": "blender-bin",
         "catppuccin": "catppuccin",
         "fenix": "fenix",
         "home-manager": "home-manager_2",
