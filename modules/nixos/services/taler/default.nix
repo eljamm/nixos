@@ -54,10 +54,10 @@ in
     debug = true;
     settings = {
       nexus-ebics = {
-        CURRENCY = "CHF";
+        CURRENCY = "KUDOS";
 
         # Bank
-        HOST_BASE_URL = "https://ebics.postfinance.ch/ebics/ebics.aspx";
+        HOST_BASE_URL = "http://${hostname}:8082/";
         BANK_DIALECT = "postfinance";
 
         # EBICS IDs
@@ -69,6 +69,8 @@ in
         IBAN = "CH7789144474425692816";
         BIC = "POFICHBEXXX";
         NAME = "John Smith S.A.";
+
+        CLIENT_PRIVATE_KEYS_FILE = "/home/kuroko/.local/share/libeufin/client-ebics-keys.json";
       };
       libeufin-nexusdb-postgres.CONFIG = "postgresql:///libeufin-nexus";
     };
