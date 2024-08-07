@@ -63,15 +63,7 @@
   };
 
   services = {
-    flameshot = {
-      enable = true;
-      # settings.General = {
-      #   showStartupLaunchMessage = false;
-      #   saveLastRegion = true;
-      # };
-    };
-
-    # TODO: is this useful anymore?
+    # TODO: is this still useful?
     easyeffects.enable = false;
 
     activitywatch = {
