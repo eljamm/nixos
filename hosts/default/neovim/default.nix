@@ -11,8 +11,8 @@ let
   ];
 
   c = [
-    clang
-    clang-tools
+    # clang # TODO: remove. big closure
+    # clang-tools # TODO: remove. big closure
     cmake
     gcc
     gnumake
@@ -34,6 +34,7 @@ let
     gotools
   ];
 
+  # TODO: big closure. should be enabled per-project
   haskell = [
     haskell-language-server
     ghc
@@ -52,14 +53,16 @@ let
     nodePackages.cspell
     markdownlint-cli
     # TODO: mdformat plugins don't work outside of dev shells
-    (mdformat.withPlugins (ps: [
-      ps.mdformat-footnote
-      ps.mdformat-frontmatter
-      ps.mdformat-tables
-      ps.mdformat-toc
-    ]))
+    (mdformat.withPlugins (
+      ps: with ps; [
+        mdformat-footnote
+        mdformat-frontmatter
+        mdformat-tables
+        mdformat-toc
+      ]
+    ))
     typst-lsp
-    plantuml
+    # plantuml # TODO: remove. big closure
   ];
 
   nix = [
@@ -115,12 +118,12 @@ let
     ++ c
     ++ gamedev
     ++ golang
-    ++ haskell
+    # ++ haskell # TODO: remove (enable per-project)
     ++ luaTools
-    ++ markup
+    # ++ markup # TODO: remove (already enabled system-wide)
     ++ nix
     ++ python
-    ++ rust
+    # ++ rust # TODO: remove (already enabled system-wide)
     ++ shell
     ++ web;
 in
@@ -144,8 +147,9 @@ in
     inherit extraPackages;
   };
 
+  # NOTE: unused
   programs.helix = {
-    enable = true;
+    enable = false;
     inherit extraPackages;
   };
 }

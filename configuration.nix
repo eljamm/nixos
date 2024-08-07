@@ -155,7 +155,6 @@
       # Education
       anki-bin
       anki-sync-server
-      stellarium
 
       # Office
       crow-translate
@@ -173,7 +172,7 @@
       speechd
 
       # Development
-      aoc-cli
+      # aoc-cli # TODO: move to aoc repo
       clang
       mold-wrapped
       neovide
