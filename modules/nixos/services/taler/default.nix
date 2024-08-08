@@ -27,6 +27,15 @@ in
         };
       };
     };
+    merchant = {
+      enable = true;
+      debug = true;
+      settings.merchant-exchange-test = {
+        EXCHANGE_BASE_URL = "http://${hostname}:8081/";
+        MASTER_KEY = "2TQSTPFZBC2MC4E52NHPA050YXYG02VC3AB50QESM6JX1QJEYVQ0";
+        inherit CURRENCY;
+      };
+    };
   };
 
   services.libeufin.bank = {
