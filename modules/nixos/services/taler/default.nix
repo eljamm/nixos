@@ -3,6 +3,7 @@
 let
   hostname = "192.168.1.120";
   CURRENCY = "KUDOS";
+  enable = false;
 in
 
 {
@@ -14,7 +15,7 @@ in
     };
     includes = [ ./conf/taler-accounts.conf ];
     exchange = {
-      enable = true;
+      inherit enable;
       debug = true;
       denominationConfig = lib.readFile ./conf/taler-denominations.conf;
       enableAccounts = [ ./accounts/exchange.json ];
@@ -28,7 +29,7 @@ in
       };
     };
     merchant = {
-      enable = true;
+      inherit enable;
       debug = true;
       settings.merchant-exchange-test = {
         EXCHANGE_BASE_URL = "http://${hostname}:8081/";
@@ -39,7 +40,7 @@ in
   };
 
   services.libeufin.bank = {
-    enable = true;
+    inherit enable;
     debug = true;
     settings = {
       libeufin-bank = {
@@ -59,7 +60,7 @@ in
   };
 
   services.libeufin.nexus = {
-    enable = true;
+    inherit enable;
     debug = true;
     settings = {
       nexus-ebics = {
