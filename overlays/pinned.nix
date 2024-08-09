@@ -21,7 +21,7 @@
       llama-cpp =
         (prev.llama-cpp.overrideAttrs (
           finalAttrs: _: {
-            version = "3403";
+            version = "3551";
             src = prev.fetchFromGitHub {
               owner = "ggerganov";
               repo = "llama.cpp";
