@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   vulkanDriverFiles = [
@@ -25,6 +30,9 @@ in
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  # Loading nvidia-uvm is needed to make CUDA work with nvidia-open
+  boot.kernelModules = lib.optionals config.hardware.nvidia.open [ "nvidia_uvm" ];
+
   environment.systemPackages = [ nvidia-offload ];
 
   hardware.nvidia = {
@@ -48,7 +56,7 @@ in
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
     # Only available from driver 515.43.04+
     # NOTE: Enabled by default from driver 560.28.03+
-    open = false;
+    open = true;
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
