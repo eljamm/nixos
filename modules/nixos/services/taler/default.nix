@@ -7,35 +7,33 @@ let
 in
 
 {
-  services.taler = {
+  services.taler.includes = [ ./conf/taler-accounts.conf ];
+  services.taler.settings.taler = {
+    inherit CURRENCY;
+  };
+
+  services.taler.exchange = {
+    inherit enable;
+    debug = true;
+    denominationConfig = lib.readFile ./conf/taler-denominations.conf;
+    enableAccounts = [ ./accounts/exchange.json ];
     settings = {
-      taler = {
-        inherit CURRENCY;
+      exchange = {
+        BASE_URL = "http://${hostname}:8081/";
+        HOSTNAME = hostname;
+        PORT = 8081;
+        MASTER_PUBLIC_KEY = "2TQSTPFZBC2MC4E52NHPA050YXYG02VC3AB50QESM6JX1QJEYVQ0";
       };
     };
-    includes = [ ./conf/taler-accounts.conf ];
-    exchange = {
-      inherit enable;
-      debug = true;
-      denominationConfig = lib.readFile ./conf/taler-denominations.conf;
-      enableAccounts = [ ./accounts/exchange.json ];
-      settings = {
-        exchange = {
-          BASE_URL = "http://${hostname}:8081/";
-          HOSTNAME = hostname;
-          PORT = 8081;
-          MASTER_PUBLIC_KEY = "2TQSTPFZBC2MC4E52NHPA050YXYG02VC3AB50QESM6JX1QJEYVQ0";
-        };
-      };
-    };
-    merchant = {
-      inherit enable;
-      debug = true;
-      settings.merchant-exchange-test = {
-        EXCHANGE_BASE_URL = "http://${hostname}:8081/";
-        MASTER_KEY = "2TQSTPFZBC2MC4E52NHPA050YXYG02VC3AB50QESM6JX1QJEYVQ0";
-        inherit CURRENCY;
-      };
+  };
+
+  services.taler.merchant = {
+    inherit enable;
+    debug = true;
+    settings.merchant-exchange-test = {
+      EXCHANGE_BASE_URL = "http://${hostname}:8081/";
+      MASTER_KEY = "2TQSTPFZBC2MC4E52NHPA050YXYG02VC3AB50QESM6JX1QJEYVQ0";
+      inherit CURRENCY;
     };
   };
 
