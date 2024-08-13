@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./filesystems.nix
@@ -7,6 +7,9 @@
     ./graphics.nix
   ];
 
-  boot.kernelModules = [ "lenovo-legion-module" ];
+  boot.kernelModules = [ "legion-laptop" ];
+  boot.initrd.availableKernelModules = [ "legion-laptop" ];
+
   boot.extraModulePackages = with config.boot.kernelPackages; [ lenovo-legion-module ];
+  environment.systemPackages = [ pkgs.lenovo-legion ];
 }
