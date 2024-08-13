@@ -3,7 +3,7 @@
 let
   hostname = "192.168.1.120";
   CURRENCY = "KUDOS";
-  enable = false;
+  enable = true;
 in
 
 {
@@ -30,6 +30,11 @@ in
   services.taler.merchant = {
     inherit enable;
     debug = true;
+    # settings.merchant = {
+    #   # For account creation
+    #   WIRE_TRANSFER_DELAY = "1 minute";
+    #   DEFAULT_PAY_DEADLINE = "1 day";
+    # };
     settings.merchant-exchange-test = {
       EXCHANGE_BASE_URL = "http://${hostname}:8081/";
       MASTER_KEY = "2TQSTPFZBC2MC4E52NHPA050YXYG02VC3AB50QESM6JX1QJEYVQ0";
