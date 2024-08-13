@@ -461,11 +461,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1723406612,
-        "narHash": "sha256-+iSrOW3r7EE2QQIwfdyFMEOtkc4cg4e8YV9nhJs2vDY=",
+        "lastModified": 1723573102,
+        "narHash": "sha256-JVEQ0vgEbboL0V0B6sBshsdaSN5SOgxBX8bWbn5JOxo=",
         "ref": "current-system",
-        "rev": "0cd247097d673bbb4bef199000df9f343c2a9d45",
-        "revCount": 664215,
+        "rev": "5cebb9127b8be9a99c96fa70d9da5ba6acee55e5",
+        "revCount": 664216,
         "type": "git",
         "url": "file:///home/kuroko/nixpkgs"
       },
