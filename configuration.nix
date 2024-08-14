@@ -197,19 +197,6 @@
     ];
   };
 
-  fonts.packages = with pkgs; [
-    fira-code
-    fira-code-symbols
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "DroidSansMono"
-        "JetBrainsMono"
-        "NerdFontsSymbolsOnly" # for kitty terminal
-      ];
-    })
-  ];
-
   services.xserver.wacom.enable = true;
 
   environment.sessionVariables = rec {
