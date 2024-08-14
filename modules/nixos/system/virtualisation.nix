@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ pkgs, ... }:
 
 {
   virtualisation.libvirtd.enable = true;
@@ -14,4 +14,5 @@
   };
 
   users.users.kuroko.extraGroups = [ "libvirtd" ];
+  environment.systemPackages = [ pkgs.nixos-shell ];
 }
