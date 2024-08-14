@@ -1,4 +1,7 @@
 { ... }:
 {
-  imports = [ ./virtualisation.nix ];
+  imports = [
+    ./fonts.nix
+    ./virtualisation.nix
+  ];
 }
