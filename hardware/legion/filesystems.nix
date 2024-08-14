@@ -73,6 +73,7 @@
         "compress-force=zstd:2"
         "noatime"
         "nofail"
+        "x-systemd.device-timeout=5"
       ];
     };
   };
