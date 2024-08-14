@@ -133,7 +133,7 @@
       infamousPlugins
       linvstmanager
       lmms
-      # lsp-plugins # TODO: currently breaks
+      lsp-plugins
       vital
       yabridge
       yabridgectl
