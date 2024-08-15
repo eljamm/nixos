@@ -1,11 +1,18 @@
 { pkgs, lib, ... }:
 
 let
-  opentypeFonts = [ pkgs.fira-code-symbols ];
+  opentypeFonts = with pkgs; [
+    alegreya
+    alegreya-sans
+    fira-code-symbols
+  ];
   truetypeFonts = with pkgs; [
     fira-code
+    miracode
+    proggyfonts
     (nerdfonts.override {
       fonts = [
+        "Hack"
         "FiraCode"
         "DroidSansMono"
         "JetBrainsMono"
@@ -13,9 +20,14 @@ let
       ];
     })
   ];
+  notoFonts = with pkgs; [
+    noto-fonts-cjk
+    noto-fonts-color-emoji
+  ];
 
   # Use correct font path for each type
   fontPath = [
+    (mkFontPath notoFonts "noto")
     (mkFontPath opentypeFonts "opentype")
     (mkFontPath truetypeFonts "truetype")
   ];
@@ -32,7 +44,7 @@ in
 
 {
   # Install fonts system-wide
-  fonts.packages = opentypeFonts ++ truetypeFonts;
+  fonts.packages = opentypeFonts ++ truetypeFonts ++ notoFonts;
 
   # Link fonts to "~/.local/share/fonts/nixos"
   home-manager.users.kuroko = {
