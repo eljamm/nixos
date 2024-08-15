@@ -25,18 +25,13 @@ let
     noto-fonts-color-emoji
   ];
 
-  # Use correct font path for each type
-  fontPath = [
-    (mkFontPath notoFonts "noto")
-    (mkFontPath opentypeFonts "opentype")
-    (mkFontPath truetypeFonts "truetype")
-  ];
+  fonts = opentypeFonts ++ truetypeFonts ++ notoFonts;
 
   mkFontPath =
-    fonts: dirname:
+    fonts:
     map (font: {
       ".local/share/fonts/nixos/${lib.getName font}" = {
-        source = "${font}/share/fonts/${dirname}/";
+        source = "${font}/share/fonts/";
         recursive = true;
       };
     }) fonts;
@@ -44,10 +39,10 @@ in
 
 {
   # Install fonts system-wide
-  fonts.packages = opentypeFonts ++ truetypeFonts ++ notoFonts;
+  fonts.packages = fonts;
 
   # Link fonts to "~/.local/share/fonts/nixos"
   home-manager.users.kuroko = {
-    home.file = lib.mergeAttrsList (lib.concatLists fontPath);
+    home.file = lib.mergeAttrsList (mkFontPath fonts);
   };
 }
