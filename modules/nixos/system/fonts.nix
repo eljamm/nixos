@@ -39,7 +39,7 @@ in
 
 {
   # Install fonts system-wide
-  fonts.packages = fonts;
+  fonts.packages = opentypeFonts ++ truetypeFonts ++ notoFonts;
 
   # Link fonts to "~/.local/share/fonts/nixos"
   home-manager.users.kuroko = {
