@@ -31,9 +31,8 @@ in
     inherit enable;
     debug = true;
     # settings.merchant = {
-    #   # For account creation
     #   WIRE_TRANSFER_DELAY = "1 minute";
-    #   DEFAULT_PAY_DEADLINE = "1 day";
+    #   DEFAULT_PAY_DEADLINE = "1 minute";
     # };
     settings.merchant-exchange-test = {
       EXCHANGE_BASE_URL = "http://${hostname}:8081/";
