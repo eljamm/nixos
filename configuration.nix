@@ -98,7 +98,7 @@
       ungoogled-chromium
 
       # Communications
-      cinny-desktop
+      # cinny-desktop # FIX: broken
       element-desktop
       ferdium
 

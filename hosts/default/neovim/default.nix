@@ -61,7 +61,7 @@ let
         mdformat-toc
       ]
     ))
-    typst-lsp
+    # typst-lsp # FIX: broken
     # plantuml # TODO: remove. big closure
   ];
 

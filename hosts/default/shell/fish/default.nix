@@ -38,7 +38,7 @@
     enable = true;
     catppuccin.enable = true;
     extraPackages = with pkgs.bat-extras; [
-      batdiff
+      # batdiff # FIX: broken
       batman
       batgrep
       batwatch
