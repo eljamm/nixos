@@ -47,6 +47,7 @@ in
 
       # Games
       mgba
+      minetestclient
       osu-lazer-bin
       vbam
     ])
