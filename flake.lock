@@ -605,20 +605,20 @@
       },
       "locked": {
         "dir": "packaging/nix",
-        "lastModified": 1723697867,
-        "narHash": "sha256-LTfbJXR8x35oZ8Mo3R0WTVEp9toWpVfzD21xCSr64IM=",
+        "lastModified": 1724179424,
+        "narHash": "sha256-2r2y1p9YQuaWCxuFj45MVRqJ/uWglhzY5O9BW1jRXcg=",
         "ref": "refs/heads/main",
-        "rev": "c71a45ad53036f4c668bcbe1be7a49f9d3460151",
-        "revCount": 699,
+        "rev": "dd3105e4ceef83bdc9d7437139f9475325e2a66d",
+        "revCount": 700,
         "submodules": true,
         "type": "git",
-        "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"
+        "url": "https://github.com/Open-Wine-Components/umu-launcher/"
       },
       "original": {
         "dir": "packaging/nix",
         "submodules": true,
         "type": "git",
-        "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"
+        "url": "https://github.com/Open-Wine-Components/umu-launcher/"
       }
     }
   },
