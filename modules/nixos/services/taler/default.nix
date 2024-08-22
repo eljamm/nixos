@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 
 let
-  hostname = "192.168.1.120";
+  hostname = "192.168.1.100";
   CURRENCY = "KUDOS";
   enable = true;
 in
