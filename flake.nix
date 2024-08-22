@@ -6,11 +6,6 @@
 
     nixpkgs-system.url = "github:eljamm/nixpkgs/system";
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -88,7 +83,6 @@
             ./modules/nixos/home-manager.nix
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
-            inputs.lix-module.nixosModules.default
             inputs.self.nixosModules.default
             { nixpkgs.overlays = overlays; }
           ];
