@@ -92,7 +92,7 @@
       birdtray
       brave
       firefox
-      librewolf
+      custom.librewolf
       mailspring
       thunderbird
       ungoogled-chromium
