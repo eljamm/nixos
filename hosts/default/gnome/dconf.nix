@@ -1,6 +1,4 @@
 { pkgs, lib, ... }:
-with builtins;
-with lib.hm.gvariant;
 {
   home.packages = with pkgs; [
     gnomeExtensions.appindicator
@@ -29,7 +27,7 @@ with lib.hm.gvariant;
     # )
   ];
 
-  dconf.settings = {
+  dconf.settings = with lib.hm.gvariant; {
     "org/gnome/desktop/interface" = {
       clock-format = "12h";
       clock-show-weekday = true;
@@ -73,7 +71,6 @@ with lib.hm.gvariant;
       animate-appicon-hover-animation-type = "PLANK";
       appicon-margin = 8;
       appicon-padding = 4;
-      available-monitors = [ 0 ];
       dot-color-dominant = true;
       dot-color-override = false;
       dot-position = "BOTTOM";
@@ -94,12 +91,15 @@ with lib.hm.gvariant;
       intellihide-pressure-time = 1000;
       intellihide-show-in-fullscreen = false;
       intellihide-use-pressure = true;
+      isolate-monitors = true;
+      isolate-workspaces = false;
       leftbox-padding = -1;
+      multi-monitors = true;
       panel-anchors = ''
-        {"0":"MIDDLE"}
+        {"0":"MIDDLE","1":"MIDDLE"}
       '';
       panel-element-positions = ''
-        {"0":[{"element":"showAppsButton","visible":true,"position":"centerMonitor"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":false,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":false,"position":"stackedBR"},{"element":"dateMenu","visible":false,"position":"stackedBR"},{"element":"systemMenu","visible":false,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}
+        {"0":[{"element":"showAppsButton","visible":true,"position":"stackedBR"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedTL"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":false,"position":"stackedBR"},{"element":"systemMenu","visible":false,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}],"1":[{"element":"showAppsButton","visible":true,"position":"stackedBR"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedTL"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":false,"position":"stackedBR"},{"element":"systemMenu","visible":false,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}]}
       '';
       panel-lengths = ''
         {"0":100}
@@ -110,7 +110,7 @@ with lib.hm.gvariant;
       panel-sizes = ''
         {"0":48}
       '';
-      primary-monitor = 0;
+      primary-monitor = 1;
       show-apps-icon-file = "";
       status-icon-padding = -1;
       stockgs-keep-dash = false;
