@@ -15,4 +15,6 @@
 
   users.users.kuroko.extraGroups = [ "libvirtd" ];
   environment.systemPackages = [ pkgs.nixos-shell ];
+
+  services.spice-vdagentd.enable = true;
 }
