@@ -83,6 +83,7 @@
       # enableInteractive = false; # TODO:
     };
 
+    # TODO: enable with fish
     fzf = {
       enable = true;
       catppuccin.enable = true;
