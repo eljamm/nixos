@@ -39,11 +39,11 @@ let
 
       g = "end";
     };
-    "control+shift" = {
-      # Next/Previous Tabs
-      j = "C-S-tab";
-      k = "C-tab";
-    };
+    # "control+shift" = {
+    #   # Next/Previous Tabs
+    #   j = "C-S-tab";
+    #   k = "C-tab";
+    # };
   };
 in
 {
