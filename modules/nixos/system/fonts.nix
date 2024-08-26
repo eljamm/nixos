@@ -1,12 +1,13 @@
 { pkgs, lib, ... }:
 
 let
-  opentypeFonts = with pkgs; [
+  fonts = with pkgs; [
+    # opentype
     alegreya
     alegreya-sans
     fira-code-symbols
-  ];
-  truetypeFonts = with pkgs; [
+
+    # truetype
     fira-code
     miracode
     proggyfonts
@@ -19,22 +20,23 @@ let
         "NerdFontsSymbolsOnly" # for kitty terminal
       ];
     })
-  ];
-  notoFonts = with pkgs; [
+
+    # noto
     noto-fonts-cjk
     noto-fonts-color-emoji
   ];
 
-  fonts = opentypeFonts ++ truetypeFonts ++ notoFonts;
-
-  mkFontPath =
+  mkFontPaths =
     fonts:
-    map (font: {
-      ".local/share/fonts/nixos/${lib.getName font}" = {
-        source = "${font}/share/fonts/";
-        recursive = true;
-      };
-    }) fonts;
+    lib.pipe fonts [
+      (map (font: {
+        ".local/share/fonts/nixos/${lib.getName font}" = {
+          source = "${font}/share/fonts/";
+          recursive = true;
+        };
+      }))
+      lib.mergeAttrsList
+    ];
 in
 
 {
@@ -43,6 +45,6 @@ in
 
   # Link fonts to "~/.local/share/fonts/nixos"
   home-manager.users.kuroko = {
-    home.file = lib.mergeAttrsList (mkFontPath fonts);
+    home.file = mkFontPaths fonts;
   };
 }
