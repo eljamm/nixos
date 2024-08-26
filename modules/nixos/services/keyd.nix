@@ -55,6 +55,8 @@ in
         settings = lib.recursiveUpdate commonSettings {
           main = {
             esc = "^";
+            y = "z";
+            z = "y";
           };
           altgr = {
             r = "macro(leftalt+home)";
