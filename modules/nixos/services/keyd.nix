@@ -61,10 +61,10 @@ in
           altgr = {
             r = "macro(leftalt+home)";
           };
-          control = {
+          shift = {
             esc = "`";
           };
-          "control+alt" = {
+          "alt" = {
             esc = "~";
           };
         };
