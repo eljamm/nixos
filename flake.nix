@@ -81,16 +81,14 @@
 
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-          };
+          specialArgs.inputs = inputs;
           modules = [
             ./configuration.nix
             ./modules/nixos/home-manager.nix
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
             inputs.lix-module.nixosModules.default
-            inputs.self.nixosModules.default
+            self.nixosModules.default
             { nixpkgs.overlays = overlays; }
           ];
         };
