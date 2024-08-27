@@ -242,6 +242,10 @@
     "org/gnome/mutter" = {
       edge-tiling = true;
       center-new-windows = true;
+      experimental-features = [
+        "scale-monitor-framebuffer" # fractional scaling
+        "variable-refresh-rate"
+      ];
     };
 
     "org/gnome/desktop/session" = {
