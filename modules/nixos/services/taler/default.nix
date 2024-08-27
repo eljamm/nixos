@@ -3,7 +3,7 @@
 let
   hostname = "192.168.1.100";
   CURRENCY = "KUDOS";
-  enable = true;
+  enable = false;
 in
 
 {
