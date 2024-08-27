@@ -9,6 +9,8 @@ let
     altgr = {
       capslock = "backspace";
 
+      g = "home";
+
       # Vim
       k = "up";
       l = "right";
@@ -19,7 +21,8 @@ let
       # Screenshot
       i = "sysrq";
 
-      g = "home";
+      # go home in pcmanfm-qt
+      r = "macro(leftalt+home)";
     };
     "altgr+shift" = {
       j = "pagedown";
@@ -57,9 +60,6 @@ in
             esc = "^";
             y = "z";
             z = "y";
-          };
-          altgr = {
-            r = "macro(leftalt+home)";
           };
           shift = {
             esc = "`";
