@@ -48,6 +48,34 @@ let
     #   k = "C-tab";
     # };
   };
+
+  /**
+    counter :: (int -> int) -> [string]
+
+    ```
+    counter 1 5
+    => [ "1" "2" "3" "4" "5" ]
+    ```
+  */
+  counter = i: l: if i < l then [ (toString i) ] ++ counter (i + 1) l else [ (toString i) ];
+
+  /**
+    mkFuncKeys :: [string] -> AttrSet
+
+    ```
+    mkFuncKeys [ "1" "2" ]
+    => { "1" = "f1"; "2" = "f2"; }
+    ```
+  */
+  mkFuncKeys =
+    keys:
+    lib.pipe keys [
+      (map (i: {
+        name = "${i}";
+        value = "f${i}";
+      }))
+      lib.listToAttrs
+    ];
 in
 {
   services.keyd = {
@@ -61,9 +89,10 @@ in
             y = "z";
             z = "y";
           };
-          # TODO: fn keys
-          altgr = {
-            "5" = "f5";
+          altgr = (mkFuncKeys (counter 1 9)) // {
+            "0" = "f10";
+            "-" = "f11";
+            "=" = "f12";
           };
           shift = {
             esc = "`";
