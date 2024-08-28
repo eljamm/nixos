@@ -61,6 +61,10 @@ in
             y = "z";
             z = "y";
           };
+          # TODO: fn keys
+          altgr = {
+            "5" = "f5";
+          };
           shift = {
             esc = "`";
           };
