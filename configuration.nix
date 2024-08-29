@@ -54,6 +54,9 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  services.displayManager.sddm.enable = false;
+  services.displayManager.sddm.wayland.enable = true;
+
   # Disable gnome-tracker (high resource consumption)
   services.gnome.tracker-miners.enable = false;
   services.gnome.tracker.enable = false;
@@ -82,6 +85,7 @@
     extraGroups = [
       "adbusers"
       "audio"
+      "video"
       "gamemode"
       "networkmanager"
       "wheel"
@@ -209,6 +213,8 @@
     # Not officially in the specification
     XDG_BIN_HOME = "$HOME/.local/bin";
     PATH = [ "${XDG_BIN_HOME}" ];
+
+    FLAKE = "/home/kuroko/nixos";
   };
 
   environment.variables = {
