@@ -21,6 +21,8 @@ let
       # Screenshot
       i = "sysrq";
 
+      m = "micmute";
+
       # go home in pcmanfm-qt
       r = "macro(leftalt+home)";
     };
@@ -93,6 +95,8 @@ in
             "0" = "f10";
             "-" = "f11";
             "=" = "f12";
+
+            "d" = "delete";
           };
           shift = {
             esc = "`";
