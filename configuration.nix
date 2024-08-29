@@ -88,6 +88,7 @@
     ];
     # TODO: categorize?
     packages = with pkgs; [
+      android-studio # WIP:
       # Internet
       birdtray
       brave
