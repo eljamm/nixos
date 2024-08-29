@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   hyprlandEnabled = config.programs.hyprland.enable;
@@ -6,6 +11,12 @@ in
 
 {
   programs.hyprland.enable = lib.mkDefault false;
+
+  environment.systemPackages = with pkgs; [
+    dunst
+    hypr
+    hyprls
+  ];
 
   nix.settings = lib.mkIf hyprlandEnabled {
     substituters = [ "https://hyprland.cachix.org" ];

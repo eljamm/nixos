@@ -9,6 +9,7 @@
     ./shell
     ./theme.nix
     ./terminals
+    ./hyprland
   ];
 
   home = {
