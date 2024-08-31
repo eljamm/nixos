@@ -25,6 +25,11 @@
       ];
 
       warn-dirty = false; # NOTE: I do not care.
+
+      # Limit build
+      # TODO: set per machine
+      max-jobs = 4;
+      cores = 12;
     };
 
   };
