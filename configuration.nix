@@ -194,7 +194,7 @@
       grc
       igir
       ki
-      llama-cpp
+      (llama-cpp.override { cudaSupport = true; })
       mat2
       nvitop
       pdfid
