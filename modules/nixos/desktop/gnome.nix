@@ -15,28 +15,25 @@
   };
 
   environment = {
-    gnome.excludePackages =
-      (with pkgs; [
-        cheese # webcam tool
-        epiphany # web browser
-        geary # email reader
-        evince # document viewer
-        totem # video player
-        # gnome-photos
-        gnome-tour
-        # gnome-console
-        gedit # text editor
-        yelp # Help view
-      ])
-      ++ (with pkgs.gnome; [
-        gnome-music
-        # gnome-characters
-        tali # poker game
-        iagno # go game
-        hitori # sudoku game
-        atomix # puzzle game
-        gnome-initial-setup
-      ]);
+    gnome.excludePackages = with pkgs; [
+      cheese # webcam tool
+      epiphany # web browser
+      geary # email reader
+      evince # document viewer
+      totem # video player
+      # gnome-photos
+      gnome-tour
+      # gnome-console
+      gedit # text editor
+      yelp # Help view
+      gnome-music
+      # gnome-characters
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+      gnome-initial-setup
+    ];
 
     systemPackages = with pkgs; [
       nautilus-open-any-terminal
