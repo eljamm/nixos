@@ -6,6 +6,15 @@
 
     nixpkgs-system.url = "github:eljamm/nixpkgs/system";
 
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=0.42.0";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    hy3 = {
+      # url = "github:outfoxxed/hy3?ref=hl0.42.0";
+      url = "github:outfoxxed/hy3";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
