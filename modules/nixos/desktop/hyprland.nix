@@ -13,9 +13,32 @@ in
   programs.hyprland.enable = lib.mkDefault false;
 
   environment.systemPackages = with pkgs; [
+    brightnessctl
+    cliphist
     dunst
+    grimblast
+    overskride
+
+    mako
+    libnotify
+    jq
+
     hypr
+    hypridle
+    hyprlock
     hyprls
+    hyprpicker
+    wlogout
+
+    bluetuith
+
+    pkgs.hyprlandPlugins.hy3
+
+    pamixer
+    psmisc
+    waybar
+
+    swww
   ];
 
   nix.settings = lib.mkIf hyprlandEnabled {
