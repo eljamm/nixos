@@ -373,7 +373,10 @@
 
   programs.adb.enable = true;
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  };
 
   programs.nix-ld.enable = true;
   services.envfs.enable = true;
