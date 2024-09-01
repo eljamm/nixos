@@ -88,7 +88,7 @@
           modules = [
             ./hosts/nixos
             ./modules/nixos
-            ./specialisation.nix
+            # ./specialisation.nix
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
             { nixpkgs.overlays = overlays; }
