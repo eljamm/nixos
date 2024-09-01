@@ -1,20 +1,18 @@
 {
   config,
-  lib,
   inputs,
+  lib,
   ...
 }:
-
 let
-  cfg = config.desktop.cosmic;
+  cfg = config.desktops.cosmic;
 in
-
 {
   imports = [ inputs.nixos-cosmic.nixosModules.default ];
 
-  options.desktop.cosmic = {
+  options.desktops.cosmic = {
     enable = lib.mkEnableOption "COSMIC Desktop Environment";
-    cache = lib.mkEnableOption "COSMIC Desktop Environment cache";
+    cache = lib.mkEnableOption "COSMIC Desktop Environment Cache";
   };
 
   config = lib.mkIf (cfg.enable || cfg.cache) {
