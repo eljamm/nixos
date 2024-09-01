@@ -86,11 +86,12 @@
         nixos = nixpkgs.lib.nixosSystem {
           specialArgs.inputs = inputs;
           modules = [
-            ./hosts/nixos/specialisation.nix
+            ./hosts/nixos
+            # ./hosts/nixos/specialisation.nix
+            ./modules/nixos
             ./modules/nixos/home-manager.nix
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
-            self.nixosModules.default
             { nixpkgs.overlays = overlays; }
           ];
         };
@@ -102,10 +103,6 @@
         extraSpecialArgs = {
           inherit inputs;
         };
-      };
-
-      nixosModules = {
-        default = ./modules/nixos;
       };
     };
 }

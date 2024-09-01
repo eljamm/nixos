@@ -4,10 +4,7 @@
   lib,
   ...
 }:
-{
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
+let
   packages = with pkgs; {
     internet = [
       firefox
@@ -166,9 +163,13 @@
       xorg.xeyes
     ];
   };
+in
+{
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # TODO: make a module for packages
-  environment.systemPackages = lib.pipe config.packages [
+  environment.systemPackages = lib.pipe packages [
     (lib.mapAttrsToList (name: value: value))
     lib.flatten
   ];
