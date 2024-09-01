@@ -50,16 +50,13 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  services.displayManager.sddm.enable = false;
-  services.displayManager.sddm.wayland.enable = true;
-
-  # Disable gnome-tracker (high resource consumption)
-  services.gnome.tracker-miners.enable = false;
-  services.gnome.tracker.enable = false;
+  desktops = {
+    gnome = {
+      enable = true;
+      # enableGdm = false;
+    };
+    hyprland.enable = true;
+  };
 
   # Configure keymap in X11
   services.xserver = {
@@ -373,11 +370,6 @@
   programs.firejail.enable = true;
 
   programs.adb.enable = true;
-
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  };
 
   programs.nix-ld.enable = true;
   services.envfs.enable = true;
