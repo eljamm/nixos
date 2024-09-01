@@ -14,8 +14,6 @@ in
 {
   services.xserver.videoDrivers = [ "amdgpu" ];
 
-  environment.systemPackages = [ amd-offload ];
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -25,4 +23,12 @@ in
       nvidia-vaapi-driver
     ];
   };
+
+  environment.systemPackages = [
+    amd-offload
+    pkgs.lact
+  ];
+
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 }
