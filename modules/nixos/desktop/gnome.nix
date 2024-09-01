@@ -16,8 +16,6 @@ in
   config = {
     desktops.gnome.enableGdm = lib.mkDefault cfg.enable;
 
-    programs.dconf.enable = true;
-
     services = {
       xserver = {
         enable = lib.mkDefault cfg.enable;
@@ -30,8 +28,10 @@ in
       gnome.tracker.enable = lib.mkForce false;
 
       # For enabling systray icons
-      udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+      udev.packages = lib.optionals cfg.enable [ pkgs.gnome.gnome-settings-daemon ];
     };
+
+    programs.dconf.enable = true;
 
     environment = {
       gnome.excludePackages = with pkgs; [
@@ -71,7 +71,7 @@ in
         wirelesstools # improves performance
       ];
 
-      variables = {
+      variables = lib.mkIf cfg.enable {
         # Force X11 for QT apps
         QT_QPA_PLATFORM = "xcb";
 
