@@ -1,4 +1,8 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 {
   boot = {
     extraModprobeConfig = ''

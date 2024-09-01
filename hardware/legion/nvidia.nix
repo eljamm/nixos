@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
-
+{
+  config,
+  pkgs,
+  ...
+}:
 let
   vulkanDriverFiles = [
     "${config.hardware.nvidia.package}/share/vulkan/icd.d/nvidia_icd.x86_64.json"
@@ -14,7 +17,6 @@ let
     exec "$@"
   '';
 in
-
 {
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];

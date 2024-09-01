@@ -8,12 +8,15 @@
   modulesPath,
   ...
 }:
-
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ./hardware/legion
   ];
+
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -25,12 +28,9 @@
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [ ];
+  boot.extraModulePackages = [ ];
 
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
-
-  # OpenTabletDriver
-  hardware.opentabletdriver.enable = false;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
