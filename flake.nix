@@ -86,10 +86,10 @@
         nixos = nixpkgs.lib.nixosSystem {
           specialArgs.inputs = inputs;
           modules = [
-            ./hosts/nixos
             # ./hosts/nixos/specialisation.nix
+            # ./modules/nixos/home-manager.nix
+            ./hosts/nixos
             ./modules/nixos
-            ./modules/nixos/home-manager.nix
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
             { nixpkgs.overlays = overlays; }
@@ -99,7 +99,7 @@
 
       homeConfigurations.kuroko = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ../../hosts/default/home.nix ];
+        modules = [ ./hosts/nixos/users/kuroko/home/default.nix ];
         extraSpecialArgs = {
           inherit inputs;
         };

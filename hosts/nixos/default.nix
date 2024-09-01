@@ -6,8 +6,8 @@
 {
   imports = [
     ../../hardware-configuration.nix
-    ../../overlays
     ./networking.nix
+    ./overlays
     ./packages.nix
     ./services.nix
     ./users/kuroko
