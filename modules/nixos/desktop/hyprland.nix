@@ -22,8 +22,8 @@ in
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     };
 
-    # services.displayManager.ly.enable = true;
-    # services.displayManager.sddm.wayland.enable = true;
+    services.displayManager.sddm.enable = !config.desktops.gnome.enableGdm;
+    services.displayManager.sddm.wayland.enable = true;
 
     environment.systemPackages = with pkgs; [
       brightnessctl
@@ -54,6 +54,7 @@ in
 
       swww
 
+      # External Monitor
       # ddcutil
       # iio-hyprland
       # wluma
