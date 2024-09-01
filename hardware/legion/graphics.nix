@@ -1,5 +1,8 @@
-{ pkgs, ... }:
-
+{
+  inputs,
+  pkgs,
+  ...
+}:
 let
   amd-offload = pkgs.writeShellScriptBin "amd-offload" ''
     export __EGL_VENDOR_LIBRARY_FILENAMES="${pkgs.mesa.drivers.outPath}/share/glvnd/egl_vendor.d/50_mesa.json"
@@ -8,8 +11,9 @@ let
     exec "$@"
   '';
 in
-
 {
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
   environment.systemPackages = [ amd-offload ];
 
   hardware.graphics = {
