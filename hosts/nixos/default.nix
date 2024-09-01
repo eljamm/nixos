@@ -5,15 +5,23 @@
 }:
 {
   imports = [
+    ../../hardware-configuration.nix
+    ../../overlays
     ./networking.nix
     ./packages.nix
     ./services.nix
+    ./users/kuroko
   ];
 
   documentation.nixos.enable = false;
 
   # Enable the X11 windowing system
   services.xserver.enable = true;
+
+  desktops = {
+    gnome.enable = true;
+    hyprland.enable = true;
+  };
 
   time.timeZone = "Africa/Tunis";
 
@@ -53,7 +61,7 @@
     XDG_BIN_HOME = "$HOME/.local/bin";
     PATH = [ "${XDG_BIN_HOME}" ];
 
-    FLAKE = "$HOME/nixos";
+    FLAKE = "/home/${config.currentUser}/nixos";
   };
 
   # Register AppImage files as a binary type

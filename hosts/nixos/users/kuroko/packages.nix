@@ -1,8 +1,9 @@
 {
   pkgs,
+  lib,
   ...
 }:
-{
+let
   homePackages = with pkgs; {
     internet = [
       birdtray
@@ -113,4 +114,10 @@
       grc
     ];
   };
+in
+{
+  users.users.kuroko.packages = lib.pipe homePackages [
+    (lib.mapAttrsToList (name: value: value))
+    lib.flatten
+  ];
 }
