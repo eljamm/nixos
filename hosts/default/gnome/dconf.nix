@@ -1,6 +1,7 @@
 { pkgs, lib, ... }:
 {
   home.packages = with pkgs; [
+    dconf2nix
     gnomeExtensions.appindicator
     gnomeExtensions.bluetooth-battery-meter
     gnomeExtensions.dash-to-panel

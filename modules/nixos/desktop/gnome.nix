@@ -72,6 +72,9 @@ in
       ];
 
       variables = {
+        # Force X11 for QT apps
+        QT_QPA_PLATFORM = "xcb";
+
         # Needed for some extensions to function correctly
         GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
 

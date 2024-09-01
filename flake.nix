@@ -86,7 +86,7 @@
         nixos = nixpkgs.lib.nixosSystem {
           specialArgs.inputs = inputs;
           modules = [
-            ./configuration.nix
+            ./hosts/nixos/specialisation.nix
             ./modules/nixos/home-manager.nix
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
