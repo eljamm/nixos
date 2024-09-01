@@ -42,14 +42,16 @@
       enabled-extensions = [
         "Bluetooth-Battery-Meter@maniacx.github.com"
         "appindicatorsupport@rgcjonas.gmail.com"
-        "dash-to-panel@jderose9.github.com"
+        # "dash-to-panel@jderose9.github.com"
         "memento-mori@paveloom"
-        "pop-shell@system76.com"
-        "space-bar@luchrioh"
+        # "pop-shell@system76.com"
+        # "space-bar@luchrioh"
         # "tophat@fflewddur.github.io"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "vertical-workspaces@G-dH.github.com"
         "monitor@astraext.github.io"
+        # TODO: configure keybindings
+        "paperwm@paperwm.github.com"
       ];
 
       favorite-apps = [
@@ -165,6 +167,9 @@
       switch-to-workspace-2 = [ "<Super>2" ];
       switch-to-workspace-3 = [ "<Super>3" ];
       switch-to-workspace-4 = [ "<Super>4" ];
+      switch-to-workspace-5 = [ "<Super>5" ];
+      switch-to-workspace-6 = [ "<Super>6" ];
+      switch-to-workspace-7 = [ "<Super>7" ];
       switch-windows = [ "<Super>Tab" ];
       switch-windows-backward = [ "<Shift><Super>Tab" ];
       toggle-fullscreen = [ "<Alt>F10" ];
@@ -180,18 +185,19 @@
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/"
       ];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      binding = "<Super>r";
+      binding = "<Super>e";
       command = "albert toggle";
       name = "App Launcher";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-      binding = "<Super>t";
-      command = "kitty";
+      binding = "<Super>s";
+      command = "kitty --single-instance";
       name = "Terminal";
     };
 
@@ -225,6 +231,12 @@
       name = "Audio Seek Backwards";
     };
 
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7" = {
+      binding = "<Super>b";
+      command = "librewolf";
+      name = "Internet Browser";
+    };
+
     "org/gnome/settings-daemon/plugins/media-keys/screensaver" = {
       binding = [ "<Shift><Super>l" ];
     };
@@ -242,6 +254,7 @@
     "org/gnome/mutter" = {
       edge-tiling = true;
       center-new-windows = true;
+      dynamic-workspaces = false;
       experimental-features = [
         "scale-monitor-framebuffer" # fractional scaling
         "variable-refresh-rate"
@@ -254,6 +267,10 @@
 
     "org/gnome/desktop/screensaver" = {
       lock-enabled = false;
+    };
+
+    "/org/gnome/desktop/wm/preferences" = {
+      num-workspaces = 7;
     };
 
     "org/gnome/desktop/peripherals/keyboard" = {
