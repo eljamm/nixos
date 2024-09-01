@@ -28,8 +28,8 @@ in
   services.xserver.videoDrivers = [ "nvidia" ];
 
   environment.systemPackages = [
-    amd-offload
     nvidia-offload
+    pkgs.nvitop
   ];
 
   hardware.nvidia = {

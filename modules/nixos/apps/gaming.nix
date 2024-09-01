@@ -34,6 +34,7 @@ in
       # Utils
       cubiomes-viewer
       goverlay
+      igir
       libstrangle
       wineWowPackages.staging
       winetricks
