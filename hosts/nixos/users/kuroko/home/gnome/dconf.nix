@@ -270,7 +270,7 @@
       lock-enabled = false;
     };
 
-    "/org/gnome/desktop/wm/preferences" = {
+    "org/gnome/desktop/wm/preferences" = {
       num-workspaces = 7;
     };
 
