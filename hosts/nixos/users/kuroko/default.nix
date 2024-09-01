@@ -1,12 +1,18 @@
 {
+  config,
+  inputs,
   lib,
   ...
 }:
 {
-  imports = [ ./packages.nix ];
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+    ./packages.nix
+  ];
 
   options = {
     currentUser = lib.mkOption {
+      # TODO: improve
       description = "Username";
       type = lib.types.str;
       default = null;
@@ -16,9 +22,9 @@
   config = {
     currentUser = "kuroko";
 
-    users.users.kuroko = {
+    users.users.${config.currentUser} = {
       isNormalUser = true;
-      description = "kuroko";
+      description = "${config.currentUser}";
       extraGroups = [
         "adbusers"
         "audio"
@@ -26,6 +32,16 @@
         "networkmanager"
         "video"
         "wheel"
+      ];
+    };
+
+    home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      extraSpecialArgs.inputs = inputs;
+      users.${config.currentUser}.imports = [
+        ./home
+        inputs.catppuccin.homeManagerModules.catppuccin
       ];
     };
   };

@@ -1,5 +1,7 @@
-{ pkgs, ... }:
-
+{
+  pkgs,
+  ...
+}:
 with pkgs;
 let
   tools = [
@@ -66,7 +68,6 @@ let
   ];
 
   nix = [
-    alejandra
     deadnix
     manix
     nil
@@ -127,7 +128,6 @@ let
     ++ shell
     ++ web;
 in
-
 {
   # HACK: manix
   # https://github.com/nix-community/manix/issues/18

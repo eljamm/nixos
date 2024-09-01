@@ -3,13 +3,13 @@
 {
   imports = [
     ./gnome
+    ./hyprland
     ./mpv.nix
     ./neovim
     ./programs
     ./shell
-    ./theme.nix
     ./terminals
-    ./hyprland
+    ./theme.nix
   ];
 
   home = {
