@@ -19,7 +19,8 @@ in
 
     programs.hyprland = {
       enable = lib.mkDefault cfg.enable;
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      # TODO: cleanup
+      # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     };
 
     services.displayManager.sddm.enable = !config.desktops.gnome.enableGdm;

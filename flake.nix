@@ -7,26 +7,24 @@
 
     nixpkgs-system.url = "github:eljamm/nixpkgs/system";
 
-    # # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=0.42.0";
-    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      submodules = true;
-      ref = "refs/tags/v0.42.0";
-    };
-
-    hy3 = {
-      url = "github:outfoxxed/hy3?ref=hl0.42.0";
-      # url = "github:outfoxxed/hy3";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    hyprscroller = {
-      url = "github:dawsers/hyprscroller";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # TODO: cleanup
+    # hyprland = {
+    #   type = "git";
+    #   url = "https://github.com/hyprwm/Hyprland";
+    #   submodules = true;
+    #   ref = "refs/tags/v0.42.0";
+    # };
+    #
+    # hy3 = {
+    #   url = "github:outfoxxed/hy3?ref=hl0.42.0";
+    #   # url = "github:outfoxxed/hy3";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+    #
+    # hyprscroller = {
+    #   url = "github:dawsers/hyprscroller";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     agenix = {
       url = "github:ryantm/agenix";
