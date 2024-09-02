@@ -80,7 +80,7 @@ in
 
         # gnome-shell randomly crashes without this
         # https://gitlab.gnome.org/GNOME/mutter/-/issues/3358
-        MUTTER_DEBUG_KMS_THREAD_TYPE = "user";
+        # MUTTER_DEBUG_KMS_THREAD_TYPE = "user";
       };
     };
 
