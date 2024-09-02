@@ -158,13 +158,10 @@
 
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Super>q" ];
-      minimize = [ "<Super>c" ];
+      minimize = [ "<Super>x" ];
       switch-applications = [ "<Alt>Tab" ];
       switch-applications-backward = [ "<Shift><Alt>Tab" ];
-      switch-to-workspace-1 = [
-        "<Super>Home"
-        "<Super>1"
-      ];
+      switch-to-workspace-1 = [ "<Super>1" ];
       switch-to-workspace-2 = [ "<Super>2" ];
       switch-to-workspace-3 = [ "<Super>3" ];
       switch-to-workspace-4 = [ "<Super>4" ];
@@ -191,7 +188,7 @@
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      binding = "<Super>e";
+      binding = "<Super>r";
       command = "albert toggle";
       name = "App Launcher";
     };
@@ -203,7 +200,7 @@
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
-      binding = "<Shift><Super>k";
+      binding = "<Shift><Alt>k";
       command = "keepassxc";
       name = "KeepassXC";
     };
