@@ -91,8 +91,8 @@
       intellihide-close-delay = 400;
       intellihide-enable-start-delay = 2000;
       intellihide-hide-from-windows = true;
-      intellihide-key-toggle = [ "<Super>i" ];
-      intellihide-key-toggle-text = "<Super>i";
+      intellihide-key-toggle = [ "<Super><Alt>z" ];
+      intellihide-key-toggle-text = "<Super><Alt>z";
       intellihide-only-secondary = false;
       intellihide-pressure-threshold = 100;
       intellihide-pressure-time = 1000;
@@ -162,7 +162,7 @@
 
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Super>q" ];
-      minimize = [ "<Super>x" ];
+      # minimize = [ "<Super>x" ];
       switch-applications = [ "<Alt>Tab" ];
       switch-applications-backward = [ "<Shift><Alt>Tab" ];
       switch-to-workspace-1 = [ "<Super>1" ];
