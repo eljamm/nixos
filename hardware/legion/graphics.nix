@@ -12,7 +12,8 @@ let
   '';
 in
 {
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  # NOTE: stable mesa is also available from the boot menu
+  chaotic.mesa-git.enable = true;
 
   hardware.graphics = {
     enable = true;
