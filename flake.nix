@@ -3,7 +3,7 @@
 
   inputs = {
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "git+file:///home/kuroko/nixpkgs?ref=current-system";
+    nixpkgs.url = "git+file:///home/kuroko/nixpkgs?ref=current-system-0.13";
 
     nixpkgs-system.url = "github:eljamm/nixpkgs/system";
 
