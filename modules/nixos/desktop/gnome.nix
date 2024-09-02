@@ -73,26 +73,17 @@ in
 
       variables = lib.mkIf cfg.enable {
         # Force X11 for QT apps
-        # QT_QPA_PLATFORM = "xcb";
-
-        # This results in missing dock icons in Gnome, but it's not that
-        # noticeable when using PaperWM
-        QT_QPA_PLATFORM = "wayland;xcb";
-
-        # Hint electron apps to use Wayland
-        NIXOS_OZONE_WL = 1;
+        QT_QPA_PLATFORM = "xcb";
 
         # Needed for some extensions to function correctly
         GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
 
-        # TODO: enable this generally
-        #
-        # Use integrated GPU for gnome-shell
-        # See https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
-        __EGL_VENDOR_LIBRARY_FILENAMES = "${pkgs.mesa.drivers.outPath}/share/glvnd/egl_vendor.d/50_mesa.json";
-        __GLX_VENDOR_LIBRARY_NAME = "mesa";
-        VK_DRIVER_FILES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
+        # TODO: don't think these are useful. cleanup
+        # __GL_GSYNC_ALLOWED = 0; # global vsync
+        # __GL_SYNC_TO_VBLANK = 0;
+        # __GL_VRR_ALLOWED = 0;
 
+        # NOTE: probably not an issue. cleanup?
         # gnome-shell randomly crashes without this
         # https://gitlab.gnome.org/GNOME/mutter/-/issues/3358
         # MUTTER_DEBUG_KMS_THREAD_TYPE = "user";
