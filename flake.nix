@@ -75,6 +75,8 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
 
     blender-bin.url = "github:edolstra/nix-warez?dir=blender";
+
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 
   outputs =
@@ -106,6 +108,7 @@
             # ./specialisation.nix
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
+            inputs.chaotic.nixosModules.default
             { nixpkgs.overlays = overlays; }
           ];
         };
