@@ -12,6 +12,10 @@
     gnomeExtensions.user-themes
     gnomeExtensions.vertical-workspaces
     gnomeExtensions.vitals
+
+    # TODO: this is too old, use from extension manager for now
+    # gnomeExtensions.paperwm 
+
     #WIP: figure out how to install latest
     # (
     #   let
