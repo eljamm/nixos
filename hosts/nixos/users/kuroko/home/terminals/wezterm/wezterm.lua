@@ -7,6 +7,11 @@ local act = wezterm.action
 -- config.font = wezterm.font 'FiraCode Nerd Font'
 config.warn_about_missing_glyphs = false
 
+-- Fix fumbled display/graphics/...
+-- https://github.com/wez/wezterm/issues/6079
+-- https://github.com/wez/wezterm/issues/5990
+config.front_end = 'WebGpu'
+
 --- Theme
 local function scheme_for_appearance(appearance)
   if appearance:find 'Dark' then

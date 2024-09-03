@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 {
   programs.wezterm = {
-    enable = false;
+    enable = true;
     extraConfig = lib.readFile ./wezterm.lua;
   };
 }
