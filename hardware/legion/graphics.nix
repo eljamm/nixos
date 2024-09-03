@@ -12,8 +12,8 @@ let
   '';
 in
 {
-  # NOTE: stable mesa is also available from the boot menu
-  chaotic.mesa-git.enable = true;
+  # NOTE: adds stable-mesa to the boot menu
+  # chaotic.mesa-git.enable = true;
 
   hardware.graphics = {
     enable = true;
@@ -21,7 +21,6 @@ in
     extraPackages = with pkgs; [
       vaapiVdpau
       libvdpau-va-gl
-      nvidia-vaapi-driver
     ];
   };
 
