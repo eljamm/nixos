@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -13,7 +14,12 @@ let
 in
 {
   # NOTE: adds stable-mesa to the boot menu
+  # WIP: has problems with amdgpu
   # chaotic.mesa-git.enable = true;
+
+  # Load amdgpu driver for Xorg and Wayland
+  # NOTE: probably useless to do, but oh well
+  services.xserver.videoDrivers = lib.mkBefore [ "amdgpu" ];
 
   hardware.graphics = {
     enable = true;

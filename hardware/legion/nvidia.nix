@@ -26,14 +26,16 @@ let
   '';
 in
 {
-  # NOTE: 
+  # NOTE: Nvidia has a lot of problems with Wayland, so use X11 for now (unless you like pain).
 
+  # FIX:
   # boot.kernelParams = [
   #   # Fix Wayland flickering & AMD-Vi IO_PAGE_FAULT errors with Nouveau
   #   # https://gitlab.freedesktop.org/drm/nouveau/-/issues/225
   #   "iommu=pt"
   # ];
 
+  # TODO: verify if necessary
   boot.initrd.kernelModules = lib.mkBefore [
     "amdgpu"
     "nvidia"
@@ -43,16 +45,14 @@ in
   ];
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = lib.mkBefore [
-    "amdgpu"
-    "nvidia"
-  ];
+  services.xserver.videoDrivers = lib.mkBefore [ "nvidia" ];
 
   environment.systemPackages = [
     nvidia-offload
     pkgs.nvitop
   ];
 
+  # FIX: external monitor no longer detected since dGPU is tied to the laptop dock
   # environment.variables = {
   #   # Use integrated GPU for gnome-shell
   #   # See https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
