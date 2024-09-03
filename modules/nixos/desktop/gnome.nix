@@ -78,11 +78,6 @@ in
         # Needed for some extensions to function correctly
         GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
 
-        # TODO: don't think these are useful. cleanup
-        # __GL_GSYNC_ALLOWED = 0; # global vsync
-        # __GL_SYNC_TO_VBLANK = 0;
-        # __GL_VRR_ALLOWED = 0;
-
         # NOTE: probably not an issue. cleanup?
         # gnome-shell randomly crashes without this
         # https://gitlab.gnome.org/GNOME/mutter/-/issues/3358
