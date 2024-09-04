@@ -36,13 +36,13 @@ in
   # ];
 
   # TODO: verify if necessary
-  boot.initrd.kernelModules = lib.mkBefore [
-    "amdgpu"
-    "nvidia"
-    "nvidia_modeset"
-    "nvidia_uvm"
-    "nvidia_drm"
-  ];
+  # boot.initrd.kernelModules = lib.mkBefore [
+  #   "amdgpu"
+  #   "nvidia"
+  #   "nvidia_modeset"
+  #   "nvidia_uvm"
+  #   "nvidia_drm"
+  # ];
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = lib.mkBefore [ "nvidia" ];
@@ -70,12 +70,12 @@ in
     # Enable this if you have graphical corruption issues or application crashes after waking
     # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
     # of just the bare essentials.
-    powerManagement.enable = false;
+    powerManagement.enable = true;
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
     # powerManagement.finegrained = true;
-    powerManagement.finegrained = false;
+    powerManagement.finegrained = true;
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
@@ -91,8 +91,8 @@ in
     nvidiaSettings = true;
 
     prime = {
-      # offload.enable = true;
-      reverseSync.enable = true;
+      offload.enable = true;
+      # reverseSync.enable = true;
       # sync.enable = true;
 
       # Enable if using an external GPU
