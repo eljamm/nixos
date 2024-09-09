@@ -30,7 +30,12 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  # FIX: amdgpu regression for linux 6.10
+  # https://gitlab.freedesktop.org/drm/amd/-/issues/3528
+  # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+
+  # use LTS until above regression is fixed
+  boot.kernelPackages = pkgs.linuxPackages_xanmod;
 
   # Custom kernel for `sched_ext`
   # 
