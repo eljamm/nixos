@@ -48,15 +48,13 @@
         "Bluetooth-Battery-Meter@maniacx.github.com"
         "appindicatorsupport@rgcjonas.gmail.com"
         # "dash-to-panel@jderose9.github.com"
+        "fix-focus-on-workspace-switch@hiddn.github.com"
         "memento-mori@paveloom"
-        # "pop-shell@system76.com"
+        "monitor@astraext.github.io"
+        "paperwm@paperwm.github.com"
         # "space-bar@luchrioh"
-        # "tophat@fflewddur.github.io"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "vertical-workspaces@G-dH.github.com"
-        "monitor@astraext.github.io"
-        # TODO: configure keybindings
-        "paperwm@paperwm.github.com"
       ];
 
       favorite-apps = [
@@ -151,6 +149,67 @@
       extension-index = 2;
     };
 
+    "org/gnome/shell/extensions/paperwm" = {
+      default-focus-mode = 1;
+      disable-topbar-styling = true;
+      edge-preview-enable = true;
+      edge-preview-timeout-continual = false;
+      edge-preview-timeout-enable = false;
+      gesture-enabled = true;
+      maximize-within-tiling = true;
+      open-window-position = 0;
+      overview-ensure-viewport-animation = 1;
+      restore-attach-modal-dialogs = "false";
+      restore-edge-tiling = "true";
+      restore-workspaces-only-on-primary = "false";
+      show-focus-mode-icon = true;
+      show-window-position-bar = false;
+      show-workspace-indicator = true;
+      topbar-mouse-scroll-enable = true;
+      winprops = [ ];
+    };
+
+    "org/gnome/shell/extensions/paperwm/keybindings" = {
+      close-window = [ "<Super>x" ];
+      cycle-width = [ "<Super>d" ];
+      move-down = [ "<Super><Ctrl>Down" ];
+      move-down-workspace = [
+        "<Super><Ctrl>Page_Down"
+        "<Super><Shift>j"
+      ];
+      move-left = [
+        "<Super><Ctrl>comma"
+        "<Super><Shift>comma"
+        "<Super><Ctrl>Left"
+        "<Super><Shift>h"
+      ];
+      move-right = [
+        "<Super><Ctrl>period"
+        "<Super><Shift>period"
+        "<Super><Ctrl>Right"
+        "<Super><Shift>l"
+      ];
+      move-up = [ "<Super><Ctrl>Up" ];
+      move-up-workspace = [
+        "<Super><Ctrl>Page_Up"
+        "<Super><Shift>k"
+      ];
+      switch-down-or-else-workspace = [ "<Super>j" ];
+      switch-left-loop = [ "<Super>h" ];
+      switch-monitor-above = [ "<Super><Shift>Up" ];
+      switch-monitor-below = [ "<Super><Shift>Down" ];
+      switch-monitor-left = [
+        "<Super><Shift>Left"
+        "<Super><Ctrl>h"
+      ];
+      switch-monitor-right = [
+        "<Super><Shift>Right"
+        "<Super><Ctrl>l"
+      ];
+      switch-right-loop = [ "<Super>l" ];
+      switch-up-or-else-workspace = [ "<Super>k" ];
+    };
+
     "org/gnome/shell/keybindings" = {
       focus-active-notification = [ "<Shift><Super>n" ];
       switch-to-application-1 = [ ];
@@ -158,6 +217,7 @@
       switch-to-application-3 = [ ];
       switch-to-application-4 = [ ];
       toggle-message-tray = [ "<Super>n" ];
+      toggle-quick-settings = [ ];
     };
 
     "org/gnome/desktop/wm/keybindings" = {
@@ -204,7 +264,7 @@
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
-      binding = "<Shift><Alt>k";
+      binding = "<Shift><Super>u";
       command = "keepassxc";
       name = "KeepassXC";
     };
@@ -250,7 +310,7 @@
 
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = true;
-      night-light-temperature = mkUint32 4510;
+      night-light-temperature = mkUint32 3500;
     };
 
     "org/gnome/mutter" = {
