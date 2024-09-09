@@ -1,4 +1,8 @@
-_: {
+{
+  pkgs,
+  ...
+}:
+{
   networking.hostName = "nixos";
   # networking.wireless.enable = true;  # wireless support via wpa_supplicant
 
@@ -8,6 +12,10 @@ _: {
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  programs.wireshark.enable = true;
+
+  environment.systemPackages = with pkgs; [ wireshark ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

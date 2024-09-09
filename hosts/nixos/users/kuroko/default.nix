@@ -32,6 +32,7 @@
         "networkmanager"
         "video"
         "wheel"
+        "wireshark"
       ];
     };
 
