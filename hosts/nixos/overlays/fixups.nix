@@ -25,20 +25,5 @@
         }
       );
     })
-
-    # https://github.com/NixOS/nixpkgs/pull/338975
-    (final: prev: {
-      hyprlandPlugins = prev.hyprlandPlugins // {
-        hyprscroller = prev.hyprlandPlugins.hyprscroller.overrideAttrs (oldAttrs: {
-          version = "0-unstable-2024-09-01";
-          src = final.fetchFromGitHub {
-            owner = "dawsers";
-            repo = "hyprscroller";
-            rev = "5fe29fcbd7103782d55cfb50482c64c31189f02a";
-            hash = "sha256-Fr2OUEO2LgZsLILnXePuMMbzYBnGA9GyIlLWt2P7bLA=";
-          };
-        });
-      };
-    })
   ];
 }
