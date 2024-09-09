@@ -2,6 +2,9 @@
 
 {
   nixpkgs.overlays = [
+    # TODO: worth following:
+    # https://github.com/NixOS/nixpkgs/pull/340427
+    # https://github.com/NixOS/nixpkgs/pull/340128
     (_: prev: {
       logseq = prev.logseq.overrideAttrs (
         finalAttrs: oldAttrs: {
