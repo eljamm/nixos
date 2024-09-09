@@ -28,7 +28,7 @@ in
       gnome.tracker.enable = lib.mkForce false;
 
       # For enabling systray icons
-      udev.packages = lib.optionals cfg.enable [ pkgs.gnome.gnome-settings-daemon ];
+      udev.packages = lib.optionals cfg.enable [ pkgs.gnome-settings-daemon ];
     };
 
     programs.dconf.enable = true;
