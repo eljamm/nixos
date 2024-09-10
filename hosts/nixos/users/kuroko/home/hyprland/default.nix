@@ -10,6 +10,12 @@
     # inputs.hyprland.homeManagerModules.default
   ];
 
+  xdg.configFile = {
+    "hypr/hyprscroller.conf".text = ''
+      plugin = ${lib.getLib pkgs.hyprlandPlugins.hyprscroller}/lib/libhyprscroller.so 
+    '';
+  };
+
   wayland.windowManager.hyprland = {
     enable = false;
     # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
