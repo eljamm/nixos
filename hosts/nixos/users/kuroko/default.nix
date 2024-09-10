@@ -2,6 +2,7 @@
   config,
   inputs,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -39,7 +40,10 @@
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
-      extraSpecialArgs.inputs = inputs;
+      extraSpecialArgs = {
+        pkgsCustom = inputs.nixpkgs-system.legacyPackages.${pkgs.system};
+        inherit inputs;
+      };
       users.${config.currentUser}.imports = [
         ./home
         inputs.catppuccin.homeManagerModules.catppuccin

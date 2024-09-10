@@ -85,17 +85,8 @@ let
   ];
 
   rust = [
-    rustToolchain
     bacon # background code check
     taplo # TOML
-  ];
-  rustToolchain = fenix.stable.withComponents [
-    "cargo"
-    "clippy"
-    "rust-src"
-    "rustc"
-    "rustfmt"
-    "rust-analyzer"
   ];
 
   shell = [

@@ -1,6 +1,7 @@
 {
-  pkgs,
   lib,
+  pkgs,
+  pkgsCustom,
   ...
 }:
 let
@@ -74,7 +75,6 @@ let
     education = [
       anki-bin
       anki-sync-server
-      custom.vocabsieve
       ki
     ];
 
@@ -110,8 +110,12 @@ let
     utils = [
       (llama-cpp.override { cudaSupport = true; })
       piper-tts
-      custom.pgsrip
       grc
+    ];
+
+    custom = with pkgsCustom; [
+      pgsrip
+      vocabsieve
     ];
   };
 in

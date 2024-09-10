@@ -4,6 +4,7 @@
     ./apps
     ./audio
     ./desktop
+    ./development
     ./pkgs
     ./services
     ./settings.nix
