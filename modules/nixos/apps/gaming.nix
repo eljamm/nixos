@@ -55,18 +55,19 @@ in
     ++ [ umu ];
 
   nixpkgs.overlays = [
-    # Gamescope
-    (_: prev: {
-      gamescope = prev.gamescope.overrideAttrs (_: rec {
-        version = "3.14.24";
-        src = prev.fetchFromGitHub {
-          owner = "ValveSoftware";
-          repo = "gamescope";
-          rev = "refs/tags/${version}";
-          fetchSubmodules = true;
-          hash = "sha256-+8uojnfx8V8BiYAeUsOaXTXrlcST83z6Eld7qv1oboE=";
-        };
-      });
+    (final: prev: {
+      gamescope = prev.gamescope.overrideAttrs (
+        finalAttrs: oldAttrs: {
+          version = "3.14.29";
+          src = final.fetchFromGitHub {
+            owner = "ValveSoftware";
+            repo = "gamescope";
+            rev = "refs/tags/${finalAttrs.version}";
+            fetchSubmodules = true;
+            hash = "sha256-q3HEbFqUeNczKYUlou+quxawCTjpM5JNLrML84tZVYE=";
+          };
+        }
+      );
     })
   ];
 }
