@@ -1,5 +1,8 @@
-{ pkgs, ... }:
-
+{
+  pkgs,
+  pkgsCustom,
+  ...
+}:
 {
   programs = {
     zoxide = {
@@ -56,12 +59,14 @@
 
     obs-studio = {
       enable = true;
-      plugins = with pkgs.custom.obs-studio-plugins; [
-        obs-backgroundremoval
-        obs-pipewire-audio-capture
-        obs-vkcapture
-        wlrobs
-      ];
+      plugins =
+        with pkgs.obs-studio-plugins;
+        [
+          obs-pipewire-audio-capture
+          obs-vkcapture
+          wlrobs
+        ]
+        ++ [ pkgsCustom.obs-studio-plugins.obs-backgroundremoval ];
     };
 
     mangohud.enable = true;
