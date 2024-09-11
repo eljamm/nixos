@@ -20,7 +20,10 @@ in
       xserver = {
         enable = lib.mkDefault cfg.enable;
         displayManager.gdm.enable = lib.mkDefault cfg.enableGdm;
-        desktopManager.gnome.enable = lib.mkDefault cfg.enable;
+        desktopManager.gnome = {
+          enable = lib.mkDefault cfg.enable;
+          extraGSettingsOverridePackages = [ pkgs.mutter ];
+        };
       };
 
       # High resource consumption and I don't need it
