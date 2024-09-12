@@ -59,9 +59,8 @@ let
       freetube
       mediainfo
       mediainfo-gui
-      # FIX: uncached and build ooms
-      # mkvtoolnix
-      # mkvtoolnix-cli
+      mkvtoolnix
+      mkvtoolnix-cli
       opusTools
       pipewire.jack
       playerctl
