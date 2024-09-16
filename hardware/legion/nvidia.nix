@@ -39,6 +39,8 @@ in
       configuration = {
         system.nixos.tags = [ "nvidia-closed" ];
 
+        environment.etc."specialisation".text = "nvidia-closed";
+
         # FIX: external monitor no longer detected since dGPU is tied to the laptop dock
         # environment.variables = {
         #   # Use integrated GPU for gnome-shell
