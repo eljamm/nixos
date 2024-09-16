@@ -5,6 +5,8 @@ let
 in
 
 {
+  imports = [ ./aagl.nix ];
+
   programs = {
     steam = {
       enable = true;
@@ -33,6 +35,7 @@ in
     (with pkgs; [
       # Utils
       cubiomes-viewer
+      ferium
       goverlay
       igir
       libstrangle

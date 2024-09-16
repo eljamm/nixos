@@ -57,6 +57,11 @@
     blender-bin.url = "github:edolstra/nix-warez?dir=blender";
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
