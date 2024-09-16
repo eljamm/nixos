@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./gaming.nix
+    ./gaming
     ./spicetify.nix
   ];
 }
