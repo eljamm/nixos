@@ -35,7 +35,25 @@
   # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   # use LTS until above regression is fixed
-  boot.kernelPackages = pkgs.linuxPackages_xanmod;
+  # boot.kernelPackages = pkgs.linuxPackages_xanmod;
+
+  # WIP: testing latest xanmod kernel (includes amdgpu fix)
+  # https://github.com/xanmod/linux/releases/tag/6.11.0-xanmod1
+  boot.kernelPackages = pkgs.linuxPackagesFor (
+    pkgs.linux_xanmod.override {
+      argsOverride = rec {
+        version = "6.11.0";
+        modDirVersion = "${version}-xanmod1";
+
+        src = pkgs.fetchFromGitHub {
+          owner = "xanmod";
+          repo = "linux";
+          rev = modDirVersion;
+          hash = "sha256-cMT7xqDAwzuJsKSrqdCP+brIrCxgxQ/4fttFxbFiDNI=";
+        };
+      };
+    }
+  );
 
   # Custom kernel for `sched_ext`
   # 
