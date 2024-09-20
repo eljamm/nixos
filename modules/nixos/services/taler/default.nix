@@ -3,7 +3,7 @@
 let
   hostname = "192.168.1.100";
   CURRENCY = "KUDOS";
-  enable = false;
+  enable = true;
 in
 
 {
@@ -16,7 +16,10 @@ in
     inherit enable;
     debug = true;
     denominationConfig = lib.readFile ./conf/taler-denominations.conf;
-    enableAccounts = [ ./accounts/exchange.json ];
+    enableAccounts = [
+      ./accounts/exchange.json
+      ./accounts/exchange.json
+    ];
     settings = {
       exchange = {
         BASE_URL = "http://${hostname}:8081/";
@@ -93,4 +96,11 @@ in
     };
   };
 
+  services.taler.depolymerization = {
+    inherit enable;
+    debug = true;
+    settings =
+      {
+      };
+  };
 }
