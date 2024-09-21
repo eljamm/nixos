@@ -183,6 +183,14 @@
         "<Super><Ctrl>Left"
         "<Super><Shift>h"
       ];
+      move-monitor-left = [
+        "<Shift><Control><Super>Left"
+        "<Control><Super>k"
+      ];
+      move-monitor-right = [
+        "<Shift><Control><Super>Right"
+        "<Control><Super>j"
+      ];
       move-right = [
         "<Super><Ctrl>period"
         "<Super><Shift>period"
