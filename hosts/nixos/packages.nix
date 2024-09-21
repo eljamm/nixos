@@ -42,6 +42,7 @@ let
     office = [
       calibre
       goldendict-ng
+      harper
       libreoffice-fresh
       yacreader
     ];
