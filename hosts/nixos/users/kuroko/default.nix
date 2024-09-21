@@ -34,6 +34,7 @@
         "video"
         "wheel"
         "wireshark"
+        "docker"
       ];
     };
 
