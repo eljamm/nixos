@@ -6,30 +6,42 @@
 }:
 let
   nvidiaEnabled = lib.elem "nvidia" config.services.xserver.videoDrivers;
-  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
-    export __NV_PRIME_RENDER_OFFLOAD=1
-    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export __VK_LAYER_NV_optimus=NVIDIA_only
-    export VK_DRIVER_FILES="${lib.concatStringsSep ":" vulkanDriverFiles}"
-    export DRI_PRIME=1
-    exec "$@"
-  '';
-  vulkanDriverFiles =
+
+  # Force the dGPU to be used
+  # TODO: refactor
+  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" (
     if nvidiaEnabled then
-      [
-        "${config.hardware.nvidia.package}/share/vulkan/icd.d/nvidia_icd.x86_64.json"
-        "${config.hardware.nvidia.package.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json"
-      ]
+      # sh
+      ''
+        export __NV_PRIME_RENDER_OFFLOAD=1
+        export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+        export __GLX_VENDOR_LIBRARY_NAME=nvidia
+        export __VK_LAYER_NV_optimus=NVIDIA_only
+        export VK_DRIVER_FILES="${
+          lib.concatStringsSep ":" [
+            "${config.hardware.nvidia.package}/share/vulkan/icd.d/nvidia_icd.x86_64.json"
+            "${config.hardware.nvidia.package.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json"
+          ]
+        }"
+        exec "$@"
+      ''
     else
-      [
-        "${pkgs.mesa.drivers}/share/vulkan/icd.d/nouveau_icd.x86_64.json"
-        "${pkgs.mesa_i686.drivers}/share/vulkan/icd.d/nouveau_icd.i686.json"
-      ];
+      # sh
+      ''
+        export __EGL_VENDOR_LIBRARY_FILENAMES="${pkgs.mesa.drivers}/share/glvnd/egl_vendor.d/50_mesa.json"
+        export __GLX_VENDOR_LIBRARY_NAME=mesa
+        export VK_DRIVER_FILES="${
+          lib.concatStringsSep ":" [
+            "${pkgs.mesa.drivers}/share/vulkan/icd.d/nouveau_icd.x86_64.json"
+            "${pkgs.mesa_i686.drivers}/share/vulkan/icd.d/nouveau_icd.i686.json"
+          ]
+        }"
+        export DRI_PRIME=1
+        exec "$@"
+      ''
+  );
 in
 {
-  # NOTE: Nvidia has some problems with Wayland, so use X11 for now.
-
   boot.kernelParams = [
     # Fix Wayland flickering & AMD-Vi IO_PAGE_FAULT errors with Nouveau
     # https://gitlab.freedesktop.org/drm/nouveau/-/issues/225
@@ -41,6 +53,7 @@ in
   ] ++ lib.optionals nvidiaEnabled [ pkgs.nvitop ];
 
   # Additional boot menu selection for proprietary Nvidia drivers
+  # NOTE: X11 is smoother than Wayland with the proprietary drivers.
   specialisation = {
     nvidia-closed = {
       configuration = {
