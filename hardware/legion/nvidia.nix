@@ -78,6 +78,10 @@ in
         # Load nvidia driver for Xorg and Wayland
         services.xserver.videoDrivers = lib.mkBefore [ "nvidia" ];
 
+        boot.kernelParams = [
+          "nvidia.NVreg_UsePageAttributeTable=1" # improve performance with PAT
+        ];
+
         hardware.nvidia = {
           # Modesetting is required.
           modesetting.enable = true;
