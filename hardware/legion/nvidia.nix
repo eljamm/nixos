@@ -5,14 +5,16 @@
   ...
 }:
 let
+  # Check if proprietary Nvidia drivers are enabled
   nvidiaEnabled = lib.elem "nvidia" config.services.xserver.videoDrivers;
 
-  # Force the dGPU to be used
+  # Script to offload graphics rendering to dedicated GPU
   # TODO: refactor
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" (
     if nvidiaEnabled then
       # sh
       ''
+        # Offload graphics rendering to dedicated GPU (Nvidia)
         export __NV_PRIME_RENDER_OFFLOAD=1
         export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
         export __GLX_VENDOR_LIBRARY_NAME=nvidia
@@ -28,6 +30,7 @@ let
     else
       # sh
       ''
+        # Offload graphics rendering to dedicated GPU (Nouveau)
         export __EGL_VENDOR_LIBRARY_FILENAMES="${pkgs.mesa.drivers}/share/glvnd/egl_vendor.d/50_mesa.json"
         export __GLX_VENDOR_LIBRARY_NAME=mesa
         export VK_DRIVER_FILES="${
@@ -52,21 +55,24 @@ in
     nvidia-offload
   ] ++ lib.optionals nvidiaEnabled [ pkgs.nvitop ];
 
-  # Additional boot menu selection for proprietary Nvidia drivers
-  # NOTE: X11 is smoother than Wayland with the proprietary drivers.
+  # Additional boot menu selection for running the proprietary Nvidia drivers
+  # NOTE: X11 feels smoother than Wayland, at least under Gnome
   specialisation = {
     nvidia-closed = {
       configuration = {
         system.nixos.tags = [ "nvidia-closed" ];
-        environment.etc."specialisation".text = "nvidia-closed";
+        environment.etc."specialisation".text = "nvidia-closed"; # hint for nh
 
-        # FIX: external monitor no longer detected since dGPU is tied to the laptop dock
+        # Use integrated GPU for gnome-shell
+        # See https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
+        # FIX: external monitor no longer works when enabling this since dGPU is tied to the laptop dock
         # environment.variables = {
-        #   # Use integrated GPU for gnome-shell
-        #   # See https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
-        #   __EGL_VENDOR_LIBRARY_FILENAMES = "${pkgs.mesa.drivers.outPath}/share/glvnd/egl_vendor.d/50_mesa.json:${config.hardware.nvidia.package}/share/glvnd/egl_vendor.d/10_nvidia.json";
+        #   __EGL_VENDOR_LIBRARY_FILENAMES = "${pkgs.mesa.drivers}/share/glvnd/egl_vendor.d/50_mesa.json";
         #   __GLX_VENDOR_LIBRARY_NAME = "mesa";
-        #   VK_DRIVER_FILES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
+        #   VK_DRIVER_FILES = "${lib.concatStringsSep ":" [
+        #     "${pkgs.mesa.drivers}/share/vulkan/icd.d/radeon_icd.x86_64.json"
+        #     "${pkgs.mesa_i686.drivers}/share/vulkan/icd.d/radeon_icd.i686.json"
+        #   ]}";
         # };
 
         # Load nvidia driver for Xorg and Wayland
