@@ -3,10 +3,10 @@
 {
   nixpkgs.overlays = [
     # albert launcher
-    (_: prev: {
+    (final: prev: {
       albert = prev.albert.overrideAttrs rec {
         version = "0.26.2";
-        src = prev.fetchFromGitHub {
+        src = final.fetchFromGitHub {
           owner = "albertlauncher";
           repo = "albert";
           rev = "v${version}";
