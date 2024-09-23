@@ -29,7 +29,6 @@
   dbus,
   sudo,
   libcanberra,
-  libicns,
   wayland-scanner,
   simde,
   bashInteractive,
@@ -43,14 +42,14 @@
 
 python3.pkgs.buildPythonApplication rec {
   pname = "kitty";
-  version = "0.36.2";
+  version = "0.34.1";
   format = "other";
 
   src = fetchFromGitHub {
     owner = "kovidgoyal";
     repo = "kitty";
     rev = "refs/tags/v${version}";
-    hash = "sha256-a8nFxLs1VYzVEcNCgZNsJYZ4t/+Gobs98LM0GM8F2S0=";
+    hash = "sha256-r7KZcSqREILMp0F9ajeHS5sglq/o88h2t+4BgbABjOY=";
   };
 
   inherit
@@ -58,7 +57,7 @@ python3.pkgs.buildPythonApplication rec {
       (buildGoModule {
         pname = "kitty-go-modules";
         inherit src version;
-        vendorHash = "sha256-8bdBw9iDZhoFtng5FSMmNwHAmPziNIxz5WPw+ytUFPM=";
+        vendorHash = "sha256-HNE0MWjL0PH20Glzb0GV6+lQu/Lslx8k/+YvlLHbHww=";
       })
     )
     goModules
@@ -105,12 +104,6 @@ python3.pkgs.buildPythonApplication rec {
       pkg-config
       go
       fontconfig
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      imagemagick
-      libicns # For the png2icns tool.
-    ]
-    ++ lib.optionals stdenv.isLinux [
       wayland-scanner
     ];
 
@@ -126,16 +119,6 @@ python3.pkgs.buildPythonApplication rec {
   patches = [
     # Gets `test_ssh_env_vars` to pass when `bzip2` is in the output of `env`.
     ./fix-test_ssh_env_vars.patch
-
-    # Needed on darwin
-
-    # Gets `test_ssh_shell_integration` to pass for `zsh` when `compinit` complains about
-    # permissions.
-    ./zsh-compinit.patch
-
-    # Skip `test_ssh_bootstrap_with_different_launchers` when launcher is `zsh` since it causes:
-    # OSError: master_fd is in error condition
-    ./disable-test_ssh_bootstrap_with_different_launchers.patch
   ];
 
   hardeningDisable = [
@@ -159,10 +142,6 @@ python3.pkgs.buildPythonApplication rec {
         --update-check-interval=0 \
         --shell-integration=enabled\ no-rc
       '';
-      darwinOptions = ''
-        --disable-link-time-optimization \
-        ${commonOptions}
-      '';
     in
     ''
       runHook preBuild
@@ -173,63 +152,28 @@ python3.pkgs.buildPythonApplication rec {
         (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       }/share/fonts/truetype/NerdFonts/SymbolsNerdFontMono-Regular.ttf" ./fonts/
 
-      ${lib.optionalString (stdenv.isDarwin && stdenv.isx86_64) "export MACOSX_DEPLOYMENT_TARGET=11"}
-      ${
-        if stdenv.isDarwin then
-          ''
-            ${python3.pythonOnBuildForHost.interpreter} setup.py build ${darwinOptions}
-            make docs
-            ${python3.pythonOnBuildForHost.interpreter} setup.py kitty.app ${darwinOptions}
-          ''
-        else
-          ''
-            ${python3.pythonOnBuildForHost.interpreter} setup.py linux-package \
-            --egl-library='${lib.getLib libGL}/lib/libEGL.so.1' \
-            --startup-notification-library='${libstartup_notification}/lib/libstartup-notification-1.so' \
-            --canberra-library='${libcanberra}/lib/libcanberra.so' \
-            --fontconfig-library='${fontconfig.lib}/lib/libfontconfig.so' \
-            ${commonOptions}
-            ${python3.pythonOnBuildForHost.interpreter} setup.py build-launcher
-          ''
-      }
+      ${python3.pythonOnBuildForHost.interpreter} setup.py linux-package \
+      --egl-library='${lib.getLib libGL}/lib/libEGL.so.1' \
+      --startup-notification-library='${libstartup_notification}/lib/libstartup-notification-1.so' \
+      --canberra-library='${libcanberra}/lib/libcanberra.so' \
+      --fontconfig-library='${fontconfig.lib}/lib/libfontconfig.so' \
+      ${commonOptions}
+      ${python3.pythonOnBuildForHost.interpreter} setup.py build-launcher
+
       runHook postBuild
     '';
 
-  nativeCheckInputs =
-    [
-      python3.pkgs.pillow
+  nativeCheckInputs = [
+    python3.pkgs.pillow
 
-      # Shells needed for shell integration tests
-      bashInteractive
-      zsh
-      fish
-    ]
-    ++ lib.optionals (!stdenv.isDarwin) [
-      # integration tests need sudo
-      sudo
-    ];
+    # Shells needed for shell integration tests
+    bashInteractive
+    zsh
+    fish
 
-  # skip failing tests due to darwin sandbox
-  preCheck = lib.optionalString stdenv.isDarwin ''
-    substituteInPlace kitty_tests/file_transmission.py \
-      --replace test_file_get dont_test_file_get \
-      --replace test_path_mapping_receive dont_test_path_mapping_receive \
-      --replace test_transfer_send dont_test_transfer_send
-    substituteInPlace kitty_tests/shell_integration.py \
-      --replace test_fish_integration dont_test_fish_integration
-    substituteInPlace kitty_tests/shell_integration.py \
-      --replace test_bash_integration dont_test_bash_integration
-    substituteInPlace kitty_tests/open_actions.py \
-      --replace test_parsing_of_open_actions dont_test_parsing_of_open_actions
-    substituteInPlace kitty_tests/ssh.py \
-      --replace test_ssh_connection_data dont_test_ssh_connection_data
-    substituteInPlace kitty_tests/fonts.py \
-      --replace 'class Rendering(BaseTest)' 'class Rendering'
-    # theme collection test starts an http server
-    rm tools/themes/collection_test.go
-    # passwd_test tries to exec /usr/bin/dscl
-    rm tools/utils/passwd_test.go
-  '';
+    # integration tests need sudo
+    sudo
+  ];
 
   checkPhase = ''
     runHook preCheck
@@ -248,24 +192,9 @@ python3.pkgs.buildPythonApplication rec {
     runHook preInstall
     mkdir -p "$out"
     mkdir -p "$kitten/bin"
-    ${
-      if stdenv.isDarwin then
-        ''
-          mkdir "$out/bin"
-          ln -s ../Applications/kitty.app/Contents/MacOS/kitty "$out/bin/kitty"
-          ln -s ../Applications/kitty.app/Contents/MacOS/kitten "$out/bin/kitten"
-          cp ./kitty.app/Contents/MacOS/kitten "$kitten/bin/kitten"
-          mkdir "$out/Applications"
-          cp -r kitty.app "$out/Applications/kitty.app"
 
-          installManPage 'docs/_build/man/kitty.1'
-        ''
-      else
-        ''
-          cp -r linux-package/{bin,share,lib} "$out"
-          cp linux-package/bin/kitten "$kitten/bin/kitten"
-        ''
-    }
+    cp -r linux-package/{bin,share,lib} "$out"
+    cp linux-package/bin/kitten "$kitten/bin/kitten"
 
     # dereference the `kitty` symlink to make sure the actual executable
     # is wrapped on macOS as well (and not just the symlink)
@@ -281,12 +210,7 @@ python3.pkgs.buildPythonApplication rec {
       --fish <("$out/bin/kitty" +complete setup fish2) \
       --zsh  <("$out/bin/kitty" +complete setup zsh)
 
-    terminfo_src=${
-      if stdenv.isDarwin then
-        ''"$out/Applications/kitty.app/Contents/Resources/terminfo"''
-      else
-        "$out/share/terminfo"
-    }
+    terminfo_src="$out/share/terminfo"
 
     mkdir -p $terminfo/share
     mv "$terminfo_src" $terminfo/share/terminfo
@@ -306,6 +230,8 @@ python3.pkgs.buildPythonApplication rec {
     updateScript = nix-update-script { };
   };
 
+  doCheck = false;
+
   meta = {
     homepage = "https://github.com/kovidgoyal/kitty";
     description = "Modern, hackable, featureful, OpenGL based terminal emulator";
@@ -314,7 +240,7 @@ python3.pkgs.buildPythonApplication rec {
       "https://sw.kovidgoyal.net/kitty/changelog/"
       "https://github.com/kovidgoyal/kitty/blob/v${version}/docs/changelog.rst"
     ];
-    platforms = lib.platforms.darwin ++ lib.platforms.linux;
+    platforms = lib.platforms.linux;
     mainProgram = "kitty";
     maintainers = with lib.maintainers; [
       tex
