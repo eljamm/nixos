@@ -49,6 +49,17 @@
   # Reddit
   services.redlib.enable = true;
 
+  services.calibre-server = {
+    enable = false;
+    port = 4242;
+    user = "kuroko";
+    group = "users";
+    libraries = [
+      "/home/kuroko/Calibre Library"
+      "/home/kuroko/Calibre Light Novels"
+    ];
+  };
+
   virtualisation.docker = {
     enable = true;
     rootless = {
