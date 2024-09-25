@@ -1,0 +1,57 @@
+From 4c3dbb2e1ed72d774cfd24836b4abfa60f581d32 Mon Sep 17 00:00:00 2001
+From: eljamm <***REMOVED***>
+Date: Wed, 25 Sep 2024 12:13:34 +0100
+Subject: [PATCH] Revert Wayland suspend
+
+---
+ glfw/wl_window.c | 13 -------------
+ 1 file changed, 13 deletions(-)
+
+diff --git a/glfw/wl_window.c b/glfw/wl_window.c
+index a200ae8b1..735ec305f 100644
+--- a/glfw/wl_window.c
++++ b/glfw/wl_window.c
+@@ -758,7 +758,6 @@ static const struct xdg_toplevel_listener xdgToplevelListener = {
+ 
+ static void
+ apply_xdg_configure_changes(_GLFWwindow *window) {
+-    bool suspended_changed = false;
+     if (window->wl.pending_state & PENDING_STATE_TOPLEVEL) {
+         uint32_t new_states = window->wl.pending.toplevel_states;
+         int width = window->wl.pending.width;
+@@ -769,10 +768,6 @@ apply_xdg_configure_changes(_GLFWwindow *window) {
+             window->wl.once.surface_configured = true;
+         }
+ 
+-#ifdef XDG_TOPLEVEL_STATE_SUSPENDED_SINCE_VERSION
+-        suspended_changed = ((new_states & TOPLEVEL_STATE_SUSPENDED) != (window->wl.current.toplevel_states & TOPLEVEL_STATE_SUSPENDED));
+-#endif
+-
+         if (new_states != window->wl.current.toplevel_states ||
+                 width != window->wl.current.width ||
+                 height != window->wl.current.height) {
+@@ -804,11 +799,6 @@ apply_xdg_configure_changes(_GLFWwindow *window) {
+     inform_compositor_of_window_geometry(window, "configure");
+     commit_window_surface_if_safe(window);
+     window->wl.pending_state = 0;
+-#ifdef XDG_TOPLEVEL_STATE_SUSPENDED_SINCE_VERSION
+-    if (suspended_changed) {
+-        _glfwInputWindowOcclusion(window, window->wl.current.toplevel_states & TOPLEVEL_STATE_SUSPENDED);
+-    }
+-#endif
+ }
+ 
+ typedef union pixel {
+@@ -1673,9 +1663,6 @@ int _glfwPlatformWindowFocused(_GLFWwindow* window)
+ 
+ int _glfwPlatformWindowOccluded(_GLFWwindow* window UNUSED)
+ {
+-#ifdef XDG_TOPLEVEL_STATE_SUSPENDED_SINCE_VERSION
+-    return (window->wl.current.toplevel_states & TOPLEVEL_STATE_SUSPENDED) != 0;
+-#endif
+     return false;
+ }
+ 
+-- 
+2.46.0
+

@@ -42,14 +42,14 @@
 
 python3.pkgs.buildPythonApplication rec {
   pname = "kitty";
-  version = "0.34.1";
+  version = "0.36.3";
   format = "other";
 
   src = fetchFromGitHub {
     owner = "kovidgoyal";
     repo = "kitty";
     rev = "refs/tags/v${version}";
-    hash = "sha256-r7KZcSqREILMp0F9ajeHS5sglq/o88h2t+4BgbABjOY=";
+    hash = "sha256-P+gaeZQAyVyc4R3WEuxljhfTJ0SeOg/7ccaAF5MtwCA=";
   };
 
   inherit
@@ -57,7 +57,7 @@ python3.pkgs.buildPythonApplication rec {
       (buildGoModule {
         pname = "kitty-go-modules";
         inherit src version;
-        vendorHash = "sha256-HNE0MWjL0PH20Glzb0GV6+lQu/Lslx8k/+YvlLHbHww=";
+        vendorHash = "sha256-8hsQH7OdsxeVG6pomuxdmTXNmQYBROoUUxoC10LeLFo=";
       })
     )
     goModules
@@ -118,7 +118,11 @@ python3.pkgs.buildPythonApplication rec {
 
   patches = [
     # Gets `test_ssh_env_vars` to pass when `bzip2` is in the output of `env`.
-    ./fix-test_ssh_env_vars.patch
+    ./0001-fix-test_ssh_env_vars.patch
+
+    # Make kitty not freeze when using PaperWM with multi-monitors
+    # https://github.com/kovidgoyal/kitty/issues/3069
+    ./0002-revert-Wayland-suspend.patch
   ];
 
   hardeningDisable = [
@@ -229,8 +233,6 @@ python3.pkgs.buildPythonApplication rec {
     };
     updateScript = nix-update-script { };
   };
-
-  doCheck = false;
 
   meta = {
     homepage = "https://github.com/kovidgoyal/kitty";
