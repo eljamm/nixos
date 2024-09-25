@@ -60,7 +60,7 @@ in
       systemPackages = with pkgs; [
         nautilus-open-any-terminal
         ## Apps
-        pomodoro
+        gnome-pomodoro
         ## System
         gnome-tweaks
         dconf-editor
