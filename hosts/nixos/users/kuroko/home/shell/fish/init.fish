@@ -20,6 +20,11 @@ bind \ef forward-word
 bind -M insert \eb backward-word
 bind \eb backward-word
 
-# TODO: remove when `starship.enableInteractive` is merged
+# TODO: remove when `starship.enableInteractive` is merged in home-manager
 # Starship integration with fish (necessary for async prompt)
 starship init fish | source
+
+# https://github.com/MercuryTechnologies/nix-your-shell
+if command -q nix-your-shell
+  nix-your-shell fish | source
+end
