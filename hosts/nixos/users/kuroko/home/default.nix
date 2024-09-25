@@ -65,7 +65,7 @@
 
   services = {
     # TODO: is this still useful?
-    easyeffects.enable = false;
+    easyeffects.enable = true;
 
     activitywatch = {
       enable = false;
