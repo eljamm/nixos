@@ -91,7 +91,10 @@
     # TODO: enable with fish
     fzf = {
       enable = true;
-      catppuccin.enable = true;
+      catppuccin = {
+        enable = true;
+        accent = "red";
+      };
     };
 
     zellij = {
