@@ -17,7 +17,6 @@ let
     ];
 
     communications = [
-      # cinny-desktop # FIX: broken
       element-desktop
       ferdium
     ];
@@ -97,7 +96,6 @@ let
     ];
 
     development = [
-      android-studio # WIP:
       # aoc-cli # TODO: move to aoc repo
       clang
       mold-wrapped
