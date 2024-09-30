@@ -341,6 +341,7 @@
 
     "org/gnome/desktop/wm/preferences" = {
       num-workspaces = 7;
+      focus-mode = "sloppy";
     };
 
     "org/gnome/desktop/peripherals/keyboard" = {
