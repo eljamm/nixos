@@ -5,6 +5,7 @@ let
     mpvacious
     thumbfast
     sponsorblock
+    uosc
   ];
 in
 {
