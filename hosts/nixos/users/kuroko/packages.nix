@@ -45,6 +45,7 @@ let
       ardour
       helio-workstation
       lmms
+      zrythm
 
       # Plugins
       infamousPlugins
