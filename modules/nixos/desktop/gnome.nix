@@ -76,7 +76,7 @@ in
 
       variables = lib.mkIf cfg.enable {
         # Try Wayland, fallback to X11 for QT apps
-        QT_QPA_PLATFORM = "wayland;xcb";
+        # QT_QPA_PLATFORM = "wayland;xcb";
 
         # Needed for some extensions to function correctly
         GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
