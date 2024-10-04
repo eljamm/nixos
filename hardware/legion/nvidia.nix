@@ -43,6 +43,12 @@ let
         exec "$@"
       ''
   );
+
+  # Fixes framebuffer with linux 6.11
+  fbdev_linux_611_patch = pkgs.fetchpatch {
+    url = "https://patch-diff.githubusercontent.com/raw/NVIDIA/open-gpu-kernel-modules/pull/692.patch";
+    hash = "sha256-OYw8TsHDpBE5DBzdZCBT45+AiznzO9SfECz5/uXN5Uc=";
+  };
 in
 {
   boot.kernelParams = lib.mkIf (!nvidiaEnabled) [
@@ -137,6 +143,7 @@ in
                 fi
               done
             '';
+            patchesOpen = [ fbdev_linux_611_patch ];
           };
         };
 
