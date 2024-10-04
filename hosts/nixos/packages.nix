@@ -8,7 +8,7 @@ let
   packages = with pkgs; {
     internet = [
       firefox
-      qbittorrent-qt5
+      qbittorrent
     ];
 
     networking = [
