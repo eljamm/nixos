@@ -45,7 +45,7 @@ let
   );
 in
 {
-  boot.kernelParams = [
+  boot.kernelParams = lib.mkIf (!nvidiaEnabled) [
     # Fix Wayland flickering & AMD-Vi IO_PAGE_FAULT errors with Nouveau
     # https://gitlab.freedesktop.org/drm/nouveau/-/issues/225
     "iommu=pt"
@@ -54,8 +54,6 @@ in
     # https://nouveau.freedesktop.org/PowerManagement.html
     "nouveau.config=NvGspRm=1"
   ];
-
-  services.xserver.videoDrivers = lib.mkBefore [ "nouveau" ];
 
   environment.systemPackages = [
     nvidia-offload
@@ -70,7 +68,7 @@ in
         environment.etc."specialisation".text = "nvidia-closed"; # hint for nh
 
         # Load nvidia driver for Xorg and Wayland
-        services.xserver.videoDrivers = lib.mkBefore [ "nvidia" ];
+        services.xserver.videoDrivers = [ "nvidia" ];
 
         boot.kernelParams = [
           "nvidia.NVreg_UsePageAttributeTable=1" # improve performance with PAT
@@ -95,7 +93,6 @@ in
 
           # Fine-grained power management. Turns off GPU when not in use.
           # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-          # powerManagement.finegrained = true;
           powerManagement.finegrained = true;
 
           # Use the NVidia open source kernel module (not to be confused with the
@@ -141,6 +138,17 @@ in
               done
             '';
           };
+        };
+
+        # Use integrated GPU for gnome-shell
+        # See https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
+        environment.variables = {
+          __EGL_VENDOR_LIBRARY_FILENAMES = "${pkgs.mesa.drivers}/share/glvnd/egl_vendor.d/50_mesa.json";
+          __GLX_VENDOR_LIBRARY_NAME = "mesa";
+          VK_DRIVER_FILES = "${lib.concatStringsSep ":" [
+            "${pkgs.mesa.drivers}/share/vulkan/icd.d/radeon_icd.x86_64.json"
+            "${pkgs.mesa_i686.drivers}/share/vulkan/icd.d/radeon_icd.i686.json"
+          ]}";
         };
       };
     };
