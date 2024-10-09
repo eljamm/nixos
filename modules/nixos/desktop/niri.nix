@@ -9,10 +9,6 @@
 
   # TODO: finer control over module
   programs.niri = {
-    enable = false;
+    enable = true;
   };
-
-  environment.systemPackages = [
-    pkgs.alacritty
-  ];
 }
