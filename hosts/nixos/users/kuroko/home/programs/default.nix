@@ -33,7 +33,6 @@
       enable = true;
       lfs.enable = true;
       userName = "eljamm";
-      userEmail = "***REMOVED***";
       aliases = {
         b = "branch";
         c = "clone";

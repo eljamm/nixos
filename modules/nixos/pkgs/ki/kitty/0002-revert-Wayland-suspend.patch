@@ -1,8 +1,3 @@
-From 4c3dbb2e1ed72d774cfd24836b4abfa60f581d32 Mon Sep 17 00:00:00 2001
-From: eljamm <***REMOVED***>
-Date: Wed, 25 Sep 2024 12:13:34 +0100
-Subject: [PATCH] Revert Wayland suspend
-
 ---
  glfw/wl_window.c | 13 -------------
  1 file changed, 13 deletions(-)
