@@ -5,31 +5,26 @@ let
 in
 
 {
-  imports = [ ./aagl.nix ];
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = false; # Steam Remote Play
+    dedicatedServer.openFirewall = false; # Source Dedicated Server
+  };
 
-  programs = {
-    steam = {
-      enable = true;
-      # Open ports in the firewall
-      remotePlay.openFirewall = false; # Steam Remote Play
-      dedicatedServer.openFirewall = false; # Source Dedicated Server
-    };
-
-    gamemode = {
-      enable = true;
-      settings = {
-        general = {
-          renice = 10;
-        };
-        custom = {
-          start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
-          end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
-        };
+  programs.gamemode = {
+    enable = true;
+    settings = {
+      general = {
+        renice = 10;
+      };
+      custom = {
+        start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
+        end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
       };
     };
-
-    gamescope.enable = true;
   };
+
+  programs.gamescope.enable = true;
 
   users.users.kuroko.packages =
     (with pkgs; [
