@@ -3,5 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     (callPackage ./zen-browser.nix { })
+    (callPackage ./aseprite { })
   ];
 }

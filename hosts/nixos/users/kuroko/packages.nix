@@ -62,7 +62,6 @@ let
     ];
 
     graphics = [
-      # aseprite # TODO: pin this (heavy build)
       drawio
       gimp
       inkscape
