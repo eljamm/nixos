@@ -13,9 +13,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  programs.wireshark.enable = true;
-
-  environment.systemPackages = with pkgs; [ wireshark ];
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

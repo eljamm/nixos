@@ -61,7 +61,7 @@ let
       freetube
       mediainfo
       mediainfo-gui
-      mkvtoolnix
+      (lib.hiPrio mkvtoolnix)
       mkvtoolnix-cli
       opusTools
       pipewire.jack
