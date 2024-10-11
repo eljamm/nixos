@@ -146,6 +146,13 @@ in
           __EGL_VENDOR_LIBRARY_FILENAMES = "${config.hardware.nvidia.package}/share/glvnd/egl_vendor.d/10_nvidia.json";
           __GLX_VENDOR_LIBRARY_NAME = "nvidia";
         };
+
+        # CUDA cache
+        nix.settings = {
+          substituters = [ "https://cuda-maintainers.cachix.org" ];
+          trusted-public-keys = [
+            "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+          ];
         };
       };
     };
