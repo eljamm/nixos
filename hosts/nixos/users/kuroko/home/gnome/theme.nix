@@ -3,27 +3,25 @@
 let
   accent = "blue";
   flavor = "macchiato";
+  enable = true;
 in
 
 {
   home.packages = with pkgs; [ papirus-folders ];
 
+  catppuccin.pointerCursor = {
+    accent = "dark";
+    inherit enable flavor;
+  };
+
   gtk = {
     enable = true;
     catppuccin = {
-      enable = true;
       gnomeShellTheme = true;
-      inherit accent flavor;
-
-      cursor = {
-        enable = true;
-        accent = "dark";
-        inherit flavor;
-      };
+      inherit enable accent flavor;
 
       icon = {
-        enable = true;
-        inherit accent flavor;
+        inherit enable accent flavor;
       };
     };
     gtk3 = {
