@@ -136,29 +136,16 @@ in
             openSha256 = "sha256-/32Zf0dKrofTmPZ3Ratw4vDM7B+OgpC4p7s+RHUjCrg=";
             settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
             persistencedSha256 = "sha256-E2J2wYYyRu7Kc3MMZz/8ZIemcZg68rkzvqEwFAL3fFs=";
-            # Lower Nvidia icd priority so gnome-shell uses the iGPU instead of the dGPU,
-            # thus improving the smoothness of the system.
-            # See: https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
-            postInstall = ''
-              for i in $lib32 $out; do
-                if [ "$useGLVND" = "1" ]; then
-                  mv "$i/share/glvnd/egl_vendor.d/10_nvidia.json" "$i/share/glvnd/egl_vendor.d/90_nvidia.json"
-                fi
-              done
-            '';
             patchesOpen = [ fbdev_linux_611_patch ];
           };
         };
 
-        # Use integrated GPU for gnome-shell
-        # See https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
         environment.variables = {
-          __EGL_VENDOR_LIBRARY_FILENAMES = "${pkgs.mesa.drivers}/share/glvnd/egl_vendor.d/50_mesa.json";
-          __GLX_VENDOR_LIBRARY_NAME = "mesa";
-          VK_DRIVER_FILES = "${lib.concatStringsSep ":" [
-            "${pkgs.mesa.drivers}/share/vulkan/icd.d/radeon_icd.x86_64.json"
-            "${pkgs.mesa_i686.drivers}/share/vulkan/icd.d/radeon_icd.i686.json"
-          ]}";
+          GBM_BACKEND = "nvidia-drm";
+          WLR_NO_HARDWARE_CURSORS = "1";
+          __EGL_VENDOR_LIBRARY_FILENAMES = "${config.hardware.nvidia.package}/share/glvnd/egl_vendor.d/10_nvidia.json";
+          __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+        };
         };
       };
     };
