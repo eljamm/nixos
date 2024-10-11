@@ -17,4 +17,5 @@
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
   ];
 
+  powerManagement.cpuFreqGovernor = "performance";
 }
