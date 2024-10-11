@@ -59,12 +59,4 @@
       "/home/kuroko/Calibre Light Novels"
     ];
   };
-
-  virtualisation.docker = {
-    enable = true;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
-  };
 }
