@@ -35,6 +35,7 @@
         "wheel"
         "wireshark"
         "docker"
+        "corectrl"
       ];
     };
 
@@ -50,5 +51,6 @@
         inputs.catppuccin.homeManagerModules.catppuccin
       ];
     };
+
   };
 }

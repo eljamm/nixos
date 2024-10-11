@@ -19,12 +19,6 @@ let
   '';
 in
 {
-  # NOTE: adds stable-mesa to the boot menu
-  # WIP: has problems with amdgpu
-  # chaotic.mesa-git.enable = true;
-
-  hardware.amdgpu.initrd.enable = false;
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -41,4 +35,14 @@ in
 
   systemd.packages = with pkgs; [ lact ];
   systemd.services.lactd.wantedBy = [ "multi-user.target" ];
+
+  # Overclocking
+  programs.corectrl = {
+    enable = true;
+    gpuOverclock.enable = true;
+  };
+
+  # NOTE: adds stable-mesa to the boot menu
+  # WARN: may be unstable
+  # chaotic.mesa-git.enable = true;
 }
