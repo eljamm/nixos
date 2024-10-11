@@ -4,6 +4,7 @@
   nix = {
     package = pkgs.lix;
 
+    # Enable flakes
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -23,7 +24,6 @@
       max-jobs = 4;
       cores = 12;
     };
-
   };
 
   # https://wiki.nixos.org/wiki/Flakes#Getting_Instant_System_Flakes_Repl
