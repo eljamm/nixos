@@ -167,9 +167,6 @@ let
   };
 in
 {
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # TODO: make a module for packages
   environment.systemPackages = lib.pipe packages [
     (lib.mapAttrsToList (name: value: value))

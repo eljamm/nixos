@@ -87,11 +87,13 @@
           modules = [
             ./hosts/nixos
             ./modules/nixos
-            # ./specialisation.nix
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
             inputs.chaotic.nixosModules.default
-            { nixpkgs.overlays = overlays; }
+            {
+              nixpkgs.overlays = overlays;
+              nixpkgs.config.allowUnfree = true;
+            }
           ];
         };
       };
