@@ -193,24 +193,6 @@
         "type": "github"
       }
     },
-    "flake-parts": {
-      "inputs": {
-        "nixpkgs-lib": "nixpkgs-lib"
-      },
-      "locked": {
-        "lastModified": 1727826117,
-        "narHash": "sha256-K5ZLCyfO/Zj9mPFldf3iwS6oZStJcU4tSpiXTMYaaL0=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "3d04084d54bedc3d6b8b736c70ef449225c361b1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
     "flake-schemas": {
       "locked": {
         "lastModified": 1721999734,
@@ -347,65 +329,6 @@
         "type": "github"
       }
     },
-    "niri": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "niri-stable": "niri-stable",
-        "niri-unstable": "niri-unstable",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nixpkgs-stable": "nixpkgs-stable",
-        "xwayland-satellite-stable": "xwayland-satellite-stable",
-        "xwayland-satellite-unstable": "xwayland-satellite-unstable"
-      },
-      "locked": {
-        "lastModified": 1728426154,
-        "narHash": "sha256-ieI6B7h2BSLsTJjPVL10Zn6JhsWsJ4RjqOPmIM4HmnE=",
-        "owner": "sodiboo",
-        "repo": "niri-flake",
-        "rev": "1a64362d65281325a2abc7197c0d16235136ab57",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sodiboo",
-        "repo": "niri-flake",
-        "type": "github"
-      }
-    },
-    "niri-stable": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1726304152,
-        "narHash": "sha256-4YDrKMwXGVOBkeaISbxqf24rLuHvO98TnqxWYfgiSeg=",
-        "owner": "YaLTeR",
-        "repo": "niri",
-        "rev": "6a48728ffb1e638839b07f9ab2f06b2adb41dc61",
-        "type": "github"
-      },
-      "original": {
-        "owner": "YaLTeR",
-        "ref": "v0.1.9",
-        "repo": "niri",
-        "type": "github"
-      }
-    },
-    "niri-unstable": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1728277759,
-        "narHash": "sha256-pMUMUo4vMcdjU4d8wuEHI5i8fW8SzYptR3GZPeDru1c=",
-        "owner": "YaLTeR",
-        "repo": "niri",
-        "rev": "03c603918d817762ee95d21ea15a854adf47886e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "YaLTeR",
-        "repo": "niri",
-        "type": "github"
-      }
-    },
     "nix-alien": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -513,7 +436,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "nixpkgs-stable": "nixpkgs-stable_2",
+        "nixpkgs-stable": "nixpkgs-stable",
         "rust-overlay": "rust-overlay"
       },
       "locked": {
@@ -560,35 +483,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-lib": {
-      "locked": {
-        "lastModified": 1727825735,
-        "narHash": "sha256-0xHYkMkeLVQAMa7gvkddbPqpxph+hDzdu1XdGPJR+Os=",
-        "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/fb192fec7cc7a4c26d51779e9bab07ce6fa5597a.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/fb192fec7cc7a4c26d51779e9bab07ce6fa5597a.tar.gz"
-      }
-    },
     "nixpkgs-stable": {
-      "locked": {
-        "lastModified": 1728328465,
-        "narHash": "sha256-a0a0M1TmXMK34y3M0cugsmpJ4FJPT/xsblhpiiX1CXo=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "1bfbbbe5bbf888d675397c66bfdb275d0b99361c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-24.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-stable_2": {
       "locked": {
         "lastModified": 1728328465,
         "narHash": "sha256-a0a0M1TmXMK34y3M0cugsmpJ4FJPT/xsblhpiiX1CXo=",
@@ -677,7 +572,6 @@
         "fenix": "fenix_2",
         "home-manager": "home-manager_3",
         "musnix": "musnix",
-        "niri": "niri",
         "nix-alien": "nix-alien",
         "nix-index-database": "nix-index-database_2",
         "nixos-cosmic": "nixos-cosmic",
@@ -816,39 +710,6 @@
         "submodules": true,
         "type": "git",
         "url": "https://github.com/Open-Wine-Components/umu-launcher/"
-      }
-    },
-    "xwayland-satellite-stable": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1718165778,
-        "narHash": "sha256-dwF9nI54a6Fo9XU5s4qmvMXSgCid3YQVGxch00qEMvI=",
-        "owner": "Supreeeme",
-        "repo": "xwayland-satellite",
-        "rev": "b6d281967cb0b7bf1dfdb8d0f597b517dc4aa5c5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Supreeeme",
-        "ref": "v0.4",
-        "repo": "xwayland-satellite",
-        "type": "github"
-      }
-    },
-    "xwayland-satellite-unstable": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1726378112,
-        "narHash": "sha256-OANPb73V/RQDqtpIcbzeJ93KuOHKFQv+1xXC44Ut7tY=",
-        "owner": "Supreeeme",
-        "repo": "xwayland-satellite",
-        "rev": "b962a0f33b503aa39c9cf6919f488b664e5b79b4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Supreeeme",
-        "repo": "xwayland-satellite",
-        "type": "github"
       }
     }
   },

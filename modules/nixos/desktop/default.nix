@@ -4,6 +4,7 @@
     ./cosmic.nix
     ./gnome.nix
     ./hyprland.nix
-    ./niri.nix
+    # TODO: remove and make a test VM
+    # ./niri.nix
   ];
 }

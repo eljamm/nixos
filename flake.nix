@@ -30,11 +30,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     musnix = {
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
