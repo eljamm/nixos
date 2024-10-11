@@ -22,7 +22,6 @@ let
 
   gamedev = [
     # parser, linter and formatter for GDScript
-    gdtoolkit_3
     gdtoolkit_4
   ];
 

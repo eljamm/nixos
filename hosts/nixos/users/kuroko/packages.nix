@@ -11,7 +11,6 @@ let
       brave
       firefox
       librewolf
-      mailspring
       thunderbird
       ungoogled-chromium
     ];
@@ -84,7 +83,6 @@ let
       mdbook-epub
       mdbook-i18n-helpers
       mdbook-pdf
-      # ocrfeeder # TODO: still broken?
       pdfid
       zathura
     ];
@@ -96,7 +94,6 @@ let
     ];
 
     development = [
-      # aoc-cli # TODO: move to aoc repo
       clang
       mold-wrapped
       neovide
