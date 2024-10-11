@@ -17,9 +17,4 @@
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
   ];
 
-  boot.kernelModules = [ "legion-laptop" ];
-  boot.initrd.availableKernelModules = [ "legion-laptop" ];
-
-  boot.extraModulePackages = with config.boot.kernelPackages; [ lenovo-legion-module ];
-  environment.systemPackages = [ pkgs.lenovo-legion ];
 }
