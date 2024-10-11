@@ -8,6 +8,19 @@ let
   # Check if proprietary Nvidia drivers are enabled
   nvidiaEnabled = lib.elem "nvidia" config.services.xserver.videoDrivers;
 
+  VK_DRIVER_FILES = lib.concatStringsSep ":" (
+    if nvidiaEnabled then
+      [
+        "${config.hardware.nvidia.package}/share/vulkan/icd.d/nvidia_icd.x86_64.json"
+        "${config.hardware.nvidia.package.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json"
+      ]
+    else
+      [
+        "${pkgs.mesa.drivers}/share/vulkan/icd.d/nouveau_icd.x86_64.json"
+        "${pkgs.mesa_i686.drivers}/share/vulkan/icd.d/nouveau_icd.i686.json"
+      ]
+  );
+
   # Script to offload graphics rendering to dedicated GPU
   # TODO: refactor
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" (
@@ -19,12 +32,7 @@ let
         export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
         export __GLX_VENDOR_LIBRARY_NAME=nvidia
         export __VK_LAYER_NV_optimus=NVIDIA_only
-        export VK_DRIVER_FILES="${
-          lib.concatStringsSep ":" [
-            "${config.hardware.nvidia.package}/share/vulkan/icd.d/nvidia_icd.x86_64.json"
-            "${config.hardware.nvidia.package.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json"
-          ]
-        }"
+        export VK_DRIVER_FILES="${VK_DRIVER_FILES}"
         exec "$@"
       ''
     else
@@ -33,12 +41,7 @@ let
         # Offload graphics rendering to dedicated GPU (Nouveau)
         export __EGL_VENDOR_LIBRARY_FILENAMES="${pkgs.mesa.drivers}/share/glvnd/egl_vendor.d/50_mesa.json"
         export __GLX_VENDOR_LIBRARY_NAME=mesa
-        export VK_DRIVER_FILES="${
-          lib.concatStringsSep ":" [
-            "${pkgs.mesa.drivers}/share/vulkan/icd.d/nouveau_icd.x86_64.json"
-            "${pkgs.mesa_i686.drivers}/share/vulkan/icd.d/nouveau_icd.i686.json"
-          ]
-        }"
+        export VK_DRIVER_FILES="${VK_DRIVER_FILES}"
         export DRI_PRIME=1
         exec "$@"
       ''
@@ -99,7 +102,7 @@ in
 
           # Fine-grained power management. Turns off GPU when not in use.
           # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-          powerManagement.finegrained = true;
+          # powerManagement.finegrained = true;
 
           # Use the NVidia open source kernel module (not to be confused with the
           # independent third-party "nouveau" open source driver).
@@ -160,5 +163,4 @@ in
       };
     };
   };
-
 }
