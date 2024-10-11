@@ -16,4 +16,10 @@
   ];
 
   powerManagement.cpuFreqGovernor = "performance";
+
+  nix.settings = {
+    # Limit build resources
+    max-jobs = 4;
+    cores = 12;
+  };
 }
