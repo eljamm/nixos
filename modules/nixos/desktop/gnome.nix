@@ -75,16 +75,10 @@ in
       ];
 
       variables = lib.mkIf cfg.enable {
-        # Try Wayland, fallback to X11 for QT apps
-        # QT_QPA_PLATFORM = "wayland;xcb";
-
         # Needed for some extensions to function correctly
         GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
 
-        # NOTE: probably not an issue. cleanup?
-        # gnome-shell randomly crashes without this
-        # https://gitlab.gnome.org/GNOME/mutter/-/issues/3358
-        # MUTTER_DEBUG_KMS_THREAD_TYPE = "user";
+        MUTTER_DEBUG_DISABLE_HW_CURSORS = 1;
       };
     };
 
