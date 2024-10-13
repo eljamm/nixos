@@ -23,6 +23,10 @@
     hyprland.enable = true;
   };
 
+  # Set fish as the default user shell for all users
+  users.defaultUserShell = pkgs.fish;
+  programs.fish.enable = true;
+
   time.timeZone = "Africa/Tunis";
 
   # Internationalisation properties
