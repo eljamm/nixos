@@ -14,7 +14,9 @@ let
       aria2
       iperf3
       tmux
+      wakelan
       wget
+      wol
     ];
 
     nix = [
@@ -56,6 +58,7 @@ let
 
     media = [
       alsa-utils
+      feishin
       ffmpegthumbnailer
       freetube
       mediainfo
