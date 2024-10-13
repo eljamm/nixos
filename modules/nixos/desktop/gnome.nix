@@ -20,6 +20,7 @@ in
       xserver = {
         enable = lib.mkDefault cfg.enable;
         displayManager.gdm.enable = lib.mkDefault cfg.enableGdm;
+        displayManager.gdm.autoSuspend = false;
         desktopManager.gnome = {
           enable = lib.mkDefault cfg.enable;
           extraGSettingsOverridePackages = [ pkgs.mutter ];
@@ -78,7 +79,7 @@ in
         # Needed for some extensions to function correctly
         GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
 
-        MUTTER_DEBUG_DISABLE_HW_CURSORS = 1;
+        # MUTTER_DEBUG_DISABLE_HW_CURSORS = 1;
       };
     };
 
