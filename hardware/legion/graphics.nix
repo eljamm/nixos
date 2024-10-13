@@ -44,5 +44,5 @@ in
 
   # NOTE: adds stable-mesa to the boot menu
   # WARN: may be unstable
-  # chaotic.mesa-git.enable = true;
+  chaotic.mesa-git.enable = true;
 }
