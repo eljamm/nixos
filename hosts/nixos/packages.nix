@@ -133,6 +133,7 @@ let
 
     productivity = [
       cheat
+      harsh
       homebank
       tellico
       termdown

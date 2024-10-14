@@ -57,6 +57,7 @@
     vcs-submodule = "git submodule update --init --recursive";
 
     # Programs
+    h = "harsh";
     k = "task";
     lg = "lazygit";
     man = "batman";
