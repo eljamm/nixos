@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  pkgsCustom,
   ...
 }:
 let
@@ -105,6 +106,11 @@ let
       (llama-cpp.override { cudaSupport = true; })
       piper-tts
       grc
+    ];
+
+    custom = with pkgsCustom; [
+      pgsrip
+      vocabsieve
     ];
   };
 in

@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgsCustom,
   ...
 }:
 {
@@ -57,13 +58,14 @@
 
     obs-studio = {
       enable = true;
-      plugins = with pkgs.obs-studio-plugins; [
-        obs-pipewire-audio-capture
-        obs-vkcapture
-        wlrobs
-        # TODO: overlay latest
-        obs-backgroundremoval
-      ];
+      plugins =
+        with pkgs.obs-studio-plugins;
+        [
+          obs-pipewire-audio-capture
+          obs-vkcapture
+          wlrobs
+        ]
+        ++ [ pkgsCustom.obs-studio-plugins.obs-backgroundremoval ];
     };
 
     mangohud.enable = true;
