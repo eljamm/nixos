@@ -1,6 +1,6 @@
 { ... }:
 {
   imports = [
-    ./fenix.nix
+    ./rust-overlay.nix
   ];
 }
