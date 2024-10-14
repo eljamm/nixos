@@ -16,6 +16,7 @@ in
     enabledExtensions = with spicePkgs.extensions; [
       adblock
       autoSkipVideo
+      beautifulLyrics
       bookmark
       fullAppDisplay
       hidePodcasts
