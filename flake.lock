@@ -478,22 +478,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-system": {
-      "locked": {
-        "lastModified": 1724374893,
-        "narHash": "sha256-vJ2TwShv1tbCsHuMQmotdSHPOjGyYQpaue+Y7na9R9k=",
-        "owner": "eljamm",
-        "repo": "nixpkgs",
-        "rev": "218f3bff8447812bae29910d2d4621dffabe67e2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "eljamm",
-        "ref": "system",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1728241625,
@@ -555,7 +539,6 @@
         "nixos-cosmic": "nixos-cosmic",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
-        "nixpkgs-system": "nixpkgs-system",
         "rust-overlay": "rust-overlay_2",
         "spicetify-nix": "spicetify-nix",
         "umu": "umu"

@@ -42,7 +42,6 @@
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = {
-        pkgsCustom = inputs.nixpkgs-system.legacyPackages.${pkgs.system};
         inherit inputs;
       };
       users.${config.currentUser}.imports = [
