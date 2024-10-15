@@ -1,7 +1,5 @@
 {
-  config,
   inputs,
-  pkgs,
   ...
 }:
 {
@@ -24,10 +22,4 @@
     max-jobs = 4;
     cores = 12;
   };
-
-  # boot.kernelModules = [ "legion-laptop" ];
-  # boot.initrd.availableKernelModules = [ "legion-laptop" ];
-  #
-  # boot.extraModulePackages = with config.boot.kernelPackages; [ lenovo-legion-module ];
-  # environment.systemPackages = [ pkgs.lenovo-legion ];
 }

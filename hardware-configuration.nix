@@ -30,8 +30,7 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  # boot.kernelPackages = pkgs.linuxPackages_xanmod;
-  # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   # Custom kernel for `sched_ext`
   # 
@@ -40,8 +39,8 @@
   # ---
   # https://github.com/sched-ext/scx
   # https://github.com/chaotic-cx/nyx?tab=readme-ov-file#using-linux-cachyos-with-sched-ext
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
-  chaotic.scx.enable = true; # by default uses scx_rustland scheduler
+  # boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  # chaotic.scx.enable = true; # by default uses scx_rustland scheduler
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
