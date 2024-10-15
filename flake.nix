@@ -2,8 +2,9 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
-    nixpkgs-system.url = "github:eljamm/nixpkgs/system";
+    nixpkgs.url = "github:eljamm/nixpkgs/system";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    # nixpkgs-system.url = "github:eljamm/nixpkgs/system";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -68,7 +69,6 @@
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            pkgsCustom = inputs.nixpkgs-system.legacyPackages.${system};
             inherit self inputs;
           };
           modules = [
@@ -89,7 +89,6 @@
         inherit pkgs;
         modules = [ ./hosts/nixos/users/kuroko/home/default.nix ];
         extraSpecialArgs = {
-          pkgsCustom = inputs.nixpkgs-system.legacyPackages.${system};
           inherit inputs;
         };
       };

@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  pkgsCustom,
   ...
 }:
 let
@@ -108,7 +107,7 @@ let
       grc
     ];
 
-    custom = with pkgsCustom; [
+    custom = [
       pgsrip
       vocabsieve
     ];
