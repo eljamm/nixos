@@ -21,11 +21,7 @@
   desktops = {
     gnome.enable = true;
     hyprland.enable = true;
-    gnome.enableGdm = false;
   };
-
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
 
   # Set fish as the default user shell for all users
   users.defaultUserShell = pkgs.fish;
