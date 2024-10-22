@@ -149,6 +149,7 @@ let
 
     development = [
       addlicense
+      license-cli
       meld
       tree-sitter
 

@@ -47,9 +47,11 @@ let
       zrythm
 
       # Plugins
+      geonkick
       infamousPlugins
       lsp-plugins
       vital
+      x42-avldrums
 
       yabridge
       yabridgectl
