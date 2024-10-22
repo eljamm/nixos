@@ -102,7 +102,7 @@ in
 
           # Fine-grained power management. Turns off GPU when not in use.
           # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-          # powerManagement.finegrained = true;
+          powerManagement.finegrained = true;
 
           # Use the NVidia open source kernel module (not to be confused with the
           # independent third-party "nouveau" open source driver).
@@ -156,10 +156,10 @@ in
           # __EGL_VENDOR_LIBRARY_FILENAMES = "${config.hardware.nvidia.package}/share/glvnd/egl_vendor.d/10_nvidia.json";
           # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
 
-          # # Use integrated GPU for gnome-shell
-          # # See https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
-          # __EGL_VENDOR_LIBRARY_FILENAMES = "${pkgs.mesa.drivers}/share/glvnd/egl_vendor.d/50_mesa.json";
-          # __GLX_VENDOR_LIBRARY_NAME = "mesa";
+          # Use integrated GPU for gnome-shell
+          # See https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
+          __EGL_VENDOR_LIBRARY_FILENAMES = "${pkgs.mesa.drivers}/share/glvnd/egl_vendor.d/50_mesa.json";
+          __GLX_VENDOR_LIBRARY_NAME = "mesa";
           # VK_DRIVER_FILES = "${lib.concatStringsSep ":" [
           #   "${pkgs.mesa.drivers}/share/vulkan/icd.d/radeon_icd.x86_64.json"
           #   "${pkgs.mesa_i686.drivers}/share/vulkan/icd.d/radeon_icd.i686.json"
