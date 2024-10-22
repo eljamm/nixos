@@ -106,11 +106,5 @@
       enable = false;
       enableFishIntegration = false;
     };
-
-    # NOTE: unused
-    emacs = {
-      enable = false;
-      package = pkgs.emacs;
-    };
   };
 }

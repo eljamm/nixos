@@ -98,7 +98,6 @@ let
     development = [
       clang
       mold-wrapped
-      neovide
       pkg-config
       sqlitebrowser
       tmuxifier
