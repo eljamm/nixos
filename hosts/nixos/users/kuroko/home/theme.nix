@@ -8,20 +8,23 @@ in
 {
   catppuccin.flavor = "macchiato";
 
-  home.packages = with pkgs; [ libsForQt5.qt5ct ];
-
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
+    platformTheme.name = "kvantum";
     style.name = "kvantum";
   };
+
+  home.packages = with pkgs; [
+    kdePackages.qt6ct
+    libsForQt5.qt5ct
+  ];
 
   xdg.configFile = {
     "Kvantum/kvantum.kvconfig".text = ''
       [General]
-      theme=Catppuccin-${variant}-${accent}
+      theme=catppuccin-${variant}-${accent}
     '';
 
-    "Kvantum/Catppuccin-${variant}-${accent}".source = "${kvantumThemePackage}/share/Kvantum/Catppuccin-${variant}-${accent}";
+    "Kvantum/catppuccin-${variant}-${accent}".source = "${kvantumThemePackage}/share/Kvantum/catppuccin-${variant}-${accent}";
   };
 }
