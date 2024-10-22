@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  pkgsCustom,
   ...
 }:
 let
@@ -11,7 +12,7 @@ let
       firefox
       librewolf
       thunderbird
-      ungoogled-chromium
+      pkgsCustom.ungoogled-chromium
     ];
 
     communications = [
@@ -107,7 +108,7 @@ let
       grc
     ];
 
-    custom = [
+    custom = with pkgsCustom; [
       pgsrip
       vocabsieve
     ];

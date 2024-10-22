@@ -43,6 +43,7 @@
       useUserPackages = true;
       extraSpecialArgs = {
         inherit inputs;
+        pkgsCustom = inputs.nixpkgs-stable.legacyPackages.${pkgs.system};
       };
       users.${config.currentUser}.imports = [
         ./home
