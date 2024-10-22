@@ -43,7 +43,15 @@ let
 
     office = [
       calibre
-      goldendict-ng
+      (goldendict-ng.overrideAttrs {
+        patches = [
+          (fetchpatch2 {
+            name = "fix-qt6.8-qdebug-error.patch";
+            url = "https://github.com/xiaoyifang/goldendict-ng/commit/85d5612e2de9a2f305b4334c0d92d304291ffac9.patch";
+            hash = "sha256-rrcpgng8RegDfIFi+4Z0L/wuMLkI1CKxPY0D1Px52SE=";
+          })
+        ];
+      })
       harper
       libreoffice-fresh
       yacreader
