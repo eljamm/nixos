@@ -1,11 +1,10 @@
 { pkgs, ... }:
 
 let
-  variant = "Macchiato";
-  accent = "Blue";
+  variant = "macchiato";
+  accent = "blue";
   kvantumThemePackage = pkgs.catppuccin-kvantum.override { inherit variant accent; };
 in
-
 {
   catppuccin.flavor = "macchiato";
 

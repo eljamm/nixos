@@ -22,7 +22,7 @@ let
     })
 
     # noto
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-color-emoji
   ];
 
