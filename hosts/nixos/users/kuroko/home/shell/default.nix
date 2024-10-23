@@ -68,7 +68,9 @@
 
     # Nix
     nb = "nh os build";
+    nbb = "nix-build . -A";
     nbt = "nh os boot";
+    ni = "nix-init";
     ns = "nh os switch";
     nt = "nh os test";
   };
