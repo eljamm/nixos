@@ -5,6 +5,7 @@
     gnomeExtensions.appindicator
     gnomeExtensions.bluetooth-battery-meter
     gnomeExtensions.dash-to-panel
+    gnomeExtensions.easyeffects-preset-selector
     gnomeExtensions.memento-mori
     gnomeExtensions.pop-shell
     gnomeExtensions.space-bar
