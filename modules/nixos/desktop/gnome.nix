@@ -77,8 +77,6 @@ in
       variables = lib.mkIf cfg.enable {
         # Needed for some extensions to function correctly
         GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
-
-        MUTTER_DEBUG_DISABLE_HW_CURSORS = 1;
       };
     };
 
