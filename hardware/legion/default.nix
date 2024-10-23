@@ -8,7 +8,6 @@
   imports = [
     ./filesystems.nix
     ./graphics.nix
-    ./nvidia.nix
     ./virtual-camera.nix
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
