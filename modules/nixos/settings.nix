@@ -21,6 +21,11 @@
     };
   };
 
+  systemd.services.nix-daemon.serviceConfig = {
+    # kill Nix builds instead of important services when OOM
+    OOMScoreAdjust = 1000;
+  };
+
   # https://wiki.nixos.org/wiki/Flakes#Getting_Instant_System_Flakes_Repl
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   environment.systemPackages =
