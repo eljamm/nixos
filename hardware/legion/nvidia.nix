@@ -46,12 +46,6 @@ let
         exec "$@"
       ''
   );
-
-  # Fixes framebuffer with linux 6.11
-  fbdev_linux_611_patch = pkgs.fetchpatch {
-    url = "https://patch-diff.githubusercontent.com/raw/NVIDIA/open-gpu-kernel-modules/pull/692.patch";
-    hash = "sha256-OYw8TsHDpBE5DBzdZCBT45+AiznzO9SfECz5/uXN5Uc=";
-  };
 in
 {
   boot.kernelParams = lib.mkIf (!nvidiaEnabled) [
@@ -130,12 +124,12 @@ in
           };
 
           package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-            version = "560.35.03"; # stable
-            sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
-            sha256_aarch64 = "sha256-s8ZAVKvRNXpjxRYqM3E5oss5FdqW+tv1qQC2pDjfG+s=";
-            openSha256 = "sha256-/32Zf0dKrofTmPZ3Ratw4vDM7B+OgpC4p7s+RHUjCrg=";
-            settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
-            persistencedSha256 = "sha256-E2J2wYYyRu7Kc3MMZz/8ZIemcZg68rkzvqEwFAL3fFs=";
+            version = "565.57.01"; # beta
+            sha256_64bit = "sha256-buvpTlheOF6IBPWnQVLfQUiHv4GcwhvZW3Ks0PsYLHo=";
+            sha256_aarch64 = "sha256-aDVc3sNTG4O3y+vKW87mw+i9AqXCY29GVqEIUlsvYfE=";
+            openSha256 = "sha256-/tM3n9huz1MTE6KKtTCBglBMBGGL/GOHi5ZSUag4zXA=";
+            settingsSha256 = "sha256-H7uEe34LdmUFcMcS6bz7sbpYhg9zPCb/5AmZZFTx1QA=";
+            persistencedSha256 = "sha256-hdszsACWNqkCh8G4VBNitDT85gk9gJe1BlQ8LdrYIkg=";
             # Lower Nvidia icd priority so gnome-shell uses the iGPU instead of the dGPU,
             # thus improving the smoothness of the system.
             # See: https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
@@ -146,7 +140,6 @@ in
                 fi
               done
             '';
-            patchesOpen = [ fbdev_linux_611_patch ];
           };
         };
 
