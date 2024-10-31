@@ -51,6 +51,9 @@
 
     blender-bin.url = "github:edolstra/nix-warez?dir=blender";
     nix-alien.url = "github:thiagokokada/nix-alien";
+
+    # https://github.com/NixOS/nixpkgs/pull/295587
+    nixpkgs-yuzu.url = "github:nixos/nixpkgs/f20a0c955555fb68cfc72886d7476de2aacd1b4e";
   };
 
   outputs =

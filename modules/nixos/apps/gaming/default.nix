@@ -2,6 +2,7 @@
 
 let
   inherit (inputs.umu.packages.${pkgs.system}) umu;
+  inherit (inputs.nixpkgs-yuzu.legacyPackages.${pkgs.system}) yuzu-ea;
 in
 
 {
@@ -52,7 +53,10 @@ in
       osu-lazer-bin
       vbam
     ])
-    ++ [ umu ];
+    ++ [
+      umu
+      yuzu-ea
+    ];
 
   nixpkgs.overlays = [
     (final: prev: {
