@@ -5,6 +5,8 @@ let
 in
 
 {
+  imports = [ ./controllers.nix ];
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = false; # Steam Remote Play
