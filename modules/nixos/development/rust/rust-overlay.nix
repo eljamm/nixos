@@ -17,5 +17,6 @@
         "rustfmt"
       ];
     })
+    pkgs.cargo-auditable
   ];
 }
