@@ -12,7 +12,7 @@ let
       firefox
       librewolf
       thunderbird
-      pkgsCustom.ungoogled-chromium
+      ungoogled-chromium
     ];
 
     communications = [
@@ -26,7 +26,7 @@ let
       audacity
       ffmpeg
       flacon
-      handbrake
+      pkgsCustom.handbrake
       helvum
       kid3
       pavucontrol
@@ -73,7 +73,7 @@ let
     ];
 
     education = [
-      anki-bin
+      anki
       anki-sync-server
       ki
     ];
