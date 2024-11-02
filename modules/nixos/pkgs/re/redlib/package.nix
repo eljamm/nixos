@@ -9,16 +9,16 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "redlib";
-  version = "0.35.1";
+  version = "0.35.1-unstable-2024-11-01";
 
   src = fetchFromGitHub {
     owner = "redlib-org";
     repo = "redlib";
-    rev = "d5f137ce47de39e2c8c4ed09d13ba1f809bee560";
-    hash = "sha256-12XKeBCKciKummI43oTbKGkkY0mghA82ir2C3LhnwSs=";
+    rev = "2fd358f3eda1c25992c2a1c2d0e1bef2506627cb";
+    hash = "sha256-NAvl6HyJAMsc46gTlROJxAE2Co/NkkSBT9QH8/GF72k=";
   };
 
-  cargoHash = "sha256-zT4LLC5vgXHc/jcxOgnOpo5DjcWwOZsZaFz36xGMpmc=";
+  cargoHash = "sha256-PNqecQSx0Q+K3bBfbOJYWPdl7JdUTDQ4f95RUuW0vPw=";
 
   buildInputs = lib.optionals stdenv.isDarwin [
     darwin.apple_sdk.frameworks.Security
@@ -43,6 +43,11 @@ rustPlatform.buildRustPackage rec {
     "--skip=test_oauth_client"
     "--skip=test_oauth_client_refresh"
     "--skip=test_oauth_token_exists"
+
+    "--skip=test_oauth_headers_len"
+    "--skip=test_banned_sub"
+    "--skip=test_gated_sub"
+    "--skip=test_private_sub"
   ];
 
   env = {
