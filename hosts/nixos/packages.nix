@@ -36,9 +36,9 @@ let
       micromamba
       pipx
       python3
-      python311Packages.pip
-      python311Packages.virtualenv
-      python311Packages.virtualenvwrapper
+      python3Packages.pip
+      python3Packages.virtualenv
+      python3Packages.virtualenvwrapper
     ];
 
     office = [

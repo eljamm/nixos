@@ -72,7 +72,7 @@ let
     python = [
       black
       isort
-      python311Packages.jedi-language-server
+      python3Packages.jedi-language-server
       ruff
       ruff-lsp
     ];
