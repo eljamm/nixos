@@ -80,24 +80,20 @@ in
       };
     };
 
-    # GNOME dynamic triple buffering (huge performance improvement)
-    # See https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
-    nixpkgs.overlays = [
-      (_: prev: {
-        gnome = prev.gnome.overrideScope (
-          _: gnomePrev: {
-            mutter = gnomePrev.mutter.overrideAttrs (_: {
-              src = pkgs.fetchFromGitLab {
-                domain = "gitlab.gnome.org";
-                owner = "vanvugt";
-                repo = "mutter";
-                rev = "triple-buffering-v4-46";
-                hash = "sha256-C2VfW3ThPEZ37YkX7ejlyumLnWa9oij333d5c4yfZxc=";
-              };
-            });
-          }
-        );
-      })
-    ];
+    # # GNOME dynamic triple buffering (huge performance improvement)
+    # # See https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
+    # nixpkgs.overlays = [
+    #   (final: prev: {
+    #     mutter = prev.mutter.overrideAttrs (_: {
+    #       src = final.fetchFromGitLab {
+    #         domain = "gitlab.gnome.org";
+    #         owner = "vanvugt";
+    #         repo = "mutter";
+    #         rev = "triple-buffering-v4-47";
+    #         hash = "sha256-JaqJvbuIAFDKJ3y/8j/7hZ+/Eqru+Mm1d3EvjfmCcug=";
+    #       };
+    #     });
+    #   })
+    # ];
   };
 }
