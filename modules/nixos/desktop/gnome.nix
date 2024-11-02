@@ -27,8 +27,8 @@ in
       };
 
       # High resource consumption and I don't need it
-      gnome.tracker-miners.enable = lib.mkForce false;
-      gnome.tracker.enable = lib.mkForce false;
+      gnome.localsearch.enable = lib.mkForce false;
+      gnome.tinysparql.enable = lib.mkForce false;
 
       # For enabling systray icons
       udev.packages = lib.optionals cfg.enable [ pkgs.gnome-settings-daemon ];
