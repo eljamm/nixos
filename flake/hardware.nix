@@ -29,5 +29,7 @@
   imports = [
     ../modules/hardware/chaotic.nix
     ../modules/hardware/graphics.nix
+    # TODO:
+    ../modules/home-manager/desktops/gnome
   ];
 }

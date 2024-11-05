@@ -13,24 +13,9 @@
     gnomeExtensions.user-themes
     gnomeExtensions.vertical-workspaces
     gnomeExtensions.vitals
-
-    # TODO: this is too old, use from extension manager for now
-    # gnomeExtensions.paperwm 
-
-    #WIP: figure out how to install latest
-    # (
-    #   let
-    #     sha256 = "sha256-zzfQ33r/R5Z/82qt2il+Eqj9KPuap31aae1TI0LEcuI=";
-    #   in
-    #   (gnomeExtensions.astra-monitor.overrideAttrs {
-    #     src = fetchzip {
-    #       url = "https://github.com/AstraExt/astra-monitor/archive/4bd51b701fed01fdfdf21d892bc052e9bf1bcf23.zip";
-    #       inherit sha256;
-    #       stripRoot = false;
-    #     };
-    #   }).override
-    #     { inherit sha256; }
-    # )
+    # TODO: override with more recent versions
+    # gnomeExtensions.paperwm
+    # gnomeExtensions.astra-monitor
   ];
 
   dconf.settings = with lib.hm.gvariant; {

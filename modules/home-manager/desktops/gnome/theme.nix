@@ -1,11 +1,9 @@
 { pkgs, lib, ... }:
-
 let
   accent = "blue";
   flavor = "macchiato";
   enable = true;
 in
-
 {
   home.packages = with pkgs; [ papirus-folders ];
 

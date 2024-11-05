@@ -3,6 +3,7 @@
   inputs,
   lib,
   pkgs,
+  self,
   ...
 }:
 {
@@ -48,8 +49,8 @@
       users.${config.currentUser}.imports = [
         ./home
         inputs.catppuccin.homeManagerModules.catppuccin
+        self.homeModules.desktops-gnome
       ];
     };
-
   };
 }

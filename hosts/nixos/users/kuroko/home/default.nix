@@ -1,8 +1,6 @@
 { pkgs, ... }:
-
 {
   imports = [
-    ./gnome
     ./hyprland
     ./mpv.nix
     ./neovim
