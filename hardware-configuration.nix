@@ -5,12 +5,10 @@
   config,
   lib,
   pkgs,
-  modulesPath,
   ...
 }:
 {
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
     ./hardware/legion
   ];
 
@@ -41,6 +39,9 @@
   # https://github.com/chaotic-cx/nyx?tab=readme-ov-file#using-linux-cachyos-with-sched-ext
   # boot.kernelPackages = pkgs.linuxPackages_cachyos;
   # chaotic.scx.enable = true; # by default uses scx_rustland scheduler
+
+  # Enable non-free firmware
+  hardware.enableRedistributableFirmware = lib.mkDefault true;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
