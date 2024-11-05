@@ -59,6 +59,9 @@
 
     # https://github.com/NixOS/nixpkgs/pull/295587
     nixpkgs-yuzu.url = "github:nixos/nixpkgs/f20a0c955555fb68cfc72886d7476de2aacd1b4e";
+
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    git-hooks-nix.url = "github:cachix/git-hooks.nix";
   };
 
   outputs =
