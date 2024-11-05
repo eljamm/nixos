@@ -73,7 +73,7 @@ let
     ];
 
     education = [
-      anki
+      anki-bin
       anki-sync-server
       ki
     ];
