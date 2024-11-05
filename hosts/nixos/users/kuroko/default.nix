@@ -1,14 +1,10 @@
 {
   config,
-  inputs,
   lib,
-  pkgs,
-  self,
   ...
 }:
 {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
     ./packages.nix
   ];
 
@@ -36,20 +32,6 @@
         "wheel"
         "wireshark"
         "corectrl"
-      ];
-    };
-
-    home-manager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      extraSpecialArgs = {
-        inherit inputs;
-        pkgsCustom = inputs.nixpkgs-stable.legacyPackages.${pkgs.system};
-      };
-      users.${config.currentUser}.imports = [
-        ./home
-        inputs.catppuccin.homeManagerModules.catppuccin
-        self.homeModules.desktops-gnome
       ];
     };
   };
