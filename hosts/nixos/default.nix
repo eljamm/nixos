@@ -1,11 +1,12 @@
 {
+  inputs,
   config,
   pkgs,
   ...
 }:
 {
   imports = [
-    ../../hardware-configuration.nix
+    ../../hardware/legion
     ./networking.nix
     ./overlays
     ./packages.nix
