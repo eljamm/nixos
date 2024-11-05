@@ -66,43 +66,10 @@
 
   outputs =
     { self, nixpkgs, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      overlays = [
-        inputs.nix-alien.overlays.default
-      ];
-    in
-    {
-      formatter.x86_64-linux = pkgs.nixfmt-rfc-style;
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = nixpkgs.lib.systems.flakeExposed;
 
-      nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit self inputs;
-            pkgsCustom = inputs.nixpkgs-stable.legacyPackages.${system};
-          };
-          modules = [
-            ./hosts/nixos
-            ./modules/nixos
-            inputs.agenix.nixosModules.default
-            inputs.catppuccin.nixosModules.catppuccin
-            inputs.chaotic.nixosModules.default
-            {
-              nixpkgs.overlays = overlays;
-              nixpkgs.config.allowUnfree = true;
-            }
-          ];
-        };
-      };
-
-      homeConfigurations.kuroko = inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./hosts/nixos/users/kuroko/home/default.nix ];
-        extraSpecialArgs = {
-          inherit inputs;
-          pkgsCustom = inputs.nixpkgs-stable.legacyPackages.${system};
-        };
-      };
+      # See ./flake/*.nix for the modules that are imported here.
+      imports = with builtins; map (fn: ./flake/${fn}) (attrNames (readDir ./flake));
     };
 }
