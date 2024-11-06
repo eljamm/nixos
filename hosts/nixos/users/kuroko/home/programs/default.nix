@@ -55,16 +55,6 @@
       };
     };
 
-    obs-studio = {
-      enable = true;
-      plugins = with pkgs.obs-studio-plugins; [
-        obs-backgroundremoval
-        obs-pipewire-audio-capture
-        obs-vkcapture
-        wlrobs
-      ];
-    };
-
     mangohud.enable = true;
     taskwarrior = {
       enable = true;
