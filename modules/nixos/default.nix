@@ -3,7 +3,6 @@
   imports = [
     ./apps
     ./audio
-    ./desktop
     ./development
     ./pkgs
     ./services

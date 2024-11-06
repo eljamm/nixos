@@ -19,7 +19,7 @@
   # Enable the X11 windowing system
   services.xserver.enable = true;
 
-  desktops = {
+  custom.desktops = {
     gnome.enable = true;
     hyprland.enable = true;
   };

@@ -24,6 +24,7 @@
             inputs.catppuccin.nixosModules.catppuccin
             inputs.chaotic.nixosModules.default
             self.nixosModules.home-kuroko
+            self.nixosModules.desktops
             {
               # TODO: is nix-alien needed?
               nixpkgs.overlays = [ inputs.nix-alien.overlays.default ];

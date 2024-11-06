@@ -31,5 +31,9 @@
     ../modules/hardware/graphics.nix
     # TODO:
     ../modules/home-manager/desktops/gnome
+    ../modules/nixos/desktops
+    ../modules/nixos/desktops/cosmic
+    ../modules/nixos/desktops/gnome
+    ../modules/nixos/desktops/hyprland
   ];
 }
