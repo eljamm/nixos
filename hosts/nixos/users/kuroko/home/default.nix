@@ -1,12 +1,8 @@
 { pkgs, ... }:
 {
   imports = [
-    ./hyprland
     ./mpv.nix
-    ./neovim
     ./programs
-    ./shell
-    ./terminals
     ./theme.nix
   ];
 

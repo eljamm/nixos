@@ -30,7 +30,7 @@
     ../modules/hardware/chaotic.nix
     ../modules/hardware/graphics.nix
     # TODO:
-    ../modules/home-manager/desktops/gnome
+    ../modules/home-manager
     ../modules/nixos/desktops
     ../modules/nixos/desktops/cosmic
     ../modules/nixos/desktops/gnome

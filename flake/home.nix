@@ -14,6 +14,10 @@ let
     ../hosts/nixos/users/kuroko/home/default.nix
     inputs.catppuccin.homeManagerModules.catppuccin
     self.homeModules.desktops-gnome
+    self.homeModules.desktops-hyprland
+    self.homeModules.neovim
+    self.homeModules.shells
+    self.homeModules.terminals
   ];
 in
 {
