@@ -45,6 +45,8 @@
           enable = true;
           gpuOverclock.enable = true;
         };
+
+        users.users.kuroko.extraGroups = [ "corectrl" ];
       };
   };
 }

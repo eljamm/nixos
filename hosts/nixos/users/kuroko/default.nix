@@ -26,12 +26,8 @@
       extraGroups = [
         "adbusers"
         "audio"
-        "gamemode"
-        "networkmanager"
         "video"
         "wheel"
-        "wireshark"
-        "corectrl"
       ];
     };
   };

@@ -14,6 +14,11 @@
     package = pkgs.wireshark;
   };
 
+  users.users.kuroko.extraGroups = [
+    "networkmanager"
+    "wireshark"
+  ];
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

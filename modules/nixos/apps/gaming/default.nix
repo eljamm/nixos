@@ -1,8 +1,8 @@
-{ inputs, pkgs, ... }:
+{ inputs', pkgs, ... }:
 
 let
-  inherit (inputs.umu.packages.${pkgs.system}) umu;
-  inherit (inputs.nixpkgs-yuzu.legacyPackages.${pkgs.system}) yuzu-ea;
+  inherit (inputs'.umu.packages) umu;
+  inherit (inputs'.nixpkgs-yuzu.legacyPackages) yuzu-ea;
 in
 
 {
@@ -14,6 +14,7 @@ in
     dedicatedServer.openFirewall = false; # Source Dedicated Server
   };
 
+  programs.gamescope.enable = true;
   programs.gamemode = {
     enable = true;
     settings = {
@@ -27,8 +28,7 @@ in
     };
   };
 
-  programs.gamescope.enable = true;
-
+  users.users.kuroko.extraGroups = [ "gamemode" ];
   users.users.kuroko.packages =
     (with pkgs; [
       # Utils

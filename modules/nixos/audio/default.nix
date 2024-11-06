@@ -1,5 +1,4 @@
 { config, lib, ... }:
-
 let
   makePluginPath =
     format:
@@ -10,7 +9,6 @@ let
     ])
     + ":$HOME/.${format}";
 in
-
 {
   imports = [
     ./musnix.nix

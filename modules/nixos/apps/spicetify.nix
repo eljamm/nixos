@@ -1,10 +1,12 @@
-{ pkgs, inputs, ... }:
-
+{
+  inputs',
+  inputs,
+  ...
+}:
 let
   spicetify = inputs.spicetify-nix;
-  spicePkgs = spicetify.legacyPackages.${pkgs.system};
+  spicePkgs = inputs'.spicetify-nix.legacyPackages;
 in
-
 {
   imports = [ spicetify.nixosModules.default ];
 
@@ -12,7 +14,6 @@ in
     enable = true;
     theme = spicePkgs.themes.catppuccin;
     colorScheme = "macchiato";
-
     enabledExtensions = with spicePkgs.extensions; [
       adblock
       autoSkipVideo
