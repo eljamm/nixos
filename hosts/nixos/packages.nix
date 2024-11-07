@@ -46,6 +46,7 @@ let
       goldendict-ng
       harper
       libreoffice-fresh
+      projecteur
       yacreader
     ];
 
