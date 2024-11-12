@@ -81,22 +81,32 @@
             };
           };
 
-          # FIX: currently does not work for Gnome 47
-          # # GNOME dynamic triple buffering (huge performance improvement)
-          # # See https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
-          # nixpkgs.overlays = [
-          #   (final: prev: {
-          #     mutter = prev.mutter.overrideAttrs (_: {
-          #       src = final.fetchFromGitLab {
-          #         domain = "gitlab.gnome.org";
-          #         owner = "vanvugt";
-          #         repo = "mutter";
-          #         rev = "triple-buffering-v4-47";
-          #         hash = "sha256-JaqJvbuIAFDKJ3y/8j/7hZ+/Eqru+Mm1d3EvjfmCcug=";
-          #       };
-          #     });
-          #   })
-          # ];
+          nixpkgs.overlays = [
+            (final: prev: {
+              mutter = prev.mutter.overrideAttrs (oldAttrs: {
+                # FIX: currently does not work for Gnome 47
+                # GNOME dynamic triple buffering (huge performance improvement)
+                # See https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
+                #
+                # src = final.fetchFromGitLab {
+                #   domain = "gitlab.gnome.org";
+                #   owner = "vanvugt";
+                #   repo = "mutter";
+                #   rev = "triple-buffering-v4-47";
+                #   hash = "sha256-JaqJvbuIAFDKJ3y/8j/7hZ+/Eqru+Mm1d3EvjfmCcug=";
+                # };
+
+                patches = (oldAttrs.patches or [ ]) ++ [
+                  # Prefer GPUs with built-in panels connected when selecting a primary GPU
+                  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4114
+                  (pkgs.fetchpatch2 {
+                    url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4114.patch";
+                    hash = "sha256-MLWUKQGuhgIkgAKrVUJAc4fgPvHUaYlS79UVsTWF/TE=";
+                  })
+                ];
+              });
+            })
+          ];
         };
       };
   };

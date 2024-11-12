@@ -87,16 +87,6 @@ in
       openSha256 = "sha256-/tM3n9huz1MTE6KKtTCBglBMBGGL/GOHi5ZSUag4zXA=";
       settingsSha256 = "sha256-H7uEe34LdmUFcMcS6bz7sbpYhg9zPCb/5AmZZFTx1QA=";
       persistencedSha256 = "sha256-hdszsACWNqkCh8G4VBNitDT85gk9gJe1BlQ8LdrYIkg=";
-      # Lower Nvidia icd priority so gnome-shell uses the iGPU instead of the dGPU,
-      # thus improving the smoothness of the system.
-      # See: https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
-      postInstall = ''
-        for i in $lib32 $out; do
-          if [ "$useGLVND" = "1" ]; then
-            mv "$i/share/glvnd/egl_vendor.d/10_nvidia.json" "$i/share/glvnd/egl_vendor.d/90_nvidia.json"
-          fi
-        done
-      '';
     };
   };
 
