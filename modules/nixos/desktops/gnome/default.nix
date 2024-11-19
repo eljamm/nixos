@@ -124,6 +124,19 @@
                     url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4124.patch";
                     hash = "sha256-h1gjyZx23NQ3VDwcGRy6hLkfgLdukao7NzH+48C/NE4=";
                   })
+                  # Avoid CPU-side stalls with NVIDIA secondary GPUs with
+                  # monitors directly attached to it
+                  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4015
+                  (pkgs.fetchpatch2 {
+                    url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4015.patch";
+                    hash = "sha256-O2yLzuLCQRWzPervwBsQqr9/cJKHh2MfjlfJ0fjoSFs=";
+                  })
+                  # Improve frame rate on monitors attached to secondary GPUs in copy mode
+                  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4027
+                  (pkgs.fetchpatch2 {
+                    url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4027.patch";
+                    hash = "sha256-G7MYBcZLzWBQRKR12UJjD2uKBlDaNPNDZQ0FiKryB3g=";
+                  })
                 ];
               });
             })
