@@ -7,16 +7,16 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "redlib";
-  version = "0.35.1-unstable-2024-11-15";
+  version = "0.35.1-unstable-2024-11-19";
 
   src = fetchFromGitHub {
     owner = "redlib-org";
     repo = "redlib";
-    rev = "6c64ebd56b98f5616c2014e2e0567fa37791844c";
-    hash = "sha256-QXcjpIO1y6mi+4E2BC6O16TaLFfpcPcCHumuJBXmcoU=";
+    rev = "d3ba5f3efb6825f4b0454523dae472b2adda3066";
+    hash = "sha256-XT6I7EvSPY2KdKTeJyLQ2tu6iiXipy5PB4OgyEsrMhM=";
   };
 
-  cargoHash = "sha256-tb+qTANios+dvNK775gqy0AmB5fuj5BhfYYYegnraEg=";
+  cargoHash = "sha256-AssNRFWB8Nm2v8YKmBINB3+WEUUfd9ra+TRNdJZUB/o=";
 
   checkFlags = [
     # All these test try to connect to Reddit.
