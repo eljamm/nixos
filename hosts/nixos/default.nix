@@ -15,6 +15,7 @@
   ];
 
   documentation.nixos.enable = false;
+  documentation.man.generateCaches = false; # slow eval time with fish
 
   # Enable the X11 windowing system
   services.xserver.enable = true;
