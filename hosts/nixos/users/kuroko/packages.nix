@@ -26,7 +26,7 @@ let
       audacity
       ffmpeg
       flacon
-      pkgsCustom.handbrake
+      handbrake
       helvum
       kid3
       pavucontrol
