@@ -21,7 +21,6 @@ let
 
     nix = [
       manix # documentation search
-      nix-alien
       nix-init
       nix-inspect
       nix-output-monitor

@@ -7,7 +7,7 @@
 let
   args = {
     inherit self inputs inputs';
-    pkgsCustom = inputs'.nixpkgs-stable.legacyPackages;
+    pkgsCustom = inputs'.nixpkgs-stable-system.legacyPackages;
   };
 
   homeModules = [

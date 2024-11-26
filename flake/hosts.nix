@@ -10,7 +10,7 @@
     let
       args = {
         inherit self inputs inputs';
-        pkgsCustom = inputs'.nixpkgs-stable.legacyPackages;
+        pkgsCustom = inputs'.nixpkgs-stable-system.legacyPackages;
       };
     in
     {
@@ -25,11 +25,6 @@
             inputs.chaotic.nixosModules.default
             self.nixosModules.home-kuroko
             self.nixosModules.desktops
-            {
-              # TODO: is nix-alien needed?
-              nixpkgs.overlays = [ inputs.nix-alien.overlays.default ];
-              nixpkgs.config.allowUnfree = true;
-            }
           ];
         };
       };

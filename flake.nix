@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
-    nixpkgs-stable.url = "github:eljamm/nixpkgs/system";
+    nixpkgs-stable-system.url = "github:eljamm/nixpkgs/system";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -50,18 +50,27 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    blender-bin = {
+      url = "github:edolstra/nix-warez?dir=blender";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     catppuccin.url = "github:catppuccin/nix";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    blender-bin.url = "github:edolstra/nix-warez?dir=blender";
-    nix-alien.url = "github:thiagokokada/nix-alien";
-
     # https://github.com/NixOS/nixpkgs/pull/295587
     nixpkgs-yuzu.url = "github:nixos/nixpkgs/f20a0c955555fb68cfc72886d7476de2aacd1b4e";
-
-    treefmt-nix.url = "github:numtide/treefmt-nix";
-    git-hooks-nix.url = "github:cachix/git-hooks.nix";
   };
 
   outputs =

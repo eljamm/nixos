@@ -26,6 +26,8 @@
     OOMScoreAdjust = 1000;
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   # https://wiki.nixos.org/wiki/Flakes#Getting_Instant_System_Flakes_Repl
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   environment.systemPackages =
