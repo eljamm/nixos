@@ -26,7 +26,6 @@ let
       nix-output-monitor
       nix-tree
       nix-your-shell
-      nixd
       nixpkgs-review
       npins
     ];

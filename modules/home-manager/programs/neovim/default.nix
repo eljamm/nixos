@@ -63,7 +63,7 @@ let
     nix = [
       deadnix
       manix
-      nil
+      nixd
       nixfmt-rfc-style
       nixpkgs-lint-community
       statix
