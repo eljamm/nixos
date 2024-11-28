@@ -1,36 +1,8 @@
+{ ... }:
 {
-  inputs,
-  config,
-  pkgs,
-  ...
-}:
-{
-  # Enable CUPS to print documents.
-  services.printing.enable = false;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # TODO: move
-  services.xserver.wacom.enable = true;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
   programs.firejail.enable = true;
 
   programs.adb.enable = true;
-
-  # https://github.com/viperML/nh
-  programs.nh = {
-    enable = true;
-    flake = config.environment.sessionVariables.FLAKE;
-  };
 
   # https://github.com/nix-community/nix-ld
   programs.nix-ld.enable = true;
