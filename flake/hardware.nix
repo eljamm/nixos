@@ -25,15 +25,4 @@
 
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     };
-
-  imports = [
-    ../modules/hardware/chaotic.nix
-    ../modules/hardware/graphics.nix
-    # TODO:
-    ../modules/home-manager
-    ../modules/nixos/desktops
-    ../modules/nixos/desktops/cosmic
-    ../modules/nixos/desktops/gnome
-    ../modules/nixos/desktops/hyprland
-  ];
 }
