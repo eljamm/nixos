@@ -2,6 +2,7 @@
 {
   imports = [
     ./fonts.nix
+    ./users.nix
     ./virtualisation.nix
   ];
 

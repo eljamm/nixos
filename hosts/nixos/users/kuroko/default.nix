@@ -8,27 +8,16 @@
     ./packages.nix
   ];
 
-  options = {
-    currentUser = lib.mkOption {
-      # TODO: improve
-      description = "Username";
-      type = lib.types.str;
-      default = null;
-    };
-  };
+  currentUser = "kuroko";
 
-  config = {
-    currentUser = "kuroko";
-
-    users.users.${config.currentUser} = {
-      isNormalUser = true;
-      description = "${config.currentUser}";
-      extraGroups = [
-        "adbusers"
-        "audio"
-        "video"
-        "wheel"
-      ];
-    };
+  users.users.${config.currentUser} = {
+    isNormalUser = true;
+    description = "${config.currentUser}";
+    extraGroups = [
+      "adbusers"
+      "audio"
+      "video"
+      "wheel"
+    ];
   };
 }
