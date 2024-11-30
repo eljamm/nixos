@@ -43,6 +43,17 @@
             ../modules/nixos
           ];
         };
+
+        navi = inputs.nixpkgs.lib.nixosSystem {
+          specialArgs = args { username = "navi"; };
+          modules = [
+            inputs.agenix.nixosModules.default
+            inputs.catppuccin.nixosModules.catppuccin
+            self.nixosModules.home-navi
+            self.nixosModules.services-common
+            self.nixosModules.services-media
+            ../hosts/navi
+            ../modules/nixos
           ];
         };
       };

@@ -48,6 +48,19 @@ in
         users.kuroko.imports = kuroModules;
       };
     };
+
+  flake.nixosModules.home-navi =
+    { pkgs, lib, ... }:
+    {
+      imports = [ inputs.home-manager.nixosModules.home-manager ];
+
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = args { username = "navi"; };
+        users.navi.imports = commonModules ++ [
+          ../hosts/navi/home
+        ];
       };
     };
 
