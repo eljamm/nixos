@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  inputs,
+  lib,
+  username,
+  ...
+}:
 let
   makePluginPath =
     format:
@@ -10,19 +15,44 @@ let
     + ":$HOME/.${format}";
 in
 {
-  imports = [
-    ./musnix.nix
-    ./pipewire.nix
-  ];
+  flake.nixosModules = {
+    audio =
+      { config, lib, ... }:
+      {
+        # Enable sound with pipewire.
+        hardware.pulseaudio.enable = false;
+        security.rtkit.enable = true;
+        services.pipewire = {
+          enable = true;
+          alsa.enable = true;
+          alsa.support32Bit = true;
+          pulse.enable = true;
+          jack.enable = true;
 
-  # Music plugin paths
-  # NOTE: musnix already enables these, so we don't set them if it's enabled
-  environment.variables = lib.mkIf (!config.musnix.enable) {
-    DSSI_PATH = makePluginPath "dssi";
-    LADSPA_PATH = makePluginPath "ladspa";
-    LV2_PATH = makePluginPath "lv2";
-    LXVST_PATH = makePluginPath "lxvst";
-    VST_PATH = makePluginPath "vst";
-    VST3_PATH = makePluginPath "vst3";
+          # use the example session manager (no others are packaged yet so this is enabled by default,
+          # no need to redefine it in your config for now)
+          #media-session.enable = true;
+        };
+
+        # Music plugin paths
+        environment.variables = {
+          DSSI_PATH = lib.mkDefault (makePluginPath "dssi");
+          LADSPA_PATH = lib.mkDefault (makePluginPath "ladspa");
+          LV2_PATH = lib.mkDefault (makePluginPath "lv2");
+          LXVST_PATH = lib.mkDefault (makePluginPath "lxvst");
+          VST_PATH = lib.mkDefault (makePluginPath "vst");
+          VST3_PATH = lib.mkDefault (makePluginPath "vst3");
+        };
+      };
+
+    audio-musnix =
+      { config, lib, ... }:
+      {
+        imports = [ inputs.musnix.nixosModules.musnix ];
+
+        musnix.enable = lib.mkDefault true;
+
+        users.users.${username}.extraGroups = lib.mkIf config.musnix.enable [ "audio" ];
+      };
   };
 }

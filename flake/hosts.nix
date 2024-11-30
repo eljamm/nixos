@@ -27,13 +27,22 @@
         nixos = inputs.nixpkgs.lib.nixosSystem {
           specialArgs = args { username = "kuroko"; };
           modules = [
-            ../hosts/nixos
-            ../modules/nixos
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
             inputs.chaotic.nixosModules.default
-            self.nixosModules.home-kuroko
+            self.nixosModules.apps-main
+            self.nixosModules.audio
             self.nixosModules.desktops
+            self.nixosModules.dev-rust
+            self.nixosModules.fonts
+            self.nixosModules.home-kuroko
+            self.nixosModules.services-common
+            self.nixosModules.services-main
+            self.nixosModules.virtualisation
+            ../hosts/nixos
+            ../modules/nixos
+          ];
+        };
           ];
         };
       };

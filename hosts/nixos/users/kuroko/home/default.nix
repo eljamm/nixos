@@ -25,8 +25,6 @@
       difftastic
       moar
       taskwarrior-tui
-      zoxide
-      devenv
     ];
 
     file = {

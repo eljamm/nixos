@@ -97,6 +97,7 @@ let
 
     development = [
       clang
+      devenv
       mold-wrapped
       pkg-config
       sqlitebrowser

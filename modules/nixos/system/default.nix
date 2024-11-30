@@ -1,9 +1,7 @@
 { pkgs, username, ... }:
 {
   imports = [
-    ./fonts.nix
-    ./users.nix
-    ./virtualisation.nix
+    ./programs.nix
   ];
 
   # Set fish as the default user shell for all users
