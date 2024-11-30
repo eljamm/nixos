@@ -8,15 +8,24 @@
   flake = withSystem "x86_64-linux" (
     ctx@{ inputs', ... }:
     let
-      args = {
-        inherit self inputs inputs';
-        pkgsCustom = inputs'.nixpkgs-stable-system.legacyPackages;
-      };
+      args =
+        {
+          username ? "",
+        }:
+        {
+          inherit
+            self
+            inputs
+            inputs'
+            username
+            ;
+          pkgsCustom = inputs'.nixpkgs-stable-system.legacyPackages;
+        };
     in
     {
       nixosConfigurations = {
         nixos = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = args;
+          specialArgs = args { username = "kuroko"; };
           modules = [
             ../hosts/nixos
             ../modules/nixos

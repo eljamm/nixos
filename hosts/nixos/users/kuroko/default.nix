@@ -1,18 +1,13 @@
-{
-  config,
-  lib,
-  ...
-}:
+{ username, ... }:
 {
   imports = [
     ./packages.nix
   ];
 
-  currentUser = "kuroko";
-
-  users.users.${config.currentUser} = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "${config.currentUser}";
+    uid = 1000;
+    description = "${username}";
     extraGroups = [
       "adbusers"
       "audio"

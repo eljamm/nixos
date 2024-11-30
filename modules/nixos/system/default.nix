@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, username, ... }:
 {
   imports = [
     ./fonts.nix
@@ -52,6 +52,6 @@
     PATH = [ "${XDG_BIN_HOME}" ];
 
     # for `programs.nh`
-    FLAKE = "/home/${config.currentUser}/nixos";
+    FLAKE = "/home/${username}/nixos";
   };
 }
