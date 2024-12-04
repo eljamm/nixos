@@ -72,7 +72,6 @@ let
 
     notes = [
       dstask
-      logseq
       obsidian
       planify
       qownnotes
