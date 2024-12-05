@@ -1,4 +1,9 @@
-{ inputs', pkgs, ... }:
+{
+  inputs',
+  pkgsCustom,
+  pkgs,
+  ...
+}:
 
 let
   inherit (inputs'.umu.packages) umu;
@@ -45,7 +50,6 @@ in
       heroic
       lutris
       prismlauncher
-      ryujinx
 
       # Games
       mgba
@@ -56,6 +60,7 @@ in
     ++ [
       umu
       yuzu-ea
+      pkgsCustom.ryujinx
     ];
 
   nixpkgs.overlays = [
