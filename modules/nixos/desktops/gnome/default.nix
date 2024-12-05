@@ -135,7 +135,7 @@
                   # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4027
                   (pkgs.fetchpatch2 {
                     url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4027.patch";
-                    hash = "sha256-G7MYBcZLzWBQRKR12UJjD2uKBlDaNPNDZQ0FiKryB3g=";
+                    hash = "sha256-dXgF9a1OSS31AJ+sorTdQPQ7PrOJyH9AhzhQfaTkF/U=";
                   })
                 ];
               });
