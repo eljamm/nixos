@@ -8,7 +8,23 @@
       boot.loader.efi.canTouchEfiVariables = true;
 
       # Kernel
-      boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+      # boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+
+      boot.kernelPackages = pkgs.linuxPackagesFor (
+        pkgs.linux_xanmod.override {
+          argsOverride = rec {
+            version = "6.12.4";
+            modDirVersion = "${version}-xanmod1";
+
+            src = pkgs.fetchFromGitLab {
+              owner = "xanmod";
+              repo = "linux";
+              rev = modDirVersion;
+              hash = "sha256-qxcIcXrHzRXYnTvj+hKgwm5GBTZH/KIQdrnSUon/qoU=";
+            };
+          };
+        }
+      );
 
       # https://wiki.archlinux.org/title/CPU_frequency_scaling#Scaling_governors
       powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
