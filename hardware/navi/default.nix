@@ -29,4 +29,8 @@
     blacklist nouveau
     options nouveau modeset=0
   '';
+
+  # Fair scheduler with consistent performance
+  # https://github.com/sched-ext/scx/blob/main/scheds/rust/scx_flash/README.md
+  services.scx.scheduler = "scx_flash";
 }

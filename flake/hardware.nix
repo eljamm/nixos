@@ -26,6 +26,12 @@
         }
       );
 
+      # Userspace schedulers (default scx_rustland)
+      # https://github.com/sched-ext/scx/blob/main/scheds/rust/README.md
+      services.scx.enable = lib.mkDefault true;
+      # Prioritize interactivity and responsiveness under CPU-intensive loads
+      services.scx.scheduler = lib.mkDefault "scx_bpfland";
+
       # https://wiki.archlinux.org/title/CPU_frequency_scaling#Scaling_governors
       powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 
