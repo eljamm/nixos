@@ -133,9 +133,10 @@
                   })
                   # Improve frame rate on monitors attached to secondary GPUs in copy mode
                   # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4027
+                  # NOTE: expect hash mismatch as the MR is still open
                   (pkgs.fetchpatch2 {
                     url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4027.patch";
-                    hash = "sha256-dXgF9a1OSS31AJ+sorTdQPQ7PrOJyH9AhzhQfaTkF/U=";
+                    hash = "sha256-5NEhTeb3/1RjuSgJk8wK4oKk2l1CoHfQcbgm+Ij6B0c=";
                   })
                 ];
               });
