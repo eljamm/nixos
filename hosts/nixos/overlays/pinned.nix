@@ -23,5 +23,45 @@
         ];
       });
     })
+    (
+      final: prev:
+      let
+        pname = "feishin";
+        version = "0.12.1";
+        src = final.fetchFromGitHub {
+          owner = "jeffvli";
+          repo = "feishin";
+          rev = "v${version}";
+          hash = "sha256-UpNtRZhAqRq/sRVkgg/RbLUWNXvHkAyGhu29zWE6Lk0=";
+        };
+        releaseAppDeps = pkgs.buildNpmPackage {
+          pname = "feishin-release-app";
+          inherit version;
+          src = "${src}/release/app";
+          npmDepsHash = "sha256-KZ4TDf9Nz1/dPWAN/gI3tq0gvzI4BvSR3fawte2n9u0=";
+          npmFlags = [ "--ignore-scripts" ];
+          dontNpmBuild = true;
+          env.ELECTRON_SKIP_BINARY_DOWNLOAD = "1";
+        };
+        releaseNodeModules = "${releaseAppDeps}/lib/node_modules/feishin/node_modules";
+      in
+      {
+        feishin = prev.feishin.overrideAttrs rec {
+          inherit pname version src;
+          npmDepsHash = "sha256-0YfydhQZgxjMvZYosuS+rGA+9qzSYTLilQqMqlnR1oQ=";
+          npmDeps = final.fetchNpmDeps {
+            inherit src;
+            name = "${pname}-${version}-npm-deps";
+            hash = npmDepsHash;
+          };
+          preConfigure = ''
+            for release_module_path in "${releaseNodeModules}"/*; do
+              rm -rf node_modules/"$(basename "$release_module_path")"
+              ln -s "$release_module_path" node_modules/
+            done
+          '';
+        };
+      }
+    )
   ];
 }
