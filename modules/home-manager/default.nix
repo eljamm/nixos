@@ -7,5 +7,6 @@
     neovim = import ./programs/neovim;
     shells = import ./shells;
     terminals = import ./terminals;
+    style-catppuccin = import ./style/catppuccin.nix;
   };
 }

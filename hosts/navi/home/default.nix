@@ -1,12 +1,5 @@
 { config, username, ... }:
 {
-  # Enable catppuccin theme globally
-  catppuccin = {
-    enable = true;
-    accent = "blue";
-    flavor = "macchiato";
-  };
-
   home = {
     username = username;
     homeDirectory = "/home/${username}";
@@ -25,25 +18,13 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.fzf = {
-    enable = true;
-    catppuccin.accent = "red";
-  };
-
   programs.zoxide = {
     enable = true;
     options = [ "--cmd cd" ];
   };
 
-  programs.starship = {
-    enable = true;
-    catppuccin.enable = false;
-  };
-
-  programs.zellij = {
-    enable = true;
-    catppuccin.enable = false;
-  };
-
+  programs.fzf.enable = true;
+  programs.starship.enable = true;
   programs.yazi.enable = true;
+  programs.zellij.enable = true;
 }

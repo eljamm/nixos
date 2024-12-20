@@ -109,7 +109,6 @@ in
 
   programs.neovim = {
     enable = true;
-    catppuccin.enable = false;
     defaultEditor = true;
     package = pkgs.neovim-unwrapped;
     plugins = with pkgs.vimPlugins; [

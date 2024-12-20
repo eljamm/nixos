@@ -24,6 +24,7 @@ let
     self.homeModules.git
     self.homeModules.neovim
     self.homeModules.shells
+    self.homeModules.style-catppuccin
   ];
 
   kuroModules = commonModules ++ [

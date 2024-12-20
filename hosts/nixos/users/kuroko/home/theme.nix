@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   accent = "blue";
@@ -8,9 +8,6 @@ let
   themeName = "catppuccin-${variant}-${accent}";
 in
 {
-  catppuccin.flavor = "macchiato";
-  catppuccin.accent = "blue";
-
   qt = {
     enable = true;
     platformTheme.name = "qtct";
@@ -25,4 +22,6 @@ in
 
     "Kvantum/${themeName}".source = "${kvantumThemePackage}/share/Kvantum/${themeName}";
   };
+
+  catppuccin.kvantum.enable = false;
 }
