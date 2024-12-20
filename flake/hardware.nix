@@ -13,14 +13,14 @@
       boot.kernelPackages = pkgs.linuxPackagesFor (
         pkgs.linux_xanmod.override {
           argsOverride = rec {
-            version = "6.12.5";
+            version = "6.12.6";
             modDirVersion = "${version}-xanmod1";
 
             src = pkgs.fetchFromGitLab {
               owner = "xanmod";
               repo = "linux";
               rev = modDirVersion;
-              hash = "sha256-zawR9RMN/ATCiEbqlLOII0uvlHM6lZFlJ8fGjITYLPA=";
+              hash = "sha256-Pao4tS3SjllOkRrH+k/+9JqLIEOrNqJTFlHZ4cp2OF8=";
             };
           };
         }
