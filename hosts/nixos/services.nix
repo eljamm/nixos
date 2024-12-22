@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgsUnstable, ... }:
 {
   programs.firejail.enable = true;
 
@@ -12,4 +12,5 @@
 
   # Reddit
   services.redlib.enable = true;
+  services.redlib.package = pkgsUnstable.redlib;
 }
