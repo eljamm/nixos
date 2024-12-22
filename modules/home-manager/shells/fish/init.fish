@@ -20,6 +20,9 @@ bind \ef forward-word
 bind -M insert \eb backward-word
 bind \eb backward-word
 
+bind -M insert \cn nvim
+bind \cn nvim
+
 # TODO: remove when `starship.enableInteractive` is merged in home-manager
 # Starship integration with fish (necessary for async prompt)
 starship init fish | source
