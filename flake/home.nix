@@ -16,7 +16,8 @@ let
         inputs'
         username
         ;
-      pkgsCustom = inputs'.nixpkgs-stable-system.legacyPackages;
+      pkgsCustom = inputs'.nixpkgs-custom.packages;
+      pkgsUnstable = inputs'.nixpkgs-unstable.legacyPackages;
     };
 
   commonModules = [
