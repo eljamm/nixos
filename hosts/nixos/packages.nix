@@ -142,6 +142,7 @@ let
       license-cli
       meld
       tree-sitter
+      zizmor
 
       # TODO: move to dev env?
       gnumake
