@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgsUnstable,
   ...
 }:
 {
@@ -32,6 +33,7 @@
     joshuto.enable = true;
     yazi = {
       enable = true;
+      package = pkgsUnstable.yazi;
       enableFishIntegration = true;
     };
 
