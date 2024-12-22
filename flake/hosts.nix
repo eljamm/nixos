@@ -1,6 +1,6 @@
 {
-  inputs,
   self,
+  inputs,
   withSystem,
   ...
 }:
