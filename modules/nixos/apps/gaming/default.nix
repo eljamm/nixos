@@ -1,12 +1,12 @@
 {
   inputs',
-  pkgsUnstable,
   pkgs,
+  pkgsCustom,
+  pkgsUnstable,
   ...
 }:
 let
   inherit (inputs'.umu.packages) umu;
-  inherit (inputs'.nixpkgs-yuzu.legacyPackages) yuzu-ea;
 in
 {
   imports = [ ./controllers.nix ];
@@ -57,7 +57,7 @@ in
     ])
     ++ [
       umu
-      yuzu-ea
+      pkgsCustom.yuzu-ea
       pkgsUnstable.ryujinx-greemdev
     ];
 

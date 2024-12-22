@@ -444,11 +444,11 @@
         "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts"
       },
       "locked": {
-        "lastModified": 1734882830,
-        "narHash": "sha256-o9UWAQamXfz3/B2/kYav0nreZz/EXD5isDKL55gjCjI=",
+        "lastModified": 1734894662,
+        "narHash": "sha256-at33hAM8nVab0gsYgwPdUgornvU/mu+RDSJafce8j14=",
         "owner": "eljamm",
         "repo": "nixpkgs-custom",
-        "rev": "478ce0dc9f9c8e99f48b2711d426d9305f0ef384",
+        "rev": "538086809953b88232a8de8e26da7b6e59962a2b",
         "type": "github"
       },
       "original": {
@@ -505,22 +505,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-yuzu": {
-      "locked": {
-        "lastModified": 1710429098,
-        "narHash": "sha256-irN9RgAuoouk7PhQapw6/p2hhwUNHwIPHE6b6ZaE5nE=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "f20a0c955555fb68cfc72886d7476de2aacd1b4e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "f20a0c955555fb68cfc72886d7476de2aacd1b4e",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1734323986,
@@ -568,7 +552,6 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-custom": "nixpkgs-custom",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "nixpkgs-yuzu": "nixpkgs-yuzu",
         "rust-overlay": "rust-overlay_2",
         "spicetify-nix": "spicetify-nix",
         "treefmt-nix": "treefmt-nix",

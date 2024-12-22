@@ -73,9 +73,6 @@
     catppuccin.url = "github:catppuccin/nix";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    # https://github.com/NixOS/nixpkgs/pull/295587
-    nixpkgs-yuzu.url = "github:nixos/nixpkgs/f20a0c955555fb68cfc72886d7476de2aacd1b4e";
   };
 
   outputs =
