@@ -23,6 +23,17 @@
         ];
       });
     })
+    (final: prev: {
+      nixpkgs-review = prev.nixpkgs-review.overrideAttrs rec {
+        version = "3.0.0";
+        src = final.fetchFromGitHub {
+          owner = "Mic92";
+          repo = "nixpkgs-review";
+          tag = version;
+          hash = "sha256-C2JAlCgH5OCMAZr/Rvi0H7xAwesnkVCJ3kZyyVYaLg4=";
+        };
+      };
+    })
     (
       final: prev:
       let
