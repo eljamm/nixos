@@ -63,6 +63,7 @@ let
     ];
 
     graphics = [
+      aseprite
       drawio
       gimp
       inkscape
