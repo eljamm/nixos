@@ -35,6 +35,19 @@
       };
     })
     (final: prev: {
+      neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (
+        _: finalAttrs: {
+          version = "0.10.3";
+          src = final.fetchFromGitHub {
+            owner = "neovim";
+            repo = "neovim";
+            tag = "v${finalAttrs.version}";
+            hash = "sha256-nmnEyHE/HcrwK+CyJHNoLG0BqjnWleiBy0UYcJL7Ecc=";
+          };
+        }
+      );
+    })
+    (final: prev: {
       zizmor = prev.zizmor.overrideAttrs (oldAttrs: rec {
         pname = "zizmor";
         version = "0.10.0";
