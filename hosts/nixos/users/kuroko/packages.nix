@@ -113,6 +113,7 @@ let
     custom = with pkgsCustom; [
       pgsrip
       vocabsieve
+      zen-browser
     ];
   };
 in
