@@ -1,6 +1,7 @@
 {
-  pkgs,
   lib,
+  pkgs,
+  pkgsUnstable,
   ...
 }:
 let
@@ -26,7 +27,7 @@ let
       nix-output-monitor
       nix-tree
       nix-your-shell
-      nixpkgs-review
+      pkgsUnstable.nixpkgs-review
       npins
     ];
 
@@ -57,7 +58,7 @@ let
 
     media = [
       alsa-utils
-      feishin
+      (pkgsUnstable.feishin.override { inherit electron_31; })
       ffmpegthumbnailer
       freetube
       mediainfo
