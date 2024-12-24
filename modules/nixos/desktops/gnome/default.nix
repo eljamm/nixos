@@ -91,7 +91,7 @@
                   owner = "vanvugt";
                   repo = "mutter";
                   rev = "triple-buffering-v4-47";
-                  hash = "sha256-JaqJvbuIAFDKJ3y/8j/7hZ+/Eqru+Mm1d3EvjfmCcug=";
+                  hash = "sha256-1VXEzKwzrqLCZby2oWxjclA08kPhxs/Om5N17qYeglM=";
                 };
 
                 # Dynamic triple buffering dependency
@@ -109,36 +109,16 @@
                     cp -a "${gvdb}" ./subprojects/gvdb
                   '';
 
-                patches = (oldAttrs.patches or [ ]) ++ [
-                  # Prefer GPUs with built-in panels connected when selecting a primary GPU
-                  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4114
-                  (pkgs.fetchpatch2 {
-                    url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4114.patch";
-                    hash = "sha256-MLWUKQGuhgIkgAKrVUJAc4fgPvHUaYlS79UVsTWF/TE=";
-                  })
-                  # Avoid crashed by defaulting to high priority thread instead
-                  # of realtime for the KMS thread
-                  # https://www.phoronix.com/news/GNOME-High-Priority-KMS-Thread
-                  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4124
-                  (pkgs.fetchpatch2 {
-                    url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4124.patch";
-                    hash = "sha256-h1gjyZx23NQ3VDwcGRy6hLkfgLdukao7NzH+48C/NE4=";
-                  })
-                  # Avoid CPU-side stalls with NVIDIA secondary GPUs with
-                  # monitors directly attached to it
-                  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4015
-                  (pkgs.fetchpatch2 {
-                    url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4015.patch";
-                    hash = "sha256-O2yLzuLCQRWzPervwBsQqr9/cJKHh2MfjlfJ0fjoSFs=";
-                  })
-                  # Improve frame rate on monitors attached to secondary GPUs in copy mode
-                  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4027
-                  # NOTE: expect hash mismatch as the MR is still open
-                  (pkgs.fetchpatch2 {
-                    url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4027.patch";
-                    hash = "sha256-5NEhTeb3/1RjuSgJk8wK4oKk2l1CoHfQcbgm+Ij6B0c=";
-                  })
-                ];
+                # patches = (oldAttrs.patches or [ ]) ++ [
+                #   # FIX: conflict with triple buffering
+                #   # Improve frame rate on monitors attached to secondary GPUs in copy mode
+                #   # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4027
+                #   # NOTE: expect hash mismatch as the MR is still open
+                #   # (pkgs.fetchpatch2 {
+                #   #   url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4027.patch";
+                #   #   hash = "sha256-2J+t/fa7wVDUHCE7OqOFFZrknctWQfobRTXkl92Hf1w=";
+                #   # })
+                # ];
               });
             })
           ];
