@@ -86,19 +86,23 @@
   xdg.mimeApps = {
     enable = true;
     associations.added = {
-      "application/x-trash" = [ "neovide.desktop" ];
-      "application/x-zerosize" = [ "neovide.desktop;" ];
+      "application/vnd.jgraph.mxfile" = [ "drawio.desktop" ];
+      "application/vnd.visio" = [ "drawio.desktop" ];
+      "application/x-trash" = [ "nvim.desktop" ];
+      "application/x-zerosize" = [ "nvim.desktop;" ];
       "application/xhtml+xml" = [ "librewolf.desktop" ];
       "image/jxl" = [ "lximage-qt.desktop" ];
       "inode/directory" = [ "pcmanfm-qt.desktop" ];
       "text/calendar" = [ "org.gnome.Calendar.desktop" ];
+      "text/drawio" = [ "drawio.desktop" ];
       "text/html" = [ "librewolf.desktop" ];
-      "text/plain" = [ "org.gnome.Meld.desktop" ];
+      "text/plain" = [
+        "nvim.desktop"
+        "org.gnome.Meld.desktop"
+      ];
       "x-scheme-handler/http" = [ "librewolf.desktop" ];
       "x-scheme-handler/https" = [ "librewolf.desktop" ];
       "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
-      "application/vnd.jgraph.mxfile" = [ "drawio.desktop" ];
-      "application/vnd.visio" = [ "drawio.desktop" ];
     };
     defaultApplications = {
       "application/xhtml+xml" = [ "librewolf.desktop" ];
