@@ -6,23 +6,8 @@
 }:
 {
   flake = withSystem "x86_64-linux" (
-    ctx@{ inputs', ... }:
+    { inputs', devArgs, ... }:
     let
-      args =
-        {
-          username ? "",
-        }:
-        {
-          inherit
-            self
-            inputs
-            inputs'
-            username
-            ;
-          pkgsCustom = inputs'.nixpkgs-custom.packages;
-          pkgsUnstable = inputs'.nixpkgs-unstable.legacyPackages;
-        };
-
       commonModules = [
         inputs.catppuccin.homeManagerModules.catppuccin
         self.homeModules.git
@@ -42,14 +27,11 @@
       nixosModules.home-kuroko =
         { pkgs, lib, ... }:
         {
-          imports = [
-            inputs.home-manager.nixosModules.home-manager
-          ];
-
+          imports = [ inputs.home-manager.nixosModules.home-manager ];
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = args { username = "kuroko"; };
+            extraSpecialArgs = devArgs;
             users.kuroko.imports = kuroModules;
           };
         };
@@ -58,21 +40,18 @@
         { pkgs, lib, ... }:
         {
           imports = [ inputs.home-manager.nixosModules.home-manager ];
-
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = args { username = "navi"; };
-            users.navi.imports = commonModules ++ [
-              ../hosts/navi/home
-            ];
+            extraSpecialArgs = devArgs;
+            users.navi.imports = commonModules ++ [ ../hosts/navi/home ];
           };
         };
 
       homeConfigurations.kuroko = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = inputs'.nixpkgs.legacyPackages;
         modules = kuroModules;
-        extraSpecialArgs = args;
+        extraSpecialArgs = devArgs;
       };
     }
   );

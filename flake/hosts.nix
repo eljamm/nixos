@@ -6,27 +6,11 @@
 }:
 {
   flake = withSystem "x86_64-linux" (
-    ctx@{ inputs', ... }:
-    let
-      args =
-        {
-          username ? "",
-        }:
-        {
-          inherit
-            self
-            inputs
-            inputs'
-            username
-            ;
-          pkgsCustom = inputs'.nixpkgs-custom.packages;
-          pkgsUnstable = inputs'.nixpkgs-unstable.legacyPackages;
-        };
-    in
+    { devArgs, devLib, ... }:
     {
       nixosConfigurations = {
-        nixos = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = args { username = "kuroko"; };
+        nixos = devLib.nixosSystem {
+          username = "kuroko";
           modules = [
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
@@ -43,10 +27,11 @@
             ../hosts/nixos
             ../modules/nixos
           ];
+          specialArgs = devArgs;
         };
 
-        navi = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = args { username = "navi"; };
+        navi = devLib.nixosSystem {
+          username = "navi";
           modules = [
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
@@ -56,6 +41,7 @@
             ../hosts/navi
             ../modules/nixos
           ];
+          specialArgs = devArgs;
         };
       };
     }
