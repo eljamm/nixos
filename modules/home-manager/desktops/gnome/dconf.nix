@@ -19,6 +19,10 @@
   ];
 
   dconf.settings = with lib.hm.gvariant; {
+    "system/locale" = {
+      region = "de_DE.UTF-8";
+    };
+
     "org/gnome/desktop/interface" = {
       clock-format = "12h";
       clock-show-weekday = true;
