@@ -108,17 +108,6 @@
                   ''
                     cp -a "${gvdb}" ./subprojects/gvdb
                   '';
-
-                # patches = (oldAttrs.patches or [ ]) ++ [
-                #   # FIX: conflict with triple buffering
-                #   # Improve frame rate on monitors attached to secondary GPUs in copy mode
-                #   # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4027
-                #   # NOTE: expect hash mismatch as the MR is still open
-                #   # (pkgs.fetchpatch2 {
-                #   #   url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4027.patch";
-                #   #   hash = "sha256-2J+t/fa7wVDUHCE7OqOFFZrknctWQfobRTXkl92Hf1w=";
-                #   # })
-                # ];
               });
             })
           ];
