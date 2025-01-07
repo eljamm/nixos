@@ -537,11 +537,11 @@
         "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts"
       },
       "locked": {
-        "lastModified": 1736231953,
-        "narHash": "sha256-j+6v3WaXvTMChYLpkapkx5dc6qw0soglAUPZrDndvH8=",
+        "lastModified": 1736283106,
+        "narHash": "sha256-oU8dffJk18ioMzs5/T+RFZCI3DIG39THU8VixQVL/Mo=",
         "owner": "eljamm",
         "repo": "nixpkgs-custom",
-        "rev": "d305ffb98f3f7d7a47c5cc23fd582db56df7dcc0",
+        "rev": "61a38979764f51b4d0ab7efc7558b29b3925a6d2",
         "type": "github"
       },
       "original": {
@@ -640,7 +640,7 @@
     "patches-fish-367229": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-ZugQDFyX/oqzcH9buG5FuptWoSO61NsJi8BA377ZJvc=",
+        "narHash": "sha256-Pwq3/+qa2X2CTx+BYCtPSWddiO3MBMCA1YBJLW9C4ro=",
         "type": "file",
         "url": "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/367229.patch"
       },
