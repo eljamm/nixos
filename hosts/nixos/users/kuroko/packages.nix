@@ -107,8 +107,10 @@ let
 
     utils = [
       (llama-cpp.override { cudaSupport = true; })
+      (alpaca.override { ollama = pkgs.ollama-cuda; })
       piper-tts
       grc
+      whisper-ctranslate2
     ];
 
     custom = with pkgsCustom; [
