@@ -532,14 +532,16 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "patches-fish-367229": "patches-fish-367229",
+        "patches-umu-369259": "patches-umu-369259",
         "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts"
       },
       "locked": {
-        "lastModified": 1736183307,
-        "narHash": "sha256-YhyVPDLO0n3g15zLG6zGdGQR3T2teAQ119Tr36Jqr88=",
+        "lastModified": 1736231953,
+        "narHash": "sha256-j+6v3WaXvTMChYLpkapkx5dc6qw0soglAUPZrDndvH8=",
         "owner": "eljamm",
         "repo": "nixpkgs-custom",
-        "rev": "593f0d8378a3d70c29d20323841cc6a45b803e95",
+        "rev": "d305ffb98f3f7d7a47c5cc23fd582db56df7dcc0",
         "type": "github"
       },
       "original": {
@@ -635,6 +637,30 @@
         "type": "github"
       }
     },
+    "patches-fish-367229": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-ZugQDFyX/oqzcH9buG5FuptWoSO61NsJi8BA377ZJvc=",
+        "type": "file",
+        "url": "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/367229.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/367229.patch"
+      }
+    },
+    "patches-umu-369259": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-lLPhovoaijNiXZu1SnZ9599Ljw+rFEHCkftQVwB9ytI=",
+        "type": "file",
+        "url": "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/369259.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/369259.patch"
+      }
+    },
     "pkgs-by-name-for-flake-parts": {
       "locked": {
         "lastModified": 1727519927,
@@ -668,8 +694,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "rust-overlay": "rust-overlay",
         "spicetify-nix": "spicetify-nix",
-        "treefmt-nix": "treefmt-nix",
-        "umu": "umu"
+        "treefmt-nix": "treefmt-nix"
       }
     },
     "rust-overlay": {
@@ -761,30 +786,6 @@
         "owner": "numtide",
         "repo": "treefmt-nix",
         "type": "github"
-      }
-    },
-    "umu": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "dir": "packaging/nix",
-        "lastModified": 1736144667,
-        "narHash": "sha256-P3QE1yjvBgfrGj0LzCYYyW7gsYvPX5qmCxZnWUO5vks=",
-        "ref": "refs/heads/main",
-        "rev": "5442348f18fbe15f8ca00621869d39fd35ced7ec",
-        "revCount": 876,
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/Open-Wine-Components/umu-launcher/"
-      },
-      "original": {
-        "dir": "packaging/nix",
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/Open-Wine-Components/umu-launcher/"
       }
     }
   },

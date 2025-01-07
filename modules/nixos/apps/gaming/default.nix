@@ -1,13 +1,9 @@
 {
-  inputs',
   pkgs,
   pkgsCustom,
   pkgsUnstable,
   ...
 }:
-let
-  inherit (inputs'.umu.packages) umu;
-in
 {
   imports = [ ./controllers.nix ];
 
@@ -55,11 +51,13 @@ in
       osu-lazer-bin
       vbam
     ])
-    ++ [
-      umu
-      pkgsCustom.yuzu-ea
-      pkgsUnstable.ryujinx-greemdev
-    ];
+    ++ (with pkgsCustom; [
+      umu-launcher
+      yuzu-ea
+    ])
+    ++ (with pkgsUnstable; [
+      ryujinx-greemdev
+    ]);
 
   nixpkgs.overlays = [
     (final: prev: {

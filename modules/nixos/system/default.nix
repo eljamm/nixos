@@ -1,12 +1,18 @@
-{ pkgs, username, ... }:
+{
+  pkgsCustom,
+  pkgs,
+  username,
+  ...
+}:
 {
   imports = [
     ./programs.nix
   ];
 
   # Set fish as the default user shell for all users
-  users.defaultUserShell = pkgs.fish;
+  users.defaultUserShell = pkgsCustom.fish;
   programs.fish.enable = true;
+  programs.fish.package = pkgsCustom.fish;
 
   documentation.nixos.enable = false;
   documentation.man.generateCaches = false; # slow eval time with fish
