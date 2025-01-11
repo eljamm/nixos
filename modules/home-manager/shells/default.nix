@@ -54,6 +54,8 @@
 
     # Git
     g = "git";
+    gpc = "gh pr checkout";
+    gpr = "gh pr";
     vcs-submodule = "git submodule update --init --recursive";
 
     # Programs
@@ -73,5 +75,6 @@
     ni = "nix-init";
     ns = "nh os switch";
     nt = "nh os test";
+    rpr = "nixpkgs-review pr";
   };
 }
