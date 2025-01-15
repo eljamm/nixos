@@ -52,10 +52,12 @@
       vbam
     ])
     ++ (with pkgsCustom; [
-      umu-launcher
       yuzu-ea
     ])
     ++ (with pkgsUnstable; [
+      # TODO: enable when this is merged
+      # https://github.com/NixOS/nixpkgs/pull/369259
+      # umu-launcher
       ryujinx-greemdev
     ]);
 
