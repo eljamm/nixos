@@ -39,9 +39,6 @@
 
         boot.kernelParams = [
           "acpi_os=Linux"
-          # Potential fix for the `flip_done timed out` that happens randomly.
-          # https://gitlab.freedesktop.org/drm/amd/-/issues/2950
-          "amdgpu.dcdebugmask=0x2"
         ];
 
         systemd.packages = with pkgs; [ lact ];
