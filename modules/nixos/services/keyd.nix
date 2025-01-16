@@ -51,6 +51,7 @@ let
     # };
   };
 
+  # TODO: replace with https://noogle.dev/f/lib/range
   /**
     counter :: (int -> int) -> [string]
 

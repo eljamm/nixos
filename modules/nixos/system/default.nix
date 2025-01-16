@@ -1,6 +1,5 @@
 {
   pkgsCustom,
-  pkgs,
   username,
   ...
 }:
