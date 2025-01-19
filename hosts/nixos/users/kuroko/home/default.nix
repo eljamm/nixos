@@ -83,39 +83,6 @@
     </mime-info>
   '';
 
-  xdg.mimeApps = {
-    enable = true;
-    associations.added = {
-      "application/vnd.jgraph.mxfile" = [ "drawio.desktop" ];
-      "application/vnd.visio" = [ "drawio.desktop" ];
-      "application/x-trash" = [ "nvim.desktop" ];
-      "application/x-zerosize" = [ "nvim.desktop;" ];
-      "application/xhtml+xml" = [ "librewolf.desktop" ];
-      "image/jxl" = [ "lximage-qt.desktop" ];
-      "inode/directory" = [ "pcmanfm-qt.desktop" ];
-      "text/calendar" = [ "org.gnome.Calendar.desktop" ];
-      "text/drawio" = [ "drawio.desktop" ];
-      "text/html" = [ "librewolf.desktop" ];
-      "text/plain" = [
-        "nvim.desktop"
-        "org.gnome.Meld.desktop"
-      ];
-      "x-scheme-handler/http" = [ "librewolf.desktop" ];
-      "x-scheme-handler/https" = [ "librewolf.desktop" ];
-      "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
-    };
-    defaultApplications = {
-      "application/xhtml+xml" = [ "librewolf.desktop" ];
-      "inode/directory" = [ "pcmanfm-qt.desktop" ];
-      "text/calendar" = [ "org.gnome.Calendar.desktop" ];
-      "text/html" = [ "librewolf.desktop" ];
-      "video/x-matroska" = [ "spek.desktop;" ];
-      "x-scheme-handler/http" = [ "librewolf.desktop" ];
-      "x-scheme-handler/https" = [ "librewolf.desktop" ];
-      "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
-    };
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
