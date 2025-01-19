@@ -30,14 +30,14 @@
     (final: prev: {
       zizmor = prev.zizmor.overrideAttrs (oldAttrs: rec {
         pname = "zizmor";
-        version = "1.0.1";
+        version = "1.2.2";
         src = final.fetchFromGitHub {
           owner = "woodruffw";
           repo = "zizmor";
-          rev = "refs/tags/v${version}";
-          hash = "sha256-1NpwBjJlpaP3iyTfrgMwO/1qR74/MNBYjtf4+wCe4m8=";
+          tag = "v${version}";
+          hash = "sha256-J2pKaGPbRYWlupWHeXbDpxMDpWk+Px0yuKsH6wiFq5M=";
         };
-        cargoHash = "sha256-feAfHkcLvEdFblehPGtLO01Vl9QpOueuJrpEujlv4qY=";
+        cargoHash = "sha256-YrQBR5RVBAqYqdAucRiqO8cFmgdVvqA8HEYOXFieSsU=";
         cargoDeps = final.rustPlatform.fetchCargoTarball {
           inherit pname version src;
           hash = cargoHash;
