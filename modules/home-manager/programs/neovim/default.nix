@@ -70,11 +70,10 @@ let
     ];
 
     python = [
+      basedpyright
       black
       isort
-      python3Packages.jedi-language-server
       ruff
-      ruff-lsp
     ];
 
     rust = [
