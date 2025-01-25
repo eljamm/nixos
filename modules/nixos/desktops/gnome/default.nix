@@ -80,37 +80,6 @@
               GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
             };
           };
-
-          nixpkgs.overlays = [
-            (final: prev: {
-              mutter = prev.mutter.overrideAttrs (oldAttrs: {
-                # GNOME dynamic triple buffering (huge performance improvement)
-                # See https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
-                src = final.fetchFromGitLab {
-                  domain = "gitlab.gnome.org";
-                  owner = "vanvugt";
-                  repo = "mutter";
-                  rev = "triple-buffering-v4-47";
-                  hash = "sha256-1VXEzKwzrqLCZby2oWxjclA08kPhxs/Om5N17qYeglM=";
-                };
-
-                # Dynamic triple buffering dependency
-                preConfigure =
-                  let
-                    gvdb = final.fetchFromGitLab {
-                      domain = "gitlab.gnome.org";
-                      owner = "GNOME";
-                      repo = "gvdb";
-                      rev = "2b42fc75f09dbe1cd1057580b5782b08f2dcb400";
-                      hash = "sha256-CIdEwRbtxWCwgTb5HYHrixXi+G+qeE1APRaUeka3NWk=";
-                    };
-                  in
-                  ''
-                    cp -a "${gvdb}" ./subprojects/gvdb
-                  '';
-              });
-            })
-          ];
         };
       };
   };
