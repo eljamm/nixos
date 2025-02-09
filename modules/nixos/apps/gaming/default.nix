@@ -50,6 +50,7 @@
       minetestclient
       osu-lazer-bin
       vbam
+      unciv
     ])
     ++ (with pkgsCustom; [
       yuzu-ea
