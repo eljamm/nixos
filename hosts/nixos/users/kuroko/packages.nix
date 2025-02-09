@@ -2,6 +2,7 @@
   lib,
   pkgs,
   pkgsCustom,
+  pkgsUnstable,
   ...
 }:
 let
@@ -63,11 +64,11 @@ let
     ];
 
     graphics = [
-      aseprite
-      drawio
+      # aseprite
+      drawio # TODO: remove?
       gimp
       inkscape
-      krita
+      krita # TODO: remove?
       pixelorama
       rnote
       waifu2x-converter-cpp
@@ -82,7 +83,7 @@ let
     office = [
       crow-translate
       lifeograph
-      mdbook
+      mdbook # TODO: remove?
       mdbook-epub
       mdbook-i18n-helpers
       mdbook-pdf
@@ -102,12 +103,11 @@ let
       mold-wrapped
       pkg-config
       sqlitebrowser
-      tmuxifier
+      tmuxifier # TODO: remove?
     ];
 
     utils = [
-      (llama-cpp.override { cudaSupport = true; })
-      (alpaca.override { ollama = pkgs.ollama-cuda; })
+      (pkgsUnstable.llama-cpp.override { cudaSupport = true; })
       piper-tts
       grc
       whisper-ctranslate2
