@@ -28,6 +28,7 @@ let
       nix-tree
       nix-your-shell
       pkgsUnstable.nixpkgs-review
+      pkgsUnstable.hydra-check
       npins
     ];
 
@@ -38,6 +39,8 @@ let
       python3Packages.pip
       python3Packages.virtualenv
       python3Packages.virtualenvwrapper
+      python3Packages.pyinstrument
+      memray
     ];
 
     office = [
