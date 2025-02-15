@@ -60,7 +60,6 @@ let
 
     development = [
       addlicense
-      devenv
       difftastic
       license-cli
     ];
