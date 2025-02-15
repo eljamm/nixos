@@ -37,6 +37,7 @@
     "/boot" = {
       device = "/dev/disk/by-uuid/0429-2254";
       fsType = "vfat";
+      options = [ "umask=0077" ];
     };
 
     "/var" = {
