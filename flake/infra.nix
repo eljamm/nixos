@@ -23,7 +23,10 @@
 
         devArgs = {
           pkgsCustom = inputs'.nixpkgs-custom.packages;
-          pkgsUnstable = inputs'.nixpkgs-unstable.legacyPackages;
+          pkgsUnstable = import inputs.nixpkgs-unstable {
+            config.allowUnfree = true;
+            inherit system;
+          };
 
           inherit
             self
