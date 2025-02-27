@@ -154,8 +154,10 @@ let
       addlicense
       license-cli
       meld
+      pkgsUnstable.ffizer
+      pkgsUnstable.zizmor
       tree-sitter
-      zizmor
+      watchexec
 
       # TODO: move to dev env?
       gnumake

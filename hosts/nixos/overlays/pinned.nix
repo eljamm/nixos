@@ -28,23 +28,6 @@
       );
     })
     (final: prev: {
-      zizmor = prev.zizmor.overrideAttrs (oldAttrs: rec {
-        pname = "zizmor";
-        version = "1.2.2";
-        src = final.fetchFromGitHub {
-          owner = "woodruffw";
-          repo = "zizmor";
-          tag = "v${version}";
-          hash = "sha256-J2pKaGPbRYWlupWHeXbDpxMDpWk+Px0yuKsH6wiFq5M=";
-        };
-        cargoHash = "sha256-YrQBR5RVBAqYqdAucRiqO8cFmgdVvqA8HEYOXFieSsU=";
-        cargoDeps = final.rustPlatform.fetchCargoTarball {
-          inherit pname version src;
-          hash = cargoHash;
-        };
-      });
-    })
-    (final: prev: {
       llama-cpp = prev.llama-cpp.overrideAttrs (
         oldAttrs: finalAttrs: {
           version = "4588";
