@@ -27,6 +27,7 @@ let
       nix-output-monitor
       nix-tree
       nix-your-shell
+      pkgsUnstable.nix-update
       pkgsUnstable.nixpkgs-review
       pkgsUnstable.hydra-check
       npins
