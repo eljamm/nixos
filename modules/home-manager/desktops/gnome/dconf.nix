@@ -3,19 +3,22 @@
   home.packages = with pkgs; [
     dconf2nix
     gnomeExtensions.appindicator
+    gnomeExtensions.astra-monitor
     gnomeExtensions.bluetooth-battery-meter
     gnomeExtensions.dash-to-panel
     gnomeExtensions.easyeffects-preset-selector
     gnomeExtensions.memento-mori
     gnomeExtensions.pop-shell
+    gnomeExtensions.simple-timer
     gnomeExtensions.space-bar
+    gnomeExtensions.top-bar-organizer
     gnomeExtensions.tophat
+    gnomeExtensions.tracker
     gnomeExtensions.user-themes
     gnomeExtensions.vertical-workspaces
     gnomeExtensions.vitals
     # TODO: override with more recent versions
     # gnomeExtensions.paperwm
-    # gnomeExtensions.astra-monitor
   ];
 
   dconf.settings = with lib.hm.gvariant; {
@@ -37,14 +40,17 @@
       enabled-extensions = [
         "Bluetooth-Battery-Meter@maniacx.github.com"
         "appindicatorsupport@rgcjonas.gmail.com"
-        # "dash-to-panel@jderose9.github.com"
         "fix-focus-on-workspace-switch@hiddn.github.com"
         "memento-mori@paveloom"
         "monitor@astraext.github.io"
         "paperwm@paperwm.github.com"
-        # "space-bar@luchrioh"
+        "simple-timer@majortomvr.github.com"
+        "top-bar-organizer@julian.gse.jsts.xyz"
+        "tracker@aliakseiz.github.com"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "vertical-workspaces@G-dH.github.com"
+        # "dash-to-panel@jderose9.github.com"
+        # "space-bar@luchrioh"
       ];
 
       favorite-apps = [
