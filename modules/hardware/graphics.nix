@@ -39,6 +39,11 @@
 
         boot.kernelParams = [
           "acpi_os=Linux"
+          # I don't remember why I added this, but it's possibly as a fix for
+          # amdgpu flip_done timed out error:
+          # https://gitlab.freedesktop.org/drm/amd/-/issues/2950
+          "intremap=off"
+          "button.lid_init_state=open"
         ];
 
         systemd.packages = with pkgs; [ lact ];
