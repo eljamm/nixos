@@ -1,3 +1,4 @@
 result*
 secrets/secrets.nix
 *ignored/
+*tmp_*.nix
