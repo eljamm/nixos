@@ -155,6 +155,7 @@ let
       addlicense
       license-cli
       meld
+      pkgsUnstable.act
       pkgsUnstable.ffizer
       pkgsUnstable.zizmor
       tree-sitter
