@@ -15,19 +15,6 @@
       };
     })
     (final: prev: {
-      neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (
-        _: finalAttrs: {
-          version = "0.10.3";
-          src = final.fetchFromGitHub {
-            owner = "neovim";
-            repo = "neovim";
-            tag = "v${finalAttrs.version}";
-            hash = "sha256-nmnEyHE/HcrwK+CyJHNoLG0BqjnWleiBy0UYcJL7Ecc=";
-          };
-        }
-      );
-    })
-    (final: prev: {
       llama-cpp = prev.llama-cpp.overrideAttrs (
         oldAttrs: finalAttrs: {
           version = "4588";

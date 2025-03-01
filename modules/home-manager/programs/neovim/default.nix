@@ -1,6 +1,7 @@
 {
-  pkgs,
   lib,
+  pkgs,
+  pkgsUnstable,
   ...
 }:
 let
@@ -109,7 +110,7 @@ in
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    package = pkgs.neovim-unwrapped;
+    package = pkgsUnstable.neovim-unwrapped;
     plugins = with pkgs.vimPlugins; [
       neorg
       telescope-cheat-nvim
