@@ -50,15 +50,13 @@
       minetestclient
       osu-lazer-bin
       vbam
-      unciv
+      pkgsUnstable.unciv
     ])
     ++ (with pkgsCustom; [
       yuzu-ea
     ])
     ++ (with pkgsUnstable; [
-      # TODO: enable when this is merged
-      # https://github.com/NixOS/nixpkgs/pull/369259
-      # umu-launcher
+      umu-launcher
       ryujinx-greemdev
     ]);
 

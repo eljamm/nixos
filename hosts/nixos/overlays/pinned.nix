@@ -45,14 +45,5 @@
         }
       );
     })
-    (final: prev: {
-      unciv = prev.unciv.overrideAttrs rec {
-        version = "4.15.9-patch1";
-        src = final.fetchurl {
-          url = "https://github.com/yairm210/Unciv/releases/download/${version}/Unciv.jar";
-          hash = "sha256-HozoaTAKS/pO/xFLCoXUvrvEEd85oMMxkZ6fFDgSfvQ=";
-        };
-      };
-    })
   ];
 }
