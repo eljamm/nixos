@@ -1,10 +1,13 @@
 {
   perSystem =
-    { devArgs, ... }:
+    {
+      devArgs,
+      pkgs,
+      ...
+    }:
     {
       packages = {
-        fish = devArgs.pkgsCustom.fish;
-        umu-launcher = devArgs.pkgsCustom.umu-launcher;
+        lmstudio = pkgs.callPackage ../hosts/nixos/overlays/patches/lmstudio.nix { };
       };
     };
 }
