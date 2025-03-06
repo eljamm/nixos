@@ -1,5 +1,5 @@
 {
-  pkgsCustom,
+  pkgsUnstable,
   pkgs,
   lib,
   ...
@@ -8,7 +8,7 @@
   programs.fish = {
     enable = true;
     shellInit = lib.readFile ./init.fish;
-    package = pkgsCustom.fish;
+    package = pkgsUnstable.fish;
     functions = {
       mc = "mkdir $argv[1] && cd $argv[1]";
 
