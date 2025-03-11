@@ -2,6 +2,7 @@
   lib,
   pkgs,
   pkgsUnstable,
+  pkgsCustom,
   ...
 }:
 let
@@ -27,9 +28,11 @@ let
       nix-output-monitor
       nix-tree
       nix-your-shell
+      pkgsCustom.agenix
+      pkgsUnstable.hydra-check
       pkgsUnstable.nix-update
       pkgsUnstable.nixpkgs-review
-      pkgsUnstable.hydra-check
+      pkgsUnstable.ragenix
       npins
     ];
 

@@ -2,6 +2,7 @@
 {
   imports = [
     ../../hardware/legion
+    ./agenix.nix
     ./networking.nix
     ./overlays
     ./packages.nix

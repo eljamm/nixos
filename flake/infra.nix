@@ -22,7 +22,9 @@
         devLib = self.legacyPackages.${system}.lib;
 
         devArgs = {
-          pkgsCustom = inputs'.nixpkgs-custom.packages;
+          pkgsCustom = inputs'.nixpkgs-custom.packages // {
+            agenix = inputs.agenix.packages.${system}.default;
+          };
           pkgsUnstable = import inputs.nixpkgs-unstable {
             config.allowUnfree = true;
             inherit system;
