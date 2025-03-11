@@ -23,7 +23,7 @@
 
   dconf.settings = with lib.hm.gvariant; {
     "system/locale" = {
-      region = "de_DE.UTF-8";
+      region = "en_US.UTF-8";
     };
 
     "org/gnome/desktop/interface" = {
