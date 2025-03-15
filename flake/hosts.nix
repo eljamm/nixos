@@ -17,7 +17,6 @@
             inputs.chaotic.nixosModules.default
             self.nixosModules.apps-main
             self.nixosModules.audio
-            self.nixosModules.chaoticMesa
             self.nixosModules.desktops
             self.nixosModules.dev-rust
             self.nixosModules.fonts
