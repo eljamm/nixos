@@ -4,12 +4,12 @@
   nixpkgs.overlays = [
     (final: prev: {
       albert = prev.albert.overrideAttrs rec {
-        version = "0.27.3";
+        version = "0.27.5";
         src = final.fetchFromGitHub {
           owner = "albertlauncher";
           repo = "albert";
           tag = "v${version}";
-          hash = "sha256-DPe0OhedB3C0Gde+VDZytDS6GKq02xWv9sVQjMSBzEI=";
+          hash = "sha256-rdBNh9TICeOpglaJ5OJbE/f4W/UPqCkhp8H/H2OBTRM=";
           fetchSubmodules = true;
         };
       };
