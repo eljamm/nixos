@@ -109,7 +109,6 @@ let
       (pkgsUnstable.llama-cpp.override { cudaSupport = true; })
       piper-tts
       grc
-      whisper-ctranslate2
     ];
 
     custom = with pkgsCustom; [
