@@ -8,7 +8,6 @@
 }:
 {
   imports = [
-    ../../modules/hardware/nvidia.nix # TODO:
     ./filesystems.nix
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
@@ -18,6 +17,7 @@
     self.nixosModules.common-graphics
     self.nixosModules.common-hardware
     self.nixosModules.graphics-amd
+    self.nixosModules.nvidia
   ];
 
   # Limit build resources

@@ -3,6 +3,7 @@
   imports = [
     ../modules/hardware/chaotic.nix
     ../modules/hardware/graphics.nix
+    ../modules/hardware/nvidia.nix
     ../modules/home-manager
     ../modules/nixos/desktops
     ../modules/nixos/desktops/cosmic
