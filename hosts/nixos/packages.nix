@@ -83,15 +83,7 @@ let
       obsidian
       planify
       qownnotes
-      (super-productivity.overrideAttrs rec {
-        pname = "super-productivity";
-        version = "11.1.3";
-        src = fetchurl {
-          url = "https://github.com/johannesjo/super-productivity/releases/download/v${version}/superProductivity-x86_64.AppImage";
-          hash = "sha256-aRK/grVx9thwf/UG/SQpH6jfEL4dIO7XVeoFWEuVZ2Y=";
-          name = "${pname}-${version}.AppImage";
-        };
-      })
+      pkgsUnstable.super-productivity
     ];
 
     qt5 = with libsForQt5; [
