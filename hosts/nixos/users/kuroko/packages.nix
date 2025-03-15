@@ -106,7 +106,6 @@ let
     ];
 
     utils = [
-      (pkgsUnstable.llama-cpp.override { cudaSupport = true; })
       piper-tts
       grc
     ];
