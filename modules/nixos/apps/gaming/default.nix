@@ -13,7 +13,11 @@
     dedicatedServer.openFirewall = false; # Source Dedicated Server
   };
 
-  programs.gamescope.enable = true;
+  programs.gamescope = {
+    enable = true;
+    package = pkgsUnstable.gamescope;
+  };
+
   programs.gamemode = {
     enable = true;
     settings = {
@@ -41,7 +45,11 @@
 
       # Launchers
       bottles
-      heroic
+      (heroic.override {
+        extraPkgs = pkgs: [
+          pkgsUnstable.gamescope
+        ];
+      })
       lutris
       prismlauncher
 
@@ -59,21 +67,4 @@
       umu-launcher
       ryujinx-greemdev
     ]);
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      gamescope = prev.gamescope.overrideAttrs (
-        finalAttrs: oldAttrs: {
-          version = "3.14.29";
-          src = final.fetchFromGitHub {
-            owner = "ValveSoftware";
-            repo = "gamescope";
-            rev = "refs/tags/${finalAttrs.version}";
-            fetchSubmodules = true;
-            hash = "sha256-q3HEbFqUeNczKYUlou+quxawCTjpM5JNLrML84tZVYE=";
-          };
-        }
-      );
-    })
-  ];
 }
