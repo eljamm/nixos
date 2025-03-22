@@ -1,5 +1,9 @@
 { inputs, ... }:
 {
+  imports = [
+    ./containers.nix
+  ];
+
   flake.nixosModules = {
     dev-rust =
       { pkgs, lib, ... }:
