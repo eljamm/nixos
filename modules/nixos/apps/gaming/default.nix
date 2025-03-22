@@ -15,7 +15,6 @@
 
   programs.gamescope = {
     enable = true;
-    package = pkgsUnstable.gamescope;
   };
 
   programs.gamemode = {
@@ -45,11 +44,7 @@
 
       # Launchers
       bottles
-      (heroic.override {
-        extraPkgs = pkgs: [
-          pkgsUnstable.gamescope
-        ];
-      })
+      heroic
       lutris
       prismlauncher
 
