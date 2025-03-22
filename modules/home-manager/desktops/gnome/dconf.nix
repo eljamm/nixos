@@ -252,6 +252,7 @@
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/"
       ];
     };
 
@@ -301,6 +302,12 @@
       binding = "<Super>b";
       command = "librewolf";
       name = "Internet Browser";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8" = {
+      binding = "<Shift><Super>a";
+      command = "io.github.alainm23.planify.quick-add";
+      name = "Planify Quick Add";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/screensaver" = {
