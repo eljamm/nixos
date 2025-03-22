@@ -28,6 +28,7 @@ let
       nix-output-monitor
       nix-tree
       nix-your-shell
+      nixos-generators
       pkgsCustom.agenix
       pkgsUnstable.hydra-check
       pkgsUnstable.nix-update
@@ -52,6 +53,7 @@ let
       goldendict-ng
       harper
       libreoffice-fresh
+      pkgsUnstable.readest
       projecteur
       yacreader
     ];
