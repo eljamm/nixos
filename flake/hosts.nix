@@ -18,6 +18,8 @@
             self.nixosModules.apps-main
             self.nixosModules.audio
             self.nixosModules.desktops
+            self.nixosModules.dev-lxd
+            self.nixosModules.dev-podman
             self.nixosModules.dev-rust
             self.nixosModules.fonts
             self.nixosModules.home-kuroko
@@ -35,6 +37,7 @@
           modules = [
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
+            self.nixosModules.dev-podman
             self.nixosModules.home-navi
             self.nixosModules.services-common
             self.nixosModules.services-media

@@ -43,7 +43,7 @@ _: {
         # Use komga container instead of the NixOS module since it supports jxl
         # and avif out of the gate
         virtualisation.oci-containers = {
-          backend = "docker";
+          backend = "podman";
           containers = {
             komga = {
               image = "gotson/komga:latest";

@@ -20,7 +20,7 @@
   services.redlib.package = pkgsUnstable.redlib;
 
   virtualisation.oci-containers = {
-    backend = "docker";
+    backend = "podman";
     containers = {
       grist = {
         image = "gristlabs/grist";

@@ -7,7 +7,6 @@
   imports = [
     ../../hardware/navi
     ../../modules/nixos/services/blocky.nix
-    ./docker.nix
     ./networking.nix
     ./packages.nix
   ];
