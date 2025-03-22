@@ -36,4 +36,13 @@
     };
   };
 
+  systemd.tmpfiles.settings = {
+    "10-grist" = {
+      "/home/${username}/grist"."d" = {
+        user = username;
+        group = "users";
+        mode = "0740";
+      };
+    };
+  };
 }
