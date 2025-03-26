@@ -36,12 +36,18 @@
         "nvidia.NVreg_UsePageAttributeTable=1" # improve performance with PAT
       ];
 
-      # Blacklist nouveau
       boot.blacklistedKernelModules = [ "nouveau" ];
-      boot.extraModprobeConfig = ''
-        blacklist nouveau
-        options nouveau modeset=0
-      '';
+      boot.extraModprobeConfig =
+        # Blacklist nouveau
+        ''
+          blacklist nouveau
+          options nouveau modeset=0
+        ''
+        # Supposedly fixes suspend with Nvidia
+        # https://discourse.nixos.org/t/psa-for-those-with-hibernation-issues-on-nvidia
+        + ''
+          options nvidia_modeset vblank_sem_control=0
+        '';
 
       hardware.nvidia = {
         # Modesetting is required.
