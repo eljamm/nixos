@@ -15,16 +15,16 @@
       freetube = prev.freetube.overrideAttrs (
         finalAttrs: _: {
           pname = "freetube";
-          version = "0.23.2";
+          version = "0.23.3";
           src = final.fetchFromGitHub {
             owner = "FreeTubeApp";
             repo = "FreeTube";
             tag = "v${finalAttrs.version}-beta";
-            hash = "sha256-P0ENx8PDWbqfiBEsWv11R3Q/FE+rAFhhk49VyQgXIz4=";
+            hash = "sha256-EpcYNUtGbEFvetroo1zAyfKxW70vD1Lk0aJKWcaV39I=";
           };
           yarnOfflineCache = final.fetchYarnDeps {
             yarnLock = "${finalAttrs.src}/yarn.lock";
-            hash = "sha256-U6H4TMKR+khs5fQtMtIBnHpAzJvHcvMeSD1XUqaov/M=";
+            hash = "sha256-xiJGzvmfrvvB6/rdwALOxhWSWAZ31cbySYygtG8+QpQ=";
           };
         }
       );
