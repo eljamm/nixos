@@ -106,12 +106,12 @@ let
     ];
 
     utils = [
-      piper-tts
       grc
+      piper-tts
+      pkgsUnstable.pgsrip
     ];
 
     custom = with pkgsCustom; [
-      pgsrip
       vocabsieve
       zen-browser
     ];
