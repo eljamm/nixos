@@ -9,7 +9,7 @@
     { inputs', devArgs, ... }:
     let
       commonModules = [
-        inputs.catppuccin.homeManagerModules.catppuccin
+        inputs.catppuccin.homeModules.catppuccin
         self.homeModules.git
         self.homeModules.neovim
         self.homeModules.shells
