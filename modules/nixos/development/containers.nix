@@ -23,6 +23,8 @@
           defaultNetwork.settings.dns_enabled = true;
         };
 
+        hardware.nvidia-container-toolkit.enable = true;
+
         users.users.${username}.extraGroups = [ "podman" ];
       };
     dev-docker =
@@ -35,6 +37,8 @@
           enable = true;
           setSocketVariable = true;
         };
+
+        hardware.nvidia-container-toolkit.enable = true;
 
         users.users.${username}.extraGroups = [ "docker" ];
       };
