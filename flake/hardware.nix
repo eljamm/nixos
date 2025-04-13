@@ -2,29 +2,31 @@
 {
   flake.nixosModules.common-hardware =
     { pkgs, lib, ... }:
-    {
-      # Bootloader.
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = true;
-
-      # Kernel
-      # boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
-
-      boot.kernelPackages = pkgs.linuxPackagesFor (
+    let
+      linux_xanmod_custom = pkgs.linuxPackagesFor (
         pkgs.linux_xanmod.override {
           argsOverride = rec {
-            version = "6.12.19";
+            version = "6.13.11";
             modDirVersion = "${version}-xanmod1";
 
             src = pkgs.fetchFromGitLab {
               owner = "xanmod";
               repo = "linux";
               rev = modDirVersion;
-              hash = "sha256-8JPriW+OyjgCLcrMqzmN3gx4gfOu+RmHNpU512wXk0o=";
+              hash = "sha256-hv93f1poaCmjdy2G39+T2crnYMS26FxD2Dn2hmTGZB8=";
             };
           };
         }
       );
+    in
+    {
+      # Bootloader.
+      boot.loader.systemd-boot.enable = true;
+      boot.loader.efi.canTouchEfiVariables = true;
+
+      # Kernel
+      boot.kernelPackages = linux_xanmod_custom;
+      # boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
 
       # Userspace schedulers (default scx_rustland)
       # https://github.com/sched-ext/scx/blob/main/scheds/rust/README.md
