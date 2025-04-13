@@ -41,6 +41,19 @@
     "xhci_pci"
   ];
 
-  boot.extraModulePackages = with config.boot.kernelPackages; [ lenovo-legion-module ];
   environment.systemPackages = [ pkgs.lenovo-legion ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    # for linux 6.13
+    (lenovo-legion-module.overrideAttrs {
+      pname = "lenovo-legion-module";
+      version = "0.0.20-unstable-2025-04-01";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "johnfanv2";
+        repo = "LenovoLegionLinux";
+        rev = "19fef88dbbb077d99052e06f3cd9a3675e7bf3aa";
+        hash = "sha256-0lQ6LyfjZ1/dc6QjB4a1aBcfxY5lIJJEonwuy9a4V4I=";
+      };
+    })
+  ];
 }
