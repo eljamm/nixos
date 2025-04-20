@@ -54,8 +54,8 @@
 
     # Git
     g = "git";
-    gpc = "gh pr checkout";
-    gpr = "gh pr";
+    ghc = "gh pr checkout -f";
+    ghr = "gh pr";
     vcs-submodule = "git submodule update --init --recursive";
 
     # Programs
