@@ -88,6 +88,10 @@ let
       shfmt
     ];
 
+    config = [
+      yaml-language-server
+    ];
+
     web = [
       deno
       nodePackages.sql-formatter
