@@ -11,14 +11,14 @@
       nvidiaEnabled = lib.elem "nvidia" config.services.xserver.videoDrivers;
 
       VK_DRIVER_FILES = lib.concatStringsSep ":" [
-        "${pkgs.mesa.drivers}/share/vulkan/icd.d/nouveau_icd.x86_64.json"
-        "${pkgs.mesa_i686.drivers}/share/vulkan/icd.d/nouveau_icd.i686.json"
+        "${pkgs.mesa}/share/vulkan/icd.d/nouveau_icd.x86_64.json"
+        "${pkgs.mesa_i686}/share/vulkan/icd.d/nouveau_icd.i686.json"
       ];
 
       # Script to offload graphics rendering to dedicated GPU
       nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
         # Offload graphics rendering to dedicated GPU (Nouveau)
-        export __EGL_VENDOR_LIBRARY_FILENAMES="${pkgs.mesa.drivers}/share/glvnd/egl_vendor.d/50_mesa.json"
+        export __EGL_VENDOR_LIBRARY_FILENAMES="${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json"
         export __GLX_VENDOR_LIBRARY_NAME=mesa
         export VK_DRIVER_FILES="${VK_DRIVER_FILES}"
         export DRI_PRIME=1
