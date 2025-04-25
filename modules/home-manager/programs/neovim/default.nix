@@ -48,16 +48,6 @@ let
       codespell
       nodePackages.cspell
       markdownlint-cli
-      # TODO: mdformat plugins don't work outside of dev shells
-      (mdformat.withPlugins (
-        ps: with ps; [
-          mdformat-footnote
-          mdformat-frontmatter
-          mdformat-tables
-          mdformat-toc
-        ]
-      ))
-      # plantuml # TODO: remove. big closure
     ];
 
     nix = [
