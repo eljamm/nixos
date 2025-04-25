@@ -19,15 +19,11 @@
           fira-code
           miracode
           proggyfonts
-          (nerdfonts.override {
-            fonts = [
-              "Hack"
-              "FiraCode"
-              "DroidSansMono"
-              "JetBrainsMono"
-              "NerdFontsSymbolsOnly" # for kitty terminal
-            ];
-          })
+          nerd-fonts.hack
+          nerd-fonts.fira-code
+          nerd-fonts.droid-sans-mono
+          nerd-fonts.jetbrains-mono
+          nerd-fonts.symbols-only # for kitty terminal
 
           # noto
           noto-fonts
