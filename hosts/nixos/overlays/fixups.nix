@@ -11,6 +11,16 @@
         ];
       });
     })
+    # TODO: remove after this reaches unstable
+    # https://github.com/NixOS/nixpkgs/pull/400902
+    (final: prev: {
+      furnace = prev.furnace.overrideAttrs (oldAttrs: {
+        buildInputs = oldAttrs.buildInputs ++ [
+          pkgs.libGL
+          pkgs.xorg.libX11
+        ];
+      });
+    })
     (final: prev: {
       freetube = prev.freetube.overrideAttrs (
         finalAttrs: _: {
