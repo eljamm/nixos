@@ -416,11 +416,11 @@
         "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts"
       },
       "locked": {
-        "lastModified": 1745490816,
-        "narHash": "sha256-jiSiNknwsAlKNDeyH9d4tCa1ZDaCWVZZGedcwMpFSGc=",
+        "lastModified": 1745651630,
+        "narHash": "sha256-iLmWCN9ZfxWddcqTp8p8ZPPLuMwtGa7T8ZCm4xisCGU=",
         "owner": "eljamm",
         "repo": "nixpkgs-custom",
-        "rev": "ce255c1c63375809197530e8228122e524454880",
+        "rev": "659ed99c40598c3558e549fa34a15f8eab8e9710",
         "type": "github"
       },
       "original": {
