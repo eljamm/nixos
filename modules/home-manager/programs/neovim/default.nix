@@ -15,8 +15,6 @@ let
     ];
 
     c = [
-      # clang # TODO: remove. big closure
-      # clang-tools # TODO: remove. big closure
       cmake
       gcc
       gnumake
