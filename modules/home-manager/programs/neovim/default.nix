@@ -2,6 +2,7 @@
   lib,
   pkgs,
   pkgsUnstable,
+  pkgsCustom,
   ...
 }:
 let
@@ -78,6 +79,7 @@ let
     rust = [
       bacon # background code check
       taplo # TOML
+      pkgsCustom.rustowl # visualize lifetimes
     ];
 
     shell = [
