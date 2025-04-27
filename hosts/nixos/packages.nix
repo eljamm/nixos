@@ -155,6 +155,7 @@ let
       pkgsUnstable.act
       pkgsUnstable.ffizer
       pkgsUnstable.zizmor
+      pre-commit
       tree-sitter
       watchexec
 
