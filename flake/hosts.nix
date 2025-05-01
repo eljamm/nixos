@@ -18,7 +18,6 @@
             self.nixosModules.apps-main
             self.nixosModules.audio
             self.nixosModules.desktops
-            self.nixosModules.dev-lxd
             self.nixosModules.dev-podman
             self.nixosModules.dev-rust
             self.nixosModules.fonts

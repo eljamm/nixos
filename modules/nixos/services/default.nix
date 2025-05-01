@@ -6,7 +6,7 @@
       {
         imports = [
           ./anki.nix
-          # ./blocky.nix # TODO: conflicts with lxc's dnsmasq
+          ./blocky.nix
           ./keyd.nix
           ./misc.nix
           ./mumble.nix
