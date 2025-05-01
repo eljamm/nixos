@@ -101,8 +101,8 @@
       environment.variables = {
         # Use integrated GPU for gnome-shell
         # See https://gitlab.gnome.org/GNOME/mutter/-/issues/2969
-        __EGL_VENDOR_LIBRARY_FILENAMES = "${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json";
-        __GLX_VENDOR_LIBRARY_NAME = "mesa";
+        # __EGL_VENDOR_LIBRARY_FILENAMES = "${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json";
+        # __GLX_VENDOR_LIBRARY_NAME = "mesa";
         # VK_DRIVER_FILES = "${lib.concatStringsSep ":" [
         #   "${pkgs.mesa}/share/vulkan/icd.d/radeon_icd.x86_64.json"
         #   "${pkgs.mesa_i686}/share/vulkan/icd.d/radeon_icd.i686.json"
