@@ -45,4 +45,8 @@
       };
     };
   };
+
+  services.vikunja.enable = true;
+  services.vikunja.frontendScheme = "http";
+  services.vikunja.frontendHostname = "localhost.vikunja";
 }
