@@ -67,7 +67,7 @@ let
 
     media = [
       alsa-utils
-      (pkgsUnstable.feishin.override { electron_31 = electron_33; })
+      (pkgsUnstable.feishin.override { electron_33 = electron_36; })
       ffmpegthumbnailer
       freetube
       mediainfo
