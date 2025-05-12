@@ -87,7 +87,7 @@ let
       mdbook-epub
       mdbook-i18n-helpers
       mdbook-pdf
-      pdfid
+      pkgsCustom.pdfid
       zathura
     ];
 
