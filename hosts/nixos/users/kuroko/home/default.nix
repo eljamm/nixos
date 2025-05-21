@@ -54,15 +54,17 @@
     # TODO: is this still useful?
     easyeffects.enable = true;
 
+    # self-induced telemetry
     activitywatch = {
-      enable = false;
+      enable = true;
+      package = pkgs.aw-server-rust;
       extraOptions = [
         "--port"
         "5600"
       ];
       watchers = {
-        aw-watcher-afk.package = pkgs.activitywatch;
-        aw-watcher-window.package = pkgs.activitywatch;
+        awatcher.package = pkgs.awatcher;
+        aw-sync.package = pkgs.aw-server-rust;
       };
     };
   };

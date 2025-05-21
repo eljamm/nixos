@@ -17,6 +17,7 @@
     gnomeExtensions.user-themes
     gnomeExtensions.vertical-workspaces
     gnomeExtensions.vitals
+    gnomeExtensions.focused-window-d-bus # for activitywatch's awatcher
     # TODO: override with more recent versions
     # gnomeExtensions.paperwm
   ];
@@ -41,6 +42,7 @@
         "Bluetooth-Battery-Meter@maniacx.github.com"
         "appindicatorsupport@rgcjonas.gmail.com"
         "fix-focus-on-workspace-switch@hiddn.github.com"
+        "focused-window-dbus@flexagoon.com"
         "memento-mori@paveloom"
         "monitor@astraext.github.io"
         "paperwm@paperwm.github.com"
