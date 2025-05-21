@@ -10,9 +10,9 @@ let
     internet = [
       birdtray
       brave
-      firefox
-      librewolf
-      thunderbird
+      pkgsUnstable.firefox
+      pkgsUnstable.librewolf
+      pkgsUnstable.thunderbird
       ungoogled-chromium
     ];
 
