@@ -10,7 +10,7 @@
   catppuccin = {
     gtk = {
       enable = true;
-      gnomeShellTheme = true;
+      gnomeShellTheme = false;
       icon.enable = true;
     };
 
