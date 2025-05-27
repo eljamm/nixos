@@ -124,4 +124,6 @@ in
       lib.flatten
     ];
   };
+
+  programs.neovide.enable = true;
 }
