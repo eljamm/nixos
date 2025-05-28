@@ -17,10 +17,7 @@
         "--noask"
         "--quiet"
       ];
-      agents = [
-        "ssh"
-        "gpg"
-      ];
+      keys = [ ];
     };
 
     mangohud.enable = true;
