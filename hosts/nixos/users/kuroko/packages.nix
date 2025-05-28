@@ -17,6 +17,7 @@ let
     ];
 
     communications = [
+      discord
       element-desktop
       ferdium
     ];
