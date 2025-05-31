@@ -142,6 +142,7 @@ let
 
     productivity = [
       cheat
+      git-worktree-switcher
       harsh
       homebank
       tellico
