@@ -44,7 +44,7 @@
 
       # Launchers
       bottles
-      heroic
+      pkgsUnstable.heroic
       lutris
       prismlauncher
 
