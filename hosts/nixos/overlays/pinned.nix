@@ -3,16 +3,20 @@
 {
   nixpkgs.overlays = [
     (final: prev: {
-      albert = prev.albert.overrideAttrs rec {
-        version = "0.27.5";
-        src = final.fetchFromGitHub {
-          owner = "albertlauncher";
-          repo = "albert";
-          tag = "v${version}";
-          hash = "sha256-rdBNh9TICeOpglaJ5OJbE/f4W/UPqCkhp8H/H2OBTRM=";
-          fetchSubmodules = true;
-        };
-      };
+      albert = prev.albert.overrideAttrs (
+        finalAttrs: oldAttrs: {
+          version = "0.28.0";
+          src = final.fetchFromGitHub {
+            owner = "albertlauncher";
+            repo = "albert";
+            tag = "v${finalAttrs.version}";
+            hash = "sha256-ciqCNQD5S7qv9Ph6AgUpFB5Sphv6Eb1LR3Ap3bTd1EE=";
+            fetchSubmodules = true;
+          };
+
+          buildInputs = (oldAttrs.buildInputs or [ ]) ++ [ pkgs.kdePackages.qtkeychain ];
+        }
+      );
     })
   ];
 
