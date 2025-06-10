@@ -7,7 +7,7 @@
 
     bat.enable = true;
     kitty.enable = true;
-    yazi.enable = true;
+    yazi.enable = false; # FIX: https://github.com/catppuccin/nix/issues/577
 
     fzf = {
       enable = true;
