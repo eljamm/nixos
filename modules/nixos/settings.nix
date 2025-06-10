@@ -2,7 +2,7 @@
 
 {
   nix = {
-    package = pkgs.lix;
+    package = pkgs.nix;
 
     # Enable flakes
     extraOptions = ''
