@@ -69,7 +69,7 @@ let
       alsa-utils
       (pkgsUnstable.feishin.override { electron_33 = electron_36; })
       ffmpegthumbnailer
-      freetube
+      pkgsUnstable.freetube
       mediainfo
       mediainfo-gui
       (lib.hiPrio mkvtoolnix)
