@@ -151,6 +151,7 @@ let
 
     development = [
       addlicense
+      flamelens
       license-cli
       meld
       pkgsUnstable.act
