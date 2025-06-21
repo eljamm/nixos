@@ -24,7 +24,7 @@ let
     nix = [
       manix # documentation search
       nix-init
-      nix-inspect
+      # nix-inspect # TODO: old nix
       nix-output-monitor
       nix-tree
       nix-your-shell
@@ -122,6 +122,7 @@ let
       eza
       fd
       hplip # scanner
+      hyperfine # benchmarking
       libavif
       libheif
       libjxl
