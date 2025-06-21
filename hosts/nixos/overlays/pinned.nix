@@ -5,12 +5,12 @@
     (final: prev: {
       albert = prev.albert.overrideAttrs (
         finalAttrs: oldAttrs: {
-          version = "0.28.0";
+          version = "0.28.2";
           src = final.fetchFromGitHub {
             owner = "albertlauncher";
             repo = "albert";
             tag = "v${finalAttrs.version}";
-            hash = "sha256-ciqCNQD5S7qv9Ph6AgUpFB5Sphv6Eb1LR3Ap3bTd1EE=";
+            hash = "sha256-FYl/S7+KoQ3kgUQX0hiv8B+AbTbyfmo1GX130G09bZ8=";
             fetchSubmodules = true;
           };
 
