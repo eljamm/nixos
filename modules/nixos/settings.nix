@@ -2,7 +2,7 @@
 
 {
   nix = {
-    package = pkgs.nix;
+    package = pkgs.nixVersions.nix_2_29;
 
     # Enable flakes
     extraOptions = ''
