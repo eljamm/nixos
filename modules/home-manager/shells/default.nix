@@ -73,6 +73,7 @@
     nbb = "nix-build . -A";
     nbt = "nh os boot";
     ni = "nix-init";
+    nr = "nix-direnv-reload";
     ns = "nh os switch";
     nt = "nh os test";
     rpr = "nixpkgs-review pr";
