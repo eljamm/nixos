@@ -29,7 +29,7 @@ let
       nix-tree
       nix-your-shell
       nixos-generators
-      pkgsCustom.agenix
+      # pkgsCustom.agenix # TODO:
       pkgsUnstable.hydra-check
       pkgsUnstable.nix-update
       pkgsUnstable.nixpkgs-review
