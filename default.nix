@@ -7,22 +7,52 @@ let
     ;
 in
 {
-  flake ? import-flake {
+  self ? import-flake {
     src = ./.;
   },
-  sources ? flake.inputs,
+  inputs ? self.inputs,
   system ? builtins.currentSystem,
-  pkgs ? import sources.nixpkgs {
+  pkgs ? import inputs.nixpkgs {
     config = { };
     overlays = [ ];
     inherit system;
   },
-  lib ? import "${sources.nixpkgs}/lib",
+  lib ? import "${inputs.nixpkgs}/lib",
 }:
-{
-  inherit
-    lib
-    pkgs
-    sources
-    ;
-}
+let
+  args = {
+    inherit
+      lib
+      pkgs
+      self
+      system
+      inputs
+      ;
+    inherit (default)
+      packages
+      ;
+
+    devShells = default.shells;
+
+    pkgsCustom = inputs.nixpkgs-custom.packages // {
+      agenix = inputs.agenix.packages.${system}.default;
+    };
+
+    pkgsUnstable = import inputs.nixpkgs-unstable {
+      config.allowUnfree = true;
+      inherit system;
+    };
+  };
+
+  default = rec {
+    packages = import ./nix/packages.nix args;
+
+    shells.default = pkgs.mkShellNoCC {
+      packages = [ ];
+    };
+
+    flake.packages = lib.filterAttrs (n: v: lib.isDerivation v) packages;
+    flake.devShells = shells;
+  };
+in
+default // args
