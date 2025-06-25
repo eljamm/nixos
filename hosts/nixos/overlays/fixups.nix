@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgsUnstable, ... }:
 
 {
   nixpkgs.overlays = [
@@ -28,6 +28,11 @@
           };
         }
       );
+    })
+    (final: prev: {
+      nix = config.nix.package;
+      nixForLinking = pkgsUnstable.nixForLinking;
+      nixVersions = pkgsUnstable.nixVersions;
     })
   ];
 }

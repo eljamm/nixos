@@ -1,8 +1,13 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  pkgsUnstable,
+  inputs,
+  ...
+}:
 
 {
   nix = {
-    package = pkgs.nixVersions.nix_2_29;
+    package = pkgsUnstable.nixVersions.nix_2_29;
 
     # Enable flakes
     extraOptions = ''
