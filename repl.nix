@@ -1,6 +1,15 @@
 # https://wiki.nixos.org/wiki/Flakes#Getting_Instant_System_Flakes_Repl
-let
-  flake = builtins.getFlake (toString ./.);
-  nixpkgs = import <nixpkgs> { };
-in
-{ inherit flake; } // flake // builtins // nixpkgs // nixpkgs.lib // flake.nixosConfigurations
+{
+  default ? import ./. { },
+  flake ? default.self,
+  inputs ? flake.inputs,
+  ...
+}:
+{
+  inherit flake;
+}
+// flake
+// builtins
+// inputs.nixpkgs
+// inputs.nixpkgs.lib
+// flake.nixosConfigurations

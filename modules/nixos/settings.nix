@@ -1,4 +1,5 @@
 {
+  self,
   pkgs,
   pkgsUnstable,
   inputs,
@@ -37,7 +38,7 @@
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   environment.systemPackages =
     let
-      repl_path = toString ../../.;
+      repl_path = toString self;
       fast-repl = pkgs.writeShellScriptBin "fast-repl" ''
         source /etc/set-environment
         nix repl --file "${repl_path}/repl.nix" "$@"
