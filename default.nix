@@ -44,15 +44,20 @@ let
     };
   };
 
+  formatter = import ./dev/formatter.nix args;
+
   default = rec {
-    packages = import ./nix/packages.nix args;
+    packages = import ./dev/packages.nix args;
 
     shells.default = pkgs.mkShellNoCC {
-      packages = [ ];
+      packages = [
+        formatter
+      ];
     };
 
     flake.packages = lib.filterAttrs (n: v: lib.isDerivation v) packages;
     flake.devShells = shells;
+    flake.formatter = formatter;
   };
 in
 default // args
