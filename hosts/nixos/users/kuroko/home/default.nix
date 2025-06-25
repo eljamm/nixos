@@ -69,6 +69,13 @@
     };
   };
 
+  xresources.properties = {
+    "XTerm*faceName" = "JetBrains Mono NF Light";
+    "XTerm*faceSize" = 12;
+    "XTerm*externalBorder" = 10;
+    "XTerm*internalBorder" = 20;
+  };
+
   xdg.dataFile."mime/packages/drawio.xml".text = ''
     <?xml version="1.0" encoding="utf-8"?>
     <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
