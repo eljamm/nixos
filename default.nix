@@ -60,4 +60,4 @@ let
     flake.formatter = formatter;
   };
 in
-default // args
+default // args // default.packages
