@@ -104,17 +104,7 @@ in
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    package = pkgsUnstable.neovim-unwrapped.overrideAttrs {
-      meta = {
-        description = "Vim text editor fork focused on extensibility and agility";
-        maintainers = [ ];
-        license = with lib.licenses; [
-          asl20
-          vim
-        ];
-        platforms = lib.platforms.unix;
-      };
-    };
+    package = pkgsUnstable.neovim-unwrapped;
     plugins = with pkgs.vimPlugins; [
       neorg
       telescope-cheat-nvim
