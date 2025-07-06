@@ -41,6 +41,8 @@ let
       # Trackers
       bambootracker
       furnace
+      pkgsUnstable.famistudio
+      tuxguitar
 
       # DAWs
       ardour
@@ -54,9 +56,11 @@ let
       lsp-plugins
       vital
       x42-avldrums
-
       yabridge
       yabridgectl
+
+      # Tools
+      dl-librescore
     ];
 
     gameDevelopment = [
