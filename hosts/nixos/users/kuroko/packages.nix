@@ -68,6 +68,10 @@ let
       godot3
     ];
 
+    games = [
+      openmw
+    ];
+
     graphics = [
       # aseprite
       drawio # TODO: remove?
