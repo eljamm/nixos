@@ -50,11 +50,8 @@
         systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 
         # Overclocking
-        programs.corectrl = {
-          enable = true;
-          gpuOverclock.enable = true;
-        };
-
+        hardware.amdgpu.overdrive.enable = true;
+        programs.corectrl.enable = true;
         users.users.kuroko.extraGroups = [ "corectrl" ];
       };
   };
