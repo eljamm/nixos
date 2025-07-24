@@ -13,7 +13,7 @@ in
   inputs ? self.inputs,
   system ? builtins.currentSystem,
   pkgs ? import inputs.nixpkgs {
-    config = { };
+    config.allowUnfree = true;
     overlays = [ ];
     inherit system;
   },
