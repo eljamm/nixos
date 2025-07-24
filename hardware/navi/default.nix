@@ -6,7 +6,6 @@
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     self.nixosModules.common-graphics
     self.nixosModules.common-hardware
-    #../../modules/hardware/nvidia.nix # transcoding
     ./filesystems.nix
   ];
 
