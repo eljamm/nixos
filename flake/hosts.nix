@@ -4,9 +4,16 @@
   withSystem,
   ...
 }:
+let
+  default = import ../. { inherit inputs; };
+
+  inherit (default)
+    devLib
+    ;
+in
 {
   flake = withSystem "x86_64-linux" (
-    { devArgs, devLib, ... }:
+    { devArgs, ... }:
     {
       nixosConfigurations = {
         nixos = devLib.nixosSystem {

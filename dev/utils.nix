@@ -2,7 +2,7 @@
   lib,
   inputs,
   ...
-}:
+}@args:
 {
   nixosSystem =
     {

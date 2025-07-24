@@ -32,7 +32,8 @@ let
       packages
       ;
 
-    devShells = default.shells;
+    # Custom library. Contains helper functions, builders, ...
+    devLib = import ./dev/utils.nix args;
 
     pkgsCustom = inputs.nixpkgs-custom.packages // {
       agenix = inputs.agenix.packages.${system}.default;
@@ -42,6 +43,8 @@ let
       config.allowUnfree = true;
       inherit system;
     };
+
+    devShells = default.shells;
   };
 
   formatter = import ./dev/formatter.nix args;
@@ -58,6 +61,7 @@ let
     flake.packages = lib.filterAttrs (n: v: lib.isDerivation v) packages;
     flake.devShells = shells;
     flake.formatter = formatter;
+    flake.legacyPackages.lib = args.devLib;
   };
 in
 default // args // default.packages
