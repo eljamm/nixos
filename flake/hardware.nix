@@ -1,31 +1,19 @@
-{ inputs, ... }:
+{ self, ... }:
 {
   flake.nixosModules.common-hardware =
-    { pkgs, lib, ... }:
-    let
-      linux_xanmod_custom = pkgs.linuxPackagesFor (
-        pkgs.linux_xanmod.override {
-          argsOverride = rec {
-            version = "6.15.7";
-            modDirVersion = "${version}-xanmod1";
-
-            src = pkgs.fetchFromGitLab {
-              owner = "xanmod";
-              repo = "linux";
-              rev = modDirVersion;
-              hash = "sha256-YMDjtoGz/PQKmbB2umI+5mODP4A1NqzVusc9kg2zGzA=";
-            };
-          };
-        }
-      );
-    in
+    {
+      pkgs,
+      lib,
+      system,
+      ...
+    }:
     {
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
       # Kernel
-      boot.kernelPackages = linux_xanmod_custom;
+      boot.kernelPackages = pkgs.linuxPackagesFor self.packages.${system}.linux_xanmod_custom;
       # boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
 
       # Userspace schedulers (default scx_rustland)
