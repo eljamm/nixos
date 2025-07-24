@@ -5,15 +5,25 @@
   ...
 }:
 let
-  default = import ../. { inherit inputs; };
+  default = import ../. { inherit self system; };
+  system = "x86_64-linux";
 
   inherit (default)
     devLib
     ;
+  devArgs = {
+    inherit (default.args)
+      self
+      inputs
+      system
+      pkgsCustom
+      pkgsUnstable
+      ;
+  };
 in
 {
-  flake = withSystem "x86_64-linux" (
-    { devArgs, ... }:
+  flake = withSystem system (
+    { ... }:
     {
       nixosConfigurations = {
         nixos = devLib.nixosSystem {

@@ -4,9 +4,23 @@
   withSystem,
   ...
 }:
+let
+  default = import ../. { inherit self system; };
+  system = "x86_64-linux";
+
+  devArgs = {
+    inherit (default.args)
+      self
+      inputs
+      system
+      pkgsCustom
+      pkgsUnstable
+      ;
+  };
+in
 {
-  flake = withSystem "x86_64-linux" (
-    { inputs', devArgs, ... }:
+  flake = withSystem system (
+    { inputs', ... }:
     let
       commonModules = [
         inputs.catppuccin.homeModules.catppuccin

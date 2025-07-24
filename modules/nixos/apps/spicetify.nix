@@ -1,11 +1,11 @@
 {
-  inputs',
   inputs,
+  system,
   ...
 }:
 let
   spicetify = inputs.spicetify-nix;
-  spicePkgs = inputs'.spicetify-nix.legacyPackages;
+  spicePkgs = spicetify.legacyPackages.${system};
 in
 {
   imports = [ spicetify.nixosModules.default ];

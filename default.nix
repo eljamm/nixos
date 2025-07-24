@@ -35,7 +35,7 @@ let
     # Custom library. Contains helper functions, builders, ...
     devLib = import ./dev/utils.nix args;
 
-    pkgsCustom = inputs.nixpkgs-custom.packages // {
+    pkgsCustom = inputs.nixpkgs-custom.packages.${system} // {
       agenix = inputs.agenix.packages.${system}.default;
     };
 
@@ -50,6 +50,8 @@ let
   formatter = import ./dev/formatter.nix args;
 
   default = rec {
+    inherit args;
+
     packages = import ./dev/packages.nix args;
 
     shells.default = pkgs.mkShellNoCC {
