@@ -72,7 +72,7 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/v25.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 

@@ -9,8 +9,10 @@
 
   catppuccin = {
     gtk = {
-      enable = true;
-      gnomeShellTheme = false;
+      # FIX: find alternative for gtk
+      # https://github.com/catppuccin/gtk/issues/262
+      # enable = false;
+      # gnomeShellTheme = false;
       icon.enable = true;
     };
 
