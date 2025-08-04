@@ -33,7 +33,7 @@
       services.xserver.videoDrivers = [ "nvidia" ];
 
       boot.kernelParams = [
-        "nvidia.NVreg_UsePageAttributeTable=1" # improve performance with PAT
+        # "nvidia.NVreg_UsePageAttributeTable=1" # improve performance with PAT
       ];
 
       boot.blacklistedKernelModules = [ "nouveau" ];
@@ -89,12 +89,12 @@
         };
 
         package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-          version = "575.64";
-          sha256_64bit = "sha256-6wG8/nOwbH0ktgg8J+ZBT2l5VC8G5lYBQhtkzMCtaLE=";
-          sha256_aarch64 = "sha256-uHj8fB1sSJfX0NWZEE1eZN1LQQkf7J0jPV3EeQCSG10=";
-          openSha256 = "sha256-y93FdR5TZuurDlxc/p5D5+a7OH93qU4hwQqMXorcs/g=";
-          settingsSha256 = "sha256-3BvryH7p0ioweNN4S8oLDCTSS47fQPWVYwNq4AuWQgQ=";
-          persistencedSha256 = "sha256-QkDNQKwCsakZOLcSie1NBiFCM5e5NFGiIKtPSFeWdXs=";
+          version = "575.64.05";
+          sha256_64bit = "sha256-hfK1D5EiYcGRegss9+H5dDr/0Aj9wPIJ9NVWP3dNUC0=";
+          sha256_aarch64 = "sha256-GRE9VEEosbY7TL4HPFoyo0Ac5jgBHsZg9sBKJ4BLhsA=";
+          openSha256 = "sha256-mcbMVEyRxNyRrohgwWNylu45vIqF+flKHnmt47R//KU=";
+          settingsSha256 = "sha256-o2zUnYFUQjHOcCrB0w/4L6xI1hVUXLAWgG2Y26BowBE=";
+          persistencedSha256 = "sha256-2g5z7Pu8u2EiAh5givP5Q1Y4zk4Cbb06W37rf768NFU=";
         };
       };
 
