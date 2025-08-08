@@ -16,6 +16,12 @@
       boot.kernelPackages = pkgs.linuxPackagesFor self.packages.${system}.linux_xanmod_custom;
       # boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
 
+      boot.kernelPatches = [
+        # Potential fix for flip_done timed out issue (at least for VRR)
+        # https://gitlab.freedesktop.org/drm/amd/-/issues/2950
+        { patch = ../hosts/nixos/overlays/patches/xanmod_fix_flip_done.patch; }
+      ];
+
       # Userspace schedulers (default scx_rustland)
       # https://github.com/sched-ext/scx/blob/main/scheds/rust/README.md
       services.scx.enable = lib.mkDefault true;
