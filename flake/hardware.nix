@@ -5,6 +5,7 @@
       pkgs,
       lib,
       system,
+      config,
       ...
     }:
     {
@@ -24,9 +25,23 @@
 
       # Userspace schedulers (default scx_rustland)
       # https://github.com/sched-ext/scx/blob/main/scheds/rust/README.md
-      services.scx.enable = lib.mkDefault true;
+      services.scx.enable = lib.mkIf (lib.versionAtLeast config.boot.kernelPackages.kernel.version "6.12") true;
       # Prioritize interactivity and responsiveness under CPU-intensive loads
       services.scx.scheduler = lib.mkDefault "scx_bpfland";
+
+      systemd.services.scx =
+        let
+          cfg = config.services.scx;
+        in
+        {
+          serviceConfig.ExecStart = lib.mkForce ''
+            ${pkgs.runtimeShell} -c 'exec ${cfg.package}/bin/''${SCX_SCHEDULER_OVERRIDE:-$SCX_SCHEDULER} ''${SCX_FLAGS_OVERRIDE:-$SCX_FLAGS}'
+          '';
+          environment = {
+            SCX_SCHEDULER = cfg.scheduler;
+            SCX_FLAGS = lib.escapeShellArgs cfg.extraArgs;
+          };
+        };
 
       # https://wiki.archlinux.org/title/CPU_frequency_scaling#Scaling_governors
       powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
