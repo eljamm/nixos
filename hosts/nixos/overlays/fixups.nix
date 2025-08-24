@@ -31,7 +31,6 @@
     })
     (final: prev: {
       nix = config.nix.package;
-      nixForLinking = pkgsUnstable.nixForLinking;
       nixVersions = pkgsUnstable.nixVersions;
     })
     (final: prev: {

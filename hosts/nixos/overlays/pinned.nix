@@ -19,8 +19,4 @@
       );
     })
   ];
-
-  environment.systemPackages = [
-    (pkgs.callPackage ./patches/lmstudio.nix { })
-  ];
 }
