@@ -69,7 +69,7 @@ let
     rust = [
       bacon # background code check
       taplo # TOML
-      pkgsCustom.rustowl # visualize lifetimes
+      # pkgsCustom.rustowl # visualize lifetimes
     ];
 
     shell = [
