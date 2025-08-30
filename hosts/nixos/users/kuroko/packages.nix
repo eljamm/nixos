@@ -61,6 +61,9 @@ let
 
       # Tools
       dl-librescore
+      abcm2ps
+      abcmidi
+      easyabc
     ];
 
     gameDevelopment = [

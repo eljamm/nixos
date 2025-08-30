@@ -39,6 +39,7 @@
       goverlay
       igir
       libstrangle
+      np2kai # pc98 emulator
       wineWowPackages.staging
       winetricks
 
