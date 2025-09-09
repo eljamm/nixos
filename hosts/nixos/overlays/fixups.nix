@@ -33,16 +33,5 @@
       nix = config.nix.package;
       nixVersions = pkgsUnstable.nixVersions;
     })
-    (final: prev: {
-      yt-dlp = prev.yt-dlp.overridePythonAttrs (oldAttrs: rec {
-        version = "2025.08.11";
-        src = final.fetchFromGitHub {
-          owner = "yt-dlp";
-          repo = "yt-dlp";
-          tag = version;
-          hash = "sha256-j7x844MPPFdXYTJiiMnru3CE79A/6JdfJDdh8it9KsU=";
-        };
-      });
-    })
   ];
 }

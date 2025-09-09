@@ -97,7 +97,9 @@ let
       qt5.qtimageformats
     ];
 
-    qt6 = with qt6; [ qtimageformats ];
+    qt6 = with qt6; [
+      qtimageformats
+    ];
 
     git = [
       gh
