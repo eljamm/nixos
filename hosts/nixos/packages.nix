@@ -85,19 +85,21 @@ let
       obsidian
       # FIX: planify
       qownnotes
-      pkgsUnstable.super-productivity
+      # pkgsUnstable.super-productivity
     ];
 
+    # TODO: remove
     qt5 = with libsForQt5; [
-      filelight
-      kdenlive
-      ktouch
-      okular
       kimageformats
+      ktouch # qt6 version is currently broken
       qt5.qtimageformats
     ];
 
-    qt6 = with qt6; [
+    qt6 = with kdePackages; [
+      filelight
+      kdenlive
+      kimageformats
+      okular
       qtimageformats
     ];
 
@@ -164,8 +166,8 @@ let
       watchexec
 
       # TODO: move to dev env?
-      gnumake
-      gcc
+      # gnumake
+      # gcc
     ];
 
     tools = [
