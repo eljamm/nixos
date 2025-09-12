@@ -9,6 +9,10 @@
 {
   nixpkgs.overlays = [
     (final: prev: {
+      nix = config.nix.package;
+      nixVersions = pkgsUnstable.nixVersions;
+    })
+    (final: prev: {
       albert = prev.albert.overrideAttrs (
         finalAttrs: oldAttrs: {
           version = "0.32.1";
@@ -41,10 +45,6 @@
           };
         }
       );
-    })
-    (final: prev: {
-      nix = config.nix.package;
-      nixVersions = pkgsUnstable.nixVersions;
     })
     (final: prev: {
       readest = prev.readest.overrideAttrs (

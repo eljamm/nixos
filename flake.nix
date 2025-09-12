@@ -81,17 +81,7 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = nixpkgs.lib.systems.flakeExposed;
 
-      perSystem =
-        { system, ... }:
-        let
-          default = import ./. { inherit self system; };
-        in
-        {
-          inherit (default.flake)
-            packages
-            formatter
-            ;
-        };
+      perSystem = { system, ... }: (import ./default.nix { inherit self inputs system; }).flake;
 
       # See ./flake/*.nix for the modules that are imported here.
       imports = with builtins; map (fn: ./flake/${fn}) (attrNames (readDir ./flake));
