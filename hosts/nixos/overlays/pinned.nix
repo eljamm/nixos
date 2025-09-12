@@ -46,5 +46,28 @@
       nix = config.nix.package;
       nixVersions = pkgsUnstable.nixVersions;
     })
+    (final: prev: {
+      readest = prev.readest.overrideAttrs (
+        finalAttrs: oldAttrs: {
+          version = "0.9.78";
+          src = final.fetchFromGitHub {
+            owner = "readest";
+            repo = "readest";
+            tag = "v${finalAttrs.version}";
+            hash = "sha256-sKk/NwnD9asIqDW75FI7xZf3zNavlorbK08ff+v4O3g=";
+            fetchSubmodules = true;
+          };
+          pnpmDeps = final.pnpm_9.fetchDeps {
+            inherit (finalAttrs) pname version src;
+            fetcherVersion = 1;
+            hash = "sha256-3H+HEQcXUbmTp+Gu7xz/NpxJgrnw1ubWH79yYKhFTeM=";
+          };
+          cargoDeps = final.rustPlatform.fetchCargoVendor {
+            inherit (finalAttrs) src;
+            hash = "sha256-7q75xX3aDDvcNkEZEM62icFuiMY4mzv+k3C+fGBLwIg=";
+          };
+        }
+      );
+    })
   ];
 }

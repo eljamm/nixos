@@ -54,7 +54,7 @@ let
       goldendict-ng
       harper
       libreoffice-fresh
-      pkgsUnstable.readest
+      (devLib.packageOrUnstable readest)
       projecteur
       yacreader
     ];
