@@ -1,31 +1,31 @@
 {
-  config,
   lib,
+  pkgs,
+  config,
   ...
 }:
 let
-  ccacheEnabled = config.programs.ccache.enable;
+  cfg = config.programs.ccache;
 in
 {
   # Incremental Builds
   programs.ccache.enable = lib.mkDefault true;
 
-  nixpkgs.overlays = lib.mkIf ccacheEnabled [
+  nixpkgs.overlays = lib.mkIf cfg.enable [
     (_: super: {
       ccacheWrapper = super.ccacheWrapper.override {
         extraConfig = ''
-          export CCACHE_DIR="${config.programs.ccache.cacheDir}"
+          export CCACHE_DIR="${cfg.cacheDir}"
           export CCACHE_UMASK=007
           export CCACHE_NOCOMPRESS=true
           export CCACHE_MAXSIZE=10G
           export CCACHE_SLOPPINESS=random_seed
-          export CCACHE_BASEDIR="$NIX_BUILD_TOP"
           if [ ! -d "$CCACHE_DIR" ]; then
             echo "====="
             echo "Directory '$CCACHE_DIR' does not exist"
             echo "Please create it with:"
             echo "  sudo mkdir -m0770 '$CCACHE_DIR'"
-            echo "  sudo chown root:nixbld '$CCACHE_DIR'"
+            echo "  sudo chown ${cfg.owner}:${cfg.group} '$CCACHE_DIR'"
             echo "====="
             exit 1
           fi
@@ -41,7 +41,9 @@ in
     })
   ];
 
-  nix.settings = lib.mkIf ccacheEnabled {
-    extra-sandbox-paths = [ config.programs.ccache.cacheDir ];
+  nix.settings = lib.mkIf cfg.enable {
+    extra-sandbox-paths = [ cfg.cacheDir ];
   };
+
+  environment.systemPackages = [ pkgs.ccache ];
 }
