@@ -26,5 +26,9 @@
         clangStdenv = final.ccacheStdenv.override { stdenv = final.clangStdenv; };
       };
     })
+    # TODO: remove after https://github.com/NixOS/nixpkgs/pull/441512
+    (final: prev: {
+      crow-translate = final.callPackage ./pkgs/crow.nix { };
+    })
   ];
 }
