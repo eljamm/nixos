@@ -1,19 +1,8 @@
 {
-  inputs,
   lib,
-  username,
+  inputs,
   ...
 }:
-let
-  makePluginPath =
-    format:
-    (lib.makeSearchPath format [
-      "$HOME/.nix-profile/lib"
-      "/run/current-system/sw/lib"
-      "/etc/profiles/per-user/$USER/lib"
-    ])
-    + ":$HOME/.${format}";
-in
 {
   flake.nixosModules = {
     audio =
@@ -35,24 +24,54 @@ in
         };
 
         # Music plugin paths
-        environment.variables = {
-          DSSI_PATH = lib.mkDefault (makePluginPath "dssi");
-          LADSPA_PATH = lib.mkDefault (makePluginPath "ladspa");
-          LV2_PATH = lib.mkDefault (makePluginPath "lv2");
-          LXVST_PATH = lib.mkDefault (makePluginPath "lxvst");
-          VST_PATH = lib.mkDefault (makePluginPath "vst");
-          VST3_PATH = lib.mkDefault (makePluginPath "vst3");
-        };
+        environment.variables =
+          let
+            makePluginPath =
+              format:
+              (lib.makeSearchPath format [
+                "$HOME/.nix-profile/lib"
+                "/run/current-system/sw/lib"
+                "/etc/profiles/per-user/$USER/lib"
+              ])
+              + ":$HOME/.${format}";
+          in
+          {
+            DSSI_PATH = lib.mkDefault (makePluginPath "dssi");
+            LADSPA_PATH = lib.mkDefault (makePluginPath "ladspa");
+            LV2_PATH = lib.mkDefault (makePluginPath "lv2");
+            LXVST_PATH = lib.mkDefault (makePluginPath "lxvst");
+            VST_PATH = lib.mkDefault (makePluginPath "vst");
+            VST3_PATH = lib.mkDefault (makePluginPath "vst3");
+          };
       };
 
-    audio-musnix =
-      { config, lib, ... }:
+    spec-musnix =
       {
-        imports = [ inputs.musnix.nixosModules.musnix ];
+        lib,
+        username,
+        ...
+      }:
+      {
+        specialisation.music-production.configuration = {
+          system.nixos.tags = [ "music-production" ];
+          environment.etc."specialisation".text = "music-production"; # hint for nh
 
-        musnix.enable = lib.mkDefault true;
+          imports = [
+            inputs.musnix.nixosModules.musnix
+          ];
 
-        users.users.${username}.extraGroups = lib.mkIf config.musnix.enable [ "audio" ];
+          musnix.enable = lib.mkDefault true;
+          musnix.rtcqs.enable = true;
+          musnix.soundcardPciId = "34:00.6";
+
+          services.scx.scheduler = "scx_flash";
+
+          # musnix.kernel.realtime = true;
+          # musnix.das_watchdog.enable = true;
+          # boot.kernelPackages = lib.mkForce pkgs.linuxPackages-rt_latest;
+
+          users.users.${username}.extraGroups = [ "audio" ];
+        };
       };
   };
 }

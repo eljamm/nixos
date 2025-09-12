@@ -41,6 +41,7 @@ in
             self.nixosModules.home-kuroko
             self.nixosModules.services-common
             self.nixosModules.services-main
+            self.nixosModules.spec-musnix
             self.nixosModules.virtualisation
             ../hosts/nixos
             ../modules/nixos
