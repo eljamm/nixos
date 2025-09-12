@@ -3,3 +3,4 @@ secrets/secrets.nix
 *ignored/
 *tmp_*.nix
 .pre-commit-config.yaml
+*.qcow2
