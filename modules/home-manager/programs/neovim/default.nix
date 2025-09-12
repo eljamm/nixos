@@ -26,16 +26,6 @@ let
       gdtoolkit_4
     ];
 
-    golang = [
-      delve # debugger
-      go
-      gofumpt
-      goimports-reviser
-      golines
-      gopls
-      gotools
-    ];
-
     luaTools = [
       lua-language-server
       lua51Packages.lua
