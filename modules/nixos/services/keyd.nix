@@ -51,33 +51,23 @@ let
     # };
   };
 
-  # TODO: replace with https://noogle.dev/f/lib/range
   /**
-    counter :: (int -> int) -> [string]
+    mkDefaultFuncKeys :: (int -> int) -> AttrSet
 
     ```
-    counter 1 5
-    => [ "1" "2" "3" "4" "5" ]
-    ```
-  */
-  counter = i: l: if i < l then [ (toString i) ] ++ counter (i + 1) l else [ (toString i) ];
-
-  /**
-    mkFuncKeys :: [string] -> AttrSet
-
-    ```
-    mkFuncKeys [ "1" "2" ]
+    mkDefaultFuncKeys 1 2
     => { "1" = "f1"; "2" = "f2"; }
     ```
   */
-  mkFuncKeys =
-    keys:
-    lib.pipe keys [
+  mkDefaultFuncKeys =
+    i: j:
+    with lib;
+    pipe (range i j) [
+      (map toString)
       (map (i: {
-        name = "${i}";
-        value = "f${i}";
+        "${i}" = "f${i}";
       }))
-      lib.listToAttrs
+      mergeAttrsList
     ];
 in
 {
@@ -92,7 +82,7 @@ in
             y = "z";
             z = "y";
           };
-          altgr = (mkFuncKeys (counter 1 9)) // {
+          altgr = (mkDefaultFuncKeys 1 9) // {
             "0" = "f10";
             "-" = "f11";
             "=" = "f12";
