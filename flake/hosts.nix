@@ -18,6 +18,7 @@ let
       system
       pkgsCustom
       pkgsUnstable
+      devLib
       ;
   };
 in

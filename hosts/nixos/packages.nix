@@ -3,6 +3,7 @@
   pkgs,
   pkgsUnstable,
   pkgsCustom,
+  devLib,
   ...
 }:
 let
