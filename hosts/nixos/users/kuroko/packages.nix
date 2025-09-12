@@ -76,29 +76,23 @@ let
     ];
 
     graphics = [
-      # aseprite
-      drawio # TODO: remove?
+      aseprite
       gimp
       inkscape
-      krita # TODO: remove?
+      krita
       pixelorama
       rnote
       waifu2x-converter-cpp
     ];
 
     education = [
-      anki-bin
-      anki-sync-server
+      anki
       ki
     ];
 
     office = [
       crow-translate
       lifeograph
-      mdbook # TODO: remove?
-      mdbook-epub
-      mdbook-i18n-helpers
-      mdbook-pdf
       pkgsCustom.pdfid
       zathura
     ];
@@ -110,22 +104,17 @@ let
     ];
 
     development = [
-      clang
       mold-wrapped
-      pkg-config
       sqlitebrowser
-      tmuxifier # TODO: remove?
     ];
 
     utils = [
       grc
       piper-tts
-      pkgsUnstable.pgsrip
     ];
 
     custom = with pkgsCustom; [
       vocabsieve
-      zen-browser
     ];
   };
 in

@@ -18,7 +18,8 @@
     };
   };
   inherit (pkgsUnstable)
+    drawio
+    pgsrip
     whisper-ctranslate2
-    dl-librescore
     ;
 }
