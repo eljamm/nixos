@@ -1,4 +1,8 @@
-{ config, pkgsUnstable, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 
 {
   nixpkgs.overlays = [
@@ -12,26 +16,15 @@
       });
     })
     (final: prev: {
-      freetube = prev.freetube.overrideAttrs (
-        finalAttrs: _: {
-          pname = "freetube";
-          version = "0.23.8";
-          src = final.fetchFromGitHub {
-            owner = "FreeTubeApp";
-            repo = "FreeTube";
-            tag = "v${finalAttrs.version}-beta";
-            hash = "sha256-CHp/6/E/v6UdSe3xoB66Ot24WuZDPdmNyUG1w2w3bX0=";
-          };
-          yarnOfflineCache = final.fetchYarnDeps {
-            yarnLock = "${finalAttrs.src}/yarn.lock";
-            hash = "sha256-ia5wLRt3Hmo4/dsB1/rhGWGJ7LMnVR9ju9lSlQZDTTg=";
-          };
-        }
-      );
+      ctranslate2 = prev.ctranslate2.override {
+        withCUDA = true;
+        withCuDNN = true;
+      };
     })
     (final: prev: {
-      nix = config.nix.package;
-      nixVersions = pkgsUnstable.nixVersions;
+      aseprite = prev.aseprite.override {
+        clangStdenv = final.ccacheStdenv.override { stdenv = final.clangStdenv; };
+      };
     })
   ];
 }
