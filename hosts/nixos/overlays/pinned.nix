@@ -47,7 +47,7 @@
       );
     })
     (final: prev: {
-      readest = prev.readest.overrideAttrs (
+      readest = pkgsUnstable.readest.overrideAttrs (
         finalAttrs: oldAttrs: {
           version = "0.9.78";
           src = final.fetchFromGitHub {

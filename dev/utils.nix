@@ -38,7 +38,7 @@
   packageOrUnstable =
     package:
     let
-      package-unstable = args.pkgsUnstable.${package.pname};
+      package-unstable = pkgsUnstable.${package.pname};
       comparison = lib.strings.compareVersions package.version package-unstable.version;
       unstableIsNewer = comparison == -1;
     in

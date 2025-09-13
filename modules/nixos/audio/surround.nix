@@ -1,6 +1,10 @@
+{
+  username,
+  ...
+}:
 let
   surround-file = "SteamAudio.wav";
-  surround-file-path = "$XDG_CONFIG_HOME/pipewire/${surround-file}";
+  surround-file-path = "/home/${username}/.config/pipewire/${surround-file}";
 in
 {
   # https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/e9a0ac13463da251db0d26c3f4dc8214202757fc/src/daemon/filter-chain/sink-virtual-surround-7.1-hesuvi.conf
