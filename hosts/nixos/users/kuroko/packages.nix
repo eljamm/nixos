@@ -51,9 +51,18 @@ let
       zrythm
 
       # Plugins
+      airwindows
+      airwindows-lv2
+      carla
+      distrho-ports
       geonkick
       infamousPlugins
       lsp-plugins
+      ninjas2
+      odin2
+      surge
+      tunefish
+      vcv-rack
       vital
       x42-avldrums
       yabridge
