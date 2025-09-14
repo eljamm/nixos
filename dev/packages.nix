@@ -6,14 +6,14 @@
 {
   linux_xanmod_custom = pkgs.linux_xanmod_latest.override {
     argsOverride = rec {
-      version = "6.16.6";
+      version = "6.16.7";
       modDirVersion = "${version}-xanmod1";
 
       src = pkgs.fetchFromGitLab {
         owner = "xanmod";
         repo = "linux";
         rev = modDirVersion;
-        hash = "sha256-ayNw64Wkg4HKnxEuvmGmgkJB3wLKqKAkK70mgX3eJJ8=";
+        hash = "sha256-/CFSGaDbK0pZgGGOOxixwOQgeD1OsbUhtRss4VbXHxE=";
       };
     };
   };
