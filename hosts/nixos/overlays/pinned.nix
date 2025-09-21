@@ -49,12 +49,12 @@
     (final: prev: {
       readest = pkgsUnstable.readest.overrideAttrs (
         finalAttrs: oldAttrs: {
-          version = "0.9.78";
+          version = "0.9.81";
           src = final.fetchFromGitHub {
             owner = "readest";
             repo = "readest";
             tag = "v${finalAttrs.version}";
-            hash = "sha256-sKk/NwnD9asIqDW75FI7xZf3zNavlorbK08ff+v4O3g=";
+            hash = "sha256-aj4XBphkIeqGdqiWz3Um1+dGSYF6G3b+9DdN/4qZcZI=";
             fetchSubmodules = true;
           };
           pnpmDeps = final.pnpm_9.fetchDeps {
