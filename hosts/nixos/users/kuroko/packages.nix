@@ -69,6 +69,7 @@ let
       x42-avldrums
       yabridge
       yabridgectl
+      aether-lv2
 
       # Tools
       dl-librescore
