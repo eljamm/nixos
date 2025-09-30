@@ -69,5 +69,16 @@
         }
       );
     })
+    (final: prev: {
+      yt-dlp = prev.yt-dlp.overridePythonAttrs (oldAttrs: rec {
+        version = "2025.09.26";
+        src = final.fetchFromGitHub {
+          owner = "yt-dlp";
+          repo = "yt-dlp";
+          tag = version;
+          hash = "sha256-/uzs87Vw+aDNfIJVLOx3C8RyZvWLqjggmnjrOvUX1Eg=";
+        };
+      });
+    })
   ];
 }
