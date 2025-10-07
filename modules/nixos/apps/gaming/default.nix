@@ -7,6 +7,8 @@
 {
   imports = [ ./controllers.nix ];
 
+  boot.kernelModules = [ "ntsync" ];
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = false; # Steam Remote Play
