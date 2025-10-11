@@ -18,7 +18,7 @@ let
 
     communications = [
       discord
-      (element-desktop.override { electron_37 = pkgs.electron_36; })
+      element-desktop
       ferdium
     ];
 

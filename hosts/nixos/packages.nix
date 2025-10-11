@@ -54,6 +54,7 @@ let
       goldendict-ng
       harper
       libreoffice-fresh
+      percollate # web pages -> pdf, epub, md
       (devLib.packageOrUnstable readest)
       projecteur
       yacreader
