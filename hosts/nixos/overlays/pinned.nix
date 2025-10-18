@@ -49,22 +49,22 @@
     (final: prev: {
       readest = pkgsUnstable.readest.overrideAttrs (
         finalAttrs: oldAttrs: {
-          version = "0.9.81";
+          version = "0.9.88";
           src = final.fetchFromGitHub {
             owner = "readest";
             repo = "readest";
             tag = "v${finalAttrs.version}";
-            hash = "sha256-aj4XBphkIeqGdqiWz3Um1+dGSYF6G3b+9DdN/4qZcZI=";
+            hash = "sha256-z9bRRXQkXsqZRW1EPj0c8A9ZHWytYYtP6o40K86+Fio=";
             fetchSubmodules = true;
           };
           pnpmDeps = final.pnpm_9.fetchDeps {
             inherit (finalAttrs) pname version src;
             fetcherVersion = 1;
-            hash = "sha256-3H+HEQcXUbmTp+Gu7xz/NpxJgrnw1ubWH79yYKhFTeM=";
+            hash = "sha256-sRa1IO8JmMsA0/7dMuYF0as/MYHpclEwAknZIycNQ3Y=";
           };
           cargoDeps = final.rustPlatform.fetchCargoVendor {
             inherit (finalAttrs) src;
-            hash = "sha256-7q75xX3aDDvcNkEZEM62icFuiMY4mzv+k3C+fGBLwIg=";
+            hash = "sha256-oNzgsxJb8N++AGCkXuJmK+51iF7XZ0xmShPlOpkAQEg=";
           };
         }
       );
