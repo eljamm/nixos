@@ -48,7 +48,7 @@
       # Launchers
       bottles
       pkgsUnstable.heroic
-      lutris
+      pkgsUnstable.lutris
       prismlauncher
 
       # Games
