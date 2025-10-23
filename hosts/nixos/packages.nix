@@ -85,7 +85,7 @@ let
     notes = [
       dstask
       obsidian
-      # FIX: planify
+      pkgsUnstable.planify
       qownnotes
       # pkgsUnstable.super-productivity
     ];
