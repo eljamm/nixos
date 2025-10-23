@@ -27,7 +27,7 @@ in
     { ... }:
     {
       nixosConfigurations = {
-        nixos = devLib.nixosSystem {
+        joker = devLib.nixosSystem {
           username = "kuroko";
           modules = [
             inputs.agenix.nixosModules.default
@@ -64,6 +64,8 @@ in
           ];
           specialArgs = devArgs;
         };
+
+        mona = null;
       };
     }
   );

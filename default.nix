@@ -60,6 +60,9 @@ let
       ];
     };
 
+    hosts = self.nixosConfigurations;
+    inherit (hosts) joker navi;
+
     flake.packages = lib.filterAttrs (n: v: lib.isDerivation v) packages;
     flake.devShells = shells;
     flake.formatter = formatter;

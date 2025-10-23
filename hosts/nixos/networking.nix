@@ -3,7 +3,7 @@
   ...
 }:
 {
-  networking.hostName = "nixos";
+  networking.hostName = "joker";
   # networking.wireless.enable = true;  # wireless support via wpa_supplicant
 
   # Enable networking

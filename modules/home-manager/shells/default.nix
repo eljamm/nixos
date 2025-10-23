@@ -1,5 +1,10 @@
-{ ... }:
-
+{
+  nixosConfig,
+  ...
+}:
+let
+  hostname = nixosConfig.networking.hostName;
+in
 {
   imports = [
     ./bash
@@ -68,14 +73,14 @@
     y = "yazi";
     ze = "zellij";
 
-    # Nix
-    nb = "nh os build";
+    ## Nix
+    nb = "nh os build -H ${hostname}";
+    nbt = "nh os boot -H ${hostname}";
+    ns = "nh os switch -H ${hostname}";
+    nt = "nh os test -H ${hostname}";
     nbb = "nix-build . -A";
-    nbt = "nh os boot";
     ni = "nix-init";
     nr = "nix-direnv-reload";
-    ns = "nh os switch";
-    nt = "nh os test";
     rpr = "nixpkgs-review pr";
   };
 }
