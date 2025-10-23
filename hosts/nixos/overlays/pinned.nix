@@ -80,5 +80,34 @@
         };
       });
     })
+    (final: prev: {
+      linux_xanmod_custom =
+        let
+          version = "6.17.4";
+          hash = "sha256-UHfZwK0qIVhiKw8OpE8i+V2BRav6Fsju8E5rO5WRwVA=";
+          modDirVersion = "${version}-xanmod1";
+          kernel = prev.linux_xanmod_latest;
+        in
+        kernel.override {
+          argsOverride = {
+            inherit version modDirVersion;
+
+            src = final.fetchFromGitLab {
+              owner = "xanmod";
+              repo = "linux";
+              rev = modDirVersion;
+              inherit hash;
+            };
+
+            structuredExtraConfig =
+              with lib.kernel;
+              pkgsUnstable.linux_xanmod_latest.structuredExtraConfig
+              // {
+                NTSYNC = yes;
+              };
+          };
+        };
+      linux_xanmod_custom-packages = final.linuxPackagesFor final.linux_xanmod_custom;
+    })
   ];
 }

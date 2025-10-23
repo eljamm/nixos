@@ -4,7 +4,6 @@
     {
       pkgs,
       lib,
-      system,
       config,
       ...
     }:
@@ -14,9 +13,7 @@
       boot.loader.efi.canTouchEfiVariables = true;
 
       # Kernel
-      boot.kernelPackages = pkgs.linuxPackagesFor self.packages.${system}.linux_xanmod_custom;
-      # boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
-
+      boot.kernelPackages = pkgs.linux_xanmod_custom-packages;
       boot.kernelPatches = [
         # Potential fix for flip_done timed out issue (at least for VRR)
         # https://gitlab.freedesktop.org/drm/amd/-/issues/2950
