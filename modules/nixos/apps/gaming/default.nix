@@ -63,6 +63,6 @@
     ])
     ++ (with pkgsUnstable; [
       umu-launcher
-      ryujinx-greemdev
+      ryubing
     ]);
 }

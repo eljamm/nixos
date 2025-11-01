@@ -60,8 +60,8 @@ let
       lsp-plugins
       ninjas2
       odin2
-      pkgsCustom.ripplerx
-      pkgsCustom.vaporizer2
+      pkgsUnstable.ripplerx
+      pkgsUnstable.vaporizer2
       surge
       tunefish
       vcv-rack
