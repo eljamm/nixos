@@ -6,6 +6,7 @@
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     self.nixosModules.common-graphics
     self.nixosModules.common-hardware
+    self.nixosModules.nvidia
     ./filesystems.nix
   ];
 
