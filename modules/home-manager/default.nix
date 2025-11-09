@@ -8,5 +8,6 @@
     shells = import ./shells;
     terminals = import ./terminals;
     style-catppuccin = import ./style/catppuccin.nix;
+    yazi = import ./programs/yazi;
   };
 }

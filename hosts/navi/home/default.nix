@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   # WARN:
   # This value determines the Home Manager release that your configuration is
@@ -20,6 +20,5 @@
 
   programs.fzf.enable = true;
   programs.starship.enable = true;
-  programs.yazi.enable = true;
   programs.zellij.enable = true;
 }

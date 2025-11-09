@@ -28,11 +28,6 @@
 
     # File managers
     joshuto.enable = true;
-    yazi = {
-      enable = true;
-      package = pkgsUnstable.yazi;
-      enableFishIntegration = true;
-    };
 
     starship = {
       enable = true;

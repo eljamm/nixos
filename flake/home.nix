@@ -28,6 +28,7 @@ in
         self.homeModules.neovim
         self.homeModules.shells
         self.homeModules.style-catppuccin
+        self.homeModules.yazi
       ];
 
       kuroModules = commonModules ++ [
