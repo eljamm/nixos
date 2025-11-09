@@ -60,9 +60,14 @@
   */
   mkModules =
     modules-path:
+    let
+      fs = lib.fileset;
+      git-repo = fs.gitTracked ../.;
+    in
     lib.pipe modules-path [
-      (lib.fileset.fileFilter (file: file.hasExt "nix"))
-      (lib.fileset.toList)
+      (fs.fileFilter (file: file.hasExt "nix"))
+      (fs.intersection git-repo)
+      (fs.toList)
       (map (
         file:
         let
