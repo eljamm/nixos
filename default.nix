@@ -1,72 +1,76 @@
-let
-  flake-inputs = import (
-    fetchTarball "https://github.com/fricklerhandwerk/flake-inputs/tarball/4.1.0"
-  );
-  inherit (flake-inputs)
-    import-flake
-    ;
-in
 {
-  self ? import-flake {
-    src = ./.;
-  },
+  self ? import ./dev/import-flake.nix { src = ./.; },
   inputs ? self.inputs,
-  system ? builtins.currentSystem,
+  system ? builtins.currentSystem or "x86_64-linux",
   pkgs ? import inputs.nixpkgs {
-    config.allowUnfree = true;
+    config = {
+      allowBroken = true;
+    };
     overlays = [ ];
     inherit system;
   },
   lib ? import "${inputs.nixpkgs}/lib",
 }:
 let
-  args = {
-    inherit
-      lib
-      pkgs
-      self
-      system
-      inputs
-      ;
-    inherit (default)
-      packages
-      ;
+  scope = lib.makeScope pkgs.newScope (
+    self': with self'; {
+      inherit
+        lib
+        pkgs
+        self
+        system
+        inputs
+        ;
 
-    # Custom library. Contains helper functions, builders, ...
-    devLib = import ./dev/utils.nix args;
+      # Custom library. Contains helper functions, builders, ...
+      devLib = callPackage ./dev/utils.nix { };
 
-    pkgsCustom = inputs.nixpkgs-custom.legacyPackages.${system} // {
-      agenix = inputs.agenix.packages.${system}.default;
-    };
+      pkgsCustom = inputs.nixpkgs-custom.legacyPackages.${system} // {
+        agenix = inputs.agenix.packages.${system}.default;
+      };
 
-    pkgsUnstable = import inputs.nixpkgs-unstable {
-      config.allowUnfree = true;
-      inherit system;
-    };
+      pkgsUnstable = import inputs.nixpkgs-unstable {
+        config.allowUnfree = true;
+        inherit system;
+      };
 
-    devShells = default.shells;
-  };
+      hosts = callPackage ./hosts { };
 
-  formatter = import ./dev/formatter.nix args;
+      modules = devLib.mkModules ./modules;
+      hardwareModules = devLib.mkModules ./modules/hardware;
+      nixosModules = devLib.mkModules ./modules/nixos;
+      homeModules = devLib.mkModules ./modules/home-manager;
 
-  default = rec {
-    inherit args;
+      format = callPackage ./dev/formatter.nix { };
+      devPkgs = lib.filterAttrs (n: v: lib.isDerivation v) (callPackage ./dev/packages.nix { });
+      devShells.default = pkgs.mkShellNoCC {
+        packages = [
+          format.formatter
+        ];
+      };
 
-    packages = import ./dev/packages.nix args;
+      overlays.default = final: prev: devPkgs;
 
-    shells.default = pkgs.mkShellNoCC {
-      packages = [
-        formatter
-      ];
-    };
-
-    hosts = self.nixosConfigurations;
-    inherit (hosts) joker navi;
-
-    flake.packages = lib.filterAttrs (n: v: lib.isDerivation v) packages;
-    flake.devShells = shells;
-    flake.formatter = formatter;
-    flake.legacyPackages.lib = args.devLib;
-  };
+      flake.system-agnostic = {
+        inherit
+          overlays
+          homeModules
+          nixosModules
+          hardwareModules
+          ;
+        nixosConfigurations = hosts;
+      };
+      flake.perSystem = {
+        devShells = devShells;
+        formatter = format.formatter;
+        packages = devPkgs;
+        checks = lib.filterAttrs (_: v: !v.meta.broken or false) flake.perSystem.packages;
+        legacyPackages = {
+          lib = devLib;
+          packages = devPkgs;
+        };
+      };
+    }
+  );
 in
-default // args // default.packages
+scope // scope.devPkgs // scope.hosts

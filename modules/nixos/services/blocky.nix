@@ -1,4 +1,8 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 {
   # TODO: this conflicts with lxc's dnsmasq. make an assertion?
   services.blocky = {

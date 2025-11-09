@@ -5,7 +5,9 @@
   ...
 }:
 {
-  imports = [ ./controllers.nix ];
+  imports = [
+    ./controllers.nix
+  ];
 
   boot.kernelModules = [ "ntsync" ];
 

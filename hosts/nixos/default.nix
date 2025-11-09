@@ -15,7 +15,7 @@
 
   custom.desktops = {
     gnome.enable = true;
-    hyprland.enable = true;
+    hyprland.enable = false;
   };
 
   # Register AppImage files as a binary type

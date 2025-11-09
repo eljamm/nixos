@@ -1,4 +1,7 @@
-{ username, ... }:
+{
+  username,
+  ...
+}:
 {
   services.xserver.wacom.enable = true;
 

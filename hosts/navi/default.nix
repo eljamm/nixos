@@ -6,7 +6,7 @@
 {
   imports = [
     ../../hardware/navi
-    ../../modules/nixos/services/blocky.nix
+    ../nixos/overlays
     ./networking.nix
     ./packages.nix
   ];

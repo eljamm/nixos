@@ -9,10 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
+    flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -77,12 +74,9 @@
 
   outputs =
     { self, nixpkgs, ... }@inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = nixpkgs.lib.systems.flakeExposed;
-
-      perSystem = { system, ... }: (import ./default.nix { inherit self inputs system; }).flake;
-
-      # See ./flake/*.nix for the modules that are imported here.
-      imports = with builtins; map (fn: ./flake/${fn}) (attrNames (readDir ./flake));
-    };
+    let
+      default = import ./. { inherit self inputs; };
+      mkSystemFlake = system: (import ./. { inherit self inputs system; }).flake.perSystem;
+    in
+    (inputs.flake-utils.lib.eachDefaultSystem mkSystemFlake) // default.flake.system-agnostic;
 }

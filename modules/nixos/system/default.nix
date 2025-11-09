@@ -6,6 +6,7 @@
 {
   imports = [
     ./programs.nix
+    ./fonts.nix
   ];
 
   # Set fish as the default user shell for all users

@@ -1,4 +1,7 @@
-{ lib, ... }:
+{
+  lib,
+  ...
+}:
 let
   # NOTE: valid key names: `keyd list-keys`
   commonSettings = {

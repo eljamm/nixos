@@ -76,6 +76,7 @@ let
       abcm2ps
       abcmidi
       easyabc
+      lrcget
     ];
 
     gameDevelopment = [

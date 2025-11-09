@@ -14,10 +14,10 @@
     inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
     inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-    self.nixosModules.common-graphics
-    self.nixosModules.common-hardware
-    self.nixosModules.graphics-amd
-    self.nixosModules.nvidia
+    self.hardwareModules.default
+    self.hardwareModules.graphics.amd
+    self.hardwareModules.graphics.default
+    self.hardwareModules.graphics.nvidia
   ];
 
   # Limit build resources

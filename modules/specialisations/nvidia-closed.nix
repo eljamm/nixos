@@ -1,4 +1,7 @@
-{ lib, ... }:
+{
+  lib,
+  ...
+}:
 {
   # Additional boot menu selection for running the proprietary Nvidia drivers
   # NOTE: X11 feels smoother than Wayland, at least under Gnome
