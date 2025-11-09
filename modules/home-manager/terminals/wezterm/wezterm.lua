@@ -1,4 +1,4 @@
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local mux = wezterm.mux
 local act = wezterm.action
@@ -10,52 +10,52 @@ config.warn_about_missing_glyphs = false
 -- Fix fumbled display/graphics/...
 -- https://github.com/wez/wezterm/issues/6079
 -- https://github.com/wez/wezterm/issues/5990
-config.front_end = 'WebGpu'
+config.front_end = "WebGpu"
 
 --- Theme
 local function scheme_for_appearance(appearance)
-  if appearance:find 'Dark' then
-    return 'Catppuccin Macchiato'
+  if appearance:find("Dark") then
+    return "Catppuccin Macchiato"
   else
-    return 'Catppuccin Latte'
+    return "Catppuccin Latte"
   end
 end
 
 config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
 
 --- Spawn a fish shell in login mode
-config.default_prog = { 'fish', '-l' }
+config.default_prog = { "fish", "-l" }
 
 --- Disable the title bar but enable the resizable border
-config.window_decorations = 'RESIZE'
+config.window_decorations = "RESIZE"
 
 --- Customized Bar
 config.hide_tab_bar_if_only_one_tab = true
-wezterm.plugin.require('https://github.com/nekowinston/wezterm-bar').apply_to_config(config, {
-  position = 'bottom',
+wezterm.plugin.require("https://github.com/nekowinston/wezterm-bar").apply_to_config(config, {
+  position = "bottom",
   max_width = 32,
-  dividers = 'slant_right', -- "slant_right" or "slant_left", "arrows", "rounded", false
+  dividers = "slant_right", -- "slant_right" or "slant_left", "arrows", "rounded", false
   indicator = {
     leader = {
       enabled = false,
-      off = ' ',
-      on = ' ',
+      off = " ",
+      on = " ",
     },
     mode = {
       enabled = true,
       names = {
-        resize_mode = 'RESIZE',
-        copy_mode = 'VISUAL',
-        search_mode = 'SEARCH',
+        resize_mode = "RESIZE",
+        copy_mode = "VISUAL",
+        search_mode = "SEARCH",
       },
     },
   },
   tabs = {
-    numerals = 'arabic', -- or "roman"
-    pane_count = 'superscript', -- "superscript" or "subscript", false
+    numerals = "arabic", -- or "roman"
+    pane_count = "superscript", -- "superscript" or "subscript", false
     brackets = {
-      active = { '󱄅 ', '' },
-      inactive = { '', '' },
+      active = { "󱄅 ", "" },
+      inactive = { "", "" },
     },
     hide_inactive = {
       enabled = true,
@@ -64,16 +64,16 @@ wezterm.plugin.require('https://github.com/nekowinston/wezterm-bar').apply_to_co
   },
   clock = { -- note that this overrides the whole set_right_status
     enabled = false,
-    format = '%H:%M', -- use https://wezfurlong.org/wezterm/config/lua/wezterm.time/Time/format.html
+    format = "%H:%M", -- use https://wezfurlong.org/wezterm/config/lua/wezterm.time/Time/format.html
   },
 })
 
 config.keys = {
   {
-    key = 'E',
-    mods = 'CTRL|SHIFT',
-    action = act.PromptInputLine {
-      description = 'Enter new name for tab',
+    key = "E",
+    mods = "CTRL|SHIFT",
+    action = act.PromptInputLine({
+      description = "Enter new name for tab",
       action = wezterm.action_callback(function(window, pane, line)
         -- line will be `nil` if they hit escape without entering anything
         -- An empty string if they just hit enter
@@ -82,34 +82,34 @@ config.keys = {
           window:active_tab():set_title(line)
         end
       end),
-    },
+    }),
   },
   -- Disable Alt+Enter fullscreen
   {
-    key = 'Enter',
-    mods = 'ALT',
+    key = "Enter",
+    mods = "ALT",
     action = wezterm.action.DisableDefaultAssignment,
   },
   -- Tab Movements
   {
-    key = 'J',
-    mods = 'CTRL|SHIFT',
+    key = "J",
+    mods = "CTRL|SHIFT",
     action = wezterm.action.MoveTabRelative(-1),
   },
   {
-    key = 'K',
-    mods = 'CTRL|SHIFT',
+    key = "K",
+    mods = "CTRL|SHIFT",
     action = wezterm.action.MoveTabRelative(1),
   },
   -- Tab Navigation
   {
-    key = 'j',
-    mods = 'CTRL|ALT',
+    key = "j",
+    mods = "CTRL|ALT",
     action = wezterm.action.ActivateTabRelative(-1),
   },
   {
-    key = 'k',
-    mods = 'CTRL|ALT',
+    key = "k",
+    mods = "CTRL|ALT",
     action = wezterm.action.ActivateTabRelative(1),
   },
 }
@@ -126,7 +126,7 @@ config.window_padding = {
 config.enable_scroll_bar = true
 
 --- Maximize on startup
-wezterm.on('gui-startup', function(cmd)
+wezterm.on("gui-startup", function(cmd)
   local tab, pane, window = mux.spawn_window(cmd or {})
   window:gui_window():maximize()
 end)
