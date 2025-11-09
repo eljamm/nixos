@@ -80,8 +80,9 @@ let
     ];
 
     gameDevelopment = [
-      godot_4
       godot3
+      godot_4
+      pkgsUnstable.arrow
     ];
 
     games = [
