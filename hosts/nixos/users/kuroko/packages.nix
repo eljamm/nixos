@@ -95,6 +95,7 @@ let
       krita
       pixelorama
       rnote
+      realesrgan-ncnn-vulkan
       waifu2x-converter-cpp
     ];
 

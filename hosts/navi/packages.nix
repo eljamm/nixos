@@ -11,11 +11,7 @@ let
     ];
 
     nix = [
-      nix-init
-      nix-inspect
-      nix-tree
       nix-your-shell
-      nixpkgs-review
     ];
 
     media = [
@@ -65,6 +61,7 @@ let
     ];
 
     tools = [
+      duf # disk usage/free
       duperemove
       htop-vim
       innoextract

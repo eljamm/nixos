@@ -15,8 +15,11 @@ let
 
     networking = [
       aria2
+      dig
       iperf3
+      nmap
       tmux
+      traceroute
       wakelan
       wget
       wol
@@ -174,6 +177,7 @@ let
 
     tools = [
       bleachbit
+      duf # disk usage/free
       duperemove
       ghostscript
       gpu-viewer
@@ -186,6 +190,7 @@ let
       optipng
       pciutils
       powerstat
+      trash-cli
       usbutils
       vulkan-tools
       xorg.xeyes
