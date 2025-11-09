@@ -76,6 +76,12 @@ prepend_keymap = [
     "c",
     "a",
   ], run = "plugin compress", desc = "Archive selected files" },
+
+  # uhs-robert/recycle-bin.yazi
+  { on = [
+    "R",
+    "b",
+  ], run = "plugin recycle-bin", desc = "Open Recycle Bin menu" },
 ]
 
 [help]

@@ -20,6 +20,7 @@
           git
           jump-to-char
           mediainfo
+          recycle-bin
           smart-enter
           smart-filter
           smart-paste
@@ -31,6 +32,7 @@
       };
       extraPackages = with pkgs; [
         mediainfo
+        trash-cli
       ];
     };
   };
