@@ -35,7 +35,7 @@ let
     # Custom library. Contains helper functions, builders, ...
     devLib = import ./dev/utils.nix args;
 
-    pkgsCustom = inputs.nixpkgs-custom.packages.${system} // {
+    pkgsCustom = inputs.nixpkgs-custom.legacyPackages.${system} // {
       agenix = inputs.agenix.packages.${system}.default;
     };
 

@@ -7,7 +7,6 @@
     nixpkgs-custom = {
       url = "github:eljamm/nixpkgs-custom";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
     };
 
     flake-parts = {
