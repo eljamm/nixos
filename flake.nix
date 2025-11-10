@@ -73,10 +73,10 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    { self, ... }@inputs:
     let
-      default = import ./. { inherit self inputs; };
+      systemAgnosticFlake = (import ./. { inherit self inputs; }).flake.system-agnostic;
       mkSystemFlake = system: (import ./. { inherit self inputs system; }).flake.perSystem;
     in
-    (inputs.flake-utils.lib.eachDefaultSystem mkSystemFlake) // default.flake.system-agnostic;
+    (inputs.flake-utils.lib.eachDefaultSystem mkSystemFlake) // systemAgnosticFlake;
 }

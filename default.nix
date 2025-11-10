@@ -1,7 +1,7 @@
 {
   self ? import ./dev/import-flake.nix { src = ./.; },
   inputs ? self.inputs,
-  system ? builtins.currentSystem or "x86_64-linux",
+  system ? builtins.currentSystem,
   pkgs ? import inputs.nixpkgs {
     config = {
       allowBroken = true;
