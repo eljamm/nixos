@@ -100,7 +100,7 @@ in
       telescope-cheat-nvim
     ];
     extraPackages = lib.pipe packages [
-      (lib.mapAttrsToList (name: value: value))
+      lib.attrValues
       lib.flatten
     ];
   };

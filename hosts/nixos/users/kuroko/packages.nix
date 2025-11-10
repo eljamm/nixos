@@ -135,7 +135,7 @@ let
 in
 {
   users.users.kuroko.packages = lib.pipe homePackages [
-    (lib.mapAttrsToList (name: value: value))
+    lib.attrValues
     lib.flatten
   ];
 }

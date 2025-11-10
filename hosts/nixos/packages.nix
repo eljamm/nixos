@@ -200,7 +200,7 @@ in
 {
   # TODO: make a module for packages
   environment.systemPackages = lib.pipe packages [
-    (lib.mapAttrsToList (name: value: value))
+    lib.attrValues
     lib.flatten
   ];
 }
