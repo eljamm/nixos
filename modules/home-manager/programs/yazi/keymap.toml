@@ -44,7 +44,7 @@ prepend_keymap = [
   ] },
 
   # Vim-like `f<char>`, jump to the next file whose name starts with `<char>`
-  { on = "f", run = "plugin jump-to-char", desc = "Jump to char" },
+  { on = "F", run = "plugin jump-to-char", desc = "Jump to char" },
 
   # Maximize or restore the preview pane.
   { on = "T", run = "plugin max-preview", desc = "Maximize or restore preview" },
@@ -53,7 +53,7 @@ prepend_keymap = [
   { on = "H", run = "plugin hide-preview", desc = "Hide or show preview" },
 
   # Make filters smarter: continuous filtering, automatically enter unique directory, open file on submitting
-  { on = "F", run = "plugin smart-filter", desc = "Smart filter" },
+  { on = "f", run = "plugin smart-filter", desc = "Smart filter" },
 
   # dedukun/bookmarks.yazi
   { on = "m", run = "plugin bookmarks save", desc = "Save current position as a bookmark" },
