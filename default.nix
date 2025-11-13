@@ -60,7 +60,7 @@ let
         packages = sc.devPkgs;
       };
     };
-    flake.system-agnostic = {
+    flake.systemAgnostic = {
       inherit (sc)
         overlays
         homeModules

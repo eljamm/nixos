@@ -72,11 +72,14 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
+  # construct flake from ./default.nix
   outputs =
     { self, ... }@inputs:
     let
-      systemAgnosticFlake = (import ./. { inherit self inputs; }).flake.system-agnostic;
-      mkSystemFlake = system: (import ./. { inherit self inputs system; }).flake.perSystem;
+      inherit (inputs.flake-utils.lib) eachDefaultSystem eachDefaultSystemPassThrough;
+      importDefault = arg: (system: (import ./. { inherit self inputs system; }).flake.${arg} or { });
+      systemAgnosticFlake = eachDefaultSystemPassThrough (importDefault "systemAgnostic");
+      perSystemFlake = eachDefaultSystem (importDefault "perSystem");
     in
-    (inputs.flake-utils.lib.eachDefaultSystem mkSystemFlake) // systemAgnosticFlake;
+    systemAgnosticFlake // perSystemFlake;
 }
