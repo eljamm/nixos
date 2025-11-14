@@ -33,13 +33,6 @@ let
       inherit system;
     };
 
-    hosts = sc.callPackage ./hosts { };
-
-    modules = sc.devLib.mkModules ./modules;
-    hardwareModules = sc.devLib.mkModules ./modules/hardware;
-    nixosModules = sc.devLib.mkModules ./modules/nixos;
-    homeModules = sc.devLib.mkModules ./modules/home-manager;
-
     formatter = sc.callPackage ./dev/formatter.nix { };
     devPkgs = lib.filterAttrs (n: v: lib.isDerivation v) (sc.callPackage ./dev/packages.nix { });
     devShells.default = pkgs.mkShellNoCC {
@@ -47,6 +40,9 @@ let
         sc.formatter.package
       ];
     };
+
+    hosts = sc.callPackage ./hosts { };
+    modules = sc.devLib.mkModules ./modules;
 
     overlays.default = final: prev: sc.devPkgs;
 
@@ -61,14 +57,15 @@ let
       };
     };
     flake.systemAgnostic = {
-      inherit (sc)
-        overlays
-        homeModules
-        nixosModules
-        hardwareModules
-        ;
+      inherit (sc) overlays;
+
+      formatterModule = sc.formatter.module;
+      hardwareModules = sc.modules.hardware;
+      homeModules = sc.modules.home-manager;
+      nixosModules = sc.modules.nixos;
+
       nixosConfigurations = sc.hosts;
     };
   });
 in
-scope // scope.devPkgs // scope.hosts
+scope
