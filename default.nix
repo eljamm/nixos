@@ -40,11 +40,11 @@ let
     nixosModules = sc.devLib.mkModules ./modules/nixos;
     homeModules = sc.devLib.mkModules ./modules/home-manager;
 
-    format = sc.callPackage ./dev/formatter.nix { };
+    formatter = sc.callPackage ./dev/formatter.nix { };
     devPkgs = lib.filterAttrs (n: v: lib.isDerivation v) (sc.callPackage ./dev/packages.nix { });
     devShells.default = pkgs.mkShellNoCC {
       packages = [
-        sc.format.formatter
+        sc.formatter.package
       ];
     };
 
@@ -52,7 +52,7 @@ let
 
     flake.perSystem = {
       devShells = sc.devShells;
-      formatter = sc.format.formatter;
+      formatter = sc.formatter.package;
       packages = sc.devPkgs;
       checks = lib.filterAttrs (_: v: !v.meta.broken or false) sc.flake.perSystem.packages;
       legacyPackages = {
