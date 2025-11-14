@@ -76,10 +76,10 @@
   outputs =
     { self, ... }@inputs:
     let
+      importFlake = arg: (system: (import ./. { inherit self inputs system; }).flake.${arg} or { });
       inherit (inputs.flake-utils.lib) eachDefaultSystem eachDefaultSystemPassThrough;
-      importDefault = arg: (system: (import ./. { inherit self inputs system; }).flake.${arg} or { });
-      systemAgnosticFlake = eachDefaultSystemPassThrough (importDefault "systemAgnostic");
-      perSystemFlake = eachDefaultSystem (importDefault "perSystem");
+      systemAgnosticFlake = eachDefaultSystemPassThrough (importFlake "systemAgnostic");
+      perSystemFlake = eachDefaultSystem (importFlake "perSystem");
     in
     systemAgnosticFlake // perSystemFlake;
 }
