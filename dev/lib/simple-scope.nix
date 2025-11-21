@@ -1,12 +1,10 @@
 {
   lib,
-  pkgs,
 }:
 
-prevScope:
+newScope: prevScope:
 
 let
-  # Modified version of Nixpkgs' `makeScope`
   simpleScope =
     newScope: f:
     let
@@ -25,4 +23,4 @@ let
     in
     f self;
 in
-simpleScope pkgs.newScope prevScope
+simpleScope newScope prevScope

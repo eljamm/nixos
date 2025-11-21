@@ -1,11 +1,8 @@
 {
   lib,
-  inputs,
-  pkgs,
-  pkgsUnstable,
   ...
-}@args:
-rec {
+}:
+{
   # TODO: improve
   /*
     Convert a path into a tree-like attribute set.
@@ -63,7 +60,7 @@ rec {
     modules-path:
     let
       fs = lib.fileset;
-      git-repo = fs.gitTracked ../.;
+      git-repo = fs.gitTracked ../../.;
     in
     lib.pipe modules-path [
       (fs.fileFilter (file: file.hasExt "nix"))
@@ -84,40 +81,29 @@ rec {
       (lib.foldl lib.recursiveUpdate { })
     ];
 
-  nixosSystem =
-    {
-      username,
-      modules,
-      specialArgs,
-      ...
-    }:
-    inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = specialArgs // {
-        inherit username;
-      };
-      inherit modules;
-    };
-
   /**
-    Prefer the unstable version of a package, if it's newer.
+    Prefer the newest version of a package, compared to a package set.
 
     This is useful when using overlays, and you want to ensure that the package is always up-to-date, without having to manually modify the overlay.
 
     # Inputs
 
+    `packageSet`
+    : package set to compare against
+
     `package`
-    : derivation to compare against unstable
+    : derivation to examine
 
     # Type
 
     ```
-    packageOrUnstable :: AttrSet -> AttrSet
+    newestPackage :: AttrSet :: Derivation -> Derivation
     ```
   */
-  packageOrUnstable =
-    package:
+  newestPackage =
+    packageSet: package:
     let
-      package-unstable = pkgsUnstable.${package.pname};
+      package-unstable = packageSet.${package.pname};
       comparison = lib.strings.compareVersions package.version package-unstable.version;
       unstableIsNewer = comparison == -1;
     in
@@ -130,4 +116,7 @@ rec {
       res = builtins.tryEval x;
     in
     if res.success then res.value else def;
+
+  # Modified version of Nixpkgs' `makeScope`
+  simpleScope = import ./simple-scope.nix { inherit lib; };
 }

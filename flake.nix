@@ -76,12 +76,12 @@
   outputs =
     { self, ... }@inputs:
     let
-      inherit (inputs.flake-utils.lib) eachDefaultSystem eachDefaultSystemPassThrough;
+      flakeLib = inputs.flake-utils.lib;
 
       importFlake = arg: system: (import ./. { inherit self inputs system; }).flake.${arg} or { };
 
-      perSystemFlake = eachDefaultSystem (importFlake "perSystem");
-      systemAgnosticFlake = eachDefaultSystemPassThrough (importFlake "systemAgnostic");
+      perSystemFlake = flakeLib.eachDefaultSystem (importFlake "perSystem");
+      systemAgnosticFlake = flakeLib.eachDefaultSystemPassThrough (importFlake "systemAgnostic");
     in
     systemAgnosticFlake // perSystemFlake;
 }

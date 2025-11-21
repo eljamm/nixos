@@ -1,5 +1,5 @@
 {
-  self ? import ./dev/utils/import-flake.nix { src = ./.; },
+  self ? import ./dev/lib/import-flake.nix { src = ./.; },
   inputs ? self.inputs,
   system ? builtins.currentSystem,
   pkgs ? import inputs.nixpkgs {
@@ -10,22 +10,19 @@
   lib ? import "${inputs.nixpkgs}/lib",
 }:
 let
-  simpleScope = import ./dev/utils/simple-scope.nix {
-    inherit lib pkgs;
-  };
+  # custom library (helper functions, builders, ...)
+  devLib = import ./dev/lib/default.nix { inherit lib; };
 
-  scope = simpleScope (res: {
+  scope = devLib.simpleScope pkgs.newScope (s: {
     inherit
       lib
       pkgs
       self
       system
       inputs
+      devLib
       flake
       ;
-
-    # Custom library. Contains helper functions, builders, ...
-    devLib = res.call ./dev/utils { };
 
     pkgsCustom = inputs.nixpkgs-custom.legacyPackages.${system} // {
       agenix = inputs.agenix.packages.${system}.default;
@@ -36,27 +33,29 @@ let
       inherit system;
     };
 
-    formatter = res.call ./dev/formatter.nix { };
-    packages = res.call ./dev/packages.nix { };
+    formatter = s.call ./dev/formatter.nix { };
+    packages = s.call ./dev/packages.nix { };
     devShells.default = pkgs.mkShellNoCC {
       packages = [
-        res.formatter.package
+        s.formatter.package
       ];
     };
 
-    hosts = res.call ./hosts { };
-    modules = res.devLib.mkModules ./modules;
+    hosts = s.call ./hosts { };
+    modules = s.devLib.mkModules ./modules;
 
-    overlays.default = final: prev: res.devPkgs;
+    overlays.default = final: prev: s.devPkgs;
   });
 
-  flake = with scope; {
+  flakeLib = inputs.flake-utils.lib;
+
+  flake = {
     # depends on the system (e.g. packages.x86_64-linux)
-    perSystem = {
+    perSystem = with scope; {
       devShells = devShells;
       formatter = formatter.package;
-      packages = lib.filterAttrs (n: v: lib.isDerivation v) packages;
-      checks = lib.filterAttrs (_: v: !v.meta.broken or false) flake.perSystem.packages;
+      packages = lib.filterAttrs (_: v: lib.isDerivation v) packages;
+      checks = flakeLib.filterPackages system flake.perSystem.packages;
       legacyPackages = {
         lib = devLib;
         packages = flake.perSystem.packages;
@@ -64,7 +63,7 @@ let
     };
 
     # system-independant (e.g. nixosModules)
-    systemAgnostic = {
+    systemAgnostic = with scope; {
       overlays = overlays;
 
       formatterModule = formatter.module;

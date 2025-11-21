@@ -20,8 +20,7 @@ let
   };
 in
 {
-  joker = devLib.nixosSystem {
-    username = "kuroko";
+  joker = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       inputs.agenix.nixosModules.default
       inputs.catppuccin.nixosModules.catppuccin
@@ -45,11 +44,12 @@ in
       self.homeModules.users.kuroko
       ./nixos
     ];
-    specialArgs = devArgs;
+    specialArgs = devArgs // {
+      username = "kuroko";
+    };
   };
 
-  navi = devLib.nixosSystem {
-    username = "navi";
+  navi = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       inputs.agenix.nixosModules.default
       inputs.catppuccin.nixosModules.catppuccin
@@ -60,7 +60,9 @@ in
       self.homeModules.users.navi
       ./navi
     ];
-    specialArgs = devArgs;
+    specialArgs = devArgs // {
+      username = "navi";
+    };
   };
 
   mona = null;

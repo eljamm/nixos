@@ -58,7 +58,7 @@ let
       harper
       libreoffice-fresh
       percollate # web pages -> pdf, epub, md
-      (devLib.packageOrUnstable readest)
+      (devLib.newestPackage pkgsUnstable readest)
       projecteur
       yacreader
     ];
