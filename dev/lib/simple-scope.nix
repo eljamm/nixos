@@ -2,7 +2,7 @@
   lib,
 }:
 
-newScope: prevScope:
+finalScope: prevScope:
 
 let
   simpleScope =
@@ -30,4 +30,4 @@ let
     in
     self;
 in
-simpleScope newScope prevScope
+simpleScope finalScope prevScope
