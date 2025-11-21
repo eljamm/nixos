@@ -44,7 +44,7 @@ let
     hosts = s.call ./hosts { };
     modules = s.devLib.mkModules ./modules;
 
-    overlays.default = final: prev: s.devPkgs;
+    overlays.default = final: prev: s.packages;
   });
 
   flakeLib = inputs.flake-utils.lib;
