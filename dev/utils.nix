@@ -121,4 +121,12 @@
       unstableIsNewer = comparison == -1;
     in
     if unstableIsNewer then package-unstable else package;
+
+  # Try evaluating x, else return default
+  tryElse =
+    x: def:
+    let
+      res = builtins.tryEval x;
+    in
+    if res.success then res.value else def;
 }
