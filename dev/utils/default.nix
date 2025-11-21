@@ -1,10 +1,11 @@
 {
   lib,
   inputs,
+  pkgs,
   pkgsUnstable,
   ...
 }@args:
-{
+rec {
   # TODO: improve
   /*
     Convert a path into a tree-like attribute set.

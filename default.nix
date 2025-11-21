@@ -1,5 +1,5 @@
 {
-  self ? import ./dev/import-flake.nix { src = ./.; },
+  self ? import ./dev/utils/import-flake.nix { src = ./.; },
   inputs ? self.inputs,
   system ? builtins.currentSystem,
   pkgs ? import inputs.nixpkgs {
@@ -10,7 +10,11 @@
   lib ? import "${inputs.nixpkgs}/lib",
 }:
 let
-  scope = lib.makeScope pkgs.newScope (s: {
+  simpleScope = import ./dev/utils/simple-scope.nix {
+    inherit lib pkgs;
+  };
+
+  scope = simpleScope (res: {
     inherit
       lib
       pkgs
@@ -21,7 +25,7 @@ let
       ;
 
     # Custom library. Contains helper functions, builders, ...
-    devLib = s.callPackage ./dev/utils.nix { };
+    devLib = res.call ./dev/utils { };
 
     pkgsCustom = inputs.nixpkgs-custom.legacyPackages.${system} // {
       agenix = inputs.agenix.packages.${system}.default;
@@ -32,24 +36,21 @@ let
       inherit system;
     };
 
-    formatter = s.callPackage ./dev/formatter.nix { };
-    packages = s.callPackage ./dev/packages.nix { };
+    formatter = res.call ./dev/formatter.nix { };
+    packages = res.call ./dev/packages.nix { };
     devShells.default = pkgs.mkShellNoCC {
       packages = [
-        s.formatter.package
+        res.formatter.package
       ];
     };
 
-    hosts = s.callPackage ./hosts { };
-    modules = s.devLib.mkModules ./modules;
+    hosts = res.call ./hosts { };
+    modules = res.devLib.mkModules ./modules;
 
-    overlays.default = final: prev: s.devPkgs;
+    overlays.default = final: prev: res.devPkgs;
   });
 
-  # final attribute set (non-recursive)
-  finalScope = scope.packages scope;
-
-  flake = with finalScope; {
+  flake = with scope; {
     # depends on the system (e.g. packages.x86_64-linux)
     perSystem = {
       devShells = devShells;
@@ -75,4 +76,4 @@ let
     };
   };
 in
-finalScope
+scope
