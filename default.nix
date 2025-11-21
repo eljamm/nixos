@@ -21,7 +21,7 @@ let
       system
       inputs
       devLib
-      flake
+      flake # (defined below)
       ;
 
     pkgsCustom = inputs.nixpkgs-custom.legacyPackages.${system} // {
@@ -74,5 +74,11 @@ let
       nixosConfigurations = hosts;
     };
   };
+
+  # return final attribute set (non-recursive)
+  finalScope = (scope.fix scope) // {
+    # but include the original scope
+    inherit scope;
+  };
 in
-scope
+finalScope

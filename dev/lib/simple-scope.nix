@@ -21,6 +21,6 @@ let
         fix = f;
       };
     in
-    f self;
+    self;
 in
 simpleScope newScope prevScope
