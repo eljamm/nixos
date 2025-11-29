@@ -14,7 +14,7 @@
   boot.kernelPatches = [
     # Potential fix for flip_done timed out issue (at least for VRR)
     # https://gitlab.freedesktop.org/drm/amd/-/issues/2950
-    { patch = ../../hosts/nixos/overlays/patches/xanmod_fix_flip_done.patch; }
+    # { patch = ../../hosts/nixos/overlays/patches/xanmod_fix_flip_done.patch; }
   ];
 
   # Userspace schedulers (default scx_rustland)
