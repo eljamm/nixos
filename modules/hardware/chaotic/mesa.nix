@@ -8,7 +8,7 @@
 {
   chaotic.mesa-git.enable = true;
   chaotic.mesa-git.extraPackages = with pkgs; [
-    vaapiVdpau
+    libva-vdpau-driver
     libvdpau-va-gl
   ];
 }

@@ -16,7 +16,7 @@ in
     HISTCONTROL = "ignoredups:erasedups";
 
     # Manpage
-    # MANPAGER = "moar";
+    # MANPAGER = "moor";
     # MANPAGER="nvim -c 'set ft=man' -";
     # MANPAGER="nvimpager";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'"; # bat

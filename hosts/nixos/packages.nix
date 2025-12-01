@@ -95,8 +95,6 @@ let
 
     # TODO: remove
     qt5 = with libsForQt5; [
-      kimageformats
-      ktouch # qt6 version is currently broken
       qt5.qtimageformats
     ];
 

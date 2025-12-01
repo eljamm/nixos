@@ -16,8 +16,8 @@ in
   config = {
     custom.desktops.gnome.enableGreeter = lib.mkDefault cfg.enable;
 
-    services.xserver = {
-      enable = lib.mkDefault cfg.enable;
+    services.xserver.enable = true; # is this needed anymore?
+    services = {
       displayManager.gdm.enable = lib.mkDefault cfg.enableGreeter;
       desktopManager.gnome = {
         enable = lib.mkDefault cfg.enable;

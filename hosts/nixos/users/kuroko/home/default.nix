@@ -9,7 +9,7 @@
   home = {
     packages = with pkgs; [
       difftastic
-      moar
+      moor
       taskwarrior-tui
     ];
 
