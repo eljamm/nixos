@@ -42,7 +42,6 @@ let
     ];
 
     python = [
-      micromamba
       pipx
       python3
       python3Packages.pip

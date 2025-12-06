@@ -30,6 +30,7 @@ let
 
     pkgsUnstable = import inputs.nixpkgs-unstable {
       config.allowUnfree = true;
+      overlays = import ./overlays/unstable;
       inherit system;
     };
 

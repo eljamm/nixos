@@ -62,7 +62,7 @@
     ])
     ++ (with pkgsCustom; [
       odamex
-      yuzu-ea
+      # yuzu-ea
     ])
     ++ (with pkgsUnstable; [
       umu-launcher
