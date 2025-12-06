@@ -89,7 +89,6 @@ let
       obsidian
       pkgsUnstable.planify
       qownnotes
-      # pkgsUnstable.super-productivity
     ];
 
     # TODO: remove
@@ -166,10 +165,6 @@ let
       pre-commit
       tree-sitter
       watchexec
-
-      # TODO: move to dev env?
-      # gnumake
-      # gcc
     ];
 
     tools = [

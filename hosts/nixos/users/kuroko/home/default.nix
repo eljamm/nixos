@@ -51,7 +51,6 @@
   };
 
   services = {
-    # TODO: is this still useful?
     easyeffects.enable = true;
 
     # self-induced telemetry

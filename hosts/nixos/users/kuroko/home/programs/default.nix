@@ -31,7 +31,7 @@
 
     starship = {
       enable = true;
-      # enableInteractive = false; # TODO:
+      enableInteractive = false;
     };
 
     fzf.enable = true;
