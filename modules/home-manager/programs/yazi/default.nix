@@ -16,6 +16,8 @@
     };
     plugins = {
       inherit (pkgsUnstable.yaziPlugins)
+        bookmarks
+        compress
         full-border
         git
         jump-to-char
@@ -27,8 +29,6 @@
         starship
         toggle-pane
         ;
-      bookmarks = pkgsUnstable.callPackage ./bookmarks.nix { };
-      compress = pkgsUnstable.callPackage ./compress.nix { };
     };
     initLua = ./init.lua;
     keymap = lib.importTOML ./keymap.toml;
