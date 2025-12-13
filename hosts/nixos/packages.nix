@@ -168,7 +168,6 @@ let
     ];
 
     tools = [
-      opencode
       bleachbit
       duf # disk usage/free
       duperemove
@@ -180,9 +179,11 @@ let
       lurk
       mat2
       mesa-demos
+      opencode
       optipng
       pciutils
       powerstat
+      python3Packages.edge-tts
       trash-cli
       usbutils
       vulkan-tools
