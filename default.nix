@@ -44,7 +44,7 @@ let
 
     hosts = s.call ./hosts { };
     modules = s.devLib.mkModules ./modules;
-    scripts = s.call ./modules/nixos/scripts/default.nix { };
+    scripts = (s.call ./modules/nixos/scripts/default.nix { }).debug.scripts;
 
     overlays.default = final: prev: s.packages;
   });
@@ -83,4 +83,4 @@ let
     inherit scope;
   };
 in
-finalScope // finalScope.packages
+finalScope // finalScope.packages // finalScope.scripts
