@@ -91,11 +91,6 @@ let
       qownnotes
     ];
 
-    # TODO: remove
-    qt5 = with libsForQt5; [
-      qt5.qtimageformats
-    ];
-
     qt6 = with kdePackages; [
       filelight
       kdenlive
