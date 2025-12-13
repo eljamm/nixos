@@ -1,5 +1,6 @@
 {
   lib,
+  devLib,
   pkgs,
   config,
   pkgsUnstable,
@@ -29,56 +30,62 @@
       );
     })
     (final: prev: {
-      freetube = prev.freetube.overrideAttrs (
-        finalAttrs: _: {
-          pname = "freetube";
-          version = "0.23.12";
-          src = final.fetchFromGitHub {
-            owner = "FreeTubeApp";
-            repo = "FreeTube";
-            tag = "v${finalAttrs.version}-beta";
-            hash = "sha256-DH5uT3dPDFZnFYoiMjxpNouNDRbWDctVqvDwHpUlnkY=";
-          };
-          yarnOfflineCache = final.fetchYarnDeps {
-            yarnLock = "${finalAttrs.src}/yarn.lock";
-            hash = "sha256-sM9CkDnATSEUf/uuUyT4JuRmjzwa1WzIyNYEw69MPtU=";
-          };
-        }
+      freetube = devLib.newestPackage prev (
+        prev.freetube.overrideAttrs (
+          finalAttrs: _: {
+            pname = "freetube";
+            version = "0.23.12";
+            src = final.fetchFromGitHub {
+              owner = "FreeTubeApp";
+              repo = "FreeTube";
+              tag = "v${finalAttrs.version}-beta";
+              hash = "sha256-DH5uT3dPDFZnFYoiMjxpNouNDRbWDctVqvDwHpUlnkY=";
+            };
+            yarnOfflineCache = final.fetchYarnDeps {
+              yarnLock = "${finalAttrs.src}/yarn.lock";
+              hash = "sha256-sM9CkDnATSEUf/uuUyT4JuRmjzwa1WzIyNYEw69MPtU=";
+            };
+          }
+        )
       );
     })
     (final: prev: {
-      readest = pkgsUnstable.readest.overrideAttrs (
-        finalAttrs: oldAttrs: {
-          version = "0.9.91";
-          src = final.fetchFromGitHub {
-            owner = "readest";
-            repo = "readest";
-            tag = "v${finalAttrs.version}";
-            hash = "sha256-Xz+s+yv0L2bj7T6GA6IkMGTAk2oGyFuYR5zzyeLbTuc=";
-            fetchSubmodules = true;
-          };
-          pnpmDeps = final.pnpm_9.fetchDeps {
-            inherit (finalAttrs) pname version src;
-            fetcherVersion = 1;
-            hash = "sha256-RsmI0avMnVWlLMzwGJJmPNSEJpNaq7IWimjpMJ+nR80=";
-          };
-          cargoDeps = final.rustPlatform.fetchCargoVendor {
-            inherit (finalAttrs) src;
-            hash = "sha256-nNMD2LnMDz91kI2QniD+zD/Ug9BSVjTIiuxWdz8UxL0=";
-          };
-        }
+      readest = devLib.newestPackage pkgsUnstable (
+        pkgsUnstable.readest.overrideAttrs (
+          finalAttrs: oldAttrs: {
+            version = "0.9.91";
+            src = final.fetchFromGitHub {
+              owner = "readest";
+              repo = "readest";
+              tag = "v${finalAttrs.version}";
+              hash = "sha256-Xz+s+yv0L2bj7T6GA6IkMGTAk2oGyFuYR5zzyeLbTuc=";
+              fetchSubmodules = true;
+            };
+            pnpmDeps = final.pnpm_9.fetchDeps {
+              inherit (finalAttrs) pname version src;
+              fetcherVersion = 1;
+              hash = "sha256-RsmI0avMnVWlLMzwGJJmPNSEJpNaq7IWimjpMJ+nR80=";
+            };
+            cargoDeps = final.rustPlatform.fetchCargoVendor {
+              inherit (finalAttrs) src;
+              hash = "sha256-nNMD2LnMDz91kI2QniD+zD/Ug9BSVjTIiuxWdz8UxL0=";
+            };
+          }
+        )
       );
     })
     (final: prev: {
-      yt-dlp = prev.yt-dlp.overridePythonAttrs (oldAttrs: rec {
-        version = "2025.10.22";
-        src = final.fetchFromGitHub {
-          owner = "yt-dlp";
-          repo = "yt-dlp";
-          tag = version;
-          hash = "sha256-jQaENEflaF9HzY/EiMXIHgUehAJ3nnDT9IbaN6bDcac=";
-        };
-      });
+      yt-dlp = devLib.newestPackage prev (
+        prev.yt-dlp.overridePythonAttrs (oldAttrs: rec {
+          version = "2025.10.22";
+          src = final.fetchFromGitHub {
+            owner = "yt-dlp";
+            repo = "yt-dlp";
+            tag = version;
+            hash = "sha256-jQaENEflaF9HzY/EiMXIHgUehAJ3nnDT9IbaN6bDcac=";
+          };
+        })
+      );
     })
     (final: prev: {
       linux_xanmod_custom =
@@ -110,24 +117,26 @@
       linux_xanmod_custom-packages = final.linuxPackagesFor final.linux_xanmod_custom;
     })
     (final: prev: {
-      opencode = pkgsUnstable.opencode.overrideAttrs (oldAttrs: rec {
-        version = "1.0.150";
-        src = final.fetchFromGitHub {
-          owner = "sst";
-          repo = "opencode";
-          tag = "v${version}";
-          hash = "sha256-8mFmFFk378g93MbFRwMOJkjuXqq3PVPdCuGVLPn6D44=";
-        };
-        node_modules = oldAttrs.node_modules.overrideAttrs {
-          inherit version src;
-          outputHash = "sha256-3swARfDhEfLoaucjiUfse3px40ZBfQsEE8DPgUk/5K0=";
-        };
-        configurePhase = ''
-          runHook preConfigure
-          cp -R ${node_modules}/. .
-          runHook postConfigure
-        '';
-      });
+      opencode = devLib.newestPackage pkgsUnstable (
+        pkgsUnstable.opencode.overrideAttrs (oldAttrs: rec {
+          version = "1.0.150";
+          src = final.fetchFromGitHub {
+            owner = "sst";
+            repo = "opencode";
+            tag = "v${version}";
+            hash = "sha256-8mFmFFk378g93MbFRwMOJkjuXqq3PVPdCuGVLPn6D44=";
+          };
+          node_modules = oldAttrs.node_modules.overrideAttrs {
+            inherit version src;
+            outputHash = "sha256-3swARfDhEfLoaucjiUfse3px40ZBfQsEE8DPgUk/5K0=";
+          };
+          configurePhase = ''
+            runHook preConfigure
+            cp -R ${node_modules}/. .
+            runHook postConfigure
+          '';
+        })
+      );
     })
     (final: prev: {
       redlib = pkgsUnstable.redlib.overrideAttrs (oldAttrs: rec {
