@@ -4,3 +4,4 @@ secrets/secrets.nix
 *tmp_*.nix
 .pre-commit-config.yaml
 *.qcow2
+__pycache__

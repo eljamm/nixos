@@ -16,6 +16,14 @@ let
     ];
   };
 
+  scripts.sorterelli = pkgs.writers.writePython3Bin "sorterelli" {
+    libraries = with pkgs.python3Packages; [
+      python-magic
+      tqdm
+    ];
+    doCheck = false;
+  } (lib.readFile ./sorterelli.py);
+
   # expose scripts for debugging
   config.debug.scripts = scripts;
 
