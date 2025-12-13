@@ -145,6 +145,7 @@ let
       cheat
       harsh
       homebank
+      tealdeer
       tellico
       termdown
     ];

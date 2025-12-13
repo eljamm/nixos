@@ -14,6 +14,7 @@ let
     # truetype
     fira-code
     miracode
+    monocraft
     proggyfonts
     nerd-fonts.hack
     nerd-fonts.fira-code
