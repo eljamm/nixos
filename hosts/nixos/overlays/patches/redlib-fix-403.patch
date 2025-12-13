@@ -1,0 +1,88 @@
+From 9e1c09610cdcb073d16559713dee6409d1a08b20 Mon Sep 17 00:00:00 2001
+From: Mark Lopez <m@silvenga.com>
+Date: Wed, 3 Dec 2025 19:24:06 -0600
+Subject: [PATCH] fix: avoid 403 by matching cipher suites to that of FF
+
+---
+ Cargo.lock    |  1 +
+ Cargo.toml    |  2 +-
+ src/client.rs | 34 +++++++++++++++++++++++++++++++---
+ 3 files changed, 33 insertions(+), 4 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 75cc3b09..e09e17b6 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1418,6 +1418,7 @@ dependencies = [
+  "route-recognizer",
+  "rss",
+  "rust-embed",
++ "rustls",
+  "sealed_test",
+  "serde",
+  "serde_json",
+diff --git a/Cargo.toml b/Cargo.toml
+index 1e0cb0cc..a133b3ae 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -60,7 +60,7 @@ bincode = "1.3.3"
+ base2048 = "2.0.2"
+ revision = "0.10.0"
+ fake_user_agent = "0.2.2"
+-
++rustls = "0.21.12"
+
+ [dev-dependencies]
+ lipsum = "0.9.0"
+diff --git a/src/client.rs b/src/client.rs
+index 7499c8dc..126dcc16 100644
+--- a/src/client.rs
++++ b/src/client.rs
+@@ -5,7 +5,7 @@ use futures_lite::{future::Boxed, FutureExt};
+ use hyper::client::HttpConnector;
+ use hyper::header::HeaderValue;
+ use hyper::{body, body::Buf, header, Body, Client, Method, Request, Response, Uri};
+-use hyper_rustls::HttpsConnector;
++use hyper_rustls::{ConfigBuilderExt, HttpsConnector};
+ use libflate::gzip;
+ use log::{error, trace, warn};
+ use percent_encoding::{percent_encode, CONTROLS};
+@@ -30,8 +30,36 @@ const REDDIT_SHORT_URL_BASE_HOST: &str = "redd.it";
+ const ALTERNATIVE_REDDIT_URL_BASE: &str = "https://www.reddit.com";
+ const ALTERNATIVE_REDDIT_URL_BASE_HOST: &str = "www.reddit.com";
+
+-pub static HTTPS_CONNECTOR: LazyLock<HttpsConnector<HttpConnector>> =
+-	LazyLock::new(|| hyper_rustls::HttpsConnectorBuilder::new().with_native_roots().https_only().enable_http2().build());
++pub static HTTPS_CONNECTOR: LazyLock<HttpsConnector<HttpConnector>> = LazyLock::new(|| {
++	hyper_rustls::HttpsConnectorBuilder::new()
++		.with_tls_config(
++			rustls::ClientConfig::builder()
++				// These are the Firefox 145.0 cipher suite,
++				// minus the suites missing forward-secrecy support,
++				// in the same order.
++				// https://github.com/redlib-org/redlib/issues/446#issuecomment-3609306592
++				.with_cipher_suites(&[
++					rustls::cipher_suite::TLS13_AES_256_GCM_SHA384,
++					rustls::cipher_suite::TLS13_AES_128_GCM_SHA256,
++					rustls::cipher_suite::TLS13_CHACHA20_POLY1305_SHA256,
++					rustls::cipher_suite::TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
++					rustls::cipher_suite::TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
++					rustls::cipher_suite::TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,
++					rustls::cipher_suite::TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
++					rustls::cipher_suite::TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
++					rustls::cipher_suite::TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
++				])
++				// .with_safe_default_cipher_suites()
++				.with_safe_default_kx_groups()
++				.with_safe_default_protocol_versions()
++				.unwrap()
++				.with_native_roots()
++				.with_no_client_auth(),
++		)
++		.https_only()
++		.enable_http2()
++		.build()
++});
+
+ pub static CLIENT: LazyLock<Client<HttpsConnector<HttpConnector>>> = LazyLock::new(|| Client::builder().build::<_, Body>(HTTPS_CONNECTOR.clone()));
+
