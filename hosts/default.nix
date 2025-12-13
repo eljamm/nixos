@@ -34,6 +34,7 @@ in
       self.nixosModules.desktops.hyprland.default
       self.nixosModules.development.rust
       self.nixosModules.development.containers.podman
+      self.nixosModules.scripts.default
       self.nixosModules.services.anki
       self.nixosModules.services.blocky
       self.nixosModules.services.keyd

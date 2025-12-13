@@ -4,8 +4,8 @@
   pkgsCustom,
   ...
 }:
-{
-  upscale-img = pkgs.writeShellApplication {
+let
+  scripts.upscale-img = pkgs.writeShellApplication {
     name = "upscale-img";
     text = lib.readFile ./upscale-img;
     runtimeInputs = with pkgs; [
@@ -15,4 +15,11 @@
       realesrgan-ncnn-vulkan
     ];
   };
-}
+
+  # expose scripts for debugging
+  config.debug.scripts = scripts;
+
+  # install scripts in system
+  config.environment.systemPackages = lib.attrValues scripts;
+in
+config
