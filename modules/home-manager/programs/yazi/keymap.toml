@@ -82,6 +82,13 @@ prepend_keymap = [
     "R",
     "b",
   ], run = "plugin recycle-bin", desc = "Open Recycle Bin menu" },
+
+  # -- yaqihou/nav-parent-panel.yazi
+  { on = "K", run = "plugin nav-parent-panel prev", desc = "Go to previous sibling directory" },
+  { on = "J", run = "plugin nav-parent-panel next", desc = "Go to next sibling directory" },
+  { on = "<C-Home>", run = "plugin nav-parent-panel first", desc = "Go to first sibling directory" },
+  { on = "<C-End>", run = "plugin nav-parent-panel last", desc = "Go to last sibling directory" },
+  # --
 ]
 
 [help]

@@ -29,6 +29,7 @@
         starship
         toggle-pane
         ;
+      nav-parent-panel = pkgsUnstable.callPackage ./nav-parent-panel.nix { };
     };
     initLua = ./init.lua;
     keymap = lib.importTOML ./keymap.toml;
