@@ -24,6 +24,11 @@ let
     doCheck = false;
   } (lib.readFile ./sorterelli.py);
 
+  scripts.chaptocue = pkgs.writers.writePython3Bin "chaptocue" {
+    libraries = with pkgs.python3Packages; [ yt-dlp ];
+    doCheck = false;
+  } (lib.readFile ./chaptocue.py);
+
   # expose scripts for debugging
   config.debug.scripts = scripts;
 
