@@ -109,5 +109,25 @@
         };
       linux_xanmod_custom-packages = final.linuxPackagesFor final.linux_xanmod_custom;
     })
+    (final: prev: {
+      opencode = pkgsUnstable.opencode.overrideAttrs (oldAttrs: rec {
+        version = "1.0.150";
+        src = final.fetchFromGitHub {
+          owner = "sst";
+          repo = "opencode";
+          tag = "v${version}";
+          hash = "sha256-8mFmFFk378g93MbFRwMOJkjuXqq3PVPdCuGVLPn6D44=";
+        };
+        node_modules = oldAttrs.node_modules.overrideAttrs {
+          inherit version src;
+          outputHash = "sha256-3swARfDhEfLoaucjiUfse3px40ZBfQsEE8DPgUk/5K0=";
+        };
+        configurePhase = ''
+          runHook preConfigure
+          cp -R ${node_modules}/. .
+          runHook postConfigure
+        '';
+      });
+    })
   ];
 }

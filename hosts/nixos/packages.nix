@@ -168,6 +168,7 @@ let
     ];
 
     tools = [
+      opencode
       bleachbit
       duf # disk usage/free
       duperemove
