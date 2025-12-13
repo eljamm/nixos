@@ -98,6 +98,7 @@ let
       rnote
       realesrgan-ncnn-vulkan
       waifu2x-converter-cpp
+      pkgsCustom.waifu2x-ncnn-vulkan
     ];
 
     education = [
