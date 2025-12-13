@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+    echo "Usage: $0 -f FILE [-g GPU] [-n NOISE] [-s SCALE] [-t TYPE] [-- EXTRA_ARGS...]"
+    echo "  -f, --file FILE    Input image file (required)"
+    echo "  -g, --gpu GPU      GPU device to use (default: 1)"
+    echo "  -n, --noise NOISE  Noise reduction level for waifu (default: 0)"
+    echo "  -s, --scale SCALE  Upscale factor (default: 4)"
+    echo "  -t, --type TYPE    Upscaler type: 'real' or 'waifu' (default: waifu)"
+    echo "  -- EXTRA_ARGS      Additional arguments passed to the upscaler"
+    echo "  -h, --help         Show this help"
+    exit 1
+}
+
+gpu=1
+noise=0
+scale=4
+type=waifu
+extra_args=()
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+    -f | --file)
+        file="$2"
+        shift 2
+        ;;
+    -g | --gpu)
+        gpu="$2"
+        shift 2
+        ;;
+    -n | --noise)
+        noise="$2"
+        shift 2
+        ;;
+    -s | --scale)
+        scale="$2"
+        shift 2
+        ;;
+    -t | --type)
+        type="$2"
+        shift 2
+        ;;
+    -h | --help)
+        usage
+        ;;
+    --)
+        shift
+        extra_args=("$@")
+        break
+        ;;
+    *)
+        echo "Unknown option: $1"
+        usage
+        ;;
+    esac
+done
+
+if [[ -z "$file" ]]; then
+    echo "Error: file is required"
+    usage
+fi
+
+ext="${file##*.}"
+output="${file%.*}-${scale}x.${ext}"
+
+common_args=(-g "$gpu" -s "$scale" -i "$file" -o "$output")
+
+if [[ "$type" == "waifu" ]]; then
+    waifu2x-ncnn-vulkan "${common_args[@]}" -n "$noise" "${extra_args[@]}"
+elif [[ "$type" == "real" ]]; then
+    realesrgan-ncnn-vulkan "${common_args[@]}" -n realesrgan-x4plus "${extra_args[@]}"
+else
+    echo "Error: invalid type '$type'. Use 'real' or 'waifu'."
+    exit 1
+fi
+
+# Optimize result
+if [[ "${ext,,}" == "jpg" ]] || [[ "${ext,,}" == "jpeg" ]]; then
+    jpegoptim -m 80 "$output"
+elif [[ "${ext,,}" == "png" ]]; then
+    optipng "$output"
+fi
