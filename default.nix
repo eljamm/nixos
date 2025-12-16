@@ -13,7 +13,7 @@ let
   # custom library (helper functions, builders, ...)
   devLib = import ./dev/lib/default.nix { inherit lib; };
 
-  scope = devLib.simpleScope pkgs.newScope (s: {
+  default = devLib.simpleScope pkgs.newScope (d: {
     inherit
       lib
       pkgs
@@ -22,6 +22,7 @@ let
       inputs
       devLib
       flake # (defined below)
+      default # final scope
       ;
 
     pkgsCustom = inputs.nixpkgs-custom.legacyPackages.${system} // {
@@ -34,59 +35,30 @@ let
       inherit system;
     };
 
-    formatter = s.call ./dev/formatter.nix { };
-    packages = s.call ./dev/packages.nix { };
+    formatter = d.import ./dev/formatter.nix { };
+    packages = d.import ./dev/packages.nix { };
     devShells.default = pkgs.mkShellNoCC {
       packages = [
-        s.formatter.package
+        d.formatter.package
       ];
     };
 
-    hosts = s.call ./hosts { };
-    modules = s.devLib.mkModules ./modules;
-    scripts = (s.call ./modules/nixos/scripts/default.nix { }).debug.scripts;
+    overlays.default = final: prev: d.packages;
+
+    hosts = d.import ./hosts { };
+    modules = d.devLib.mkModules ./modules;
+    scripts = (d.import ./modules/nixos/scripts/default.nix { }).debug.scripts;
 
     # convenience
-    jk = s.hosts.joker.pkgs;
-    jkc = s.hosts.joker.config;
-    nv = s.hosts.navi.pkgs;
-    nvc = s.hosts.navi.config;
-
-    overlays.default = final: prev: s.packages;
+    jk = d.hosts.joker.pkgs;
+    jkc = d.hosts.joker.config;
+    nv = d.hosts.navi.pkgs;
+    nvc = d.hosts.navi.config;
   });
 
-  flakeLib = inputs.flake-utils.lib;
+  flake = default.call ./dev/flake.nix { };
 
-  flake = {
-    # depends on the system (e.g. packages.x86_64-linux)
-    perSystem = with scope; {
-      devShells = devShells;
-      formatter = formatter.package;
-      packages = lib.filterAttrs (_: v: lib.isDerivation v) packages;
-      checks = flakeLib.filterPackages system flake.perSystem.packages;
-      legacyPackages = {
-        lib = devLib;
-        packages = flake.perSystem.packages;
-      };
-    };
-
-    # system-independant (e.g. nixosModules)
-    systemAgnostic = with scope; {
-      overlays = overlays;
-
-      formatterModule = formatter.module;
-      hardwareModules = modules.hardware;
-      homeModules = modules.home-manager;
-      nixosModules = modules.nixos;
-
-      nixosConfigurations = hosts;
-    };
-  };
-
-  # return final attribute set (non-recursive)
-  finalScope = (scope.fix scope) // {
-    # but include the original scope
-    inherit scope;
-  };
+  # return final scope, with computed and non-recursive attributes
+  finalScope = default.fix default;
 in
 finalScope // finalScope.packages // finalScope.scripts
