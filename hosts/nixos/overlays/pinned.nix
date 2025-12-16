@@ -119,16 +119,16 @@
     (final: prev: {
       opencode = devLib.newestPackage pkgsUnstable (
         pkgsUnstable.opencode.overrideAttrs (oldAttrs: rec {
-          version = "1.0.150";
+          version = "1.0.162";
           src = final.fetchFromGitHub {
             owner = "sst";
             repo = "opencode";
             tag = "v${version}";
-            hash = "sha256-8mFmFFk378g93MbFRwMOJkjuXqq3PVPdCuGVLPn6D44=";
+            hash = "sha256-Co06sj+T/UNVfSs8xE3Vj2uEJo8vznvujV+7QQivzFE=";
           };
           node_modules = oldAttrs.node_modules.overrideAttrs {
             inherit version src;
-            outputHash = "sha256-3swARfDhEfLoaucjiUfse3px40ZBfQsEE8DPgUk/5K0=";
+            outputHash = "sha256-I7y6e+ODXShbMCmKOvC48+Y3wyrLKH0IES4S6gOnMiE=";
           };
           configurePhase = ''
             runHook preConfigure
