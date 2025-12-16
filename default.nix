@@ -46,6 +46,12 @@ let
     modules = s.devLib.mkModules ./modules;
     scripts = (s.call ./modules/nixos/scripts/default.nix { }).debug.scripts;
 
+    # convenience
+    jk = s.hosts.joker.pkgs;
+    jkc = s.hosts.joker.config;
+    nv = s.hosts.navi.pkgs;
+    nvc = s.hosts.navi.config;
+
     overlays.default = final: prev: s.packages;
   });
 
