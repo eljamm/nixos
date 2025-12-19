@@ -171,9 +171,12 @@ let
       gpu-viewer
       htop-vim
       innoextract
+      jjui
       jpegoptim
+      jujutsu
       lurk
       mat2
+      mdserve
       mesa-demos
       opencode
       optipng
