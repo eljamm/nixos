@@ -186,6 +186,7 @@ let
       trash-cli
       usbutils
       vulkan-tools
+      watchman
       xorg.xeyes
     ];
   };
