@@ -50,6 +50,9 @@ let
       lmms
       zrythm
 
+      # DJ
+      mixxx
+
       # Plugins
       airwindows
       airwindows-lv2
