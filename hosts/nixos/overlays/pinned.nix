@@ -53,22 +53,22 @@
       readest = devLib.newestPackage pkgsUnstable (
         pkgsUnstable.readest.overrideAttrs (
           finalAttrs: oldAttrs: {
-            version = "0.9.91";
+            version = "0.9.97";
             src = final.fetchFromGitHub {
               owner = "readest";
               repo = "readest";
               tag = "v${finalAttrs.version}";
-              hash = "sha256-Xz+s+yv0L2bj7T6GA6IkMGTAk2oGyFuYR5zzyeLbTuc=";
+              hash = "sha256-JrqjOFfO6GGggRhHWq1B/mhcVQgQeFfT51WXlvlFW5Y=";
               fetchSubmodules = true;
             };
             pnpmDeps = final.pnpm_9.fetchDeps {
               inherit (finalAttrs) pname version src;
               fetcherVersion = 1;
-              hash = "sha256-RsmI0avMnVWlLMzwGJJmPNSEJpNaq7IWimjpMJ+nR80=";
+              hash = "sha256-Y4GaHo1Jf99F8UhHbNfaAje2tE1QXwbd2upr6eN9qKE=";
             };
             cargoDeps = final.rustPlatform.fetchCargoVendor {
               inherit (finalAttrs) src;
-              hash = "sha256-nNMD2LnMDz91kI2QniD+zD/Ug9BSVjTIiuxWdz8UxL0=";
+              hash = "sha256-AwrA0KXLTSUhLxIJHKU1crVxUxImFOKDRStB48mZfcg=";
             };
           }
         )
