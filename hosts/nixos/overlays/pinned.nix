@@ -16,16 +16,15 @@
     (final: prev: {
       albert = prev.albert.overrideAttrs (
         finalAttrs: oldAttrs: {
-          version = "33.0.1";
+          version = "34.0.2";
           src = final.fetchFromGitHub {
             owner = "albertlauncher";
             repo = "albert";
             tag = "v${finalAttrs.version}";
-            hash = "sha256-zHLyvFzLR7Ryk6eoD+Lp+w4bIj7MAeREK0YzRXYnx6c=";
+            hash = "sha256-M4Chhl9pJcg2hFZB7se61FxhdPqMDRKxLhMonVOYZtY=";
             fetchSubmodules = true;
           };
-
-          buildInputs = (oldAttrs.buildInputs or [ ]) ++ [ pkgs.kdePackages.qtkeychain ];
+          buildInputs = (oldAttrs.buildInputs or [ ]) ++ [ pkgs.kdePackages.qcoro ];
         }
       );
     })
@@ -53,22 +52,22 @@
       readest = devLib.newestPackage pkgsUnstable (
         pkgsUnstable.readest.overrideAttrs (
           finalAttrs: oldAttrs: {
-            version = "0.9.97";
+            version = "0.9.98";
             src = final.fetchFromGitHub {
               owner = "readest";
               repo = "readest";
               tag = "v${finalAttrs.version}";
-              hash = "sha256-JrqjOFfO6GGggRhHWq1B/mhcVQgQeFfT51WXlvlFW5Y=";
+              hash = "sha256-qhV2ZEMcnn+0IePaIIvTcCYGCdLAUhtC0GEQAuXWUC8=";
               fetchSubmodules = true;
             };
             pnpmDeps = final.pnpm_9.fetchDeps {
               inherit (finalAttrs) pname version src;
               fetcherVersion = 1;
-              hash = "sha256-Y4GaHo1Jf99F8UhHbNfaAje2tE1QXwbd2upr6eN9qKE=";
+              hash = "sha256-3eYWN5ZZByOO2UFJ7X4PdBr/fNtnBmhrzx4J9IFxiNw=";
             };
             cargoDeps = final.rustPlatform.fetchCargoVendor {
               inherit (finalAttrs) src;
-              hash = "sha256-AwrA0KXLTSUhLxIJHKU1crVxUxImFOKDRStB48mZfcg=";
+              hash = "sha256-qYBHYjwfGkKmGXN8caamZ6/XGtnxe+lmy6dIpdMwS/I=";
             };
           }
         )
@@ -119,16 +118,16 @@
     (final: prev: {
       opencode = devLib.newestPackage pkgsUnstable (
         pkgsUnstable.opencode.overrideAttrs (oldAttrs: rec {
-          version = "1.0.162";
+          version = "1.1.30";
           src = final.fetchFromGitHub {
             owner = "sst";
             repo = "opencode";
             tag = "v${version}";
-            hash = "sha256-Co06sj+T/UNVfSs8xE3Vj2uEJo8vznvujV+7QQivzFE=";
+            hash = "sha256-RTj64yrVLTFNpVc8MvPAJISOlBo/j2MnuL5jo4VtKWM=";
           };
           node_modules = oldAttrs.node_modules.overrideAttrs {
             inherit version src;
-            outputHash = "sha256-I7y6e+ODXShbMCmKOvC48+Y3wyrLKH0IES4S6gOnMiE=";
+            outputHash = "sha256-37pmIiJzPEWeA7+5u5lz39vlFPI+N13Qw9weHrAaGW4=";
           };
           configurePhase = ''
             runHook preConfigure
