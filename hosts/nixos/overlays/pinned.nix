@@ -75,16 +75,37 @@
     })
     (final: prev: {
       yt-dlp = devLib.newestPackage prev (
-        prev.yt-dlp.overridePythonAttrs (oldAttrs: rec {
-          version = "2025.10.22";
+        prev.yt-dlp.overrideAttrs (oldAttrs: rec {
+          version = "2026.01.29";
           src = final.fetchFromGitHub {
             owner = "yt-dlp";
             repo = "yt-dlp";
             tag = version;
-            hash = "sha256-jQaENEflaF9HzY/EiMXIHgUehAJ3nnDT9IbaN6bDcac=";
+            hash = "sha256-nw/L71aoAJSCbW1y8ir8obrFPSbVlBA0UtlrxL6YtCQ=";
           };
+          prePatch = ''
+            substituteInPlace yt_dlp/networking/_curlcffi.py \
+              --replace-fail \
+                "if curl_cffi_version != (0, 5, 10) and not (0, 10) <= curl_cffi_version < (0, 15)" \
+                "if curl_cffi_version != (0, 5, 10) and not (0, 10) <= curl_cffi_version < (0, 14)"
+          '';
         })
       );
+      python3 = prev.python3.override {
+        packageOverrides = pyfinal: pyprev: {
+          yt-dlp-ejs = pyprev.yt-dlp-ejs.overridePythonAttrs (oldAttrs: rec {
+            pname = "yt-dlp-ejs";
+            version = "0.4.0";
+            src = final.fetchFromGitHub {
+              owner = "yt-dlp";
+              repo = "ejs";
+              tag = version;
+              hash = "sha256-/qq069SD7ESg+7pK4PC1EGLLI8zqjWUse7cArN4YuXE=";
+            };
+          });
+        };
+      };
+      python3Packages = final.python3.pkgs;
     })
     (final: prev: {
       linux_xanmod_custom =
