@@ -12,7 +12,7 @@
 
     # Enable flakes
     extraOptions = ''
-      experimental-features = nix-command flakes ca-derivations
+      experimental-features = nix-command flakes
     '';
 
     # Storage Optimization
