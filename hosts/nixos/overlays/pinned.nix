@@ -76,12 +76,12 @@
     (final: prev: {
       yt-dlp = devLib.newestPackage prev (
         prev.yt-dlp.overrideAttrs (oldAttrs: rec {
-          version = "2026.01.29";
+          version = "2026.02.04";
           src = final.fetchFromGitHub {
             owner = "yt-dlp";
             repo = "yt-dlp";
             tag = version;
-            hash = "sha256-nw/L71aoAJSCbW1y8ir8obrFPSbVlBA0UtlrxL6YtCQ=";
+            hash = "sha256-KXnz/ocHBftenDUkCiFoBRBxi6yWt0fNuRX+vKFWDQw=";
           };
           prePatch = ''
             substituteInPlace yt_dlp/networking/_curlcffi.py \
