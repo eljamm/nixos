@@ -348,11 +348,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770476306,
-        "narHash": "sha256-wPF535lqLqexQ11sBkAO/n0Zg0z8PBAENj8DKkUIGTU=",
+        "lastModified": 1770479833,
+        "narHash": "sha256-s4bZ+893sj0txLAcMCmFV8L3ycvIX5vrlbArpRJ2UOY=",
         "owner": "eljamm",
         "repo": "gowt",
-        "rev": "c455bdd6e202384565d1a5ee1b0c6dc003beee49",
+        "rev": "c9a939f99487d1f334951ce781096eb51f865cd3",
         "type": "github"
       },
       "original": {
