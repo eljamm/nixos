@@ -1,5 +1,6 @@
 {
   lib,
+  inputs,
   devLib,
   pkgs,
   config,
@@ -9,6 +10,9 @@
 
 {
   nixpkgs.overlays = [
+    (final: prev: {
+      gwt = inputs.gowt.default;
+    })
     (final: prev: {
       nix = config.nix.package;
       nixVersions = pkgsUnstable.nixVersions;

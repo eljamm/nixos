@@ -335,6 +335,33 @@
         "type": "github"
       }
     },
+    "gowt": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770476306,
+        "narHash": "sha256-wPF535lqLqexQ11sBkAO/n0Zg0z8PBAENj8DKkUIGTU=",
+        "owner": "eljamm",
+        "repo": "gowt",
+        "rev": "c455bdd6e202384565d1a5ee1b0c6dc003beee49",
+        "type": "github"
+      },
+      "original": {
+        "owner": "eljamm",
+        "ref": "dev",
+        "repo": "gowt",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -625,6 +652,7 @@
         "chaotic": "chaotic",
         "flake-utils": "flake-utils",
         "git-hooks-nix": "git-hooks-nix",
+        "gowt": "gowt",
         "home-manager": "home-manager",
         "musnix": "musnix",
         "nix-index-database": "nix-index-database",

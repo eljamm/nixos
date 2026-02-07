@@ -70,6 +70,13 @@
 
     catppuccin.url = "github:catppuccin/nix/v25.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    gowt = {
+      url = "github:eljamm/gowt/dev"; # fork of phanirithvij/gowt
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+    };
   };
 
   # construct flake from ./default.nix

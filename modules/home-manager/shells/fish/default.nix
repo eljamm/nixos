@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgsUnstable,
   pkgs,
   lib,
@@ -36,6 +37,10 @@
         };
       }
     ];
+    interactiveShellInit = ''
+      source ${inputs.gowt.gwt.fishWrapper}
+      alias ww gwt
+    '';
   };
 
   # for `fzf.fish`
