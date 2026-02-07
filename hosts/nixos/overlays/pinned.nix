@@ -23,12 +23,12 @@
     (final: prev: {
       albert = prev.albert.overrideAttrs (
         finalAttrs: oldAttrs: {
-          version = "34.0.2";
+          version = "34.0.5";
           src = final.fetchFromGitHub {
             owner = "albertlauncher";
             repo = "albert";
             tag = "v${finalAttrs.version}";
-            hash = "sha256-M4Chhl9pJcg2hFZB7se61FxhdPqMDRKxLhMonVOYZtY=";
+            hash = "sha256-DwFU3hb63Lf9Etr/I1lQ0SpkHfB1hRI+8V0ILk5a2C0=";
             fetchSubmodules = true;
           };
           buildInputs = (oldAttrs.buildInputs or [ ]) ++ [ pkgs.kdePackages.qcoro ];
@@ -144,18 +144,34 @@
       linux_xanmod_custom-packages = final.linuxPackagesFor final.linux_xanmod_custom;
     })
     (final: prev: {
+      models-dev = prev.models-dev.overrideAttrs (oldAttrs: rec {
+        pname = "models-dev";
+        version = "0-unstable-2026-01-30";
+        src = final.fetchFromGitHub {
+          owner = "anomalyco";
+          repo = "models.dev";
+          rev = "8b2b4b40a1f10a27aa15a4de83a7cee6c2aa9b02";
+          hash = "sha256-FtdPmJU3g9KNBDrxbFQR0Tx0cCmlNS48JSD9AUiB+7s=";
+        };
+        node_modules = oldAttrs.node_modules.overrideAttrs {
+          inherit version src;
+          outputHash = "sha256-E78Hb4ByMfYL/IZG911dX6XRRKNJ0UbQUWMSv0dclFo=";
+        };
+      });
+    })
+    (final: prev: {
       opencode = devLib.newestPackage pkgsUnstable (
         pkgsUnstable.opencode.overrideAttrs (oldAttrs: rec {
-          version = "1.1.30";
+          version = "1.1.47";
           src = final.fetchFromGitHub {
             owner = "sst";
             repo = "opencode";
             tag = "v${version}";
-            hash = "sha256-RTj64yrVLTFNpVc8MvPAJISOlBo/j2MnuL5jo4VtKWM=";
+            hash = "sha256-f6TVxKV9q2yEQ9r9VCTttXLqpOrYdTEKDUJs+MuQJCQ=";
           };
           node_modules = oldAttrs.node_modules.overrideAttrs {
             inherit version src;
-            outputHash = "sha256-37pmIiJzPEWeA7+5u5lz39vlFPI+N13Qw9weHrAaGW4=";
+            outputHash = "sha256-zkinMkPR1hCBbB5BIuqozQZDpjX4eiFXjM6lpwUx1fM=";
           };
           configurePhase = ''
             runHook preConfigure
