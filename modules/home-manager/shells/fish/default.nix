@@ -24,6 +24,10 @@
     };
     plugins = [
       {
+        name = "bass";
+        inherit (pkgs.fishPlugins.bass) src;
+      }
+      {
         name = "fzf";
         inherit (pkgs.fishPlugins.fzf-fish) src;
       }
