@@ -11,6 +11,9 @@
 {
   nixpkgs.overlays = [
     (final: prev: {
+      sylk = pkgsUnstable.callPackage ./sylk.nix { };
+    })
+    (final: prev: {
       gwt = inputs.gowt.default;
     })
     (final: prev: {
@@ -188,5 +191,9 @@
         ];
       });
     })
+  ];
+
+  environment.systemPackages = [
+    pkgs.sylk
   ];
 }
