@@ -57,20 +57,21 @@
     })
     (final: prev: {
       readest = devLib.newestPackage pkgsUnstable (
-        pkgsUnstable.readest.overrideAttrs (
+        (pkgsUnstable.readest.override { pnpm_9 = final.pnpm_10; }).overrideAttrs (
           finalAttrs: oldAttrs: {
-            version = "0.9.98";
+            version = "0.9.99";
             src = final.fetchFromGitHub {
               owner = "readest";
               repo = "readest";
               tag = "v${finalAttrs.version}";
-              hash = "sha256-qhV2ZEMcnn+0IePaIIvTcCYGCdLAUhtC0GEQAuXWUC8=";
+              hash = "sha256-Fcil35siaGrooW8+R2WrZaR5qHPJXIYOU/Au1YKlb2M=";
               fetchSubmodules = true;
             };
-            pnpmDeps = final.pnpm_9.fetchDeps {
+            pnpmDeps = final.pnpm_10.fetchDeps {
               inherit (finalAttrs) pname version src;
-              fetcherVersion = 1;
-              hash = "sha256-3eYWN5ZZByOO2UFJ7X4PdBr/fNtnBmhrzx4J9IFxiNw=";
+              pnpm = final.pnpm_10;
+              fetcherVersion = 3;
+              hash = "sha256-/bzjOdpvuPLBMvX/q1WaO3lFg5/jLz5Ypr5OojssXUI=";
             };
             cargoDeps = final.rustPlatform.fetchCargoVendor {
               inherit (finalAttrs) src;
