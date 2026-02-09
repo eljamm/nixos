@@ -43,7 +43,7 @@ let
     nix = [
       deadnix
       manix
-      nixd
+      pkgsUnstable.nixd
       nixfmt-rfc-style
       nixpkgs-lint-community
       statix
