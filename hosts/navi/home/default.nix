@@ -20,5 +20,6 @@
 
   programs.fzf.enable = true;
   programs.starship.enable = true;
+  programs.starship.enableInteractive = false;
   programs.zellij.enable = true;
 }
