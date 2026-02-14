@@ -11,12 +11,6 @@
 {
   nixpkgs.overlays = [
     (final: prev: {
-      sylk = pkgsUnstable.callPackage ./sylk.nix { };
-    })
-    (final: prev: {
-      gwt = inputs.gowt.default;
-    })
-    (final: prev: {
       nix = config.nix.package;
       nixVersions = pkgsUnstable.nixVersions;
     })
@@ -208,9 +202,8 @@
         ];
       });
     })
-  ];
-
-  environment.systemPackages = [
-    pkgs.sylk
+    (final: prev: {
+      gwt = inputs.gowt.default;
+    })
   ];
 }
