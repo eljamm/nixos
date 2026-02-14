@@ -26,7 +26,6 @@ let
       git
       lazygit
       rs-git-fsmonitor
-      tig
     ];
 
     security = [
@@ -51,13 +50,11 @@ let
 
     productivity = [
       cheat
-      termdown
     ];
 
     development = [
       addlicense
       difftastic
-      license-cli
     ];
 
     tools = [
