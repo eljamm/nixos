@@ -205,5 +205,6 @@
     (final: prev: {
       gwt = inputs.gowt.default;
     })
+    inputs.llm-agents.overlays.default
   ];
 }

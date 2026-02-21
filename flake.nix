@@ -77,6 +77,8 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.treefmt-nix.follows = "treefmt-nix";
     };
+
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   # construct flake from ./default.nix

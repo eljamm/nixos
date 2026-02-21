@@ -178,7 +178,7 @@ let
       mat2
       mdserve
       mesa-demos
-      opencode
+      llm-agents.opencode
       optipng
       pciutils
       powerstat
