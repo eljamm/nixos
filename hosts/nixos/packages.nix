@@ -119,8 +119,10 @@ let
 
     system = [
       dua
+      exfatprogs
       eza
       fd
+      gparted
       hplip # scanner
       hyperfine # benchmarking
       libavif
