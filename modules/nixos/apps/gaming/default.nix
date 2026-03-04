@@ -61,11 +61,11 @@
       pkgsUnstable.unciv
     ])
     ++ (with pkgsCustom; [
-      odamex
       # yuzu-ea
     ])
     ++ (with pkgsUnstable; [
       umu-launcher
       ryubing
+      odamex
     ]);
 }
