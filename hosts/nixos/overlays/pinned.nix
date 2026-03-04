@@ -121,8 +121,10 @@
       });
     })
     (final: prev: {
-      opencode = devLib.newestPackage pkgsUnstable (
-        pkgsUnstable.opencode.overrideAttrs (oldAttrs: rec {
+      opencode = devLib.pickNewest [
+        pkgs.llm-agents.opencode
+        pkgsUnstable.opencode
+        (pkgsUnstable.opencode.overrideAttrs (oldAttrs: rec {
           version = "1.1.47";
           src = final.fetchFromGitHub {
             owner = "sst";
@@ -139,8 +141,8 @@
             cp -R ${node_modules}/. .
             runHook postConfigure
           '';
-        })
-      );
+        }))
+      ];
     })
     (final: prev: {
       redlib = pkgsUnstable.redlib.overrideAttrs (oldAttrs: rec {
