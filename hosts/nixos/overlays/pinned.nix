@@ -34,12 +34,12 @@
         prev.freetube.overrideAttrs (
           finalAttrs: _: {
             pname = "freetube";
-            version = "0.23.12";
+            version = "0.23.14";
             src = final.fetchFromGitHub {
               owner = "FreeTubeApp";
               repo = "FreeTube";
               tag = "v${finalAttrs.version}-beta";
-              hash = "sha256-DH5uT3dPDFZnFYoiMjxpNouNDRbWDctVqvDwHpUlnkY=";
+              hash = "sha256-9CO5/EcFPO50awY1QNutbAqDG2rhOv3DYk97/9YNVWI=";
             };
             yarnOfflineCache = final.fetchYarnDeps {
               yarnLock = "${finalAttrs.src}/yarn.lock";
