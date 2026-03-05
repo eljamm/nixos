@@ -27,7 +27,7 @@ let
 
     nix = [
       manix # documentation search
-      nix-init
+      pkgsUnstable.nix-init
       # nix-inspect # TODO: old nix
       nix-output-monitor
       nix-tree
