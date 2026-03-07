@@ -27,7 +27,7 @@ in
       inputs.chaotic.nixosModules.default
       self.nixosModules.default
       self.nixosModules.apps.gaming.default
-      self.nixosModules.apps.obs
+      self.nixosModules.apps.screen-capture
       self.nixosModules.apps.spicetify
       self.nixosModules.audio.musnix
       self.nixosModules.desktops.gnome.default
