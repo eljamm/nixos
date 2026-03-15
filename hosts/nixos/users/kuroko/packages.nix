@@ -80,6 +80,7 @@ let
       abcmidi
       easyabc
       lrcget
+      wineasio
     ];
 
     gameDevelopment = [

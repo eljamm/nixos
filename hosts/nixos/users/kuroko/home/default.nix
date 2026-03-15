@@ -4,6 +4,7 @@
     ./mpv.nix
     ./programs
     ./theme.nix
+    ./wineasio.nix
   ];
 
   home = {
