@@ -76,6 +76,36 @@
       );
     })
     (final: prev: {
+      yt-dlp = devLib.newestPackage prev (
+        prev.yt-dlp.overrideAttrs (oldAttrs: rec {
+          version = "2026.03.13";
+          src = final.fetchFromGitHub {
+            owner = "yt-dlp";
+            repo = "yt-dlp";
+            tag = version;
+            hash = "sha256-Sx5otasIqQW8n37cVqGI9j6biwMcEMIboLcyC1dkexk=";
+          };
+        })
+      );
+      python3 = prev.python3.override {
+        packageOverrides = pyfinal: pyprev: {
+          yt-dlp-ejs = devLib.newestPackage pyprev (
+            pyprev.yt-dlp-ejs.overridePythonAttrs (oldAttrs: rec {
+              pname = "yt-dlp-ejs";
+              version = "0.7.0";
+              src = final.fetchFromGitHub {
+                owner = "yt-dlp";
+                repo = "ejs";
+                tag = version;
+                hash = "sha256-6S6O2wXfD38iMbtqMB3WA25cJJoWQRZ7gx9cpKQVYpU=";
+              };
+            })
+          );
+        };
+      };
+      python3Packages = final.python3.pkgs;
+    })
+    (final: prev: {
       linux_xanmod_custom =
         let
           version = "6.19.5";
