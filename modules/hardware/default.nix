@@ -13,6 +13,8 @@
   boot.kernelPackages = pkgs.linux_xanmod_custom-packages;
   boot.kernelPatches = [ ];
 
+  boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
+
   # Userspace schedulers (default scx_rustland)
   # https://github.com/sched-ext/scx/blob/main/scheds/rust/README.md
   services.scx.enable = lib.mkIf (lib.versionAtLeast config.boot.kernelPackages.kernel.version "6.12") true;
