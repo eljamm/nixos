@@ -78,12 +78,12 @@
     (final: prev: {
       yt-dlp = devLib.newestPackage prev (
         prev.yt-dlp.overrideAttrs (oldAttrs: rec {
-          version = "2026.03.13";
+          version = "2026.03.17";
           src = final.fetchFromGitHub {
             owner = "yt-dlp";
             repo = "yt-dlp";
             tag = version;
-            hash = "sha256-Sx5otasIqQW8n37cVqGI9j6biwMcEMIboLcyC1dkexk=";
+            hash = "sha256-A4LUCuKCjpVAOJ8jNoYaC3mRCiKH0/wtcsle0YfZyTA=";
           };
         })
       );
@@ -92,12 +92,12 @@
           yt-dlp-ejs = devLib.newestPackage pyprev (
             pyprev.yt-dlp-ejs.overridePythonAttrs (oldAttrs: rec {
               pname = "yt-dlp-ejs";
-              version = "0.7.0";
+              version = "0.8.0";
               src = final.fetchFromGitHub {
                 owner = "yt-dlp";
                 repo = "ejs";
                 tag = version;
-                hash = "sha256-6S6O2wXfD38iMbtqMB3WA25cJJoWQRZ7gx9cpKQVYpU=";
+                hash = "sha256-+tOA9sPk0BGJHFQCoAC8y5Bz3UcjgIPDQ8WDPkRlW5k=";
               };
             })
           );
