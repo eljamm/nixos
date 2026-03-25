@@ -82,6 +82,8 @@ let
       pipewire.jack
       playerctl
       yt-dlp
+      gpodder
+      musicpod
     ];
 
     notes = [
