@@ -247,6 +247,9 @@
       });
     })
     (final: prev: {
+      godot_4 = final.godotPackages_4_6.godot;
+    })
+    (final: prev: {
       gwt = inputs.gowt.default;
     })
     inputs.llm-agents.overlays.default
