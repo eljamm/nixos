@@ -95,7 +95,7 @@ in
     enable = true;
     defaultEditor = true;
     package = pkgsUnstable.neovim-unwrapped;
-    plugins = with pkgs.vimPlugins; [
+    plugins = with pkgsUnstable.vimPlugins; [
       neorg
       telescope-cheat-nvim
     ];
