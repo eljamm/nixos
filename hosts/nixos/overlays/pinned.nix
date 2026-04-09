@@ -249,6 +249,32 @@
     (final: prev: {
       godot_4 = final.godotPackages_4_6.godot;
     })
+    # TODO: remove when this is propagated back:
+    # https://github.com/NixOS/nixpkgs/pull/506080
+    (final: prev: {
+      tree-sitter = devLib.newestPackage prev (
+        prev.tree-sitter.overrideAttrs (
+          finalAttrs: oldAttrs: {
+            version = "0.26.8";
+            src = final.fetchFromGitHub {
+              owner = "tree-sitter";
+              repo = "tree-sitter";
+              tag = "v${finalAttrs.version}";
+              hash = "sha256-fcFEfoALrbpBD6rWogxJ7FNVlvDQgswoX9ylRgko+8Q=";
+              fetchSubmodules = true;
+            };
+            cargoDeps = final.rustPlatform.fetchCargoVendor {
+              inherit (finalAttrs) src;
+              hash = "sha256-9FeWnWWPUWmMF15Psmul8GxGv2JceHWc2WZPmOr81gw=";
+            };
+            nativeBuildInputs = oldAttrs.nativeBuildInputs or [ ] ++ [
+              final.rustPlatform.bindgenHook
+            ];
+            patches = [ ./patches/tree-sitter_remove-web-interface.patch ];
+          }
+        )
+      );
+    })
     (final: prev: {
       gwt = inputs.gowt.default;
     })
