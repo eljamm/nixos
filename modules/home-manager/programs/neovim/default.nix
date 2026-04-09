@@ -105,5 +105,8 @@ in
     ];
   };
 
-  programs.neovide.enable = true;
+  programs.neovide = {
+    enable = true;
+    package = pkgsUnstable.neovide;
+  };
 }
