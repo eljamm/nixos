@@ -11,7 +11,12 @@
 
   # Kernel
   boot.kernelPackages = pkgs.linux_xanmod_custom-packages;
-  boot.kernelPatches = [ ];
+  boot.kernelPatches = [
+    # poential fix for screen freezes (flip_done timed out)
+    # https://gitlab.freedesktop.org/drm/amd/-/work_items/2950
+    # https://lists.freedesktop.org/archives/amd-gfx/2026-February/138842.html
+    { patch = ../../hosts/nixos/overlays/patches/kernel.patch; }
+  ];
 
   boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
 
