@@ -84,6 +84,7 @@ let
       yt-dlp
       gpodder
       musicpod
+      stremio-linux-shell
     ];
 
     notes = [
