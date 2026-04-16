@@ -72,7 +72,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     gowt = {
-      url = "github:eljamm/gowt/dev"; # fork of phanirithvij/gowt
+      url = "github:eljamm/gowt/dev";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
       inputs.treefmt-nix.follows = "treefmt-nix";
