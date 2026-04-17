@@ -187,6 +187,7 @@ let
       pciutils
       powerstat
       python3Packages.edge-tts
+      showmethekey
       trash-cli
       usbutils
       vulkan-tools
