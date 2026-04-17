@@ -19,3 +19,8 @@ require("bookmarks"):setup({
 require("git"):setup()
 require("starship"):setup()
 require("recycle-bin"):setup()
+
+require("yafg"):setup({
+  editor = "nvim",
+  file_arg_format = "+{row} {file}",
+})

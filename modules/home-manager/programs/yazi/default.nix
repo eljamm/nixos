@@ -22,6 +22,7 @@
         git
         jump-to-char
         mediainfo
+        nav-parent-panel
         recycle-bin
         smart-enter
         smart-filter
@@ -29,7 +30,7 @@
         starship
         toggle-pane
         ;
-      nav-parent-panel = pkgsUnstable.callPackage ./nav-parent-panel.nix { };
+      yafg = pkgsUnstable.callPackage ./yafg.nix { };
     };
     initLua = ./init.lua;
     keymap = lib.importTOML ./keymap.toml;

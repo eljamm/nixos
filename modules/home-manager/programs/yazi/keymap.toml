@@ -44,7 +44,7 @@ prepend_keymap = [
   ] },
 
   # Vim-like `f<char>`, jump to the next file whose name starts with `<char>`
-  { on = "F", run = "plugin jump-to-char", desc = "Jump to char" },
+  # { on = "F", run = "plugin jump-to-char", desc = "Jump to char" },
 
   # Maximize or restore the preview pane.
   { on = "T", run = "plugin max-preview", desc = "Maximize or restore preview" },
@@ -89,6 +89,12 @@ prepend_keymap = [
   { on = "<C-Home>", run = "plugin nav-parent-panel first", desc = "Go to first sibling directory" },
   { on = "<C-End>", run = "plugin nav-parent-panel last", desc = "Go to last sibling directory" },
   # --
+
+  # https://github.com/XYenon/yafg.yazi
+  { on = [
+    "F",
+    "F",
+  ], run = "plugin yafg", desc = "Fuzzy Grep" },
 ]
 
 [help]
