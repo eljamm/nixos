@@ -43,7 +43,10 @@
     ];
     interactiveShellInit = ''
       source ${inputs.gowt.gwt.fishWrapper}
-      alias ww="gwt"
+      alias wt="gwt"
+      alias ww="gwt jump"
+      alias wa="gwt add"
+      alias wr="gwt remove"
       alias wk="gwt root"
       alias wh="gwt home"
     '';
