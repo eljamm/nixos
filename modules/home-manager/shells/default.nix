@@ -81,6 +81,7 @@ in
     nbb = "nix-build . -A";
     ni = "nix-init";
     nr = "nix-direnv-reload";
-    rpr = "nixpkgs-review pr";
+    npr = "nixpkgs-review pr";
+    rr = "nix repl";
   };
 }
