@@ -39,6 +39,7 @@ let
       pkgsUnstable.nixpkgs-review
       pkgsUnstable.ragenix
       npins
+      pkgsUnstable.nix-sweep
     ];
 
     python = [
