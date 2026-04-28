@@ -154,8 +154,8 @@
     (final: prev: {
       linux_xanmod_custom =
         let
-          version = "6.19.11";
-          hash = "sha256-JbiS33MeAxtcB8e7JQUu+K8bh2Ad/B6wKGKqA98R9Wc=";
+          version = "7.0.2";
+          hash = "sha256-RXdgP6jpy6GfZ70WG6k6rrryjHV2uUaqy4e+4jCgJek=";
           modDirVersion = "${version}-xanmod1";
           kernel = prev.linux_xanmod_latest;
         in
@@ -175,6 +175,7 @@
               pkgsUnstable.linux_xanmod_latest.structuredExtraConfig
               // {
                 NTSYNC = yes;
+                PREEMPT_VOLUNTARY = lib.mkForce lib.kernel.unset;
               };
           };
         };
