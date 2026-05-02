@@ -55,7 +55,7 @@
 
       # Games
       mgba
-      luanti-client
+      pkgsUnstable.luanti-client
       osu-lazer-bin
       vbam
       pkgsUnstable.unciv
