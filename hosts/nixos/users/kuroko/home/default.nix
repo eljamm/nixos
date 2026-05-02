@@ -74,6 +74,44 @@
     "XTerm*faceSize" = 12;
     "XTerm*externalBorder" = 10;
     "XTerm*internalBorder" = 20;
+
+    # Catppuccin Macchiato
+    # https://github.com/catppuccin/xresources
+    "*background" = "#24273a";
+    "*foreground" = "#cad3f5";
+    "*cursorColor" = "#f4dbd6";
+
+    # black
+    "*color0" = "#494d64";
+    "*color8" = "#5b6078";
+
+    # red
+    "*color1" = "#ed8796";
+    "*color9" = "#ed8796";
+
+    # green
+    "*color2" = "#a6da95";
+    "*color10" = "#a6da95";
+
+    # yellow
+    "*color3" = "#eed49f";
+    "*color11" = "#eed49f";
+
+    # blue
+    "*color4" = "#8aadf4";
+    "*color12" = "#8aadf4";
+
+    # magenta
+    "*color5" = "#f5bde6";
+    "*color13" = "#f5bde6";
+
+    # cyan
+    "*color6" = "#8bd5ca";
+    "*color14" = "#8bd5ca";
+
+    # white
+    "*color7" = "#b8c0e0";
+    "*color15" = "#a5adcb";
   };
 
   xdg.dataFile."mime/packages/drawio.xml".text = ''
