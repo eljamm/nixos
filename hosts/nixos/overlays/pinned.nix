@@ -277,6 +277,21 @@
       );
     })
     (final: prev: {
+      krita = pkgsUnstable.krita.overrideAttrs (oldAttrs: {
+        env.PYTHONPATH = final.python3Packages.makePythonPath (
+          with final.python3Packages;
+          [
+            # for https://github.com/davi133/brush_sfx
+            sounddevice
+          ]
+        );
+        qtWrapperArgs = [
+          # required for drawing tablet to work
+          "--set QT_QPA_PLATFORM wayland"
+        ];
+      });
+    })
+    (final: prev: {
       gwt = inputs.gowt.default;
     })
     inputs.llm-agents.overlays.default
