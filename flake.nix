@@ -63,11 +63,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    chaotic = {
-      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-      inputs.home-manager.follows = "home-manager";
-    };
-
     catppuccin.url = "github:catppuccin/nix/v25.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 

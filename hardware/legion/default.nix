@@ -41,6 +41,9 @@
     "xhci_pci"
   ];
 
+  # Disable kernel module loading once the system is fully initialised.
+  # security.lockKernelModules = true;
+
   environment.systemPackages = [ pkgs.lenovo-legion ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     # for linux 6.13

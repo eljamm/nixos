@@ -24,7 +24,6 @@ in
     modules = [
       inputs.agenix.nixosModules.default
       inputs.catppuccin.nixosModules.catppuccin
-      inputs.chaotic.nixosModules.default
       self.nixosModules.default
       self.nixosModules.apps.gaming.default
       self.nixosModules.apps.screen-capture
