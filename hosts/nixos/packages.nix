@@ -153,6 +153,7 @@ let
       tealdeer
       tellico
       termdown
+      zeal
     ];
 
     development = [
@@ -164,6 +165,7 @@ let
       pkgsUnstable.ffizer
       pkgsUnstable.zizmor
       pre-commit
+      sccache
       tree-sitter
       watchexec
     ];
