@@ -158,6 +158,7 @@ let
 
     development = [
       addlicense
+      dive # explore docker image layers
       flamelens
       license-cli
       meld
