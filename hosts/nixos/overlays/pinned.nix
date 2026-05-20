@@ -160,11 +160,6 @@
           kernel = prev.linux_xanmod_latest;
         in
         kernel.override {
-          stdenv = final.ccacheStdenv;
-          buildPackages = final.buildPackages // {
-            stdenv = final.ccacheStdenv;
-          };
-
           argsOverride = {
             inherit version modDirVersion;
 
