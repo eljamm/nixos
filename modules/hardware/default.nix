@@ -18,7 +18,10 @@
     { patch = ../../hosts/nixos/overlays/patches/kernel.patch; }
   ];
 
-  boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+    "riscv64-linux"
+  ];
 
   # Userspace schedulers (default scx_rustland)
   # https://github.com/sched-ext/scx/blob/main/scheds/rust/README.md
