@@ -162,6 +162,8 @@ let
       flamelens
       license-cli
       meld
+      patchelf
+      pkgsCustom.arwen
       pkgsUnstable.act
       pkgsUnstable.ffizer
       pkgsUnstable.zizmor
