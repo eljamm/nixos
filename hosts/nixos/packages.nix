@@ -160,6 +160,7 @@ let
       addlicense
       dive # explore docker image layers
       flamelens
+      git-ignore
       license-cli
       meld
       patchelf
