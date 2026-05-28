@@ -36,6 +36,7 @@ in
       self.nixosModules.scripts.default
       self.nixosModules.services.anki
       self.nixosModules.services.blocky
+      self.nixosModules.services.forgejo
       self.nixosModules.services.keyd
       self.nixosModules.services.misc
       self.nixosModules.services.mumble
