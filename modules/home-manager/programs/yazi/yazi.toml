@@ -9,14 +9,14 @@ imgopen = [{ run = 'lximage-qt "$@"', desc = "LxImage-qt", orphan = true }]
 
 [open]
 prepend_rules = [
-  { name = "*.pdf", use = "pdfopen" },
-  { name = "image/*", use = "imgopen" },
+  { url = "*.pdf", use = "pdfopen" },
+  { url = "image/*", use = "imgopen" },
 ]
 
 [plugin]
 prepend_fetchers = [
-  { id = "git", name = "*", run = "git" },
-  { id = "git", name = "*/", run = "git" },
+  { group = "git", url = "*", run = "git" },
+  { group = "git", url = "*/", run = "git" },
 ]
 prepend_preloaders = [
   # Replace magick, image, video with mediainfo
