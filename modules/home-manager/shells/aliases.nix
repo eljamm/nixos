@@ -20,6 +20,8 @@ in
     # Utils
     mklist = "ls -I list.txt > list.txt";
     mklistt = "lt -I listt.txt > listt.txt";
+    fclash = "find . -type f | sort -f | uniq -i -d"; # file case clash
+    fgclash = "git ls-files | sort -f | uniq -i -d"; # git-tracked file case clash
 
     # Media
     mplv = "mpv --profile=480p";
