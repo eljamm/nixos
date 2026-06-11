@@ -44,7 +44,7 @@
       igir
       libstrangle
       np2kai # pc98 emulator
-      wineWowPackages.staging
+      wineWow64Packages.staging
       winetricks
 
       # Launchers

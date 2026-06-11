@@ -94,6 +94,10 @@ in
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    # Disable Python and Ruby providers. See:
+    # https://github.com/nix-community/home-manager/pull/9055
+    withPython3 = false;
+    withRuby = false;
     package = pkgsUnstable.neovim-unwrapped;
     plugins = with pkgsUnstable.vimPlugins; [
       neorg

@@ -4,7 +4,7 @@
   ...
 }:
 let
-  winePkg = pkgs.wineWowPackages.staging;
+  winePkg = pkgs.wineWow64Packages.staging;
   wine = "${winePkg}/bin/wine";
   so = "${pkgs.wineasio}/lib/wine/x86_64-unix/wineasio64.dll.so";
   dest = "$WINEPREFIX/drive_c/windows/system32/wineasio64.dll";

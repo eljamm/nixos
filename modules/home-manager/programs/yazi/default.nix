@@ -8,6 +8,7 @@
   programs.yazi = {
     enable = true;
     enableFishIntegration = true;
+    shellWrapperName = "yy";
     package = pkgsUnstable.yazi.override {
       extraPackages = with pkgs; [
         mediainfo
