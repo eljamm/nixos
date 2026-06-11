@@ -44,7 +44,7 @@ let
       deadnix
       manix
       pkgsUnstable.nixd
-      nixfmt-rfc-style
+      nixfmt
       nixpkgs-lint-community
       statix
     ];
