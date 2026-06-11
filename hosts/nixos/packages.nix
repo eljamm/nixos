@@ -175,6 +175,7 @@ let
     ];
 
     tools = [
+      android-tools
       bleachbit
       duf # disk usage/free
       duperemove
