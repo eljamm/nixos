@@ -36,7 +36,7 @@ let
     markup = [
       cbfmt # format codeblocks
       codespell
-      nodePackages.cspell
+      cspell
       markdownlint-cli
     ];
 
@@ -63,7 +63,7 @@ let
     ];
 
     shell = [
-      nodePackages.bash-language-server
+      bash-language-server
       shellcheck
       shfmt
     ];
@@ -74,10 +74,10 @@ let
 
     web = [
       deno
-      nodePackages.sql-formatter
-      nodePackages.typescript-language-server
       nodejs
       prettierd # multi-language formatters
+      sql-formatter
+      typescript-language-server
       vscode-langservers-extracted
       yarn
     ];
