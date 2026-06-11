@@ -29,7 +29,7 @@ let
       ffmpeg
       flacon
       handbrake
-      helvum
+      crosspipe
       kid3
       pavucontrol
       pwvucontrol
