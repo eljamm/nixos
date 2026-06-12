@@ -53,7 +53,7 @@ in
       psmisc
       waybar
 
-      swww
+      awww
 
       # External Monitor
       # ddcutil

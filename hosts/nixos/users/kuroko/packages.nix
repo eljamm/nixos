@@ -126,7 +126,7 @@ let
     ];
 
     development = [
-      mold-wrapped
+      mold
       sqlitebrowser
     ];
 

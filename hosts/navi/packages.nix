@@ -17,7 +17,7 @@ let
     media = [
       mediainfo
       mkvtoolnix-cli
-      opusTools
+      opus-tools
       yt-dlp
     ];
 

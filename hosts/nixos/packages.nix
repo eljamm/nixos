@@ -80,7 +80,7 @@ let
       mediainfo-gui
       (lib.hiPrio mkvtoolnix)
       mkvtoolnix-cli
-      opusTools
+      opus-tools
       pipewire.jack
       playerctl
       yt-dlp
@@ -201,7 +201,7 @@ let
       usbutils
       vulkan-tools
       watchman
-      xorg.xeyes
+      xeyes
     ];
   };
 in

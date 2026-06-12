@@ -15,7 +15,7 @@
   programs.fish.package = pkgsUnstable.fish;
 
   documentation.nixos.enable = false;
-  documentation.man.generateCaches = false; # slow eval time with fish
+  documentation.man.cache.enable = false; # slow eval time with fish
 
   time.timeZone = "CET";
 
