@@ -64,8 +64,9 @@ let
       ninjas2
       odin2
       pkgsUnstable.ripplerx
+      # FIX:
       # pkgsUnstable.vaporizer2
-      surge
+      # surge
       tunefish
       vcv-rack
       vital
