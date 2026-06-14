@@ -292,6 +292,48 @@
       });
     })
     (final: prev: {
+      stremio-linux-shell = prev.stremio-linux-shell.overrideAttrs (
+        finalAttrs: oldAttrs: {
+          version = "1.0.0-beta.13-unstable-2026-06-14";
+
+          src = final.fetchFromGitHub {
+            owner = "Stremio";
+            repo = "stremio-linux-shell";
+            rev = "01967a0202569620afb5b42175a67d6b25039c43";
+            hash = "sha256-HG5In34ED5akLFwzYbJuk3IsT8ABqqJaXKoHe4Y2l+Q=";
+          };
+
+          cargoDeps = final.rustPlatform.fetchCargoVendor {
+            inherit (finalAttrs) src;
+            hash = "sha256-QhrL7yPu/zAJIXo+D1abbZ4yO3Tk9S+qsNbz3RxQ+uw=";
+          };
+
+          patches = [ ];
+          postPatch = "";
+
+          buildInputs = oldAttrs.buildInputs ++ [
+            final.libadwaita
+            final.libepoxy
+            final.webkitgtk_6_0
+          ];
+
+          # Node.js is required to run `server.js`
+          # Add to `gappsWrapperArgs` to avoid two layers of wrapping.
+          preFixup = ''
+            gappsWrapperArgs+=(
+              --prefix LD_LIBRARY_PATH : "${final.addDriverRunpath.driverLink}/lib" \
+              --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ final.libGL ]}" \
+              --prefix PATH : "${lib.makeBinPath [ final.nodejs ]}" \
+              --set SERVER_PATH "${placeholder "out"}/share/stremio/server.js"
+            )
+          '';
+
+          # unstable version
+          doInstallCheck = false;
+        }
+      );
+    })
+    (final: prev: {
       gwt = inputs.gowt.default;
     })
     inputs.llm-agents.overlays.default
