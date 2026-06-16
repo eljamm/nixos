@@ -43,6 +43,7 @@
       goverlay
       igir
       libstrangle
+      mangohud
       np2kai # pc98 emulator
       pince
       wineWow64Packages.staging

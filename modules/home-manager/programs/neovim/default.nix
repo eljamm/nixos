@@ -98,6 +98,9 @@ in
     # https://github.com/nix-community/home-manager/pull/9055
     withPython3 = false;
     withRuby = false;
+    # Load `init.lua` through neovim wrapper instead of writing to
+    # `$XDG_CONFIG_HOME/nvim/init.lua`
+    sideloadInitLua = true;
     package = pkgsUnstable.neovim-unwrapped;
     plugins = with pkgsUnstable.vimPlugins; [
       neorg

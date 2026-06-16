@@ -20,7 +20,10 @@
       keys = [ ];
     };
 
-    mangohud.enable = true;
+    # TODO: declarative config
+    mangohud.enable = false;
+    mangohud.settings = { };
+
     taskwarrior = {
       enable = true;
       package = pkgs.taskwarrior3;
