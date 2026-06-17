@@ -76,5 +76,19 @@ in
         GI_TYPELIB_PATH = "/run/current-system/sw/lib/girepository-1.0";
       };
     };
+
+    nixpkgs.overlays = [
+      (final: prev: {
+        mutter = prev.mutter.overrideAttrs (oldAttrs: {
+          patches = (oldAttrs.patches or [ ]) ++ [
+            # Fix alt-tab with sloppy/mouse focus
+            (final.fetchpatch {
+              url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/5036.patch";
+              hash = "sha256-w20McyQMBJKP4soCb0ZXRXgVSIQWtmYRCoX4ATliPvE";
+            })
+          ];
+        });
+      })
+    ];
   };
 }
