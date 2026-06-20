@@ -11,7 +11,7 @@ let
       birdtray
       brave
       firefox
-      pkgsUnstable.librewolf
+      librewolf
       thunderbird
       ungoogled-chromium
     ];
