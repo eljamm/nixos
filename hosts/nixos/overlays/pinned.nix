@@ -53,69 +53,32 @@
       readest = devLib.newestPackage pkgsUnstable (
         pkgsUnstable.readest.overrideAttrs (
           finalAttrs: oldAttrs: {
-            version = "0.10.4";
+            version = "0.11.12";
 
             src = final.fetchFromGitHub {
               owner = "readest";
               repo = "readest";
               tag = "v${finalAttrs.version}";
-              hash = "sha256-/4UyRzFALujZ98EdXxiVeLH8W+0Mqm09RZ4zEwOVyyk=";
+              hash = "sha256-3nUmizE5g2ICWd/1rpsq35w8VzKEg8OMuIceNULR6SM=";
               fetchSubmodules = true;
             };
 
             pnpmDeps = final.fetchPnpmDeps {
               inherit (finalAttrs) pname version src;
-              pnpm = final.pnpm_10;
-              fetcherVersion = 3;
-              hash = "sha256-7jar0aNXaBfoklGzgvC+1DwsOXgpnOcIcEbIGwWgyfw=";
+              pnpm = final.pnpm_11;
+              fetcherVersion = 4;
+              hash = "sha256-0bxfsOXXcK3DfqJ5XSCtp2gY41I5TifiiPtEEUH13pg=";
+              pnpmInstallFlags = [
+                # Increase number of fetch attempts to work around timeout issues on slow
+                # networks: "TimeoutError: The operation was aborted due to timeout".
+                # See: https://pnpm.io/settings#request-settings
+                "--fetch-retries=5"
+              ];
             };
 
             cargoDeps = final.rustPlatform.fetchCargoVendor {
               inherit (finalAttrs) src;
-              hash = "sha256-rxOjXhXN19w8qAEvELIh0oXuB/N80Dtzmf/i3hjRal0=";
-            };
-
-            postPatch = oldAttrs.postPatch + ''
-              mkdir -p src-tauri/plugins/tauri-plugin-turso/dist-js
-              cp -r ${finalAttrs.passthru.tursoPlugin} src-tauri/plugins/tauri-plugin-turso/dist-js
-              jq '.scripts.build = "true"' \
-                src-tauri/plugins/tauri-plugin-turso/package.json | \
-                sponge src-tauri/plugins/tauri-plugin-turso/package.json
-            '';
-
-            preBuild = oldAttrs.preBuild + ''
-              pnpm --filter @readest/readest-app build
-            '';
-
-            passthru.tursoPluginDeps = final.fetchPnpmDeps {
-              pname = "tauri-plugin-turso";
-              version = finalAttrs.version;
-              src = "${finalAttrs.src}/apps/readest-app/src-tauri/plugins/tauri-plugin-turso";
-              pnpm = final.pnpm_10;
-              fetcherVersion = 3;
-              hash = "sha256-Jf/UaEaLUg/v9ZRInBCEfkDY4d6nwyAIegCMKZe0iAQ=";
-            };
-
-            passthru.tursoPlugin = final.stdenv.mkDerivation {
-              pname = "tauri-plugin-turso";
-              version = finalAttrs.version;
-              src = "${finalAttrs.src}/apps/readest-app/src-tauri/plugins/tauri-plugin-turso";
-
-              nativeBuildInputs = with final; [
-                pnpm_10
-                pnpmConfigHook
-                nodejs
-              ];
-
-              pnpmDeps = finalAttrs.passthru.tursoPluginDeps;
-
-              buildPhase = ''
-                pnpm build
-              '';
-
-              installPhase = ''
-                cp -r dist-js $out
-              '';
+              hash = "sha256-t7pP3VP80/ex4iKwa0/ogEppeE6zPjEvZp53VwPg/Iw=";
             };
           }
         )
