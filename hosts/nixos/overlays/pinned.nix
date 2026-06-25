@@ -257,18 +257,18 @@
     (final: prev: {
       stremio-linux-shell = prev.stremio-linux-shell.overrideAttrs (
         finalAttrs: oldAttrs: {
-          version = "1.0.0-beta.13-unstable-2026-06-14";
+          version = "1.0.0-beta.15-unstable-2026-06-24";
 
           src = final.fetchFromGitHub {
             owner = "Stremio";
             repo = "stremio-linux-shell";
-            rev = "01967a0202569620afb5b42175a67d6b25039c43";
-            hash = "sha256-HG5In34ED5akLFwzYbJuk3IsT8ABqqJaXKoHe4Y2l+Q=";
+            rev = "01013c25e011d6491507b0afc47ec9ec8c3f9c69";
+            hash = "sha256-As6/H5sCQYYNk5EL+EbI6wncIRGw9QHlHlsLx/iLgME=";
           };
 
           cargoDeps = final.rustPlatform.fetchCargoVendor {
             inherit (finalAttrs) src;
-            hash = "sha256-QhrL7yPu/zAJIXo+D1abbZ4yO3Tk9S+qsNbz3RxQ+uw=";
+            hash = "sha256-KaB2S3toyoIB7ZGHL4iINXHz0j7EirtMNLUL60VkS7U=";
           };
 
           patches = [ ];
