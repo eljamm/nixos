@@ -28,6 +28,7 @@ prepend_keymap = [
   # Operation
   { on = "p", run = "paste", desc = "Paste yanked files" },
   { on = "<C-p>", run = "paste --force", desc = "Paste yanked files (overwrite if the destination exists)" },
+  { on = "A", run = "create --dir", desc = "Create a new directory" },
 
   # Smart paste: `paste` files without entering the directory
   { on = "P", run = "plugin smart-paste", desc = "Paste into the hovered directory or CWD" },
