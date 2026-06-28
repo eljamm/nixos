@@ -40,6 +40,7 @@ in
       self.nixosModules.services.keyd
       self.nixosModules.services.misc
       self.nixosModules.services.mumble
+      self.nixosModules.services.paperless
       self.nixosModules.services.printing
       self.nixosModules.system.virtualisation
       self.homeModules.users.kuroko
