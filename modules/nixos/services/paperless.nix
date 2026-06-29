@@ -22,7 +22,11 @@ in
       description = "Whether to enable my custom paperless config.";
     };
 
-    autoExport = lib.mkEnableOption "efficient export of paperless content to the `export` directory under {option}`services.paperless.dataDir`";
+    autoExport = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Whether to enable efficient export of paperless content to the `export` directory under {option}`services.paperless.dataDir`.";
+    };
   };
 
   config = lib.mkIf this.enable {
