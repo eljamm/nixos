@@ -76,16 +76,28 @@
     llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
-  # construct flake from ./default.nix
+  # import flake attributes from ./default.nix
   outputs =
     { self, ... }@inputs:
     let
-      flakeLib = inputs.flake-utils.lib;
+      inherit (inputs.flake-utils.lib)
+        eachSystem
+        eachSystemPassThrough
+        ;
 
-      importFlake = arg: system: (import ./. { inherit self inputs system; }).flake.${arg} or { };
+      systems = [
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
 
-      perSystemFlake = flakeLib.eachDefaultSystem (importFlake "perSystem");
-      systemAgnosticFlake = flakeLib.eachDefaultSystemPassThrough (importFlake "systemAgnostic");
+      getDefault = system: (import ./. { inherit self inputs system; });
+      importFlake = arg: system: (getDefault system).flake.${arg} or { };
+
+      # independant of system (e.g. nixosModules)
+      systemAgnosticFlake = eachSystemPassThrough systems (importFlake "systemAgnostic");
+
+      # depends on system (e.g. packages.x86_64-linux)
+      perSystemFlake = eachSystem systems (importFlake "perSystem");
     in
     systemAgnosticFlake // perSystemFlake;
 }
