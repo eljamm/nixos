@@ -34,6 +34,8 @@ in
     services.paperless.address = "0.0.0.0";
     services.paperless.passwordFile = lib.toFile "password" "none";
     services.paperless.settings = {
+      PAPERLESS_OCR_LANGUAGE = "eng+fra+ara";
+
       PAPERLESS_OCR_USER_ARGS = lib.toJSON {
         optimize = 2;
         pdfa_image_compression = "auto";
