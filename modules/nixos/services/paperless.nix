@@ -120,5 +120,7 @@ in
     };
 
     users.users.${username}.extraGroups = [ "paperless" ];
+
+    networking.firewall.allowedTCPPorts = [ cfg.port ];
   };
 }
