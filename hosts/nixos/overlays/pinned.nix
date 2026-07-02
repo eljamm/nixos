@@ -53,13 +53,13 @@
       readest = devLib.newestPackage pkgsUnstable (
         pkgsUnstable.readest.overrideAttrs (
           finalAttrs: oldAttrs: {
-            version = "0.11.12";
+            version = "0.11.17";
 
             src = final.fetchFromGitHub {
               owner = "readest";
               repo = "readest";
               tag = "v${finalAttrs.version}";
-              hash = "sha256-3nUmizE5g2ICWd/1rpsq35w8VzKEg8OMuIceNULR6SM=";
+              hash = "sha256-vueP/UGu1G+DnwqJ7GhcYIxIsyTeFGYIiz7Iu0fs3NA=";
               fetchSubmodules = true;
             };
 
@@ -67,7 +67,7 @@
               inherit (finalAttrs) pname version src;
               pnpm = final.pnpm_11;
               fetcherVersion = 4;
-              hash = "sha256-0bxfsOXXcK3DfqJ5XSCtp2gY41I5TifiiPtEEUH13pg=";
+              hash = "sha256-wtWYdIfqytwn8PNahbQ/WxJuhhH1lbgNshQy6V0vvcA=";
               pnpmInstallFlags = [
                 # Increase number of fetch attempts to work around timeout issues on slow
                 # networks: "TimeoutError: The operation was aborted due to timeout".
@@ -78,7 +78,7 @@
 
             cargoDeps = final.rustPlatform.fetchCargoVendor {
               inherit (finalAttrs) src;
-              hash = "sha256-t7pP3VP80/ex4iKwa0/ogEppeE6zPjEvZp53VwPg/Iw=";
+              hash = "sha256-QxsiYl7mG+kS35pcU8/WLQA+f3gepe7qrHelhUzONbY=";
             };
           }
         )
