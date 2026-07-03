@@ -62,6 +62,7 @@ let
       readest
       projecteur
       yacreader
+      ocrfeeder
     ];
 
     lxqt = with lxqt; [
