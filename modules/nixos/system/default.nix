@@ -1,5 +1,5 @@
 {
-  pkgsUnstable,
+  pkgs,
   username,
   ...
 }:
@@ -10,9 +10,9 @@
   ];
 
   # Set fish as the default user shell for all users
-  users.defaultUserShell = pkgsUnstable.fish;
+  users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
-  programs.fish.package = pkgsUnstable.fish;
+  programs.fish.package = pkgs.fish;
 
   documentation.nixos.enable = false;
   documentation.man.cache.enable = false; # slow eval time with fish
