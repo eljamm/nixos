@@ -11,6 +11,7 @@
       gutenprintBin
       canon-capt
       canon-cups-ufr2
+      hplipWithPlugin
     ];
   };
 
