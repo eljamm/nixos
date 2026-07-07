@@ -64,6 +64,7 @@ let
       yacreader
       ocrfeeder
       ocamlPackages.cpdf
+      pdfmixtool
     ];
 
     lxqt = with lxqt; [
