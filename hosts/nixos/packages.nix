@@ -63,6 +63,7 @@ let
       projecteur
       yacreader
       ocrfeeder
+      ocamlPackages.cpdf
     ];
 
     lxqt = with lxqt; [
