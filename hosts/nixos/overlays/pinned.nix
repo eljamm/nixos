@@ -29,6 +29,20 @@
       );
     })
     (final: prev: {
+      wox = prev.wox.overrideAttrs (
+        finalAttrs: oldAttrs: {
+          version = "2.3.0";
+          src = final.fetchFromGitHub {
+            owner = "Wox-launcher";
+            repo = "Wox";
+            tag = "v${finalAttrs.version}";
+            hash = "sha256-XYPGCHsO5qi5pSTd2M54aAkdMGU0uHaIpZry5+7nuvE=";
+          };
+          vendorHash = "sha256-gVDOCMBNKY7mJkjUOeO3Y78o/57iftmC4q6tE7Hgcto=";
+        }
+      );
+    })
+    (final: prev: {
       freetube = devLib.newestPackage prev (
         prev.freetube.overrideAttrs (
           finalAttrs: _: {
