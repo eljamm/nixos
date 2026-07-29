@@ -121,8 +121,9 @@ let
 
     system = [
       albert
-      speechd
       copyq
+      speechd
+      wox
     ];
 
     development = [
