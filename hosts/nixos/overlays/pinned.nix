@@ -47,16 +47,18 @@
         prev.freetube.overrideAttrs (
           finalAttrs: _: {
             pname = "freetube";
-            version = "0.23.15";
+            version = "0.25.2";
             src = final.fetchFromGitHub {
               owner = "FreeTubeApp";
               repo = "FreeTube";
               tag = "v${finalAttrs.version}-beta";
-              hash = "sha256-tYRvR75qbJwt6U4KzT9jrJjO5UznpoALqhUTDkeUlzI=";
+              hash = "sha256-A25I64GP4FRyP21W5QuVvrWpThyU7hDosO25vkIx0UY=";
             };
-            yarnOfflineCache = final.fetchYarnDeps {
-              yarnLock = "${finalAttrs.src}/yarn.lock";
-              hash = "sha256-sxDlPB3CWbFAm3WZ6AlwuVu/4UFR9Stl3q0wpkUXPPU=";
+            pnpmDeps = final.fetchPnpmDeps {
+              inherit (finalAttrs) pname version src;
+              pnpm = final.pnpm_10;
+              fetcherVersion = 4;
+              hash = "sha256-1OnmJi4xCxMALAac4jnLOKg5N/t3pcHgM0AgvF1+DpM=";
             };
           }
         )
@@ -270,18 +272,18 @@
     (final: prev: {
       stremio-linux-shell = prev.stremio-linux-shell.overrideAttrs (
         finalAttrs: oldAttrs: {
-          version = "1.0.0-beta.15-unstable-2026-06-24";
+          version = "1.1.4-unstable-2026-07-30";
 
           src = final.fetchFromGitHub {
             owner = "Stremio";
             repo = "stremio-linux-shell";
-            rev = "01013c25e011d6491507b0afc47ec9ec8c3f9c69";
-            hash = "sha256-As6/H5sCQYYNk5EL+EbI6wncIRGw9QHlHlsLx/iLgME=";
+            rev = "3826d3c9a97e83d218b6bf87321f2817065cef46";
+            hash = "sha256-Y5BkMviHM1+DcwUrrv4eqCLjawKfA4ZaohjgpFQjjFk=";
           };
 
           cargoDeps = final.rustPlatform.fetchCargoVendor {
             inherit (finalAttrs) src;
-            hash = "sha256-KaB2S3toyoIB7ZGHL4iINXHz0j7EirtMNLUL60VkS7U=";
+            hash = "sha256-PVQtjayknWwHf7MSva0QEEDcWWYA26KB0bcMV6qOvI4=";
           };
 
           patches = [ ];
