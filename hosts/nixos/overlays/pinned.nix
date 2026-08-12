@@ -270,41 +270,21 @@
       });
     })
     (final: prev: {
-      stremio-linux-shell = prev.stremio-linux-shell.overrideAttrs (
+      stremio-linux-shell = pkgsUnstable.stremio-linux-shell.overrideAttrs (
         finalAttrs: oldAttrs: {
-          version = "1.1.4-unstable-2026-07-30";
+          version = "1.2.0-unstable-2026-08-03";
 
           src = final.fetchFromGitHub {
             owner = "Stremio";
             repo = "stremio-linux-shell";
-            rev = "3826d3c9a97e83d218b6bf87321f2817065cef46";
-            hash = "sha256-Y5BkMviHM1+DcwUrrv4eqCLjawKfA4ZaohjgpFQjjFk=";
+            rev = "c6e7cd22e23ed6401e573fe7fe1a023fc07399a2";
+            hash = "sha256-JFG+sUuK+l8Ik00vHPiXJwan0rmMBiY85DnvudYKCsw=";
           };
 
           cargoDeps = final.rustPlatform.fetchCargoVendor {
             inherit (finalAttrs) src;
-            hash = "sha256-PVQtjayknWwHf7MSva0QEEDcWWYA26KB0bcMV6qOvI4=";
+            hash = "sha256-FnQ2FN9NtL/YyRmLlyGQApjzV/4uS8OnnY8kbTWTGe8=";
           };
-
-          patches = [ ];
-          postPatch = "";
-
-          buildInputs = oldAttrs.buildInputs ++ [
-            final.libadwaita
-            final.libepoxy
-            final.webkitgtk_6_0
-          ];
-
-          # Node.js is required to run `server.js`
-          # Add to `gappsWrapperArgs` to avoid two layers of wrapping.
-          preFixup = ''
-            gappsWrapperArgs+=(
-              --prefix LD_LIBRARY_PATH : "${final.addDriverRunpath.driverLink}/lib" \
-              --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ final.libGL ]}" \
-              --prefix PATH : "${lib.makeBinPath [ final.nodejs ]}" \
-              --set SERVER_PATH "${placeholder "out"}/share/stremio/server.js"
-            )
-          '';
 
           # unstable version
           doInstallCheck = false;
