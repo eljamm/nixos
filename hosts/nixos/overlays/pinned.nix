@@ -102,12 +102,12 @@
     (final: prev: {
       yt-dlp = devLib.newestPackage prev (
         prev.yt-dlp.overrideAttrs (oldAttrs: rec {
-          version = "2026.06.09";
+          version = "2026.08.19";
           src = final.fetchFromGitHub {
             owner = "yt-dlp";
             repo = "yt-dlp";
             tag = version;
-            hash = "sha256-ykqTDPzKKIWRGSQmw2esCRKyYqDZKXRYDeba888tkDU=";
+            hash = "sha256-BM5ZeGTmHq+1xH6G/zsuCtjLgYgfRA11ya0zIHK5p4g=";
           };
         })
       );
