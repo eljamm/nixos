@@ -109,7 +109,7 @@ let
 
     education = [
       anki
-      ki
+      # ki # FIX: failing tests
     ];
 
     office = [
