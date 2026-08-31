@@ -78,6 +78,7 @@ let
       alsa-utils
       pkgsUnstable.feishin
       ffmpegthumbnailer
+      digikam
       freetube
       mediainfo
       mediainfo-gui

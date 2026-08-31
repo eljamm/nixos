@@ -270,6 +270,27 @@
       });
     })
     (final: prev: {
+      digikam = devLib.newestPackage pkgsUnstable (
+        (pkgsUnstable.digikam.overrideAttrs (oldAttrs: {
+          version = "9.1.0-unstable-2026-08-30";
+          src = final.fetchFromGitLab {
+            domain = "invent.kde.org";
+            owner = "graphics";
+            repo = "digikam";
+            rev = "d6d3edd12340cdfa5a7cc5d51a06b616720e2646";
+            hash = "sha256-qXec22BkYoE3K+uOS61bT33OdqtfduWhuy8wQhNCrAY=";
+          };
+          buildInputs = oldAttrs.buildInputs ++ [
+            final.opencl-headers
+            final.ocl-icd
+          ];
+        })).override
+          {
+            enableCuda = true;
+          }
+      );
+    })
+    (final: prev: {
       stremio-linux-shell = pkgsUnstable.stremio-linux-shell.overrideAttrs (
         finalAttrs: oldAttrs: {
           version = "1.2.0-unstable-2026-08-03";
