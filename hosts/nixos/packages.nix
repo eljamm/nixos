@@ -164,6 +164,7 @@ let
 
     development = [
       addlicense
+      degit # for downloading git sub-dirs
       dive # explore docker image layers
       flamelens
       git-ignore
