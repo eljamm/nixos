@@ -17,6 +17,7 @@ let
       aria2
       dig
       iperf3
+      mtr-gui
       nmap
       tmux
       traceroute
