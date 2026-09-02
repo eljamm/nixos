@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ncro = {
+      url = "github:manic-systems/ncro";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
