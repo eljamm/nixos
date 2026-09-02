@@ -19,6 +19,10 @@
         s = "status";
       };
       credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
+
+      # improve performance through parallelism
+      fetch.parallel = "8";
+      checkout.workers = "4";
     };
   };
 
