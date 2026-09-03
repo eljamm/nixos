@@ -15,6 +15,7 @@ in
     legacyPackages = {
       lib = devLib;
       packages = flake.perSystem.packages;
+      inherit (default) scripts;
     };
   };
 
