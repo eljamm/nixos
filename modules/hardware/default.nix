@@ -12,14 +12,6 @@
   # Kernel
   boot.kernelPackages = pkgs.linux_xanmod_custom-packages;
   boot.kernelPatches = [
-    # Fix for screen freezes (flip_done timed out)
-    # https://gitlab.freedesktop.org/drm/amd/-/work_items/2950
-    # https://lists.freedesktop.org/archives/amd-gfx/2026-February/138842.html
-    { patch = ../../hosts/nixos/overlays/patches/kernel.patch; }
-    # drm/amdgpu: fix check in amdgpu_hmm_invalidate_gfx
-    # Prevents audio crashes when opening hardware-accelerated video (e.g., in mpv).
-    # https://gitlab.freedesktop.org/agd5f/linux/-/commit/52f650963d8825e97a0ccdd2b616f8a01d9d3d38.patch
-    { patch = ../../hosts/nixos/overlays/patches/kernel-7.1-fix-amdgpu_hmm_invalidate_gfx.patch; }
   ];
 
   boot.binfmt.emulatedSystems = [

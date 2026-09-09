@@ -132,8 +132,8 @@
     (final: prev: {
       linux_xanmod_custom =
         let
-          version = "7.1.5";
-          hash = "sha256-zELqn/UieXjOBkTNTLi2OCkK4+rpD/IfJEDb7GTTJfk=";
+          version = "7.2.4";
+          hash = "sha256-Qih/0v0WE5XJueOn93JhG0WhEaI1bfFi0wua4yP9zSo=";
           modDirVersion = "${version}-xanmod1";
           kernel = prev.linux_xanmod_latest;
         in
