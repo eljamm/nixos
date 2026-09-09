@@ -158,6 +158,21 @@
           };
         };
       linux_xanmod_custom-packages = final.linuxPackagesFor final.linux_xanmod_custom;
+      kernelPackagesExtensions = prev.kernelPackagesExtensions ++ [
+        (finalKernelPackages: prevKernelPackages: {
+          zenpower = prevKernelPackages.zenpower.overrideAttrs (
+            finalAttrs: oldAttrs: {
+              version = "0.2.0";
+              src = pkgs.fetchFromGitHub {
+                owner = "AliEmreSenel";
+                repo = "zenpower3";
+                tag = "v${finalAttrs.version}";
+                hash = "sha256-ro40bIMPkM3rLraZaKqzB8a14zgldMIW4jSUr5GbELo=";
+              };
+            }
+          );
+        })
+      ];
     })
     (final: prev: {
       models-dev = prev.models-dev.overrideAttrs (oldAttrs: rec {
