@@ -7,6 +7,8 @@
     nixpkgs-custom = {
       url = "github:eljamm/nixpkgs-custom";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.treefmt-nix.follows = "treefmt-nix";
     };
 
     ncro = {
@@ -63,8 +65,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin.url = "github:catppuccin/nix/v26.05";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    catppuccin = {
+      url = "github:catppuccin/nix/v26.05";
+    };
+
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     gowt = {
       url = "github:eljamm/gowt/dev";
@@ -73,7 +81,11 @@
       inputs.treefmt-nix.follows = "treefmt-nix";
     };
 
-    llm-agents.url = "github:numtide/llm-agents.nix";
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+    };
   };
 
   # import flake attributes from ./default.nix
