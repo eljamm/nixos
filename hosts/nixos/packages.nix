@@ -171,7 +171,7 @@ let
       license-cli
       meld
       patchelf
-      pkgsCustom.arwen
+      pkgsUnstable.arwen
       pkgsUnstable.act
       pkgsUnstable.ffizer
       pkgsUnstable.zizmor
