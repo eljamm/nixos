@@ -2,12 +2,10 @@
   lib,
   pkgs,
   pkgsUnstable,
-  pkgsCustom,
-  devLib,
   ...
 }:
-let
-  packages = with pkgs; {
+{
+  custom.systemPackages = with pkgs; {
     internet = [
       firefox
       qbittorrent
@@ -199,11 +197,4 @@ let
       xeyes
     ];
   };
-in
-{
-  # TODO: make a module for packages
-  environment.systemPackages = lib.pipe packages [
-    lib.attrValues
-    lib.flatten
-  ];
 }

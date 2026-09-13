@@ -44,6 +44,7 @@ in
       self.nixosModules.services.ncro
       self.nixosModules.services.paperless
       self.nixosModules.services.printing
+      self.nixosModules.system.packages
       self.nixosModules.system.virtualisation
       self.homeModules.users.kuroko
       ./nixos
