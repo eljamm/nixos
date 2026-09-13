@@ -168,33 +168,41 @@
       watchexec
     ];
 
-    tools = [
-      android-tools
-      bleachbit
-      duf # disk usage/free
-      duperemove
-      ghostscript
-      gpu-viewer
-      htop-vim
-      innoextract
-      jjui
-      jpegoptim
-      jujutsu
-      lurk
-      mat2
-      mdserve
-      mesa-demos
-      opencode
-      optipng
-      pciutils
-      powerstat
-      python3Packages.edge-tts
-      showmethekey
-      trash-cli
-      usbutils
-      vulkan-tools
-      watchman
-      xeyes
-    ];
+    tools = {
+      ai = [
+        opencode
+      ];
+      cleanup = [
+        bleachbit
+        duf # disk usage/free
+        duperemove
+      ];
+      graphics = [
+        gpu-viewer
+        mesa-demos
+        vulkan-tools
+      ];
+      other = [
+        android-tools
+        ghostscript
+        htop-vim
+        innoextract
+        jjui
+        jpegoptim
+        jujutsu
+        lurk
+        mat2
+        mdserve
+        optipng
+        pciutils
+        powerstat
+        python3Packages.edge-tts
+        showmethekey
+        trash-cli
+        usbutils
+        watchman
+        xeyes
+      ];
+    };
   };
 }
