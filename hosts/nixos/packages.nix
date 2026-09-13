@@ -38,19 +38,18 @@
 
     nix = [
       manix # documentation search
-      pkgsUnstable.nix-init
       # nix-inspect # TODO: old nix
       nix-output-monitor
       nix-tree
       nix-your-shell
       nixos-generators
-      # pkgsCustom.agenix # TODO:
+      npins
       pkgsUnstable.hydra-check
+      pkgsUnstable.nix-init
+      pkgsUnstable.nix-sweep
       pkgsUnstable.nix-update
       pkgsUnstable.nixpkgs-review
       pkgsUnstable.ragenix
-      npins
-      pkgsUnstable.nix-sweep
     ];
 
     office = {
