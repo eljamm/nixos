@@ -5,6 +5,7 @@
 }:
 
 let
+  cfg = config.custom.systemPackages;
   categoryType = lib.types.listOf lib.types.package;
   nestedCategoryType = lib.types.either categoryType (lib.types.attrsOf nestedCategoryType);
 in
@@ -15,6 +16,18 @@ in
       freeformType = lib.types.attrsOf categoryType;
 
       options = {
+        _all = lib.mkOption {
+          internal = true;
+          readOnly = true;
+          default = lib.pipe cfg [
+            (lib.flip lib.removeAttrs [ "_all" ]) # avoid infinite recursion
+            (lib.attrsets.collect lib.isList)
+            lib.flatten
+          ];
+          type = lib.types.listOf lib.types.package;
+          description = "Collection of all category packages. For debugging.";
+        };
+
         internet = lib.mkOption {
           type = nestedCategoryType;
           default = [ ];
@@ -80,9 +93,6 @@ in
   };
 
   config = {
-    environment.systemPackages = lib.pipe config.custom.systemPackages [
-      lib.attrValues
-      lib.flatten
-    ];
+    environment.systemPackages = config.custom.systemPackages._all;
   };
 }
