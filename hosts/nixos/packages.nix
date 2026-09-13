@@ -43,17 +43,6 @@ let
       pkgsUnstable.nix-sweep
     ];
 
-    python = [
-      # FIX:
-      # pipx
-      python3
-      python3Packages.pip
-      python3Packages.virtualenv
-      python3Packages.virtualenvwrapper
-      python3Packages.pyinstrument
-      memray
-    ];
-
     office = [
       calibre
       goldendict-ng
