@@ -44,6 +44,7 @@
       nix-your-shell
       nixos-generators
       npins
+      pkgsCustom.rom
       pkgsUnstable.hydra-check
       pkgsUnstable.nix-init
       pkgsUnstable.nix-sweep
