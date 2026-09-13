@@ -191,7 +191,7 @@
       });
     })
     (final: prev: {
-      opencode = devLib.pickNewest [
+      opencode = devLib.newestFromList [
         pkgs.llm-agents.opencode
         pkgsUnstable.opencode
         (pkgsUnstable.opencode.overrideAttrs (oldAttrs: rec {

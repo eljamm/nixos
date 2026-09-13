@@ -2,8 +2,7 @@
   lib,
   ...
 }:
-{
-  # TODO: improve
+lib.makeExtensible (self: {
   /*
     Convert a path into a tree-like attribute set.
 
@@ -81,6 +80,19 @@
       (lib.foldl lib.recursiveUpdate { })
     ];
 
+  /*
+    Compares 2 packages and returns `true` if the first is newer than the
+    second or the same.
+
+    Reference:
+    *  0: same version
+    *  1: p1 is newer
+    * -1: p1 is older
+
+    https://noogle.dev/f/lib/versions/compareVersions
+  */
+  isNewerOrSame = p1: p2: (lib.strings.compareVersions p1.version p2.version) != -1;
+
   /**
     Prefer the newest version of a package, compared to a package set.
 
@@ -103,30 +115,16 @@
   newestPackage =
     packageSet: package:
     let
-      package-unstable = packageSet.${package.pname};
-      comparison = lib.strings.compareVersions package.version package-unstable.version;
-      unstableIsNewer = comparison == -1;
+      setPackage = packageSet.${package.pname};
     in
-    if unstableIsNewer then package-unstable else package;
+    if self.isNewerOrSame setPackage package then setPackage else package;
 
-  # TODO: improve docs
-  pickNewest =
-    packages:
-    let
-      # Compares 2 packages and returns `true` if the first is newer than the
-      # second.
-      #
-      # Reference:
-      # *  0: same version
-      # *  1: p1 is newer
-      # * -1: p1 is older
-      #
-      # https://noogle.dev/f/lib/versions/compareVersions
-      comparatorNewest = p1: p2: (lib.strings.compareVersions p1.version p2.version) != -1;
-    in
-    lib.pipe packages [
-      (lib.sort comparatorNewest)
-      (lib.head) # get first result (the newest)
+  # Pick newest derivation from a list of packages.
+  newestFromList =
+    packageList:
+    lib.pipe packageList [
+      (lib.sort self.isNewerOrSame)
+      (lib.head) # first result == newest
     ];
 
   # Try evaluating x, else return default
@@ -139,4 +137,4 @@
 
   # Modified version of Nixpkgs' `makeScope`
   simpleScope = import ./simple-scope.nix { inherit lib; };
-}
+})
