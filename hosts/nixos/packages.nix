@@ -2,13 +2,25 @@
   lib,
   pkgs,
   pkgsUnstable,
+  pkgsCustom,
   ...
 }:
 {
   custom.systemPackages = with pkgs; {
     internet = [
+      birdtray
+      brave
       firefox
+      librewolf
       qbittorrent
+      thunderbird
+      ungoogled-chromium
+    ];
+
+    chat = [
+      discord
+      element-desktop
+      ferdium
     ];
 
     networking = [
@@ -53,6 +65,16 @@
       ocrfeeder
       ocamlPackages.cpdf
       pdfmixtool
+      crow-translate
+      lifeograph
+      pkgsCustom.pdfid
+      zathura
+    ];
+
+    education = [
+      anki
+      pkgsCustom.vocabsieve
+      # ki # FIX: failing tests
     ];
 
     lxqt = with lxqt; [
@@ -79,6 +101,19 @@
       gpodder
       musicpod
       stremio-linux-shell
+
+      audacious
+      audacious-plugins
+      audacity
+      ffmpeg
+      flacon
+      handbrake
+      crosspipe
+      kid3
+      pavucontrol
+      pwvucontrol
+      qjackctl
+      spek
     ];
 
     notes = [
@@ -115,6 +150,11 @@
     ];
 
     system = [
+      albert
+      copyq
+      speechd
+      wox
+
       dua
       exfatprogs
       eza
@@ -149,24 +189,93 @@
       zeal
     ];
 
-    development = [
-      addlicense
-      degit # for downloading git sub-dirs
-      dive # explore docker image layers
-      flamelens
-      git-ignore
-      license-cli
-      meld
-      patchelf
-      pkgsUnstable.arwen
-      pkgsUnstable.act
-      pkgsUnstable.ffizer
-      pkgsUnstable.zizmor
-      pre-commit
-      sccache
-      tree-sitter
-      watchexec
+    graphics = [
+      aseprite
+      gimp
+      inkscape
+      krita
+      pixelorama
+      rnote
+      realesrgan-ncnn-vulkan
+      waifu2x-converter-cpp
+      pkgsCustom.waifu2x-ncnn-vulkan
+      blender
     ];
+
+    development = {
+      audio = {
+        trackers = [
+          bambootracker
+          furnace
+          pkgsUnstable.famistudio
+          tuxguitar
+        ];
+        daws = [
+          ardour
+          helio-workstation
+          lmms
+          zrythm
+        ];
+        dj = [
+          mixxx
+        ];
+        plugins = [
+          airwindows
+          airwindows-lv2
+          carla
+          distrho-ports
+          geonkick
+          infamousPlugins
+          lsp-plugins
+          ninjas2
+          odin2
+          pkgsUnstable.ripplerx
+          # FIX:
+          # pkgsUnstable.vaporizer2
+          # surge
+          tunefish
+          vcv-rack
+          vital
+          x42-avldrums
+          yabridge
+          yabridgectl
+          aether-lv2
+        ];
+        tools = [
+          dl-librescore
+          abcm2ps
+          abcmidi
+          easyabc
+          lrcget
+          wineasio
+        ];
+      };
+      games = [
+        godot3
+        godot_4
+        pkgsUnstable.arrow
+      ];
+      other = [
+        addlicense
+        degit # for downloading git sub-dirs
+        dive # explore docker image layers
+        flamelens
+        git-ignore
+        license-cli
+        meld
+        patchelf
+        pkgsUnstable.arwen
+        pkgsUnstable.act
+        pkgsUnstable.ffizer
+        pkgsUnstable.zizmor
+        pre-commit
+        sccache
+        tree-sitter
+        watchexec
+        mold
+        sqlitebrowser
+      ];
+    };
 
     tools = {
       ai = [
@@ -204,5 +313,10 @@
         xeyes
       ];
     };
+
+    utils = [
+      grc
+      piper-tts
+    ];
   };
 }

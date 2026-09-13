@@ -1,9 +1,5 @@
 { username, ... }:
 {
-  imports = [
-    ./packages.nix
-  ];
-
   users.users.${username} = {
     isNormalUser = true;
     uid = 1000;

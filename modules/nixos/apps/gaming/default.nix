@@ -57,6 +57,7 @@
 
       # Games
       mgba
+      openmw
       pkgsUnstable.luanti-client
       osu-lazer-bin
       vbam

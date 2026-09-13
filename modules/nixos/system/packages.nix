@@ -13,7 +13,7 @@ in
 {
   options.custom.systemPackages = lib.mkOption {
     type = lib.types.submodule {
-      freeformType = lib.types.attrsOf categoryType;
+      freeformType = nestedCategoryType;
 
       options = {
         _all = lib.mkOption {
@@ -59,6 +59,11 @@ in
           description = "";
         };
         productivity = lib.mkOption {
+          type = nestedCategoryType;
+          default = [ ];
+          description = "";
+        };
+        development = lib.mkOption {
           type = nestedCategoryType;
           default = [ ];
           description = "";
