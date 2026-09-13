@@ -158,11 +158,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1778716662,
-        "narHash": "sha256-m1Yf0wZ8j1OHjTc2UwHwyQRSnNeSgLJOd7q5Y45hzi4=",
+        "lastModified": 1788450739,
+        "narHash": "sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "f7c1a2d347e4c52d5fb8d10cb4d94b5884e546fb",
+        "rev": "31729ca8cbdb4fa927b34e5f4353e6a83f39e993",
         "type": "github"
       },
       "original": {
@@ -190,25 +190,8 @@
       }
     },
     "git-hooks": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1717587264,
-        "narHash": "sha256-sNM1ENRcMkhr3QUCb+izRMkswzvVKF3K69fsJ5sexfk=",
-        "owner": "fricklerhandwerk",
-        "repo": "git-hooks",
-        "rev": "f925267ca7c5ac711b881e125227c8f3b414ca94",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fricklerhandwerk",
-        "repo": "git-hooks",
-        "type": "github"
-      }
-    },
-    "git-hooks_2": {
       "inputs": {
         "flake-compat": "flake-compat_2",
-        "gitignore": "gitignore",
         "nixpkgs": [
           "nixpkgs-custom",
           "rustowl",
@@ -216,39 +199,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1778507602,
-        "narHash": "sha256-kTwur1wV+01SdqskVMSo6JMEpg71ps3HpbFY2GsflKs=",
+        "lastModified": 1788267358,
+        "narHash": "sha256-nt+lUqYVpc9Y6JeMd2WmXzCDojasdadKo0mWcluvY2Y=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "61ab0e80d9c7ab14c256b5b453d8b3fb0189ba0a",
+        "rev": "27555e2624241fb116b49095df4caaee85a25691",
         "type": "github"
       },
       "original": {
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "type": "github"
-      }
-    },
-    "gitignore": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs-custom",
-          "rustowl",
-          "git-hooks",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1709087332,
-        "narHash": "sha256-HG2cCnktfHsKV0s4XW83gU3F57gaTljL9KNSuG6bnQs=",
-        "owner": "hercules-ci",
-        "repo": "gitignore.nix",
-        "rev": "637db329424fd7e46cf4185293b9cc8c88c95394",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "gitignore.nix",
         "type": "github"
       }
     },
@@ -450,7 +410,6 @@
         "flake-utils": [
           "flake-utils"
         ],
-        "git-hooks": "git-hooks",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -460,11 +419,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779348629,
-        "narHash": "sha256-KUCcxtAEwCisbFcHTrDxqgPKBkntmk/H9nf5VTPfd6Y=",
+        "lastModified": 1789293231,
+        "narHash": "sha256-1G99x5+VGK2W/zFsf1PPhBpbbe4BFP2k7bPW9nKmTGY=",
         "owner": "eljamm",
         "repo": "nixpkgs-custom",
-        "rev": "f51783846d588e4dddca3daf8c0d5372d66c40b3",
+        "rev": "7e67ad04dc2e8bd14ccb65af943776424e9f8d42",
         "type": "github"
       },
       "original": {
@@ -475,11 +434,11 @@
     },
     "nixpkgs-lib": {
       "locked": {
-        "lastModified": 1777168982,
-        "narHash": "sha256-GOkGPcboWE9BmGCRMLX3worL4EMnsnG8MyKmXNeYuhQ=",
+        "lastModified": 1788057806,
+        "narHash": "sha256-DTQSMxzDWmT0zhguthvegnVkn7CFqGCv4IHCzk5ZUpM=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "f5901329dade4a6ea039af1433fb087bd9c1fe14",
+        "rev": "596e2e3940e09b2abbeb03f75fa1828c57fcd72c",
         "type": "github"
       },
       "original": {
@@ -512,22 +471,6 @@
       "original": {
         "type": "tarball",
         "url": "https://channels.nixos.org/nixos-26.05/nixexprs.tar.zst"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1744536153,
-        "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "18dd725c29603f582cf1900e0d25f9f1063dbf11",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
       }
     },
     "root": {
@@ -574,14 +517,17 @@
     },
     "rust-overlay_2": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": [
+          "nixpkgs-custom",
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1779247103,
-        "narHash": "sha256-DwltBoBl9a7fCzlKi3xnNha1NHbfvawwkNdnTXEyfFQ=",
+        "lastModified": 1789024335,
+        "narHash": "sha256-kCy/MVLRIr95DJ4vspVzWj+kO/x+JuwSHmYZCvShg8w=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "86dbfb70dc1c2967245d87ed6d07d2c8bda305e3",
+        "rev": "577bb1e1fc5af0713169176c5c76622c21fa3ec0",
         "type": "github"
       },
       "original": {
@@ -613,7 +559,7 @@
     "rustowl": {
       "inputs": {
         "flake-parts": "flake-parts_2",
-        "git-hooks": "git-hooks_2",
+        "git-hooks": "git-hooks",
         "nixpkgs": [
           "nixpkgs-custom",
           "nixpkgs"
@@ -622,11 +568,11 @@
         "rustowl": "rustowl_2"
       },
       "locked": {
-        "lastModified": 1779331961,
-        "narHash": "sha256-oebv1B7xU3UDs1mY6qYqCjCfjp2kVEz3TJTxMdxj6sw=",
+        "lastModified": 1789094456,
+        "narHash": "sha256-kv9cAWyjtu/Kg8NMD7pKmHgdDPTZFhmzinlX5RukBp8=",
         "owner": "nix-community",
         "repo": "rustowl-flake",
-        "rev": "950c16ced47c64ad25fd5b5efa92bd148bc24810",
+        "rev": "1251def337889cb99f8c2926efb4ee42f37a8a3c",
         "type": "github"
       },
       "original": {
@@ -638,11 +584,11 @@
     "rustowl_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1779124922,
-        "narHash": "sha256-SCvBAk8oq6eBlxgRlVwgwNLSLE0C2sqgo2VEGB+ekEo=",
+        "lastModified": 1788772438,
+        "narHash": "sha256-xXphKLRIv/0oISnnO5sZc6nRZlKvY7K/D30LMnu6C9g=",
         "owner": "cordx56",
         "repo": "rustowl",
-        "rev": "bda20689c9f2f5c8b8a0c753454c2e9bd24aa0b9",
+        "rev": "e446e1b9f1033789b6a3d78977dcfe9e91011965",
         "type": "github"
       },
       "original": {
