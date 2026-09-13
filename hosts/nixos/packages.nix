@@ -53,28 +53,35 @@
       pkgsUnstable.nix-sweep
     ];
 
-    office = [
-      calibre
-      goldendict-ng
-      harper
-      libreoffice-fresh
-      percollate # web pages -> pdf, epub, md
-      readest
-      projecteur
-      yacreader
-      ocrfeeder
-      ocamlPackages.cpdf
-      pdfmixtool
-      crow-translate
-      lifeograph
-      pkgsCustom.pdfid
-      zathura
-    ];
+    office = {
+      comics = [
+        yacreader
+      ];
+      ebook = [
+        calibre
+        readest
+      ];
+      pdf = [
+        ocamlPackages.cpdf
+        pdfmixtool
+        pkgsCustom.pdfid
+        zathura
+      ];
+      other = [
+        crow-translate
+        goldendict-ng
+        libreoffice-fresh
+        lifeograph
+        ocrfeeder
+        percollate # web pages -> pdf, epub, md
+        projecteur
+      ];
+    };
 
     education = [
       anki
+      ki
       pkgsCustom.vocabsieve
-      # ki # FIX: failing tests
     ];
 
     lxqt = with lxqt; [
@@ -247,6 +254,7 @@
         dive # explore docker image layers
         flamelens
         git-ignore
+        harper
         license-cli
         meld
         patchelf
