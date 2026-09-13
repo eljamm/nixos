@@ -21,7 +21,7 @@ in
           readOnly = true;
           default = lib.pipe cfg [
             (lib.flip lib.removeAttrs [ "_all" ]) # avoid infinite recursion
-            (lib.attrsets.collect lib.isList)
+            (lib.attrsets.collect categoryType.check) # recursively get all leaf category items
             lib.flatten
           ];
           type = lib.types.listOf lib.types.package;
