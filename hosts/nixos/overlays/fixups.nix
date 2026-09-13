@@ -27,5 +27,15 @@
         clangStdenv = final.ccacheStdenv.override { stdenv = final.clangStdenv; };
       };
     })
+    (final: prev: {
+      # TODO: remove after this is merged
+      # https://github.com/NixOS/nixpkgs/pull/561616
+      ki = prev.ki.overrideAttrs (oldAttrs: {
+        postPatch = oldAttrs.postPatch or "" + ''
+          substituteInPlace ki/__init__.py \
+            --replace-fail "F.gitd(remote_repo)" "str(F.gitd(remote_repo))"
+        '';
+      });
+    })
   ];
 }
