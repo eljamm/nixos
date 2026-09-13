@@ -131,12 +131,13 @@
       qtimageformats
     ];
 
-    git = [
+    vcs = [
       gh
       git
       gitu
+      jjui
+      jujutsu
       lazygit
-      python3Packages.grip
       rs-git-fsmonitor
       tig
     ];
@@ -149,57 +150,42 @@
       otpclient
     ];
 
-    system = [
-      albert
-      copyq
-      speechd
-      wox
-
-      dua
-      exfatprogs
-      eza
-      fd
-      gparted
-      hyperfine # benchmarking
-      libavif
-      libheif
-      libjxl
-      ouch
-      ripgrep
-      shared-mime-info # file types/pcmanfm-qt
-      tree
-      unzip
-      zip
-
-      # Utils
-      gpick # X11
-      ksnip
-      wl-clipboard
-      wl-color-picker
-      xclip # X11
-    ];
+    system = {
+      launchers = [
+        albert
+        wox
+      ];
+      disk = [
+        dua
+        exfatprogs
+        gparted
+      ];
+      libraries = [
+        libavif
+        libheif
+        libjxl
+      ];
+      utils = [
+        gpick # X11
+        ksnip
+        wl-clipboard
+        wl-color-picker
+        xclip # X11
+      ];
+      other = [
+        copyq
+        speechd
+        shared-mime-info # file types/pcmanfm-qt
+      ];
+    };
 
     productivity = [
       cheat
       harsh
-      homebank
       tealdeer
       tellico
       termdown
       zeal
-    ];
-
-    graphics = [
-      aseprite
-      gimp
-      inkscape
-      krita
-      pixelorama
-      rnote
-      realesrgan-ncnn-vulkan
-      waifu2x-converter-cpp
-      pkgsCustom.waifu2x-ncnn-vulkan
-      blender
     ];
 
     development = {
@@ -269,6 +255,7 @@
         pkgsUnstable.ffizer
         pkgsUnstable.zizmor
         pre-commit
+        python3Packages.grip
         sccache
         tree-sitter
         watchexec
@@ -286,19 +273,29 @@
         duf # disk usage/free
         duperemove
       ];
+      drawing = [
+        aseprite
+        blender
+        gimp
+        inkscape
+        krita
+        pixelorama
+        rnote
+      ];
       graphics = [
         gpu-viewer
         mesa-demos
+        realesrgan-ncnn-vulkan
         vulkan-tools
+        waifu2x-converter-cpp
+        pkgsCustom.waifu2x-ncnn-vulkan
       ];
       other = [
         android-tools
         ghostscript
         htop-vim
         innoextract
-        jjui
         jpegoptim
-        jujutsu
         lurk
         mat2
         mdserve
@@ -315,8 +312,16 @@
     };
 
     utils = [
+      eza
+      fd
       grc
+      hyperfine # benchmarking
+      ouch
       piper-tts
+      ripgrep
+      tree
+      unzip
+      zip
     ];
   };
 }
