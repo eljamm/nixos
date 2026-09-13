@@ -3,8 +3,8 @@
   pkgs,
   ...
 }:
-let
-  packages = with pkgs; {
+{
+  custom.systemPackages = with pkgs; {
     networking = [
       aria2
       wget
@@ -71,11 +71,4 @@ let
       usbutils
     ];
   };
-in
-{
-  # TODO: make a module for packages
-  environment.systemPackages = lib.pipe packages [
-    lib.attrValues
-    lib.flatten
-  ];
 }

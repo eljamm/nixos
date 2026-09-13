@@ -62,6 +62,7 @@ in
       self.nixosModules.development.containers.podman
       self.nixosModules.services.anki
       self.nixosModules.services.media
+      self.nixosModules.system.packages
       self.homeModules.users.navi
       ./navi
     ];
