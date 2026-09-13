@@ -6,7 +6,7 @@
     nixpkgs-unstable.url = "https://channels.nixos.org/nixos-unstable-small/nixexprs.tar.zst";
     nixpkgs-custom = {
       url = "github:eljamm/nixpkgs-custom";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      # inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
       inputs.treefmt-nix.follows = "treefmt-nix";
     };
