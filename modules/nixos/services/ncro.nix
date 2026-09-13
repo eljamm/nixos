@@ -26,6 +26,12 @@
           priority = 20;
           public_key = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
         }
+
+        {
+          url = "https://eljamm.cachix.org";
+          priority = 30;
+          public_key = "eljamm.cachix.org-1:ZgBhaFFUaHLa2JTmIzpntuOziLIkAAEWn1k38hTNOlE=";
+        }
       ];
       logging.timestamps = false;
     };
