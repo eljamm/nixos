@@ -4,6 +4,7 @@
   devLib,
   pkgs,
   config,
+  pkgsCustom,
   pkgsUnstable,
   ...
 }:
@@ -65,8 +66,10 @@
       );
     })
     (final: prev: {
-      readest = devLib.newestPackage pkgsUnstable (
-        pkgsUnstable.readest.overrideAttrs (
+      readest = devLib.newestFromList [
+        pkgsCustom.readest
+        pkgsUnstable.readest
+        (pkgsUnstable.readest.overrideAttrs (
           finalAttrs: oldAttrs: {
             version = "0.11.17";
 
@@ -96,8 +99,8 @@
               hash = "sha256-QxsiYl7mG+kS35pcU8/WLQA+f3gepe7qrHelhUzONbY=";
             };
           }
-        )
-      );
+        ))
+      ];
     })
     (final: prev: {
       yt-dlp = devLib.newestPackage prev (
