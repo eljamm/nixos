@@ -46,6 +46,7 @@ in
         gnome-music
         gnome-system-monitor
         gnome-tour
+        gst-thumbnailers
         hitori # sudoku game
         iagno # go game
         loupe # image viewer
