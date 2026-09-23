@@ -71,5 +71,15 @@ in
     };
   };
 
+  arsene = inputs.nixpkgs.lib.nixosSystem {
+    modules = [
+      self.nixosModules.system.packages
+      ./arsene
+    ];
+    specialArgs = devArgs // {
+      username = "arsene";
+    };
+  };
+
   mona = null;
 }
