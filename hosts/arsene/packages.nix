@@ -11,6 +11,8 @@
     ];
 
     nix = [
+      nh
+      nix-output-monitor
       nix-your-shell
     ];
 
