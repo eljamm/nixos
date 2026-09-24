@@ -8,7 +8,8 @@
 
   networking.extraHosts = ''
     192.168.1.143 arsene
-    192.168.1.143 remotebuilder remotebuilder.local remotebuilder.cache
+    192.168.1.143 remotebuilder remotebuilder.local
+    192.168.1.143 remotebuilder.cache remotebuilder.metrics
   '';
 
   nix.buildMachines = [
