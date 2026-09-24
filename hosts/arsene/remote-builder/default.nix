@@ -8,6 +8,10 @@
 
   users.groups.remotebuild = { };
 
+  networking.extraHosts = ''
+    127.0.0.1 remotebuilder remotebuilder.local
+  '';
+
   nix = {
     nrBuildUsers = 64;
     settings = {

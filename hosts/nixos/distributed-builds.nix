@@ -7,13 +7,14 @@
   nix.settings.builders-use-substitutes = true;
 
   networking.extraHosts = ''
-    192.168.1.143 remotebuilder arsene
+    192.168.1.143 arsene
+    192.168.1.143 remotebuilder remotebuilder.local remotebuilder.cache
   '';
 
   nix.buildMachines = [
     {
       protocol = "ssh-ng";
-      hostName = "remotebuilder";
+      hostName = "remotebuilder.local";
       sshUser = "remotebuild";
       sshKey = "/root/.ssh/remotebuild";
       system = pkgs.stdenv.hostPlatform.system;

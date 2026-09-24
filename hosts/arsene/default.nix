@@ -7,6 +7,7 @@
 {
   imports = [
     ../../hardware/arsene
+    ./binary-cache.nix
     ./networking.nix
     ./packages.nix
     ./remote-builder

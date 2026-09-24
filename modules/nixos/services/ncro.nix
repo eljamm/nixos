@@ -16,6 +16,12 @@
       };
       upstreams = [
         {
+          url = "http://remotebuilder.cache";
+          priority = 5;
+          public_key = "remotebuilder.cache:c8f+9+nZOjvaOb/kLGK+sy6iu0A+5qUsBM7R0ZRuf70=";
+        }
+
+        {
           url = "https://cache.nixos.org";
           priority = 10;
           public_key = "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=";
