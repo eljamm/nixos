@@ -2,8 +2,13 @@
   users.users.remotebuild = {
     isSystemUser = true;
     useDefaultShell = true;
+    createHome = true;
+    home = "/var/lib/remotebuild";
     group = "remotebuild";
-    openssh.authorizedKeys.keyFiles = [ ./remotebuild.pub ];
+    openssh.authorizedKeys.keyFiles = [
+      ./remotebuild.pub
+      ./remotebuild-kuroko.pub
+    ];
   };
 
   users.groups.remotebuild = { };
