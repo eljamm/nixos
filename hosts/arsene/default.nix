@@ -9,6 +9,7 @@
     ../../hardware/arsene
     ./networking.nix
     ./packages.nix
+    ./remote-builder
   ];
 
   users.users.${username} = {
