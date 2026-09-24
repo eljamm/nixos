@@ -39,6 +39,33 @@
     ];
   };
 
+  # NOTE: harmonia offers a pre-configured grafana dashboard under:
+  # https://github.com/nix-community/harmonia/blob/main/harmonia-cache/harmonia-grafana-dashboard.json
+  services.grafana = {
+    enable = true;
+    settings = {
+      server = {
+        http_addr = "127.0.0.1";
+        http_port = 9191;
+      };
+      security = {
+        secret_key = "$__file{/run/credstore/grafana.secret}";
+      };
+    };
+    # configure Prometheus as a data source
+    provision = {
+      enable = true;
+      datasources.settings.datasources = [
+        {
+          name = "Prometheus";
+          type = "prometheus";
+          url = "http://127.0.0.1:9090";
+          isDefault = true;
+        }
+      ];
+    };
+  };
+
   services.caddy = {
     enable = true;
     virtualHosts."http://remotebuilder.cache" = {
@@ -48,7 +75,7 @@
     };
     virtualHosts."http://remotebuilder.metrics" = {
       extraConfig = ''
-        reverse_proxy http://127.0.0.1:9090
+        reverse_proxy http://127.0.0.1:9191
       '';
     };
   };
