@@ -3,6 +3,7 @@
   imports = [
     ../../hardware/legion
     ./agenix.nix
+    ./distributed-builds.nix
     ./networking.nix
     ./overlays
     ./packages.nix
