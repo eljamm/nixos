@@ -73,6 +73,7 @@ in
 
   arsene = inputs.nixpkgs.lib.nixosSystem {
     modules = [
+      self.nixosModules.tools.ccache
       self.nixosModules.services.nh
       self.nixosModules.system.packages
       ./arsene
