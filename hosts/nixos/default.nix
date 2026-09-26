@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
   imports = [
-    ../../hardware/legion
     ./agenix.nix
     ./distributed-builds.nix
+    ./hardware
     ./networking.nix
     ./overlays
     ./packages.nix

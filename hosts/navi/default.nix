@@ -5,8 +5,8 @@
 }:
 {
   imports = [
-    ../../hardware/navi
     ../nixos/overlays
+    ./hardware
     ./networking.nix
     ./packages.nix
   ];
