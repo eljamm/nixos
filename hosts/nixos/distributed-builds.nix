@@ -18,8 +18,11 @@
       hostName = "remotebuilder.local";
       sshUser = "remotebuild";
       sshKey = "/root/.ssh/remotebuild";
-      system = pkgs.stdenv.hostPlatform.system;
       speedFactor = 5;
+      systems = [
+        "x86_64-linux"
+        "i686-linux"
+      ];
       supportedFeatures = [
         "nixos-test"
         "big-parallel"
