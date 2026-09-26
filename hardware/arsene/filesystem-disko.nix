@@ -1,11 +1,13 @@
+#
+# TODO: make all hosts installable by nixos-anywhere & document this somewhere else
+#
 # Install with:
 #   nix run nixpkgs#nixos-anywhere -- --flake .#<host> <name>@<ip> --vm-test
-
+#
 {
   inputs,
   ...
 }:
-
 {
   imports = [
     inputs.disko.nixosModules.disko

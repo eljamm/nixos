@@ -6,6 +6,7 @@
     home = "/var/lib/remotebuild";
     group = "remotebuild";
     openssh.authorizedKeys.keyFiles = [
+      # TODO: custom module for host keys?
       ../keys/joker-kuroko.pub
       ../keys/joker-root.pub
     ];
