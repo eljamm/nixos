@@ -11,29 +11,13 @@
       /export 192.168.1.0/24(insecure,rw,sync,no_subtree_check,crossmnt,fsid=0)
       /export/storage 192.168.1.0/24(insecure,rw,sync,no_subtree_check)
     '';
-    # fixed rpc.statd port; for firewall
-    lockdPort = 4001;
-    mountdPort = 4002;
-    statdPort = 4000;
   };
 
-  networking.firewall = {
-    # for NFSv3; view with 'rpcinfo -p'
-    allowedTCPPorts = [
-      111
-      2049
-      4000
-      4001
-      4002
-      20048
-    ];
-    allowedUDPPorts = [
-      111
-      2049
-      4000
-      4001
-      4002
-      20048
-    ];
-  };
+  # NOTE: Some clients may only support NFSv3, in which case more ports need to
+  # be enabled [^1]. I haven't encountered any yet, so I'll be using NFSv4.
+  #
+  # [^1]: https://wiki.nixos.org/wiki/NFS#Firewall
+  networking.firewall.allowedTCPPorts = [
+    2049
+  ];
 }

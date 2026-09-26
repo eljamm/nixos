@@ -87,14 +87,16 @@
 
     "/run/media/kuroko/Arsene (storage)" = {
       device = "arsene:/export/storage";
-      fsType = "nfs";
+      fsType = "nfs4";
       options = [
-        "noauto"
         "nofail"
-        # Lazy/On-demand mount
-        # https://github.com/joshsymonds/nix-config/blob/1c3937/hosts/common.nix#L228-L238
-        "x-systemd.automount"
+        # https://www.freedesktop.org/software/systemd/man/systemd.mount.html#x-systemd.mount-timeout=
         "x-systemd.mount-timeout=10s"
+        # https://wiki.nixos.org/wiki/NFS#Lazy-mounting
+        "noauto"
+        "x-systemd.automount"
+        # https://wiki.nixos.org/wiki/NFS#Auto-disconnecting
+        "x-systemd.idle-timeout=3600"
       ];
     };
 
