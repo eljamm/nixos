@@ -3,6 +3,10 @@
   ...
 }:
 {
+  boot.supportedFilesystems = [
+    "nfs"
+  ];
+
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/35a6b011-b49c-41e6-9742-f389377bb609";
@@ -80,6 +84,20 @@
         "x-systemd.device-timeout=5"
       ];
     };
+
+    "/run/media/kuroko/Arsene (storage)" = {
+      device = "arsene:/export/storage";
+      fsType = "nfs";
+      options = [
+        "noauto"
+        "nofail"
+        # Lazy/On-demand mount
+        # https://github.com/joshsymonds/nix-config/blob/1c3937/hosts/common.nix#L228-L238
+        "x-systemd.automount"
+        "x-systemd.mount-timeout=10s"
+      ];
+    };
+
   };
 
   zramSwap = {
