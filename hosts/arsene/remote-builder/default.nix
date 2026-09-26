@@ -6,8 +6,8 @@
     home = "/var/lib/remotebuild";
     group = "remotebuild";
     openssh.authorizedKeys.keyFiles = [
-      ./remotebuild.pub
-      ./remotebuild-kuroko.pub
+      ../keys/joker-kuroko.pub
+      ../keys/joker-root.pub
     ];
   };
 

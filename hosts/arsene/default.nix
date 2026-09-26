@@ -18,6 +18,9 @@
     extraGroups = [ "wheel" ];
     isNormalUser = true;
     uid = 1000;
+    openssh.authorizedKeys.keyFiles = [
+      ./keys/joker-kuroko.pub
+    ];
   };
 
   # Disable unnecessary modules
