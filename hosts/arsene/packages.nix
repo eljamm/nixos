@@ -59,22 +59,29 @@
     ];
 
     development = [
-      addlicense
       difftastic
+      mold
+      sccache
+      watchexec
     ];
 
-    tools = [
-      duf # disk usage/free
-      duperemove
-      htop-vim
-      innoextract
-      jpegoptim
-      lurk
-      mat2
-      optipng
-      pciutils
-      powerstat
-      usbutils
-    ];
+    tools = {
+      cleanup = [
+        duf # disk usage/free
+        duperemove
+        mat2
+      ];
+      monitoring = [
+        btop
+        htop-vim
+      ];
+      debug = [
+        lurk # prettier strace
+      ];
+      other = [
+        pciutils
+        usbutils
+      ];
+    };
   };
 }

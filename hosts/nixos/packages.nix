@@ -280,6 +280,7 @@
         bleachbit
         duf # disk usage/free
         duperemove
+        mat2
       ];
       drawing = [
         aseprite
@@ -304,8 +305,7 @@
         htop-vim
         innoextract
         jpegoptim
-        lurk
-        mat2
+        lurk # prettier strace
         mdserve
         optipng
         pciutils
