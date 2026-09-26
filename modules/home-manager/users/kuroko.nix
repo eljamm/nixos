@@ -31,7 +31,7 @@ let
     self.homeModules.desktops.gnome.default
     self.homeModules.desktops.hyprland.default
     self.homeModules.terminals.default
-    ../../../hosts/nixos/users/kuroko/home
+    ../../../hosts/joker/users/kuroko/home
   ];
 in
 {

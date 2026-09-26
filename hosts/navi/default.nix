@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    ../nixos/overlays
+    ../joker/overlays
     ./hardware
     ./networking.nix
     ./packages.nix

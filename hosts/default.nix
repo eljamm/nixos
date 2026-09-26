@@ -47,7 +47,7 @@ in
       self.nixosModules.system.packages
       self.nixosModules.system.virtualisation
       self.homeModules.users.kuroko
-      ./nixos
+      ./joker
     ];
     specialArgs = devArgs // {
       username = "kuroko";
