@@ -1,3 +1,6 @@
+#
+# https://wiki.nixos.org/wiki/NFS
+#
 {
   fileSystems."/export/storage" = {
     device = "/run/media/storage";

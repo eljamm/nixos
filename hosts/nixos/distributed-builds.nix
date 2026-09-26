@@ -1,7 +1,6 @@
-{
-  pkgs,
-  ...
-}:
+#
+# https://nix.dev/tutorials/nixos/distributed-builds-setup
+#
 {
   nix.distributedBuilds = true;
   nix.settings.builders-use-substitutes = true;

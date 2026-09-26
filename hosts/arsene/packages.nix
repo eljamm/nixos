@@ -1,6 +1,10 @@
+#
+# TODO: install
+# - neovim
+# - yazi
+#
 {
   pkgs,
-  lib,
   ...
 }:
 {

@@ -1,7 +1,4 @@
-{
-  lib,
-  ...
-}:
+# TODO: convert to disko module
 {
   boot.supportedFilesystems = [
     "nfs"
