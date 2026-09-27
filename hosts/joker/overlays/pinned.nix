@@ -218,28 +218,31 @@
       ];
     })
     (final: prev: {
+      # redlib: 0.36.0-unstable-2025-12-16 -> 0.36.0-unstable-2026-04-24
+      # https://github.com/NixOS/nixpkgs/pull/520226
       redlib = pkgsUnstable.redlib.overrideAttrs (oldAttrs: rec {
-        version = "0.36.0-unstable-2025-10-06_2";
+        version = "0.36.0-unstable-2026-04-24";
         src = final.fetchFromGitHub {
           owner = "redlib-org";
           repo = "redlib";
-          rev = "2dc6b5f3c0db1f8e78a74048ba4550ba6202cb55";
-          hash = "sha256-Di3ZZZ4UqR00ud6MdrnJGUngdd/RSC1uNKlsmTdUx2k=";
-          leaveDotGit = true;
-          postFetch = ''
-            pushd $out
-              patch -p1 ${./patches/redlib-fix-403.patch}
-              rm -rf .git
-            popd
-          '';
+          rev = "a4d36e954cf1bd64f209cd8868c5a29edc81b374";
+          hash = "sha256-siyD6A12UALQIV7BMd7zu1TaojleTEYtpxPszuhx1/Y=";
         };
+        cargoPatches = oldAttrs.cargoPatches or [ ] ++ [
+          ./patches/redlib-native-roots.patch
+        ];
         cargoDeps = pkgsUnstable.rustPlatform.fetchCargoVendor {
           inherit src;
-          hash = "sha256-VLXRnSICpMOj/4ebhNSwWH9cwAGTz44kQW6Fa02nwIs=";
+          hash = "sha256-eO3c7rlFna3DuO31etJ6S4c7NmcvgvIWZ1KVkNIuUqQ=";
         };
+        nativeBuildInputs = oldAttrs.nativeBuildInputs or [ ] ++ [
+          final.cmake
+          final.gitMinimal
+          final.rustPlatform.bindgenHook
+        ];
         checkFlags = oldAttrs.checkFlags ++ [
-          "--skip=test_generic_web_backend"
-          "--skip=test_mobile_spoof_backend"
+          "--skip=oauth::tests::test_generic_web_backend"
+          "--skip=oauth::tests::test_mobile_spoof_backend"
         ];
       });
     })
