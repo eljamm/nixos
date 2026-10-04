@@ -1,52 +1,50 @@
 ---
- glfw/wl_window.c | 13 -------------
- 1 file changed, 13 deletions(-)
+ glfw/wl_window.c | 11 -----------
+ 1 file changed, 11 deletions(-)
 
 diff --git a/glfw/wl_window.c b/glfw/wl_window.c
-index a200ae8b1..735ec305f 100644
+index 92a52d852..84681dfc5 100644
 --- a/glfw/wl_window.c
 +++ b/glfw/wl_window.c
-@@ -758,7 +758,6 @@ static const struct xdg_toplevel_listener xdgToplevelListener = {
- 
+@@ -861,7 +861,6 @@ update_fully_created_on_configure(_GLFWwindow *window) {
+
  static void
  apply_xdg_configure_changes(_GLFWwindow *window) {
 -    bool suspended_changed = false;
      if (window->wl.pending_state & PENDING_STATE_TOPLEVEL) {
          uint32_t new_states = window->wl.pending.toplevel_states;
          int width = window->wl.pending.width;
-@@ -769,10 +768,6 @@ apply_xdg_configure_changes(_GLFWwindow *window) {
-             window->wl.once.surface_configured = true;
+@@ -873,10 +872,6 @@ apply_xdg_configure_changes(_GLFWwindow *window) {
+             update_fully_created_on_configure(window);
          }
- 
+
 -#ifdef XDG_TOPLEVEL_STATE_SUSPENDED_SINCE_VERSION
 -        suspended_changed = ((new_states & TOPLEVEL_STATE_SUSPENDED) != (window->wl.current.toplevel_states & TOPLEVEL_STATE_SUSPENDED));
 -#endif
 -
-         if (new_states != window->wl.current.toplevel_states ||
-                 width != window->wl.current.width ||
-                 height != window->wl.current.height) {
-@@ -804,11 +799,6 @@ apply_xdg_configure_changes(_GLFWwindow *window) {
+         if (new_states != window->wl.current.toplevel_states || width != window->wl.current.width || height != window->wl.current.height) {
+             bool live_resize_done = !(new_states & TOPLEVEL_STATE_RESIZING) && (window->wl.current.toplevel_states & TOPLEVEL_STATE_RESIZING);
+             window->wl.current.toplevel_states = new_states;
+@@ -906,9 +901,6 @@ apply_xdg_configure_changes(_GLFWwindow *window) {
      inform_compositor_of_window_geometry(window, "configure");
      commit_window_surface_if_safe(window);
      window->wl.pending_state = 0;
 -#ifdef XDG_TOPLEVEL_STATE_SUSPENDED_SINCE_VERSION
--    if (suspended_changed) {
--        _glfwInputWindowOcclusion(window, window->wl.current.toplevel_states & TOPLEVEL_STATE_SUSPENDED);
--    }
+-    if (suspended_changed) { _glfwInputWindowOcclusion(window, window->wl.current.toplevel_states & TOPLEVEL_STATE_SUSPENDED); }
 -#endif
  }
- 
+
  typedef union pixel {
-@@ -1673,9 +1663,6 @@ int _glfwPlatformWindowFocused(_GLFWwindow* window)
- 
- int _glfwPlatformWindowOccluded(_GLFWwindow* window UNUSED)
- {
+@@ -1908,9 +1900,6 @@ _glfwPlatformWindowFocused(_GLFWwindow *window) {
+
+ int
+ _glfwPlatformWindowOccluded(_GLFWwindow *window UNUSED) {
 -#ifdef XDG_TOPLEVEL_STATE_SUSPENDED_SINCE_VERSION
 -    return (window->wl.current.toplevel_states & TOPLEVEL_STATE_SUSPENDED) != 0;
 -#endif
      return false;
  }
- 
--- 
-2.46.0
+
+--
+2.54.0
 
