@@ -189,6 +189,7 @@
     productivity = [
       cheat
       harsh
+      pkgsUnstable.super-productivity
       tealdeer
       tellico
       termdown
