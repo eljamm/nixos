@@ -2,6 +2,7 @@
 {
   boot.supportedFilesystems = [
     "nfs"
+    "ntfs"
   ];
 
   fileSystems = {
