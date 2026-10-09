@@ -83,7 +83,7 @@
     };
 
     "/run/media/kuroko/Arsene (storage)" = {
-      device = "arsene:/export/storage";
+      device = "arsene:/storage";
       fsType = "nfs4";
       options = [
         "nofail"
