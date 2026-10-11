@@ -39,6 +39,7 @@ in
       self.nixosModules.services.firefly-iii
       self.nixosModules.services.forgejo
       self.nixosModules.services.keyd
+      self.nixosModules.services.linkwarden
       self.nixosModules.services.misc
       self.nixosModules.services.mumble
       self.nixosModules.services.ncro
