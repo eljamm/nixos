@@ -17,14 +17,20 @@ in
     enabledExtensions = with spicePkgs.extensions; [
       adblock
       autoSkipVideo
+      aiBandBlocker
       # beautifulLyrics # PERF: high CPU usage
       bookmark
+      catJamSynced
       fullAppDisplay
       hidePodcasts
       keyboardShortcut
       loopyLoop
       popupLyrics
+      romajiConvert
       shuffle # shuffle+ (special characters are sanitized out of ext names)
+      skipOrPlayLikedSongs
+      sortPlay
+      spicyLyrics
     ];
   };
 }
