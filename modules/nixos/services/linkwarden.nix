@@ -12,7 +12,7 @@
 
     enableRegistration = true;
     secretFiles = {
-      NEXTAUTH_SECRET = "/run/credstore/linkwarden.secret";
+      NEXTAUTH_SECRET = "/etc/credstore/linkwarden.secret";
     };
 
     environment = {
