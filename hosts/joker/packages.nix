@@ -45,6 +45,7 @@
       nixos-generators
       npins
       pkgsCustom.rom
+      pkgsUnstable.devenv
       pkgsUnstable.hydra-check
       pkgsUnstable.nix-init
       pkgsUnstable.nix-sweep
@@ -251,7 +252,7 @@
       ];
       other = [
         addlicense
-        pkgsCustom.degit # for downloading git sub-dirs
+        degit # for downloading git sub-dirs
         dive # explore docker image layers
         flamelens
         git-ignore
