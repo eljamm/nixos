@@ -80,8 +80,8 @@
     };
 
     education = [
-      anki
       ki
+      pkgsCustom.anki
       pkgsCustom.vocabsieve
     ];
 
