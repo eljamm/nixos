@@ -18,12 +18,12 @@
     (final: prev: {
       albert = prev.albert.overrideAttrs (
         finalAttrs: oldAttrs: {
-          version = "35.1.0";
+          version = "35.2.0";
           src = final.fetchFromGitHub {
             owner = "albertlauncher";
             repo = "albert";
             tag = "v${finalAttrs.version}";
-            hash = "sha256-3YJeZZEm7rnKZhBpKB2pRVNds+xXk18dSbSdSM+hl58=";
+            hash = "sha256-ycDQUDrwMY9yv/apozrKQfcugurGjDiItiTXCcbGeas=";
             fetchSubmodules = true;
           };
         }
