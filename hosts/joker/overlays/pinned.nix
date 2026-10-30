@@ -347,6 +347,8 @@
         lazy-app.override {
           pkg = drv;
           desktopItem = pkgs.runCommand "${drv.pname or drv.name}-desktop" { } ''
+            mkdir -p $out/share/applications
+
             for file in ${drv}/share/applications/*.desktop; do
               install -D $file -t $out/share/applications
             done
