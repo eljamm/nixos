@@ -6,7 +6,6 @@
     ./hardware
     ./networking.nix
     ./overlays
-    ./packages-lazy.nix
     ./packages.nix
     ./services.nix
     ./users/kuroko

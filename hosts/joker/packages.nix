@@ -203,6 +203,7 @@
           bambootracker
           furnace
           pkgsUnstable.famistudio
+          (pkgs.mkLazyApp tuxguitar)
         ];
         daws = [
           ardour
@@ -273,6 +274,15 @@
       ];
     };
 
+    gaming = {
+      launchers = [
+        (pkgs.mkLazyApp prismlauncher)
+      ];
+      games = [
+        (pkgs.mkLazyApp pkgsUnstable.unciv)
+      ];
+    };
+
     tools = {
       ai = [
         opencode
@@ -285,8 +295,10 @@
       ];
       drawing = [
         aseprite
+        (pkgs.mkLazyApp blender)
         gimp
         inkscape
+        (pkgs.mkLazyApp krita)
         pixelorama
         rnote
       ];
