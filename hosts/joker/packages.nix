@@ -203,7 +203,6 @@
           bambootracker
           furnace
           pkgsUnstable.famistudio
-          tuxguitar
         ];
         daws = [
           ardour
@@ -286,10 +285,8 @@
       ];
       drawing = [
         aseprite
-        #blender
         gimp
         inkscape
-        krita
         pixelorama
         rnote
       ];

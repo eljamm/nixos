@@ -5,6 +5,7 @@
 {
   programs.obs-studio = {
     enable = true;
+    package = pkgs.mkLazyApp pkgs.obs-studio;
     enableVirtualCamera = true;
     plugins = with pkgs.obs-studio-plugins; [
       obs-backgroundremoval

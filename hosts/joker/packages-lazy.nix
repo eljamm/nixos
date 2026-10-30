@@ -1,21 +1,31 @@
 {
-  lazy-app,
   pkgs,
+  pkgsUnstable,
   ...
 }:
 {
-  custom.systemPackages = {
+  custom.systemPackages = with pkgs; {
+    gaming = {
+      launchers = [
+        (pkgs.mkLazyApp prismlauncher)
+      ];
+      games = [
+        (pkgs.mkLazyApp pkgsUnstable.unciv)
+      ];
+    };
     tools = {
       drawing = [
-        (lazy-app.override {
-          pkg = pkgs.blender;
-          desktopItem = pkgs.runCommand "blender-desktop" { } ''
-            install \
-              -D ${pkgs.blender}/share/applications/blender.desktop \
-              -t $out/share/applications
-          '';
-        })
+        (pkgs.mkLazyApp blender)
+        (pkgs.mkLazyApp krita)
       ];
+    };
+
+    development = {
+      audio = {
+        trackers = [
+          (pkgs.mkLazyApp tuxguitar)
+        ];
+      };
     };
   };
 }

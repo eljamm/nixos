@@ -53,7 +53,6 @@
       bottles
       pkgsUnstable.heroic
       lutris
-      prismlauncher
 
       # Games
       mgba
@@ -61,7 +60,6 @@
       pkgsUnstable.luanti-client
       osu-lazer-bin
       vbam
-      pkgsUnstable.unciv
     ])
     ++ (with pkgsCustom; [
       # yuzu-ea
