@@ -5,6 +5,7 @@
   devLib,
   pkgsCustom,
   pkgsUnstable,
+  lazy-app,
   ...
 }:
 let
@@ -15,6 +16,7 @@ let
       system
       pkgsCustom
       pkgsUnstable
+      lazy-app
       devLib
       ;
   };

@@ -286,7 +286,7 @@
       ];
       drawing = [
         aseprite
-        blender
+        #blender
         gimp
         inkscape
         krita

@@ -253,6 +253,22 @@
         "type": "github"
       }
     },
+    "lazy-apps": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764660538,
+        "narHash": "sha256-kEWb9Hc2OxdLhJ1pRdW7zRZ57Mul3/Jpy3vyhQ8Yq6o=",
+        "owner": "~rycee",
+        "repo": "lazy-apps",
+        "rev": "4ddc92c77213f8ed3ddef1868f4a19002afa728a",
+        "type": "sourcehut"
+      },
+      "original": {
+        "owner": "~rycee",
+        "repo": "lazy-apps",
+        "type": "sourcehut"
+      }
+    },
     "llm-agents": {
       "inputs": {
         "bun2nix": "bun2nix",
@@ -507,6 +523,7 @@
         "flake-utils": "flake-utils",
         "gowt": "gowt",
         "home-manager": "home-manager",
+        "lazy-apps": "lazy-apps",
         "llm-agents": "llm-agents",
         "musnix": "musnix",
         "ncro": "ncro",

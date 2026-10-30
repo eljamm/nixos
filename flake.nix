@@ -28,6 +28,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lazy-apps = {
+      url = "sourcehut:~rycee/lazy-apps";
+      #inputs.nixpkgs.follows = "nixpkgs";
+      flake = false;
+    };
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
