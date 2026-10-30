@@ -349,7 +349,7 @@
     };
 
     "org/gnome/desktop/wm/preferences" = {
-      num-workspaces = 7;
+      num-workspaces = 14;
       focus-mode = "sloppy";
     };
 
