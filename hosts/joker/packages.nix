@@ -274,15 +274,6 @@
       ];
     };
 
-    gaming = {
-      launchers = [
-        (pkgs.mkLazyApp prismlauncher)
-      ];
-      games = [
-        (pkgs.mkLazyApp pkgsUnstable.unciv)
-      ];
-    };
-
     tools = {
       ai = [
         opencode

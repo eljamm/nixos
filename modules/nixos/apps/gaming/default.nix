@@ -35,38 +35,40 @@
   };
 
   users.users.kuroko.extraGroups = [ "gamemode" ];
-  users.users.kuroko.packages =
-    (with pkgs; [
-      # Utils
-      cubiomes-viewer
-      ferium
-      goverlay
-      igir
-      libstrangle
-      mangohud
-      np2kai # pc98 emulator
-      pince
-      wineWow64Packages.staging
-      winetricks
 
-      # Launchers
-      bottles
-      pkgsUnstable.heroic
-      lutris
+  custom.systemPackages = with pkgs; {
+    gaming = {
+      utils = [
+        cubiomes-viewer
+        ferium
+        goverlay
+        igir
+        libstrangle
+        mangohud
+        np2kai # pc98 emulator
+        pince
+        pkgsUnstable.umu-launcher
+        wineWow64Packages.staging
+        winetricks
+      ];
 
-      # Games
-      mgba
-      openmw
-      pkgsUnstable.luanti-client
-      osu-lazer-bin
-      vbam
-    ])
-    ++ (with pkgsCustom; [
-      # yuzu-ea
-    ])
-    ++ (with pkgsUnstable; [
-      umu-launcher
-      (mkLazyApp ryubing)
-      odamex
-    ]);
+      launchers = [
+        bottles
+        lutris
+        pkgsUnstable.heroic
+        (pkgs.mkLazyApp prismlauncher)
+        (pkgs.mkLazyApp pkgsUnstable.ryubing)
+      ];
+
+      games = [
+        mgba
+        openmw
+        osu-lazer-bin
+        pkgsUnstable.luanti-client
+        (pkgs.mkLazyApp pkgsUnstable.unciv)
+        vbam
+        (pkgs.mkLazyApp pkgsUnstable.odamex)
+      ];
+    };
+  };
 }
