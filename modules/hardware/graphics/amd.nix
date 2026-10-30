@@ -25,7 +25,7 @@ in
   ];
 
   boot.kernelParams = [
-    "acpi_os=Linux"
+    "acpi_os="
     # I don't remember why I added this, but it's possibly as a fix for
     # amdgpu flip_done timed out error:
     # https://gitlab.freedesktop.org/drm/amd/-/issues/2950
