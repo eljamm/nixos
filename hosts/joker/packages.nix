@@ -94,7 +94,7 @@
 
     media = [
       alsa-utils
-      pkgsUnstable.feishin
+      (mkLazyApp pkgsUnstable.feishin)
       ffmpegthumbnailer
       digikam
       freetube
@@ -231,8 +231,8 @@
           vcv-rack
           vital
           x42-avldrums
-          yabridge
-          yabridgectl
+          (mkLazyApp yabridge)
+          (mkLazyApp yabridgectl)
           aether-lv2
         ];
         tools = [

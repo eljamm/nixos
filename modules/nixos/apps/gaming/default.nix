@@ -66,7 +66,7 @@
     ])
     ++ (with pkgsUnstable; [
       umu-launcher
-      ryubing
+      (mkLazyApp ryubing)
       odamex
     ]);
 }
