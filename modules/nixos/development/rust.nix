@@ -8,7 +8,7 @@
   nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
 
   environment.systemPackages = [
-    (pkgs.rust-bin.stable.latest.default.override {
+    (pkgs.rust-bin.stable.latest.minimal.override {
       extensions = [
         "cargo"
         "clippy"
