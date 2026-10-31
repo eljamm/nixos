@@ -39,35 +39,35 @@
   custom.systemPackages = with pkgs; {
     gaming = {
       utils = [
-        cubiomes-viewer
-        ferium
+        (mkLazyApp cubiomes-viewer)
+        (mkLazyApp ferium)
         goverlay
-        igir
+        (mkLazyApp igir)
         libstrangle
         mangohud
-        np2kai # pc98 emulator
-        pince
+        (mkLazyApp np2kai) # pc98 emulator
+        (mkLazyApp pince)
         pkgsUnstable.umu-launcher
         wineWow64Packages.staging
         winetricks
       ];
 
       launchers = [
-        bottles
+        (mkLazyApp bottles)
         lutris
         pkgsUnstable.heroic
-        (pkgs.mkLazyApp prismlauncher)
-        (pkgs.mkLazyApp pkgsUnstable.ryubing)
+        (mkLazyApp prismlauncher)
+        (mkLazyApp pkgsUnstable.ryubing)
       ];
 
       games = [
-        mgba
+        (mkLazyApp mgba)
         openmw
         osu-lazer-bin
-        pkgsUnstable.luanti-client
-        (pkgs.mkLazyApp pkgsUnstable.unciv)
+        (mkLazyApp pkgsUnstable.luanti-client)
+        (mkLazyApp pkgsUnstable.unciv)
         vbam
-        (pkgs.mkLazyApp pkgsUnstable.odamex)
+        (mkLazyApp pkgsUnstable.odamex)
       ];
     };
   };
