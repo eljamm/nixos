@@ -134,6 +134,18 @@
       python3Packages = final.python3.pkgs;
     })
     (final: prev: {
+      # https://github.com/NixOS/nixpkgs/pull/580486
+      pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+        (pyfinal: pyprev: {
+          fpdf2 = pyprev.fpdf2.overridePythonAttrs (old: {
+            disabledTests = (old.disabledTests or [ ]) ++ [
+              "test_image_with_explicit_dimensions"
+            ];
+          });
+        })
+      ];
+    })
+    (final: prev: {
       linux_xanmod_custom =
         let
           version = "7.2.13";
