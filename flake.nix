@@ -72,6 +72,7 @@
 
     catppuccin = {
       url = "github:catppuccin/nix/v26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-hardware = {
