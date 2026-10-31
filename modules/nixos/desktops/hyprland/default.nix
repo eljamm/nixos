@@ -14,7 +14,7 @@ in
     enableGreeter = lib.mkEnableOption "the Hyprland login manager";
   };
 
-  config = {
+  config = lib.mkIf config.custom.desktops.hyprland.enable {
     custom.desktops.hyprland.cache = lib.mkDefault cfg.enable;
     custom.desktops.hyprland.enableGreeter = lib.mkDefault (
       cfg.enable && !config.custom.desktops.gnome.enableGreeter
