@@ -350,23 +350,8 @@
       gwt = inputs.gowt.default;
     })
     (final: prev: {
-      inherit
-        lazy-app
-        ;
-
-      mkLazyApp =
-        drv:
-        lazy-app.override {
-          pkg = drv;
-          desktopItem = pkgs.runCommand "${drv.pname or drv.name}-desktop" { } ''
-            mkdir -p $out/share/applications
-
-            for file in ${drv}/share/applications/*.desktop; do
-              install -D $file -t $out/share/applications
-            done
-          '';
-        };
-
+      inherit lazy-app;
+      mkLazyApp = drv: lazy-app.override { pkg = drv; };
     })
     inputs.llm-agents.overlays.shared-nixpkgs
   ];

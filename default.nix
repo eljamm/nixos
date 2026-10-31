@@ -35,8 +35,7 @@ let
       inherit system;
     };
 
-    lazy-apps = (import inputs.lazy-apps).mkLazyApps { inherit pkgs; };
-    lazy-app = d.lazy-apps.lazy-app;
+    lazy-app = import inputs.lazy-apps { inherit pkgs; };
 
     formatter = d.import ./dev/formatter.nix { };
     packages = d.import ./dev/packages.nix { };

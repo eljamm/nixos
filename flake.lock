@@ -258,17 +258,17 @@
     "lazy-apps": {
       "flake": false,
       "locked": {
-        "lastModified": 1764660538,
-        "narHash": "sha256-kEWb9Hc2OxdLhJ1pRdW7zRZ57Mul3/Jpy3vyhQ8Yq6o=",
-        "owner": "~rycee",
+        "lastModified": 1793488118,
+        "narHash": "sha256-y9JbXW2FtF4p/Nn+reiHgYSeHgXBCfPzHReOtq2N+1c=",
+        "owner": "eljamm",
         "repo": "lazy-apps",
-        "rev": "4ddc92c77213f8ed3ddef1868f4a19002afa728a",
-        "type": "sourcehut"
+        "rev": "015dd419cabd180f47442492ffe02342ae0d8e3f",
+        "type": "github"
       },
       "original": {
-        "owner": "~rycee",
+        "owner": "eljamm",
         "repo": "lazy-apps",
-        "type": "sourcehut"
+        "type": "github"
       }
     },
     "llm-agents": {

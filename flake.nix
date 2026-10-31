@@ -29,7 +29,7 @@
     };
 
     lazy-apps = {
-      url = "sourcehut:~rycee/lazy-apps";
+      url = "github:eljamm/lazy-apps";
       #inputs.nixpkgs.follows = "nixpkgs";
       flake = false;
     };
