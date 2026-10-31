@@ -70,11 +70,11 @@
       ];
       other = [
         crow-translate
-        goldendict-ng
+        (mkLazyApp goldendict-ng)
         libreoffice-fresh
         lifeograph
-        ocrfeeder
-        percollate # web pages -> pdf, epub, md
+        (mkLazyApp ocrfeeder)
+        (mkLazyApp percollate) # web pages -> pdf, epub, md
         projecteur
       ];
     };
@@ -127,13 +127,13 @@
     notes = [
       dstask
       obsidian
-      pkgsUnstable.planify
+      (mkLazyApp pkgsUnstable.planify)
       qownnotes
     ];
 
     qt6 = with kdePackages; [
       filelight
-      kdenlive
+      (mkLazyApp kdenlive)
       kimageformats
       okular
       qtimageformats
@@ -207,9 +207,9 @@
         ];
         daws = [
           ardour
-          helio-workstation
+          (mkLazyApp helio-workstation)
           lmms
-          zrythm
+          (mkLazyApp zrythm)
         ];
         dj = [
           mixxx
@@ -240,15 +240,15 @@
           dl-librescore
           abcm2ps
           abcmidi
-          easyabc
+          (mkLazyApp easyabc)
           lrcget
           wineasio
         ];
       };
       games = [
-        godot3
+        (mkLazyApp godot3)
         godot_4
-        pkgsUnstable.arrow
+        (mkLazyApp pkgsUnstable.arrow)
       ];
       other = [
         addlicense
@@ -327,7 +327,7 @@
       grc
       hyperfine # benchmarking
       ouch
-      piper-tts
+      (mkLazyApp piper-tts)
       ripgrep
       tree
       unzip
