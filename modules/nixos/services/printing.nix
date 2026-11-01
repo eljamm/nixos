@@ -9,8 +9,9 @@
     drivers = with pkgs; [
       gutenprint
       gutenprintBin
-      canon-capt
-      canon-cups-ufr2
+      # TODO: add printer-specific config?
+      (mkLazyApp canon-capt)
+      (mkLazyApp canon-cups-ufr2)
       hplipWithPlugin
     ];
   };

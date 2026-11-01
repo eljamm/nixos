@@ -176,6 +176,8 @@
       utils = [
         gpick # X11
         ksnip
+        (mkLazyApp pkgsUnstable.pgsrip)
+        (mkLazyApp pkgsUnstable.whisper-ctranslate2)
         wl-clipboard
         wl-color-picker
         xclip # X11
@@ -203,7 +205,7 @@
           bambootracker
           furnace
           pkgsUnstable.famistudio
-          (pkgs.mkLazyApp tuxguitar)
+          (mkLazyApp tuxguitar)
         ];
         daws = [
           ardour
@@ -285,11 +287,12 @@
         mat2
       ];
       drawing = [
+        (mkLazyApp drawio)
         aseprite
-        (pkgs.mkLazyApp blender)
+        (mkLazyApp blender)
         gimp
         inkscape
-        (pkgs.mkLazyApp krita)
+        (mkLazyApp krita)
         pixelorama
         rnote
       ];

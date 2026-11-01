@@ -54,7 +54,7 @@
 
       launchers = [
         (mkLazyApp bottles)
-        lutris
+        (mkLazyApp lutris)
         pkgsUnstable.heroic
         (mkLazyApp prismlauncher)
         (mkLazyApp pkgsUnstable.ryubing)
