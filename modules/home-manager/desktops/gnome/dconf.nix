@@ -341,7 +341,7 @@
     };
 
     "org/gnome/desktop/session" = {
-      idle-delay = mkUint32 900;
+      idle-delay = mkUint32 0;
     };
 
     "org/gnome/desktop/screensaver" = {
