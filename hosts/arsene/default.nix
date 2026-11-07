@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ../joker/overlays # TODO: make host-agnostic overlays
     ./binary-cache.nix
     ./hardware
     ./networking.nix
