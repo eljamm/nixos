@@ -13,5 +13,5 @@
   services.envfs.enable = true;
 
   # Reddit
-  services.redlib.enable = true;
+  services.redlib.enable = false;
 }
