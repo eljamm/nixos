@@ -9,6 +9,7 @@
     192.168.1.143 arsene
     192.168.1.143 remotebuilder remotebuilder.local
     192.168.1.143 remotebuilder.cache remotebuilder.metrics
+    192.168.1.143 searx.remotebuilder
   '';
 
   nix.buildMachines = [

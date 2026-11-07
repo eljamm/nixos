@@ -79,6 +79,7 @@ in
       self.nixosModules.tools.ccache
       self.nixosModules.services.nh
       self.nixosModules.system.packages
+      self.nixosModules.services.searx
       ./arsene
     ];
     specialArgs = devArgs // {
