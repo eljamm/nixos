@@ -23,7 +23,7 @@ let
 
     gamedev = [
       # parser, linter and formatter for GDScript
-      gdtoolkit_4
+      (mkLazyApp gdtoolkit_4)
     ];
 
     luaTools = [
@@ -73,7 +73,7 @@ let
     ];
 
     web = [
-      deno
+      (mkLazyApp deno)
       nodejs
       prettierd # multi-language formatters
       sql-formatter
