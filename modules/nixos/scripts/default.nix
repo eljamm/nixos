@@ -29,6 +29,11 @@ let
     doCheck = false;
   } (lib.readFile ./chaptocue.py);
 
+  scripts.print-free-port = pkgs.writeShellApplication {
+    name = "free-port";
+    text = lib.readFile ./print-free-port.sh;
+  };
+
   # expose scripts for debugging
   config.debug.scripts = scripts;
 
